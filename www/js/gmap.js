@@ -45,7 +45,8 @@ var markers = [
 		content:'<h1>You are here </h1>'
 	},
 	{	coords:{lat:42.8584, lng:-70.9300},
-		content:'<h1>Location 1 </h1>'
+		content:'<h1>Location 1 </h1><br>\
+		<a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>'
 	},
 	{coords:{lat:42.7762, lng:-71.0773},content:'<h1>Location 1 </h1>'}
 
