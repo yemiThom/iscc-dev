@@ -4,7 +4,7 @@ function initMap(){
 
 //map options
 var options = {
-	zoom:12
+	zoom:15
 //	center:{lat:42.3601, lng:-71.0589}
 }
  infoWindow = new google.maps.InfoWindow;
@@ -92,5 +92,3 @@ function addMarker(props){
 }
 }
 }
-
-
