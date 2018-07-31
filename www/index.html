@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Sidebar</title>
+        <title>Gutsy</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/native-interapp.css">
         <link rel="stylesheet" href="css/main-nav.css">
+        <link rel="stylesheet" href="css/page-tabs.css">
         <link rel="stylesheet" href="css/footer-nav.css">
 
         <!-- 
@@ -45,9 +46,65 @@
         </div>
     <!-- Side Bar -->
 
-        <h1>Home Page</h1>
-        <a href="toiletFinder.html">Show Toilet Finder</href>
-        <a href="profile-card.html">Show Restroom ID Card</a>
+    <!-- Start Container Area -->
+    <div class="content-container">
+        <!--div class="header">
+            <h1>Home Page</h1>
+        </div-->
+        
+        <div class="tabs">
+
+            <input type="radio" id="tab1" name="tab-control" checked>
+            <input type="radio" id="tab2" name="tab-control">
+            <input type="radio" id="tab3" name="tab-control">  
+            <input type="radio" id="tab4" name="tab-control">
+            <ul>
+                <li title="Symptoms">
+                    <label for="tab1" role="button">
+                        <i class="fas fa-heartbeat"></i>
+                        <br><span>Symptoms</span>
+                    </label>
+                </li>
+                <li title="Diet">
+                    <label for="tab2" role="button">
+                        <i class="fas fa-utensils"></i>
+                        <br><span>Diet</span>
+                    </label>
+                </li>
+                <li title="Medication">
+                    <label for="tab3" role="button">
+                        <i class="fas fa-pills"></i>
+                        <br><span>Medication</span>
+                    </label>
+                </li>
+            </ul>
+
+            <div class="slider"><div class="indicator"></div></div>
+            <div class="content">
+                <section>
+                    <h2>Symptoms</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea dolorem sequi, quo tempore in eum obcaecati atque quibusdam officiis est dolorum minima deleniti ratione molestias numquam. Voluptas voluptates quibusdam cum?</p>
+                    <!-- Test Section Show ID Card-->
+                    <br/>
+                    <p><a href="profile-card.html" style="text-decoration: none; display: block; text-align: center; background-color: cornflowerblue;">Show Restroom ID Card</a></p>
+
+                </section>
+                <section>
+                    <h2>Diet</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quas adipisci a accusantium eius ut voluptatibus ad impedit nulla, ipsa qui. Quasi temporibus eos commodi aliquid impedit amet, similique nulla.</p>
+                </section>
+                <section>
+                    <h2>Medication</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.</p>
+                </section>
+                <!--section>
+                    <h2>Information</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa dicta vero rerum? Eaque repudiandae architecto libero reprehenderit aliquam magnam ratione quidem? Nobis doloribus molestiae enim deserunt necessitatibus eaque quidem incidunt.</p>
+                </section-->
+            </div>
+        </div>
+    </div>
+    <!-- End Container Area -->
 
     <!-- Start Footer Nav Area -->
         <div class="default-footer">
@@ -68,7 +125,7 @@
                     <!--i class="fa fa-spa"></i-->
                     <!--i class="fa fa-hand-holding-seedling"></i-->
                     <!--i class="fa fa-heartbeat"></i-->
-                    <span class='footer-text'>Mindfullness</span>
+                    <span class='footer-text'>Mindfulness</span>
                 </a>
                 <a href="#" class="footer-link">
                     <!--i class="fas fa-comments"></i-->
@@ -85,6 +142,7 @@
     <!-- End Footer Nav Area -->
     </body>
     <!-- Start Sidebar script -->
+    <script src="js/page-tabs.js"></script>
     <script>
         function toggle_sidebar()
         {
