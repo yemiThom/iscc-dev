@@ -1,6 +1,8 @@
 #map {
-    height: 100%;
+    height: 78%;
     width: 100%;
     margin: 0px;
     padding: 0px;
+    top: 2%;
+    bottom: 4%;
 }
