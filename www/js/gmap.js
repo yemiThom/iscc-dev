@@ -40,15 +40,34 @@ marker.addListener('click', function(){
 
 var markers = [
 	{
-		coords:{lat:42.3601, lng:-71.0589},
-		iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-		content:'<h1>You are here </h1>'
+		coords:{lat:53.355282, lng:-6.170307},
+		content:'Clontarf East Public Toilet<br>\
+		<a href="https://goo.gl/maps/RArBW6eMYBA2">Get Directions</a>'
 	},
-	{	coords:{lat:42.8584, lng:-70.9300},
-		content:'<h1>Location 1 </h1><br>\
+	{	coords:{lat:52.8584, lng:-7.9300},
+		content:'Supervalu Sundrive Complex<br>\
+		<a href="https://goo.gl/maps/pK1THpDLfev">Get Directions</a>'
+	},
+	{	coords:{lat:53.325535, lng:-6.207056},
+		content:'Sandymount Public Toilet<br>\
+		<a href="https://goo.gl/maps/yTXHt7Mc4TL2">Get Directions</a>'
+	},
+	{	coords:{lat:53.579336, lng:-6.105054},
+		content:'South Beach Public Toilet<br>\
 		<a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>'
 	},
-	{coords:{lat:42.7762, lng:-71.0773},content:'<h1>Location 1 </h1>'}
+	{	coords:{lat:53.340139, lng: -6.262659 },
+		content:'<h1>Location 5 </h1><br>\
+		<a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>'
+	},
+	{	coords:{lat:51.8584, lng:-8.9300},
+		content:'<h1>Location 6 </h1><br>\
+		<a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>'
+	},
+	{	coords:{lat:52.8584, lng:-6.9300},
+		content:'Location 7<br>\
+		<a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>'
+	},
 
 
 ];

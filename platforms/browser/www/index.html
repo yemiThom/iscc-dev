@@ -5,6 +5,7 @@
 
         <!-- Style Sheets -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <script src="js/gmap.js"></script>
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/native-interapp.css">
         <link rel="stylesheet" href="css/main-nav.css">
@@ -15,7 +16,7 @@
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-        <!-- 
+        <!--
         user-scalable=no doesn't allow users to zoom
         initial-scale=1 means the zoom level when the app is loaded. 1=100%
         maximum-scale=1 means the max zoom level user can zoom
@@ -45,8 +46,7 @@
             </div>
         </header>
     <!-- End Header Area -->
-
-    <!-- Sidebar -->
+     <!-- Sidebar -->
         <div id="sidebar" style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;">        
             <ul><li>sda</li></ul>
         </div>
@@ -342,5 +342,8 @@
             }
         }
     </script>
+     <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqGpddivbH6TcqlWcbtRu9mFxFjiK3gA&callback=initMap">
+    </script>
     <!-- End Sidebar script -->
-</html>
+</html> 
