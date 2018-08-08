@@ -17,16 +17,28 @@ body {
     font-size: 100%;
 }
 
+.pre-container-wrapper{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+}
+
 .content-container {
-    max-width: 50em;
-    margin: 0 auto;
+    width: 100%;
     background-color: #fff;
-    padding: 0px !important;
+    padding: 13% 0px !important;
+    /*
+    max-width: 100em;
+    overflow: hidden;
+    margin: 0 auto;
+    top: 2%;*/
 }
 
 .header {
     color: #fff;
-    background: #999;
+    background: #428BFF;
     padding: 1em 1.25em;
 }
 
@@ -37,8 +49,8 @@ body {
     width: 100% !important;
     z-index: 9;
     background-color: #fff;
-    padding: 20px 0;
-    box-shadow: -5.213px 5.213px 5px 0px rgba(158, 158, 158, 0.3);
+    padding: 5px 0;
+    box-shadow: -2.213px 2.213px 2px 0px rgba(158, 158, 158, 0.3);
 }
 
 .sticky-wrapper {

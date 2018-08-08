@@ -1,0 +1,155 @@
+.card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: auto;
+    /*-webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19),
+        0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19),
+        0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+    background-color: rgb(255, 255, 255);
+    padding: 0.8rem;
+    width: 33rem;*/
+    width: 100%;
+}
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.rating-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    /*padding: 0.4rem 0.8rem;*/
+    width: 100%;
+}
+
+.rating-text p {
+    color: rgba(0, 0, 16, 0.8);
+    /*font-size: 1.3rem;*/
+    padding: 0.3rem;
+}
+
+.rating {
+    /*background-color: rgba(0, 0, 16, 0.8);
+    padding: 0.4rem 0.4rem 0.1rem 0.4rem;*/
+    border-radius: 2.2rem;
+}
+
+svg {
+    fill: rgb(242, 242, 242);
+    height: 3.6rem;
+    width: 3.6rem;
+    margin: 0.2rem;
+}
+
+img.img-responsive{
+    /*max-width: 20%;*/
+    height: 3.6rem;
+    width: 3.6rem;
+    margin: 0.8rem 1rem;
+}
+
+.rating-form-2 svg {
+    height: 3rem;
+    width: 3rem;
+    margin: 0.5rem;
+}
+
+.rating-form-2 img.img-responsive{
+    height: 3rem;
+    width: 3rem;
+    margin: 0.5rem;
+}
+
+#radios label {
+    position: relative;
+}
+
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+input[type="radio"] + svg {
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+input[type="radio"] + img{
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+input + svg {
+    cursor: pointer;
+}
+
+input + img{
+    cursor: pointer;
+}
+
+input[class="super-happy"]:hover + svg,
+input[class="super-happy"]:checked + svg,
+input[class="super-happy"]:focus + svg {
+    fill: rgb(0, 109, 217);
+}
+
+input[class="happy"]:hover + img,
+input[class="happy"]:checked + img,
+input[class="happy"]:focus + img {
+    border: 1px solid rgb(0, 109, 217);
+}
+
+input[class="happy"]:hover + svg,
+input[class="happy"]:checked + svg,
+input[class="happy"]:focus + svg {
+    fill: rgb(0, 204, 79);
+}
+
+input[class="sad"]:hover + img,
+input[class="sad"]:checked + img,
+input[class="sad"]:focus + img {
+    border: 1px solid rgb(0, 204, 79);
+}
+
+input[class="neutral"]:hover + svg,
+input[class="neutral"]:checked + svg,
+input[class="neutral"]:focus + svg {
+    fill: rgb(232, 214, 0);
+}
+
+input[class="calm"]:hover + img,
+input[class="calm"]:checked + img,
+input[class="calm"]:focus + img {
+    border: 1px solid rgb(232, 214, 0);
+}
+
+input[class="sad"]:hover + svg,
+input[class="sad"]:checked + svg,
+input[class="sad"]:focus + svg {
+    fill: rgb(229, 132, 0);
+}
+
+input[class="angry"]:hover + img,
+input[class="angry"]:checked + img,
+input[class="angry"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
+}
+
+input[class="super-sad"]:hover + svg,
+input[class="super-sad"]:checked + svg,
+input[class="super-sad"]:focus + svg {
+    fill: rgb(239, 42, 16);
+}
+
+input[class="stressed"]:hover + img,
+input[class="stressed"]:checked + img,
+input[class="stressed"]:focus + img {
+    border: 1px solid rgb(239, 42, 16);
+}

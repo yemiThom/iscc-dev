@@ -78,6 +78,32 @@ h1 {
     text-align:center;
 }
 
+h2 {
+    font-size:21px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+h3 {
+    font-size:18px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.nopad{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.text-center{
+    text-align: center;
+}
+
 .event {
     border-radius:4px;
     -webkit-border-radius:4px;
