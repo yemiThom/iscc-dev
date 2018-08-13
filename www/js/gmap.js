@@ -4,7 +4,11 @@ function initMap(){
 
 //map options
 var options = {
-	zoom:15
+	zoom:16,
+	
+	//styling the map.
+	styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
+                
 //	center:{lat:42.3601, lng:-71.0589}
 }
  infoWindow = new google.maps.InfoWindow;
@@ -89,6 +93,7 @@ function addMarker(props){
 	var marker = new google.maps.Marker({
 	position:props.coords,
 	map:map,
+	icon: "img/map-icon-test.png"
 	//without icon image icon is undefined, not ideal
 	//icon:props.iconImage
 	

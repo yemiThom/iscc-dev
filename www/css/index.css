@@ -76,6 +76,7 @@ h1 {
     overflow:visible;
     padding:0px;
     text-align:center;
+    line-height: 2em;
 }
 
 h2 {
@@ -85,6 +86,7 @@ h2 {
     overflow:visible;
     padding:0px;
     text-align:center;
+    line-height: 1.5em;
 }
 
 h3 {
@@ -94,6 +96,7 @@ h3 {
     overflow:visible;
     padding:0px;
     text-align:center;
+    line-height: 1.25em;
 }
 
 .nopad{
@@ -102,6 +105,10 @@ h3 {
 }
 .text-center{
     text-align: center;
+}
+
+.nodisplay{
+    display: none;
 }
 
 .event {
