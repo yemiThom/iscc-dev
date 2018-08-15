@@ -36,6 +36,16 @@ body {
     top: 2%;*/
 }
 
+.swipe-area{
+    position: absolute;
+    width: 50px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #f3f3f3;
+    z-index: 8;
+}
+
 .header {
     color: #fff;
     background: #428BFF;
@@ -86,10 +96,11 @@ nav {
     z-index: 10; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: #ffffff; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    box-shadow: 2px 1px 15px rgba(158, 158, 158, 0.3);
 }
 
 /* The navigation menu links */
