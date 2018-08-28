@@ -546,6 +546,37 @@ iframe {
   opacity: 1;
 }
 
+.profile-container {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  margin: auto;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.profile-img{
+  width: 100%;
+}
+
+#imageUpload
+{
+    display: none;
+}
+
+#profileImage
+{
+    cursor: pointer;
+}
+
+#profile-container img {
+    width: 150px;
+    height: 150px;
+}
+
 @media (max-width: 992px) {
   .alert-validate::before {
     visibility: visible;
