@@ -289,12 +289,12 @@
   .tabset > label {
     position: relative;
     display: inline-block;
-    padding: 1% 2% 25px;
+    padding: 1% 3% 23px;
     border: 1px solid transparent;
     border-bottom: 0;
     cursor: pointer;
     font-weight: 600;
-    margin-right: 5%;
+    margin-right: 10%;
   }
   
   .tabset > label::after {

@@ -1,3 +1,22 @@
+.cal-header{
+    position: relative;
+    /*background-color: #1B363F;*/
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 5%;
+}
+.cal-prev{
+    float: left;
+}
+.cal-next{
+    float: right;
+}
+.cal-input{
+    margin: .5em 0;
+    text-align: center;
+    display: inline-block;
+}
 .daySlider{
     padding: 20px;
 }
