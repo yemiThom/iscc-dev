@@ -48,3 +48,9 @@ h5 { font-size: .83em; }
 h6 { font-size: .75em; }
 
 p { font-size:120%; line-height:1.2; }
+
+input,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus { outline: none; }

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Gutsy - Food Scanner</title>
+        <title>Gutsy</title>
 
         <!-- Style Sheets -->
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/home.css">
         <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
         <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+        <link rel="stylesheet" type="text/css" href="css/nearby-chat.css">
+        <link rel="stylesheet" type="text/css" href="css/nearby-chat-toggle.css">
         <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
-
+        
         <!-- javascript -->
         <script type="text/javascript" src="js/gmap.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+        <script type='text/javascript' src='js/homeCalTracker.js'></script>
         <script type='text/javascript' src='js/fastclick.js'></script>
         <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
 
@@ -40,7 +43,7 @@
                         </div>
                         <div>
                             <div class="main-menubar d-flex align-items-center">
-                                <h2>Gutsy</h2>
+                                <h2>Gutsy - Nearby</h2>
                             </div>
                             <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                         </div>
@@ -66,15 +69,80 @@
         <!-- Start Container Area -->
         <div class="content-container">
             <div class="header">
-                <div><a href="home.html"><i class="fas fa-times" style="width: 15px"></i></a></div>
-                <h1>Barcode Scanner</h1>
-                <h3>Hold the camera towards a barcode to begin</h3>
+                <h1 class="text-center p-b-5">Talk with someone nearby</h1>
+
+                <div class="switch-toggle switch-3 switch-candy">
+                    <input id="on" name="state-d" type="radio" checked="checked">
+                    <label for="on" onclick="">Available</label>
+                    
+                    <input id="na" name="state-d" type="radio" checked="">
+                    <label for="na" onclick="">Offline</label>
+                    
+                    <input id="off" name="state-d" type="radio" checked="">
+                    <label for="off" onclick="">Invisible</label>
+                    
+                    <a></a>
+                </div>
             </div>
 
-            <div style="background-color: #3d3b3b; margin: 5% 0; height: 250px; border: 5px solid #ffffff;">
-                <video id="preview"></video>
-            </div>
-
+            <div id="friends">
+                <a href="nearby-chat.html">
+                    <div class="friend">
+                        <img src="img/profile/1_copy.jpg" />
+                        <p>
+                            <strong>Miro Badev</strong>
+                            <span>mirobadev@gmail.com</span>
+                        </p>
+                        <div class="status available"></div>
+                    </div>
+                </a>
+                
+                <div class="friend">
+                    <img src="img/profile/2_copy.jpg" />
+                    <p>
+                        <strong>Martin Joseph</strong>
+                        <span>marjoseph@gmail.com</span>
+                    </p>
+                    <div class="status away"></div>
+                </div>
+                
+                <div class="friend">
+                    <img src="img/profile/3_copy.jpg" />
+                    <p>
+                        <strong>Tomas Kennedy</strong>
+                        <span>tomaskennedy@gmail.com</span>
+                    </p>
+                    <div class="status inactive"></div>
+                </div>
+                
+                <div class="friend">
+                    <img src="img/profile/4_copy.jpg" />
+                    <p>
+                        <strong>Enrique Sutton</strong>
+                        <span>enriquesutton@gmail.com</span>
+                    </p>
+                    <div class="status inactive"></div>
+                </div>
+                
+                <div class="friend">
+                    <img src="img/profile/5_copy.jpg" />
+                    <p>
+                        <strong>Darnell Strickland</strong>
+                        <span>darnellstrickland@gmail.com</span>
+                    </p>
+                    <div class="status inactive"></div>
+                </div>
+                
+                <div class="friend invisible">
+                    <img src="img/profile/5_copy.jpg" />
+                    <p>
+                        <strong>Darnell Strickland</strong>
+                        <span>darnellstrickland@gmail.com</span>
+                    </p>
+                    <div class="status"></div>
+                </div>
+            </div>  
+            
         </div>
         <!-- End Container Area -->
     </div>
@@ -95,7 +163,7 @@
                     <i class="fas fa-spa"></i>
                     <span class='footer-text'>Mindfulness</span>
                 </a>
-                <a href="nearby.html" class="footer-link">
+                <a href="#" class="footer-link">
                     <i class="fas fa-comments"></i>
                     <span class='footer-text'>Nearby</span>
                 </a>
@@ -107,6 +175,12 @@
         </div>      
     <!-- End Footer Nav Area -->
     </body>
+    <!-- paged tabs script -->
+    <script src="js/page-tabs.js"></script>
+    <!-- end paged tabs script-->
+    <!-- replace radio checkbox script -->
+    <script src="js/replace-radio-checkbox"></script>
+    <!-- end replace radio checkbox script -->
     <!-- Start Sidebar script -->
     <script type="text/javascript">
         /* Set the width of the sidbar to 250px */
@@ -156,6 +230,27 @@
         });
     </script>
     <!-- End swipe sidebar script -->
+    <!-- Start Toggle Reveal script -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("input[name$='feeling']").click(function() {
+                var inputVal = $(this).val();
+
+                $("div.toggleReveal").hide();
+                $("#toggleReveal-" + inputVal).show();
+            });
+        });
+        
+        $(document).ready(function() {
+            $("input[name$='symptom']").click(function() {
+                var inputVal = $(this).val();
+
+                $("div.toggleReveal").hide();
+                $("#toggleReveal-" + inputVal).show();
+            });
+        });
+    </script>
+    <!-- End Toggle Reveal script -->
      <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqGpddivbH6TcqlWcbtRu9mFxFjiK3gA&callback=initMap">
     </script>
