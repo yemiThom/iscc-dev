@@ -59,9 +59,9 @@
                         </div>
                         
                         <div class="container-login100-form-btn p-t-25">
-                            <a class="login100-form-btn" href="home.html">
+                            <button class="login100-form-btn">
                                 Login
-                            </a>
+                            </button>
                         </div>
 
                         <div class="text-center w-full p-t-42 p-b-22">
@@ -87,7 +87,7 @@
                                 Not registered?
                             </span>
 
-                            <a class="txt1 bo1 hov1" href="register-email.html">
+                            <a class="txt1 bo1 hov1" href="register-index.html">
                                 Sign up now
                             </a>
                         </div>
