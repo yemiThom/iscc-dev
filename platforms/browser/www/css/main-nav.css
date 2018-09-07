@@ -49,7 +49,7 @@ body {
 .header {
     color: #fff;
     background: #428BFF;
-    padding: 1em 1.25em;
+    padding: 1rem 1.25rem;
 }
 
 .default-header {
@@ -179,7 +179,7 @@ nav {
     width: 100%;
     border-radius: 3%;
 }
-#tab-excersise img{
+#tab-exercise img{
     width: 100%;
 }
 #tab-stretch img{
@@ -243,14 +243,15 @@ nav {
     margin-bottom: 2%;
     position: relative;
 }
-.excersise-img-first{
+.exercise-img-first{
     /*float: left;
     width: 49%;
     margin-bottom: 2%;
     margin-right: 3%;*/
     position: relative;
+    margin: 5%;
 }
-.excersise-img-first h3{
+.exercise-img-first h3{
     color: #fff;
     position: absolute;
     bottom: 25%;
@@ -258,14 +259,15 @@ nav {
     padding: 5px;
     background-color: rgba(0,0,0,0.25);
 }
-.excersise-imgs{
+.exercise-imgs{
     /*float: left;    
     width: 49%;
     margin-bottom: 2%;
     margin-right: 3%;*/
     position: relative;
+    margin: 5%;
 }
-.excersise-imgs h3{
+.exercise-imgs h3{
     color: #fff;
     position: absolute;
     bottom: 25%;
@@ -287,3 +289,35 @@ nav {
 .left{float:left;/*width:100px;*/}
 .right{float:right;/*width:100px;*/}
 .center{margin:0 115px;/*width:100px;*/}
+.exercise-pre-div{
+    display: inline-block;
+    margin: 0.5%;
+}
+
+.formRoundedFilled input[type="submit"] {
+	display: block;
+	color: #FFFFFF;
+	background-color: #5d9cec;
+	border-color: #5899eb;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer; 
+	border: 1px solid transparent; 
+	padding: 6px 16px; 
+	font-size: 14px; 
+    border-radius:4px;
+    margin: 0 auto;
+}
+.formRoundedEmpty input[type="submit"] {
+	display: block;
+	color: #FFFFFF;
+	background-color: #428BFF;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer; 
+	border: 1px solid #dddddd; 
+	padding: 6px 16px; 
+	font-size: 14px; 
+    border-radius:4px;
+    margin: 0 auto;
+}

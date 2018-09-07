@@ -25,8 +25,10 @@
         maximum-scale=1 means the max zoom level user can zoom
         minimum-scale-1 means the min zoom level user can zoom
         -->
+        <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
-            width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        width=device-width, height=device-height, viewport-fit=cover" />
     </head>
     <body>
     <!-- Start Header Area -->
@@ -64,14 +66,14 @@
     <div class="pre-container-wrapper">
         <!--<div id="swipe-area" class="swipe-area"><br/><br/><br/>Text Area</div>-->
         <!-- Start Container Area -->
-        <div class="content-container">
+        <div class="content-container" style="height: 95%">
             <div class="header">
-                <div><a href="home.html"><i class="fas fa-times" style="width: 15px"></i></a></div>
+                <div style="margin: 1% auto;"><a href="home.html"><i class="fas fa-times" style="font-size: 2rem"></i></a></div>
                 <h1>Barcode Scanner</h1>
                 <h3>Hold the camera towards a barcode to begin</h3>
             </div>
 
-            <div style="background-color: #3d3b3b; margin: 5% 0; height: 250px; border: 5px solid #ffffff;">
+            <div style="background-color: #3d3b3b; margin: 0; height: 100%; border: 5px solid #ffffff;">
                 <video id="preview"></video>
             </div>
 
@@ -80,7 +82,7 @@
     </div>
     <!-- End Precontainer Wrapper -->
 
-    <!-- Start Footer Nav Area -->
+    <!-- Start Footer Nav Area ->
         <div class="default-footer">
             <div class="mobile-bottom-bar">
                 <a href="home.html" class="footer-link">
@@ -105,7 +107,7 @@
                 </a>
             </div>
         </div>      
-    <!-- End Footer Nav Area -->
+    <-- End Footer Nav Area -->
     </body>
     <!-- Start Sidebar script -->
     <script type="text/javascript">
