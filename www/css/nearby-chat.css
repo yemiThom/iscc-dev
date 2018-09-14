@@ -77,15 +77,16 @@ z-index:200;
     width:220px;
 }
 .friend p strong{
-font-weight:600;
-font-size:15px;
-    color:#597a96;  
-
+    font-weight:600;
+    font-size:15px;
+    color:#597a96; 
+    display: block;
 }
 .friend p span{
     font-size:13px;
     font-weight:400;
     color:#aab8c2;
+    display: block;
 }
 .friend .status{
     background:#26c281;

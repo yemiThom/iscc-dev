@@ -1,0 +1,41 @@
+.content-container .content{
+    margin: 20px auto;
+    /*width:400px;
+    height:400px;*/
+    background-color:#fff;
+    display:grid;
+    grid-template-columns: 50% 50%;
+    /*grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;*/
+}
+
+.box{
+    background-color:#333;
+    height: 160px;
+    width: 90%;
+    padding: 20% 0;
+    margin: 8px;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 17px;
+    font-family: sans-serif;
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center center;
+    background-position: center center;
+    box-shadow: 3px 4px rgba(0,0,0,0.2);
+    -moz-box-shadow: 3px 4px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 3px 4px rgba(0,0,0,0.2);
+    -o-box-shadow: 3px 4px rgba(0,0,0,0.2);
+    border-radius: 100px;
+}
+
+#healthcare{ background-image: url("../img/intro/healthcare.jpeg"); }
+#restrooms{ background-image: url("../img/intro/restrooms.jpg"); }
+#mindfulness{ background-image: url("../img/intro/mindfulness.jpeg"); }
+#nearby{ background-image: url("../img/intro/nearby.jpeg"); }

@@ -227,7 +227,7 @@ left: 83%; }
 * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
 */
 .switch-toggle.switch-candy, .switch-light.switch-candy > span {
-    background-color: #2D305B;
+    background-color: #2c3e50;
     border-radius: 20px;
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.2); }
 .switch-light.switch-candy span span, .switch-light.switch-candy input:checked ~ span span:first-child, .switch-toggle.switch-candy label {
@@ -239,16 +239,16 @@ left: 83%; }
     color: #333;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
 .switch-candy a {
-    border: 1px solid #333;
+    border: 1px solid #2c3e50;
     border-radius: 20px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
-    background-color: #70c66b;
+    /*background-color: #70c66b;*/
     background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), transparent);
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent); }
-.switch-candy-blue a {
-    background-color: #38a3d4; }
-.switch-candy-yellow a {
-    background-color: #f5e560; }
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent); 
+}
+.switch-candy-red { background-color: #d35e62; }
+.switch-candy-yellow { background-color: #ffce54; }
+.switch-candy-green { background-color: #70c66b; }
 /* iOS Theme
 */
 .switch-ios.switch-light span span {
