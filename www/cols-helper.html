@@ -15,7 +15,6 @@
         <!-- javascript -->
         <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-        <script type='text/javascript' src='js/fastclick.js'></script>
         <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
 
         <!-- jQuery library -->
@@ -159,6 +158,17 @@
         </div>      
     <!-- End Footer Nav Area -->
     </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
     <!-- paged tabs script -->
     <script src="js/page-tabs.js"></script>
     <!-- end paged tabs script-->
