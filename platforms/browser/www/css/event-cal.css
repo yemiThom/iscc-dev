@@ -1,0 +1,235 @@
+.calender{
+	position: relative;
+    padding:2em 3em 0;
+    background: #33cccc;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#82bed4+0,ec7f84+100 /
+	background: rgb(130,190,212); /* Old browsers /
+	background: -moz-linear-gradient(top,  rgba(51,204,204,1) 0%, rgba(41,128,185,1) 100%); /* FF3.6-15 /
+	background: -webkit-linear-gradient(top,  rgba(51,204,204,1) 0%,rgba(41,128,185,1) 100%); /* Chrome10-25,Safari5.1-6 /
+	background: linear-gradient(to bottom,  rgba(51,204,204,1) 0%,rgba(41,128,185,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ /
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82bed4', endColorstr='#ec7f84',GradientType=0 ); /* IE6-9 */
+    margin: 0 auto;
+}
+.events{
+	padding:3em 3em 1em;
+    background: #fff;
+    border: none;
+    margin:-6px auto 0;
+}
+.events ul{
+	border-bottom:1px solid #EBEBEB;
+	padding:1.7em 0;
+}
+.events ul:nth-child(3){
+	border-bottom:none;
+}
+.events ul li:nth-child(1){
+	float: left;
+    /*font-size:1.5rem;*/
+    color: #2c3e50;
+    list-style-type: none;
+    font-weight: 600;
+    letter-spacing: 2px;
+	margin-top:.3em;
+}
+.events ul li:nth-child(2){
+	float: right;
+    font-size:1.5rem;
+    color: #33cccc;
+    list-style-type: none;
+    font-weight: 600;
+}
+.events ul li i{
+	font-size:.5rem;
+	color:#999;
+	font-style:normal;
+}
+
+/** Calendar Proper **/
+
+.cal1 .clndr .clndr-controls {
+    position: relative;
+   color: #2c3e50;
+   font-size: 1.2em;
+   text-transform: uppercase;
+   padding: /*20px*/ 0;
+   text-align: center;
+   margin-bottom: 0.5em/*1em*/;
+ }
+ .cal1{
+ }
+ .cal1 .clndr .clndr-controls .month {
+     text-align: center;
+     color: #fff;
+     font-size:1.2em;
+     letter-spacing: 3px;
+     margin-bottom: 0em;
+     font-weight: 600;
+ }
+ .cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button { 
+     position: absolute;
+     right: 7%;
+     top:25%;
+     width: 35px;
+     height: 28px;
+     text-indent: -4000px;
+     background: url(../img/2.png) no-repeat 0px 0px;
+     cursor: pointer;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+ }
+ .cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button.inactive:hover {
+   cursor: default;
+ }
+ .cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button { 
+     position: absolute;
+     left: 7%;
+     top: 25%;
+     width: 35px;
+     height: 28px;
+     text-indent: -4000px;
+     background:url(../img/1.png) no-repeat 0px 0px;
+     cursor: pointer;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+ }
+ .cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button.inactive:hover {
+   cursor: default;
+ }
+ .cal1 .clndr .clndr-table {
+   table-layout: fixed;
+   width:100%;
+   margin:0 auto;
+ }
+ .cal1 .clndr .clndr-table .header-days {
+   font-size: 16px;
+   background: none;
+   margin-bottom: 1em;
+ }
+ .cal1 .clndr .clndr-table .header-days .header-day {
+     vertical-align: middle;
+     text-align: center;
+     font-size: 1.2em;
+     height: 80px;
+     color:#ecf0f1;
+     font-weight: 600;
+ }
+ .cal1 .clndr .clndr-table tr {
+   height: 40px /*65px*/;
+ }
+ .cal1 .clndr .clndr-table tr td {
+   vertical-align: top;
+ }
+ .cal1 .clndr .clndr-table tr .day {
+   width: 100%;
+   height: inherit;
+   color:#fff;
+   vertical-align:middle;
+ }
+ .cal1 .clndr .clndr-table tr .day.today {
+     background: none;
+     color: #fff;
+     border: 1px solid #fff;
+ }
+ .dat-c{
+     color:#c5996c;
+ }
+ .cal1 .clndr .clndr-table tr .day.today:hover {
+       color: #FFF;
+ }
+ .cal1 .clndr .clndr-table tr .day.today.event {
+   background: #ecf0f1;
+   color: #2c3e50;
+ }
+ .day.today.event:hover{
+     color:#FFF;
+ }
+ .cal1 .clndr .clndr-table tr .day .day-contents {
+   box-sizing: border-box;
+   font-size:.856em;
+   text-align: center;
+   cursor: pointer;
+   font-weight: 700;
+   font-style: normal;
+   letter-spacing: 2px;
+ }
+ .cal1 .clndr .clndr-table tr .empty,
+ .cal1 .clndr .clndr-table tr .adjacent-month {
+   width: 100%;
+   height: inherit;
+   color:#2c3e50;
+ }
+ @media all and (max-width:1024px) {
+     .cal1 .clndr .clndr-table tr {
+       height: 45px;
+     }
+ }
+ @media all and (max-width:768px) {
+     .cal1 .clndr .clndr-table tr {
+         height: 55px;
+     }
+ }
+ @media (max-width:640px){
+     .cal1 .clndr .clndr-table tr {
+         height: 40px;
+     }
+     .cal1 .clndr .clndr-controls {
+         padding: 0;
+         margin-bottom: 0.5em;
+     }
+     .cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button,.cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button {
+         top: -7%;
+     }
+ }
+ @media all and (max-width:414px) {
+     .cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button {
+         left: 0%;
+     }
+     .cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button {
+         right: 0%;
+     }
+ }
+ @media all and (max-width:384px) {
+     .cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button, .cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button {
+         top: -18%;
+     }
+     .cal1 .clndr .clndr-table .header-days .header-day {
+         font-size: 1em;
+     }
+     .cal1 .clndr .clndr-table tr .day .day-contents {
+         font-size: .7em;
+     }
+ }
+ @media all and (max-width:375px) {
+     .cal1 .clndr .clndr-controls .month {
+         font-size: .8em;
+     }
+     .cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button {
+         width: 25px;
+         height: 25px;
+         background: url(../img/2.png) no-repeat 0px 0px;
+         background-size: 100%;
+     }
+     .cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button{
+         width: 25px;
+         height: 25px;
+         background: url(../img/1.png) no-repeat 0px 0px;
+         background-size: 100%;
+     }
+     .cal1 .clndr .clndr-table .header-days .header-day {
+         font-size: 14px;
+     }
+ }
+ @media all and (max-width:320px) {
+     .cal1 .clndr .clndr-table{
+         width: 100%;
+     }
+     .cal1 .clndr .clndr-table tr {
+         height: 35px;
+     }
+     .cal1 .clndr .clndr-table .header-days .header-day {
+         height: 55px;
+     }
+ }

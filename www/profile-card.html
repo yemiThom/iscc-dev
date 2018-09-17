@@ -55,5 +55,16 @@
         
         <!--<script src='https://code.jquery.com/jquery-3.3.1.slim.js'></script>-->
     </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
 
 </html>

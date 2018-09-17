@@ -18,7 +18,6 @@
         <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
         <script type='text/javascript' src='js/homeCalTracker.js'></script>
-        <script type='text/javascript' src='js/fastclick.js'></script>
         <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
 
         <!-- jQuery library -->
@@ -63,6 +62,8 @@
          <!--   <a href="register-index.html">Register page 2</a>
             <a href="register-profile.html">Register page 3</a> -->
             <a href="cols-helper.html">Colonoscopy Helper</a>
+            <a href="sound-player.html">Sound Player</a>
+            <a href="event-cal.html">Events Calendar</a>
 			<a href="index.html">Log out</a>
         </div>
     <!-- Side Bar -->
@@ -74,7 +75,7 @@
         <div class="content-container">
             <div class="header">
                 <h1 class="text-center p-b-5">Healthcare</h1>
-                <h3 class="text-center">Complete today's log!</h3>
+                <h3 class="text-center color-navy">Complete today's log!</h3>
 
 
                 <div class="cal-header">
@@ -84,7 +85,9 @@
                 </div>
 
                 <div class="formRoundedEmpty">
-                    <input type="submit" id="UserLogSubmit" Name="UserLogSubmit" value="Save" >
+                    <form>
+                        <input type="submit" id="UserLogSubmit" Name="UserLogSubmit" value="Save" >
+                    </form>
                 </div>
             </div>
             
@@ -117,9 +120,9 @@
                 <!--<div class="slider"><div class="indicator"></div></div>-->
                 <div class="content">
                     <section>
-                        <h2>Symptoms</h2>
+                        <h2 class="color-navy">Symptoms</h2>
                         <div>
-                            <h3>How are you feeling?</h3>
+                            <h3 class="color-navy">How was your day?</h3>
                             <div class="card scrolling-wrapper">
                                 <div class="rating-container">
                                     <!--<div class="rating-text">
@@ -128,35 +131,28 @@
                                     <div class="rating">
                                         <form class="rating-form">
                                 
-                                            <label for="happy">
+                                            <label for="good" class="tracker-label">
+                                                
                                                 <!--onclick="toggleRevealFunc()"-->
-                                                <input type="radio"  name="feeling" class="happy" id="happy" value="happy"/>
+                                                <input type="radio"  name="day" class="good" id="good" value="good"/>
                                                 <img id="toggle-call" class="img-responsive" src="img/emotions/happy.png" />
                                                 <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
+                                                <span class="tracker-label-txt">Good</span>
                                             </label>
                                     
-                                            <label for="sad">
-                                                <input type="radio" name="feeling" class="sad" id="sad" value="sad" />
-                                                <img class="img-responsive" src="img/emotions/sad.png" />
+                                            <label for="okay" class="tracker-label">
+                                                
+                                                <input type="radio" name="day" class="okay" id="okay" value="okay" />
+                                                <img id="toggle-call" class="img-responsive" src="img/emotions/sad.png" />
                                                 <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
+                                                <span class="tracker-label-txt">Okay</span>
                                             </label>
                                     
-                                            <label for="calm">
-                                                <input type="radio" name="feeling" class="calm" id="calm" value="calm" />
-                                                <img class="img-responsive" src="img/emotions/calm.png" />
+                                            <label for="bad" class="tracker-label">
+                                                <input type="radio" name="day" class="bad" id="bad" value="bad" />
+                                                <img id="toggle-call" class="img-responsive" src="img/emotions/calm.png" />
                                                 <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="angry">
-                                                <input type="radio" name="feeling" class="angry" id="angry" value="angry" />
-                                                <img class="img-responsive" src="img/emotions/angry.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="stressed">
-                                                <input type="radio" name="feeling" class="stressed" id="stressed" value="stressed" />
-                                                <img class="img-responsive" src="img/emotions/stressed.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Bad</span>
                                             </label>
                                 
                                         </form>
@@ -164,8 +160,8 @@
                                 </div>
                             </div>
                         </diV>
-                        <div id="toggleReveal-happy" class="nodisplay toggleReveal">
-                            <h3>How are you feeling (pt2)?</h3>
+                        <div id="toggleReveal-day" class="nodisplay toggleReveal">
+                            <h3 class="color-navy">Any Symptoms?</h3>
                             <div class="card scrolling-wrapper">
                                 <div class="rating-container">
                                     <!--<div class="rating-text">
@@ -174,34 +170,46 @@
                                     <div class="rating">
                                         <form class="rating-form">
                                 
-                                            <label for="happy">
-                                                <input type="radio" name="feeling2" class="happy2" id="happy2" value="happy2"/>
-                                                <img class="img-responsive" src="img/emotions/happy.png" />
+                                            <label for="abdominal-pain" class="tracker-label">
+                                                <input type="radio" name="symptoms" class="abdominal-pain" id="abdominal-pain" value="abdominal-pain"/>
+                                                <img id="toggle-call" class="img-responsive" src="img/emotions/happy.png" />
                                                 <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
+                                                <span class="tracker-label-txt">Abdominal Pain</span>
                                             </label>
                                     
-                                            <label for="sad">
-                                                <input type="radio" name="feeling2" class="sad2" id="sad2" value="sad2" />
-                                                <img class="img-responsive" src="img/emotions/sad.png" />
+                                            <label for="cramping" class="tracker-label">
+                                                <input type="radio" name="symptoms" class="cramping" id="cramping" value="cramping" />
+                                                <img id="toggle-call" class="img-responsive" src="img/emotions/sad.png" />
                                                 <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
+                                                <span class="tracker-label-txt">Cramping</span>
                                             </label>
                                     
-                                            <label for="calm">
-                                                <input type="radio" name="feeling2" class="calm2" id="calm2" value="calm2" />
-                                                <img class="img-responsive" src="img/emotions/calm.png" />
+                                            <label for="fatigue" class="tracker-label">
+                                                <input type="radio" name="symptoms" class="fatigue" id="fatigue" value="fatigue" />
+                                                <img id="toggle-call" class="img-responsive" src="img/emotions/calm.png" />
                                                 <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Fatigue</span>
                                             </label>
                                     
-                                            <label for="angry">
-                                                <input type="radio" name="feeling2" class="angry2" id="angry2" value="angry2" />
-                                                <img class="img-responsive" src="img/emotions/angry.png" />
+                                            <label for="headache" class="tracker-label">
+                                                <input type="radio" name="symptoms" class="headache" id="headache" value="headache" />
+                                                <img id="toggle-call" class="img-responsive" src="img/emotions/angry.png" />
                                                 <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Headache</span>
                                             </label>
                                     
-                                            <label for="stressed">
-                                                <input type="radio" name="feeling2" class="stressed2" id="stressed2" value="stressed2" />
-                                                <img class="img-responsive" src="img/emotions/stressed.png" />
+                                            <label for="nausea" class="tracker-label">
+                                                <input type="radio" name="symptoms" class="nausea" id="nausea" value="nausea" />
+                                                <img id="toggle-call" class="img-responsive" src="img/emotions/stressed.png" />
                                                 <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Nausea</span>
+                                            </label>
+                                    
+                                            <label for="vomitting" class="tracker-label">
+                                                <input type="radio" name="symptoms" class="vomitting" id="vomitting" value="vomitting" />
+                                                <img id="toggle-call" class="img-responsive" src="img/emotions/stressed.png" />
+                                                <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Vomitting</span>
                                             </label>
                                     
                                         </form>
@@ -209,8 +217,8 @@
                                 </div>
                             </div>
                         </diV>
-                        <div>
-                            <h3>Any symptoms?</h3>
+                        <div id="toggleReveal-symptoms" class="nodisplay toggleReveal">
+                            <h3 class="color-navy">Bowel Movement?</h3>
                             <div class="card scrolling-wrapper">
                                 <div class="rating-container">
                                     <!--<div class="rating-text">
@@ -219,130 +227,53 @@
                                     <div class="rating">
                                         <form class="rating-form">
                                 
-                                            <label for="dizziness">
-                                                <input type="radio" name="symptom" class="dizziness" id="dizziness" value="dizziness"/>
-                                                <img class="img-responsive" src="img/emotions/dizziness.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="nausea">
-                                                <input type="radio" name="symptom" class="nausea" id="nausea" value="nausea" />
-                                                <img class="img-responsive" src="img/emotions/nausea.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="vomiting">
-                                                <input type="radio" name="symptom" class="vomiting" id="vomiting" value="vomiting" />
-                                                <img class="img-responsive" src="img/emotions/vomiting.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="constipation">
-                                                <input type="radio" name="symptom" class="constipation" id="constipation" value="constipation" />
-                                                <img class="img-responsive" src="img/emotions/constipation.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="thirsty">
-                                                <input type="radio" name="symptom" class="thirsty" id="thirsty" value="thirsty" />
-                                                <img class="img-responsive" src="img/emotions/thirsty.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
-                                            </label>
-                                
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </diV>
-                        <div id="toggleReveal-dizziness" class="nodisplay toggleReveal">
-                            <h3>Any symptoms (pt2)?</h3>
-                            <div class="card scrolling-wrapper">
-                                <div class="rating-container">
-                                    <!--<div class="rating-text">
-                                        <p>I'm feeling...</p>
-                                    </div>-->
-                                    <div class="rating">
-                                        <form class="rating-form">
-                                
-                                            <label for="dizziness">
-                                                <input type="radio" name="symptom2" class="dizziness" id="dizziness" value="dizziness"/>
-                                                <img class="img-responsive" src="img/emotions/dizziness.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="nausea">
-                                                <input type="radio" name="symptom2" class="nausea" id="nausea" value="nausea" />
-                                                <img class="img-responsive" src="img/emotions/nausea.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="vomiting">
-                                                <input type="radio" name="symptom2" class="vomiting" id="vomiting" value="vomiting" />
-                                                <img class="img-responsive" src="img/emotions/vomiting.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="constipation">
-                                                <input type="radio" name="symptom2" class="constipation" id="constipation" value="constipation" />
-                                                <img class="img-responsive" src="img/emotions/constipation.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z" /></svg>-->
-                                            </label>
-                                    
-                                            <label for="thirsty">
-                                                <input type="radio" name="symptom2" class="thirsty" id="thirsty" value="thirsty" />
-                                                <img class="img-responsive" src="img/emotions/thirsty.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
-                                            </label>
-                                
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </diV>
-                        <div>
-                            <h3>Bowel Movement?</h3>
-                            <div class="card scrolling-wrapper">
-                                <div class="rating-container">
-                                    <!--<div class="rating-text">
-                                        <p>I'm feeling...</p>
-                                    </div>-->
-                                    <div class="rating">
-                                        <form class="rating-form">
-                                
-                                            <label for="brown">
+                                            <label for="brown" class="tracker-label">
                                                 <input type="radio" name="bowel" class="brown" id="brown" value="brown"/>
                                                 <img class="img-responsive" src="img/emotions/brown.png" />
                                                 <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
+                                                <span class="tracker-label-txt">Hard Lumps</span>
                                             </label>
                                     
-                                            <label for="green">
+                                            <label for="green" class="tracker-label">
                                                 <input type="radio" name="bowel" class="green" id="green" value="green" />
                                                 <img class="img-responsive" src="img/emotions/green.png" />
                                                 <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
+                                                <span class="tracker-label-txt">Lumpy Sausage</span>
                                             </label>
                                     
-                                            <label for="black">
+                                            <label for="black" class="tracker-label">
                                                 <input type="radio" name="bowel" class="black" id="black" value="black" />
                                                 <img class="img-responsive" src="img/emotions/black.png" />
                                                 <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Cracked Sausage</span>
                                             </label>
                                     
-                                            <label for="yellow">
+                                            <label for="yellow" class="tracker-label">
                                                 <input type="radio" name="bowel" class="yellow" id="yellow" value="yellow" />
                                                 <img class="img-responsive" src="img/emotions/yellow.png" />
                                                 <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Snake</span>
                                             </label>
                                     
-                                            <label for="red">
+                                            <label for="red" class="tracker-label">
                                                 <input type="radio" name="bowel" class="red" id="red" value="red" />
                                                 <img class="img-responsive" src="img/emotions/red.png" />
                                                 <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Soft Blobs</span>
                                             </label>
                                     
-                                            <label for="white">
+                                            <label for="white" class="tracker-label">
                                                 <input type="radio" name="bowel" class="white" id="white" value="white" />
                                                 <img class="img-responsive" src="img/emotions/white.png" />
                                                 <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Mushy</span>
+                                            </label>
+                                    
+                                            <label for="white" class="tracker-label">
+                                                <input type="radio" name="bowel" class="white" id="white" value="white" />
+                                                <img class="img-responsive" src="img/emotions/white.png" />
+                                                <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
+                                                <span class="tracker-label-txt">Liquid</span>
                                             </label>
                                 
                                         </form>
@@ -356,7 +287,7 @@
 
                     </section>
                     <section>
-                        <h2>Diet</h2>
+                        <h2 class="color-navy">Diet</h2>
                         
                         <div class="tabset">
                             <!-- Tab 1 -->
@@ -372,7 +303,7 @@
                             <div class="tab-panels">
                                 <section id="breakfast" class="tab-panel">
                                     <!--<h2>Breakfast</h2>-->
-                                    <h3 class="diet-h3">What did you have?</h3>
+                                    <h3 class="diet-h3 color-navy">What did you have?</h3>
                                     <a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a>
                                     <textarea class="text-areas" rows="5" cols="20" placeholder="Describe your meal..."></textarea>
 
@@ -389,7 +320,7 @@
                                 </section>
                                 <section id="lunch" class="tab-panel">
                                     <!--<h2>Lunch</h2>-->
-                                    <h3 class="diet-h3">What did you have?</h3>
+                                    <h3 class="diet-h3 color-navy">What did you have?</h3>
                                     <a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a>
                                     <textarea class="text-areas" rows="5" cols="20" placeholder="Describe your meal..."></textarea>
 
@@ -406,7 +337,7 @@
                                 </section>
                                 <section id="dinner" class="tab-panel">
                                     <!--<h2>Dinner</h2>-->
-                                    <h3 class="diet-h3">What did you have?</h3>
+                                    <h3 class="diet-h3 color-navy">What did you have?</h3>
                                     <a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a>
                                     <textarea class="text-areas" rows="5" cols="20" placeholder="Describe your meal..."></textarea>
 
@@ -425,7 +356,7 @@
                         </div>
                     </section>
                     <section>
-                        <h2>Medication</h2>
+                        <h2 class="color-navy">Medication</h2>
                         <div>
                             <div>
                                 <div>
@@ -516,6 +447,17 @@
         </div>      
     <!-- End Footer Nav Area -->
     </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
     <!-- paged tabs script -->
     <script src="js/page-tabs.js"></script>
     <!-- end paged tabs script-->
@@ -574,20 +516,20 @@
     <!-- Start Toggle Reveal script -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $("input[name$='feeling']").click(function() {
-                var inputVal = $(this).val();
+            $("input[name$='day']").click(function() {
+                var inputVal = "day"/*$(this).val()*/;
 
-                $("div.toggleReveal").hide();
-                $("#toggleReveal-" + inputVal).show();
+                /*$("div.toggleReveal").hide();*/
+                $("#toggleReveal-" + inputVal).slideToggle();
             });
         });
         
         $(document).ready(function() {
-            $("input[name$='symptom']").click(function() {
-                var inputVal = $(this).val();
+            $("input[name$='symptoms']").click(function() {
+                var inputVal = "symptoms"/*$(this).val()*/;
 
-                $("div.toggleReveal").hide();
-                $("#toggleReveal-" + inputVal).show();
+                /*$("div.toggleReveal").hide();*/
+                $("#toggleReveal-" + inputVal).slideToggle();
             });
         });
     </script>

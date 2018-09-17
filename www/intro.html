@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gutsy</title>
+
+        <!-- Style Sheets -->
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+        <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+        <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+        <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
+        <link rel="stylesheet" type="text/css" href="css/intro.css">
+        <link rel="stylesheet" type="text/css" href="css/replace-radio-checkbox.css">
+        
+        <!-- javascript -->
+        <script type="text/javascript" src="js/gmap.js"></script>
+        <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+        <script type='text/javascript' src='js/homeCalTracker.js'></script>
+        <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+        <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+    </head>
+    <body>
+
+    <!-- Start Precontainer Wrapper -->
+    <div class="pre-container-wrapper bg-torq">
+        <!--<div id="swipe-area" class="swipe-area"><br/><br/><br/>Text Area</div>-->
+        <!-- Start Container Area -->
+
+        <div class="content-container bg-torq">
+            <h1 class="color-grey">Welcome to Gutsy</h1>
+
+            
+            <div class="content bg-torq">
+                <div class="box" id="healthcare">Healthcare</div>
+                <div class="box" id="restrooms">Restrooms</div>
+                <div class="box" id="mindfulness">Mindfulness</div>
+                <div class="box" id="nearby">Nearby</div>
+            </div>
+        </div>
+        <!-- End Container Area -->
+    </div>
+    <!-- End Precontainer Wrapper -->
+    </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+</html> 

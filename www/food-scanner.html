@@ -14,7 +14,6 @@
         <script type="text/javascript" src="js/gmap.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-        <script type='text/javascript' src='js/fastclick.js'></script>
         <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
 
         <!-- jQuery library -->
@@ -109,6 +108,17 @@
         </div>      
     <-- End Footer Nav Area -->
     </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
     <!-- Start Sidebar script -->
     <script type="text/javascript">
         /* Set the width of the sidbar to 250px */

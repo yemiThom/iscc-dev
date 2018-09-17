@@ -71,7 +71,7 @@ a:focus {
 a:hover {
 	text-decoration: none;
   /*color: #d33f8d;*/
-  color: #428BFF;
+  color: #0056b3;
 }
 
 /*---------------------------------------------*/
@@ -159,7 +159,7 @@ iframe {
 
 .hov1:hover {
   /*border-color: #d33f8d;*/
-  border-color: #428BFF;
+  border-color: #33cccc;
 }
 
 
@@ -232,7 +232,7 @@ iframe {
 .login100-form-title {
   font-family: Raleway-Black;
   font-size: 30px;
-  color: #333333;
+  color: #33cccc;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
@@ -277,7 +277,7 @@ iframe {
   height: 100%;
   box-shadow: 0px 0px 0px 0px;
   /*color: rgba(211,63,141, 0.6);*/
-  color: rgba(63, 115, 211, 0.6);
+  color: rgba(51, 204, 204, 0.6);
 }
 
 .input100:focus + .focus-input100 {
@@ -327,7 +327,7 @@ iframe {
 
 .input100:focus + .focus-input100 + .symbol-input100 {
   /*color: #d33f8d;*/
-  color: #428BFF;
+  color: #33cccc;
   padding-left: 18px;
 }
 
@@ -369,7 +369,7 @@ iframe {
   border-radius: 3px;
   background: #fff;
   /*border: 2px solid #d33f8d;*/
-  border: 2px solid #428BFF;
+  border: 2px solid #33cccc;
   left: 0;
   top: 48%;
   -webkit-transform: translateY(-50%);
@@ -381,7 +381,7 @@ iframe {
 
 .input-checkbox100:checked + .label-checkbox100::before {
   /*color: #d33f8d;*/
-  color: #428BFF;
+  color: #33cccc;
 }
 
 
@@ -409,7 +409,7 @@ iframe {
   height: 62px;
   border-radius: 3px;
   /*background: #d33f8d;*/
-  background: #428BFF;
+  background: #33cccc;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -481,7 +481,7 @@ iframe {
 .btn-face:hover,
 .btn-google:hover {
   /*border-color: #d33f8d;*/
-  border-color: #428BFF;
+  border-color: #0056b3;
 }
 
 
@@ -498,7 +498,7 @@ iframe {
   position: absolute;
   max-width: 70%;
   background-color: white;
-  border: 1px solid #c80000;
+  border: 1px solid #d35e62;
   border-radius: 3px;
   padding: 4px 25px 4px 10px;
   top: 50%;
@@ -511,7 +511,7 @@ iframe {
   pointer-events: none;
 
   font-family: Raleway-SemiBold;
-  color: #c80000;
+  color: #d35e62;
   font-size: 13px;
   line-height: 1.4;
   text-align: left;
@@ -530,7 +530,7 @@ iframe {
   font-family: FontAwesome;
   display: block;
   position: absolute;
-  color: #c80000;
+  color: #d35e62;
   font-size: 15px;
   top: 50%;
   -webkit-transform: translateY(-50%);

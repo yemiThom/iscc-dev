@@ -15,7 +15,6 @@
         <!-- javascript -->
         <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-        <script type='text/javascript' src='js/fastclick.js'></script>
         <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
 
         <!-- jQuery library -->
@@ -73,20 +72,20 @@
             </div>
             
             <div id="videoContainer">
-                <div class="overlay">
+                <div class="overlay bg-navy">
                     <div class="button agileinfo"></div>
                 </div>
                 <div id="video">
                     <video src="vid/1.mp4"></video> 
                     <!--p>Your device does not support this Video element.</p-->
                 </div>
-                <div id="controls">
-                    <div class="playButton">
+                <div id="controls" class="bg-torq">
+                    <div class="playButton bg-torq">
                         <div class="playPause"></div>
                     </div>
                     <div class="ProgressContainer">
                         <div class="timer intialTime"> 00:00 </div>
-                        <div class="progressBar">
+                        <div class="progressBar bg-navy">
                             <div class="progress"></div>
                         </div>
                         <div class="time"> 00:00 </div>
@@ -94,11 +93,11 @@
                     </div>
                     <div class="volume">
                         <div class="icon"></div>
-                        <div class="intensityBar">
+                        <div class="intensityBar bg-navy">
                             <div class="intensity"></div>
                         </div>
                     </div>
-                    <div class="scale">
+                    <div class="scale bg-torq">
                         <div class="icon"></div>
                     </div>
                 </div>
@@ -125,6 +124,7 @@
                 <p>
                     <i>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</i>
                 </p>
+                <p><br/></p>
             </div>
         </div>
         <!-- End Container Area -->
@@ -158,6 +158,17 @@
         </div>      
     <!-- End Footer Nav Area -->
     </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
     <!-- paged tabs script -->
     <script src="js/page-tabs.js"></script>
     <!-- end paged tabs script-->

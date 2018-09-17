@@ -17,7 +17,6 @@
         <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
         <script type='text/javascript' src='js/homeCalTracker.js'></script>
-        <script type='text/javascript' src='js/fastclick.js'></script>
         <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
 
         <!-- jQuery library -->
@@ -45,7 +44,7 @@
                         </div>
                         <div>
                             <div class="main-menubar d-flex align-items-center">
-                                <h2>Gutsy - Nearby</h2>
+                                <h2>Gutsy</h2>
                             </div>
                             <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                         </div>
@@ -75,15 +74,15 @@
 
                 <div class="switch-toggle switch-3 switch-candy">
                     <input id="available" name="state-d" type="radio" checked="checked">
-                    <label for="available" onclick="">Available</label>
+                    <label for="available" onclick="">Online</label>
                     
                     <input id="offline" name="state-d" type="radio">
-                    <label for="offline" onclick="">Offline</label>
+                    <label for="offline" onclick="">Busy</label>
                     
                     <input id="invisible" name="state-d" type="radio">
                     <label for="invisible" onclick="">Invisible</label>
                     
-                    <a></a>
+                    <a id="toggle-candy" class="switch-candy-green"></a>
                 </div>
             </div>
 
@@ -93,7 +92,7 @@
                         <img src="img/profile/1_copy.jpg" />
                         <p>
                             <strong>Miro Badev</strong>
-                            <span>mirobadev@gmail.com</span>
+                            <span>200 m</span>
                         </p>
                         <div class="status available"></div>
                     </div>
@@ -103,7 +102,7 @@
                     <img src="img/profile/2_copy.jpg" />
                     <p>
                         <strong>Martin Joseph</strong>
-                        <span>marjoseph@gmail.com</span>
+                        <span>425 m</span>
                     </p>
                     <div class="status away"></div>
                 </div>
@@ -112,7 +111,7 @@
                     <img src="img/profile/3_copy.jpg" />
                     <p>
                         <strong>Tomas Kennedy</strong>
-                        <span>tomaskennedy@gmail.com</span>
+                        <span>2 km</span>
                     </p>
                     <div class="status inactive"></div>
                 </div>
@@ -121,7 +120,7 @@
                     <img src="img/profile/4_copy.jpg" />
                     <p>
                         <strong>Enrique Sutton</strong>
-                        <span>enriquesutton@gmail.com</span>
+                        <span>3.2 km</span>
                     </p>
                     <div class="status inactive"></div>
                 </div>
@@ -130,7 +129,7 @@
                     <img src="img/profile/5_copy.jpg" />
                     <p>
                         <strong>Darnell Strickland</strong>
-                        <span>darnellstrickland@gmail.com</span>
+                        <span>5 km</span>
                     </p>
                     <div class="status inactive"></div>
                 </div>
@@ -139,7 +138,7 @@
                     <img src="img/profile/5_copy.jpg" />
                     <p>
                         <strong>Darnell Strickland</strong>
-                        <span>darnellstrickland@gmail.com</span>
+                        <span>5 km</span>
                     </p>
                     <div class="status"></div>
                 </div>
@@ -177,6 +176,17 @@
         </div>      
     <!-- End Footer Nav Area -->
     </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
     <!-- paged tabs script -->
     <script src="js/page-tabs.js"></script>
     <!-- end paged tabs script-->
@@ -253,7 +263,4 @@
         });
     </script>
     <!-- End Toggle Reveal script -->
-     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqGpddivbH6TcqlWcbtRu9mFxFjiK3gA&callback=initMap">
-    </script>
 </html> 

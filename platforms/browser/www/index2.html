@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,7 +21,8 @@
     <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
     <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
     <link rel="stylesheet" type="text/css" href="css/login-util.css">
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
     <link rel="stylesheet" media="all" href="/css/index.css">
     <!-- javascript -->
     <script type="text/javascript" src="js/gmap.js"></script>
@@ -37,10 +39,11 @@
         width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
     width=device-width, height=device-height, viewport-fit=cover" />
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Templates -->
-    <script type="text/html" id="LoginForm"> 
+    <script type="text/html" id="LoginForm">
 
     <div class="LoginForm container-login100">    
 
@@ -198,7 +201,7 @@
     <!-- Root component -->
     <div id="root"></div>
     <!-- Scripts -->
-    <!-- Start of Jquery script -->	
+    <!-- Start of Jquery script -->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!-- Start of bootstrap script -->
     <script src="vendor/bootstrap/js/popper.js"></script>
@@ -214,5 +217,17 @@
     <script src="/js/Welcome.js"></script>
     <script src="/js/index.js"></script>
 
-  </body>
+</body>
+<!-- fast click script -->
+<script type='text/javascript' src='js/fastclick.js'></script>
+
+<script>
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body);
+        }, false);
+    }
+</script>
+<!-- end fast click script -->
+
 </html>
