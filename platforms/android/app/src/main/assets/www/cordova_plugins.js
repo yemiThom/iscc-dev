@@ -364,6 +364,14 @@ module.exports = [
     "clobbers": [
       "window.FileTransfer"
     ]
+  },
+  {
+    "id": "phonegap-plugin-local-notification.Notification",
+    "file": "plugins/phonegap-plugin-local-notification/www/notification.js",
+    "pluginId": "phonegap-plugin-local-notification",
+    "clobbers": [
+      "Notification"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -378,7 +386,8 @@ module.exports.metadata =
   "cordova-plugin-device-orientation": "1.0.7",
   "cordova-plugin-dialogs": "1.2.1",
   "cordova-plugin-file": "6.0.1",
-  "cordova-plugin-file-transfer": "1.5.1"
+  "cordova-plugin-file-transfer": "1.5.1",
+  "phonegap-plugin-local-notification": "1.0.1"
 };
 // BOTTOM OF METADATA
 });

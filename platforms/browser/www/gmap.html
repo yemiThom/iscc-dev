@@ -49,10 +49,14 @@
         <!-- Start Sidebar -->
             <div id="sidebar" class="sidenav"><!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
-                <a href="login-index.html">Login page</a>
-                <a href="register-index.html">Register</a>
-                <a href="register-email.html">Register page 2</a>
-                <a href="register-profile.html">Register page 3</a>
+                <a href="index.html">Login page</a>
+                <a href="register-email.html">Register</a>
+                <!--   <a href="register-index.html">Register page 2</a>
+                <a href="register-profile.html">Register page 3</a> -->
+                <a href="cols-helper.html">Colonoscopy Helper</a>
+                <a href="sound-player.html">Sound Player</a>
+                <a href="event-cal.html">Events Calendar</a>
+                <a href="index.html">Log out</a>
             </div>
         <!-- End Sidebar -->
 
@@ -96,7 +100,7 @@
         <!-- End Footer Nav Area -->
     </body>
     <!-- fast click script -->
-    <script type='text/javascript' src='js/fastclick.js'></script>
+    <script type='text/javascript' src='js/fastclick.min.js'></script>
 
     <script>
         if ('addEventListener' in document) {
@@ -106,34 +110,21 @@
         }
     </script>
     <!-- end fast click script -->
-    <!-- Start Sidebar script -->
-    <script>
-        /*function toggle_sidebar()
-        {
-            var sidebar = document.getElementById("sidebar");
-            
-            console.log(sidebar.style.left);
-            
-            if(sidebar.style.left == "-200px")
-            {
-                sidebar.style.left = "0px";
-            }
-            else
-            {
-                sidebar.style.left = "-200px";
-            }
-        }*/
-
+     <!-- Start Sidebar script -->
+     <script type="text/javascript">
         /* Set the width of the sidbar to 250px */
         function openNav() {
-            document.getElementById("sidebar").style.width = "250px";
+            /*document.getElementById("sidebar").style.width = "250px";*/
+            document.getElementById("sidebar").style.left = "0px";
         }
 
         /* Set the width of the sidebar to 0 */
         function closeNav() {
-            document.getElementById("sidebar").style.width = "0";
+            /*document.getElementById("sidebar").style.width = "0";*/
+            document.getElementById("sidebar").style.left = "-260px";
         }
     </script>
+    <!-- End Sidebar script -->
      <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqGpddivbH6TcqlWcbtRu9mFxFjiK3gA&callback=initMap">
     </script>

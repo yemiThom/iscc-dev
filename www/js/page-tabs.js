@@ -16,5 +16,9 @@ function slideRight(e) {
 	reel.style.transform = "translateX(-50%)";
 }
 
-tab1.addEventListener('click', slideLeft);
-tab2.addEventListener('click', slideRight);
+if(tab1){
+	tab1.addEventListener('click', slideLeft);
+}
+if(tab2){
+	tab2.addEventListener('click', slideRight);
+}

@@ -149,12 +149,18 @@ iframe {
 .txt1 {
   font-family: Raleway-Regular;
   font-size: 16px;
-  color: #999999;
+  color: #2c3e50;
+  line-height: 1.4;
+}
+.txt2 {
+  font-family: Raleway-Regular;
+  font-size: 0.85rem;
+  color: #2c3e50;
   line-height: 1.4;
 }
 
 .bo1 {
-  border-bottom: 1px solid #999999;
+  border-bottom: 1px solid #2c3e50;
 }
 
 .hov1:hover {
@@ -253,11 +259,10 @@ iframe {
   font-family: Raleway-SemiBold;
   font-size: 18px;
   line-height: 1.2;
-  color: #686868;
-
+  color: #2c3e50;
   display: block;
   width: 100%;
-  background: #e6e6e6;
+  background: #ecf0f1;
   height: 62px;
   border-radius: 3px;
   padding: 0 30px 0 65px;
@@ -347,7 +352,6 @@ iframe {
   display: block;
   position: relative;
   padding-left: 26px;
-  cursor: pointer;
 }
 
 .label-checkbox100::before {
@@ -592,4 +596,101 @@ iframe {
     padding-left: 15px;
     padding-right: 15px;
   }
+}
+
+/* Popup box BEGIN */
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 50%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+.popup .close {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #2c3e50;
+}
+.popup .close:hover {
+  color: #33cccc;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 90%;
+  }
+}
+/* Popup box END */
+
+/** Privacy Notice Styles **/
+.privacy-content{
+  width: 100%;
+}
+.privacy-content h2{
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 2rem;
+}
+.privacy-content h3{
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+}
+.privacy-content ul{
+  font-size: 12px;
+  line-height: 1.5rem;
+  padding-bottom: 5%;
+  color: #2c3e50;
+}
+.privacy-content ul li::before{
+  content: "•"; 
+  color: #33cccc;
+  padding: 2%;
+  margin-left: -1em
+}
+.privacy-content p{
+  font-size: 0.75rem;
+  padding-bottom: 5%;
+  color: #2c3e50;
 }

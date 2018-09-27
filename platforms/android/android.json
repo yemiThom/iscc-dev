@@ -58,6 +58,10 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LocalNotifications\"><param name=\"android-package\" value=\"com.adobe.phonegap.notification.LocalNotifications\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -87,6 +91,12 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<activity android:exported=\"true\" android:name=\"com.adobe.phonegap.notification.NotificationHandlerActivity\" android:permission=\"${applicationId}.permission.PushHandlerActivity\" />",
                             "count": 1
                         }
                     ]
@@ -123,6 +133,9 @@
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "phonegap-plugin-local-notification": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
@@ -492,6 +505,14 @@
             "clobbers": [
                 "window.FileTransfer"
             ]
+        },
+        {
+            "id": "phonegap-plugin-local-notification.Notification",
+            "file": "plugins/phonegap-plugin-local-notification/www/notification.js",
+            "pluginId": "phonegap-plugin-local-notification",
+            "clobbers": [
+                "Notification"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -504,7 +525,8 @@
         "cordova-plugin-device-orientation": "1.0.7",
         "cordova-plugin-dialogs": "1.2.1",
         "cordova-plugin-file": "6.0.1",
-        "cordova-plugin-file-transfer": "1.5.1"
+        "cordova-plugin-file-transfer": "1.5.1",
+        "phonegap-plugin-local-notification": "1.0.1"
     }
 >>>>>>> frontend
 }
