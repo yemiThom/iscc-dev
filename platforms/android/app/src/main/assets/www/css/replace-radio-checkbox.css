@@ -98,14 +98,6 @@ input[type="radio"] + img{
     transition: all 0.2s;
 }
 
-input + svg {
-    cursor: pointer;
-}
-
-input + img{
-    cursor: pointer;
-}
-
 /*input[class="super-happy"]:hover + svg,
 input[class="super-happy"]:checked + svg,
 input[class="super-happy"]:focus + svg {
@@ -155,38 +147,98 @@ input[class="bad"]:focus + img {
     border: 1px solid rgb(229, 132, 0);
 }
 
-input[class="abdominal-pain"]:hover + img,
-input[class="abdominal-pain"]:checked + img,
-input[class="abdominal-pain"]:focus + img {
+input[class="pain-low"]:hover + img,
+input[class="pain-low"]:checked + img,
+input[class="pain-low"]:focus + img {
     border: 1px solid rgb(232, 214, 0);
 }
 
-input[class="cramping"]:hover + img,
-input[class="cramping"]:checked + img,
-input[class="cramping"]:focus + img {
+input[class="pain-medium"]:hover + img,
+input[class="pain-medium"]:checked + img,
+input[class="pain-medium"]:focus + img {
     border: 1px solid rgb(239, 42, 16);
 }
 
-input[class="fatigue"]:hover + img,
-input[class="fatigue"]:checked + img,
-input[class="fatigue"]:focus + img {
+input[class="pain-high"]:hover + img,
+input[class="pain-high"]:checked + img,
+input[class="pain-high"]:focus + img {
     border: 1px solid rgb(232, 214, 0);
 }
 
-input[class="headache"]:hover + img,
-input[class="headache"]:checked + img,
-input[class="headache"]:focus + img {
+input[class="stress-low"]:hover + img,
+input[class="stress-low"]:checked + img,
+input[class="stress-low"]:focus + img {
     border: 1px solid rgb(239, 42, 16);
 }
 
-input[class="nausea"]:hover + img,
-input[class="nausea"]:checked + img,
-input[class="nausea"]:focus + img {
+input[class="stress-medium"]:hover + img,
+input[class="stress-medium"]:checked + img,
+input[class="stress-medium"]:focus + img {
     border: 1px solid rgb(239, 42, 16);
 }
 
-input[class="vomitting"]:hover + img,
-input[class="vomitting"]:checked + img,
-input[class="vomitting"]:focus + img {
+input[class="stress-high"]:hover + img,
+input[class="stress-high"]:checked + img,
+input[class="stress-high"]:focus + img {
     border: 1px solid rgb(239, 42, 16);
+}
+
+input[class="bowel-light"]:hover + img,
+input[class="bowel-light"]:checked + img,
+input[class="bowel-light"]:focus + img {
+    border: 1px solid rgb(0, 109, 217);
+}
+
+input[class="bowel-medium"]:hover + img,
+input[class="bowel-medium"]:checked + img,
+input[class="bowel-medium"]:focus + img {
+    border: 1px solid rgb(0, 204, 79);
+}
+
+input[class="bowel-heavy"]:hover + img,
+input[class="bowel-heavy"]:checked + img,
+input[class="bowel-heavy"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
+}
+
+input[class="hard-lumps"]:hover + img,
+input[class="hard-lumps"]:checked + img,
+input[class="hard-lumps"]:focus + img {
+    border: 1px solid rgb(0, 109, 217);
+}
+
+input[class="lumpy-sausage"]:hover + img,
+input[class="lumpy-sausage"]:checked + img,
+input[class="lumpy-sausage"]:focus + img {
+    border: 1px solid rgb(0, 204, 79);
+}
+
+input[class="cracked-sausage"]:hover + img,
+input[class="cracked-sausage"]:checked + img,
+input[class="cracked-sausage"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
+}
+
+input[class="snake"]:hover + img,
+input[class="snake"]:checked + img,
+input[class="snake"]:focus + img {
+    border: 1px solid rgb(0, 109, 217);
+}
+
+input[class="soft-blobs"]:hover + img,
+input[class="soft-blobs"]:checked + img,
+input[class="soft-blobs"]:focus + img {
+    border: 1px solid rgb(0, 204, 79);
+}
+
+input[class="mushy"]:hover + img,
+input[class="mushy"]:checked + img,
+input[class="mushy"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
+}
+
+input[class="liquid"]:hover + img,
+input[class="liquid"]:checked + img,
+input[class="liquid"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
 }

@@ -14,8 +14,8 @@
         <!-- javascript -->
         <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-        <script type='text/javascript' src='js/homeCalTracker.js'></script>
-        <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+        <script type='text/javascript' src='js/nearby-chat.js'></script>
+        <script type='text/javascript' src="js/adapter-latest.js"></script>
 
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -131,11 +131,20 @@
                         </div>
                     </div>
                     
+                    <div class="message right">
+                        <img src="img/profile/2_copy.jpg" />
+                        <div class="bubble sent">
+                            <textarea id="dataChannelReceive" disabled style="border:none;background:none;"></textarea>
+                            <!--div class="corner"></div-->
+                            <span>Now</span>
+                        </div>
+                    </div>
+                    
                 </div>
                 
                 <div id="sendmessage">
-                    <input type="text" placeholder="Send message..." />
-                    <button id="send"></button>
+                    <input type="text" id="dataChannelSend" placeholder="Send message..." />
+                    <button id="sendButton"></button>
                 </div>
             
             </div>
