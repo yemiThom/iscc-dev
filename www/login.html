@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Register </title>
+        <!-- Style Sheets -->
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+        <script src="js/amazon-cognito-auth.min.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
+        <script src="js/amazon-cognito-identity.min.js"></script>  
+        <script src="js/config.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="css/login-util.css">
+        <link rel="stylesheet" type="text/css" href="css/login-main.css">
+        
+        <!--
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+        <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+    </head>
+    <body>
+        
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-l-50 p-r-50 p-t-15 p-b-15">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-20">
+                            Gutsy
+                        </span>
+
+                        <h1 class="h3 mb-3 font-weight-normal" id="titleheader">Register an Account</h1>
+
+                        <div class="wrap-input100 validate-input m-b-16" data-validate = "Name is required">
+                            <input class="input100" type="text" name="f-name" placeholder="Name" id="nameRegister">
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
+                            <input class="input100" type="text" name="email" placeholder="Email" id="emailInputRegister">
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
+                            <input type ="personalname" class="input100" type="text" name="f-name" placeholder="Username" id="personalnameRegister">
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+                            <input class="input100" type="password" name="password" placeholder="Password" id="passwordInputRegister">
+                            <span class="focus-input100"></span>
+                        </div>
+                        
+                        <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+                            <input class="input100" type="password" name="password" placeholder="Confirm Password" id="confirmationpassword">
+                            <span class="focus-input100"></span>
+                        </div>
+                        
+                        <div class="container-login100-form-btn p-t-25">
+                            <button id="mainbutton" class="login100-form-btn" type="button" onclick="registerButton()">
+                                Register 
+                            </button>
+                        </div>
+
+                        <div class="text-center w-full p-t-42 p-b-22">
+                            <a class="txt1 bo1 hov1" href="index.html"><span class="txt1">
+                                <i class="fas fa-long-arrow-alt-left"></i> Go back
+                            </span></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+       <script>
+  function signInButton() {
+    
+    var authenticationData = {
+        Username : document.getElementById("inputUsername").value,
+        Password : document.getElementById("inputPassword").value,
+    };
+    
+    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+    
+    var poolData = {
+        UserPoolId : _config.cognito.userPoolId, // Your user pool id here
+        ClientId : _config.cognito.clientId, // Your client id here
+    };
+    
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    
+    var userData = {
+        Username : document.getElementById("inputUsername").value,
+        Pool : userPool,
+    };
+    
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    
+    cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function (result) {
+            var accessToken = result.getAccessToken().getJwtToken();
+            console.log(accessToken);   
+        },
+        onFailure: function(err) {
+            alert(err.message || JSON.stringify(err));
+        },
+    });
+  }
+</script>
+        
+        
+
+        
+        <!-- Start of Jquery script -->
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!-- Start of bootstrap script -->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Start of select script -->
+        <script src="vendor/select2/select2.min.js"></script>
+
+    </body>
+</html>

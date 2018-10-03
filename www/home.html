@@ -13,6 +13,16 @@
         <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
         <link rel="stylesheet" type="text/css" href="css/homeCalTracker.css">
         
+
+         <!-- Style Sheets for sessions and login-->
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+        <script src="js/amazon-cognito-auth.min.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
+        <script src="js/amazon-cognito-identity.min.js"></script>  
+         <script type="text/javascript" src='js/config.js'></script>
+          <script type="text/javascript" src='js/index.js'></script>
+        <!-- Style Sheets -->
+
         <!-- javascript -->
         <!--<script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
         <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
@@ -55,16 +65,21 @@
      <!-- Sidebar -->
         <div id="sidebar" class="sidenav"><!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
             <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+            <a id="email_value"></a>
             <a href="index.html">Login page</a>
-            <a href="register-email.html">Register</a>
+            <a href="register.html">Register</a>
          <!--   <a href="register-index.html">Register page 2</a>
             <a href="register-profile.html">Register page 3</a> -->
             <a href="cols-helper.html">Colonoscopy Helper</a>
             <a href="sound-player.html">Sound Player</a>
             <a href="event-cal.html">Events Calendar</a>
+<<<<<<< HEAD
             <a href="intro.html">Intro</a>
             <a href="data-to-pdf.html">Data to PDF</a>
 			<a href="index.html">Log out</a>
+=======
+			<a href="index.html" onclick="signOut()">Log out</a>
+>>>>>>> master
         </div>
     <!-- Side Bar -->
 
@@ -487,7 +502,7 @@
     <script>
         if ('addEventListener' in document) {
             document.addEventListener('DOMContentLoaded', function() {
-                FastClick.attach(document.body);
+             //   FastClick.attach(document.body);
             }, false);
         }
     </script>
