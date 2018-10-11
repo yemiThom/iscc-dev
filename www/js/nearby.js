@@ -18,3 +18,12 @@ function invisibleCheck() {
     document.getElementById("invisible").checked = true;
     document.getElementById("toggle-candy").className = "switch-candy-red";
 }
+
+
+function showAlert(message, title){
+    if(navigator.notification){
+        navigator.notification.alert(message, null, title, 'Ok');
+    }else{
+        alert(title ? (title + ": " + message) : message);
+    }
+}

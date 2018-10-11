@@ -1,0 +1,112 @@
+* {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    -webkit-touch-callout: none;
+    -moz-touch-callout: none;
+    -ms-touch-callout: none;
+}
+
+input
+{
+    -webkit-user-select: auto !important;
+    -khtml-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    user-select: auto !important;
+}/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+    font-family: Raleway-Regular;
+    src: url('../fonts/raleway/Raleway-Regular.ttf'); 
+}
+
+@font-face {
+    font-family: Raleway-Black;
+    src: url('../fonts/raleway/Raleway-Black.ttf'); 
+}
+
+@font-face {
+    font-family: Raleway-SemiBold;
+    src: url('../fonts/raleway/Raleway-SemiBold.ttf'); 
+}
+
+@font-face {
+    font-family: Raleway-Bold;
+    src: url('../fonts/raleway/Raleway-Bold.ttf'); 
+}
+
+
+@media (min-width: 858px) {
+    /*html { font-size: 12px; }*/
+    html { font-size: 14px; }
+}
+
+@media (min-width: 780px) {
+    /*html { font-size: 11px; }*/
+    html { font-size: 13px; }
+}
+
+@media (min-width: 702px) {
+    /*html { font-size: 10px; }*/
+    html { font-size: 12px; }
+}
+
+@media (min-width: 724px) {
+   /*html { font-size: 9px; }*/
+    html { font-size: 11px; }
+}
+
+@media (max-width: 623px) {
+    /*html { font-size: 8px; }*/
+    html { font-size: 10px; }
+}
+
+body, input, textarea { font-family: Verdana, 'Gill Sans', 'Gill Sans MT', 'Calibri', Tahoma, sans-serif }
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.17em; }
+h5 { font-size: .83em; }
+h6 { font-size: .75em; }
+
+p { font-size:1em; line-height:1.2; }
+
+a, a:visited, a:hover, a:active { color: inherit; }
+
+input,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus { outline: none; }
+
+.color-grey{color: #ecf0f1}
+.color-torq{color: #33cccc}
+.color-blue{color: #2980b9}
+.color-navy{color: #2c3e50}
+
+.bg-grey{background-color: #ecf0f1 !important}
+.bg-torq{background-color: #33cccc !important}
+.bg-blue{background-color: #2980b9 !important}
+.bg-navy{background-color: #2c3e50 !important}

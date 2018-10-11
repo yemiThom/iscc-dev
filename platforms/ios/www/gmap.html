@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html> 
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script src="js/gmap.js"></script>
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/native-interapp.css">
+        <link rel="stylesheet" href="css/main-nav.css">
+        <link rel="stylesheet" href="css/toiletFinder.css">
+        <link rel="stylesheet" href="css/footer-nav.css">
+        
+        <!-- 
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+        <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+    </head>
+    <body>
+        <!-- Start Header Area -->
+            <header class="default-header">
+                <div class="container">
+                    <div class="header-wrap">
+                        <div class="header-top d-flex justify-content-between align-items-center">
+                            <div class="logo">
+                                <img class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" /> <!--position: fixed; right: 10px; bottom: 10px" />-->
+                                <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                            </div>
+                            <div>
+                                <div class="main-menubar d-flex align-items-center">
+                                    <h2>Gutsy</h2>
+                                </div>
+                                <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        <!-- End Header Area -->
+    
+        <!-- Start Sidebar -->
+            <div id="sidebar" class="sidenav"><!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+                <a href="index.html">Login page</a>
+                <a href="register-email.html">Register</a>
+                <!--   <a href="register-index.html">Register page 2</a>
+                <a href="register-profile.html">Register page 3</a> -->
+                <a href="cols-helper.html">Colonoscopy Helper</a>
+                <a href="sound-player.html">Sound Player</a>
+                <a href="event-cal.html">Events Calendar</a>
+                <a href="index.html">Log out</a>
+            </div>
+        <!-- End Sidebar -->
+
+        <!-- Start Map Div -->
+        <div id="map"></div>
+        <!-- End Map Div -->
+
+        <!-- Start Footer Nav Area -->
+        <div class="default-footer">
+                <div class="mobile-bottom-bar">
+                    <a href="home.html" class="footer-link">
+                        <i class="fas fa-list-alt"></i>
+                        <!--i class="fa fa-list-alt"></i-->
+                        <span class='footer-text'>Home</span>
+                    </a>
+                    <a href="gmap.html" class="footer-link">
+                        <!--i class="fas fa-compass"></i-->
+                        <!--i class="fa fa-compass"></i-->
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class='footer-text'>Restrooms</span>
+                    </a>
+                    <a href="mindfulness.html" class="footer-link">
+                        <i class="fas fa-spa"></i>
+                        <!--i class="fa fa-spa"></i-->
+                        <!--i class="fa fa-hand-holding-seedling"></i-->
+                        <!--i class="fa fa-heartbeat"></i-->
+                        <span class='footer-text'>Mindfulness</span>
+                    </a>
+                    <a href="nearby.html" class="footer-link">
+                        <!--i class="fas fa-comments"></i-->
+                        <i class="fas fa-comments"></i>
+                        <span class='footer-text'>Nearby</span>
+                    </a>
+                    <a href="profile-card.html" class="footer-link">
+                        <!--<i class="fas fa-user-circle"></i>-->
+                        <i class="fas fa-user-circle"></i>
+                        <span class='footer-text'>Profile</span>
+                    </a>
+                </div>
+            </div>      
+        <!-- End Footer Nav Area -->
+    </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.min.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+     <!-- Start Sidebar script -->
+     <script type="text/javascript">
+        /* Set the width of the sidbar to 250px */
+        function openNav() {
+            /*document.getElementById("sidebar").style.width = "250px";*/
+            document.getElementById("sidebar").style.left = "0px";
+        }
+
+        /* Set the width of the sidebar to 0 */
+        function closeNav() {
+            /*document.getElementById("sidebar").style.width = "0";*/
+            document.getElementById("sidebar").style.left = "-260px";
+        }
+    </script>
+    <!-- End Sidebar script -->
+     <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqGpddivbH6TcqlWcbtRu9mFxFjiK3gA&callback=initMap">
+    </script>
+    <!-- End Sidebar script -->
+</html> 

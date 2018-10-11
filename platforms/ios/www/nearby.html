@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gutsy</title>
+
+        <!-- Style Sheets -->
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+        <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+        <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+        <link rel="stylesheet" type="text/css" href="css/nearby-chat.css">
+        <link rel="stylesheet" type="text/css" href="css/nearby-chat-toggle.css">
+        <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+        
+        <!-- javascript -->
+        <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+        <script type='text/javascript' src='js/nearby.js'></script>
+        <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+        <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+    </head>
+    <body>
+    <!-- Start Header Area -->
+        <header class="default-header">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="header-top d-flex justify-content-between align-items-center">
+                        <div class="logo">
+                            <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" /> <!--position: fixed; right: 10px; bottom: 10px" />-->
+                            <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                        </div>
+                        <div>
+                            <div class="main-menubar d-flex align-items-center">
+                                <h2>Gutsy</h2>
+                            </div>
+                            <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    <!-- End Header Area -->
+     <!-- Sidebar -->
+        <div id="sidebar" class="sidenav"><!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+            <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+            <a href="index.html">Login page</a>
+            <a href="register-email.html">Register</a>
+            <!--   <a href="register-index.html">Register page 2</a>
+            <a href="register-profile.html">Register page 3</a> -->
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+            <a href="sound-player.html">Sound Player</a>
+            <a href="event-cal.html">Events Calendar</a>
+			<a href="index.html">Log out</a>
+        </div>
+    <!-- Side Bar -->
+
+    <!-- Start Precontainer Wrapper -->
+    <div class="pre-container-wrapper">
+        <!--<div id="swipe-area" class="swipe-area"><br/><br/><br/>Text Area</div>-->
+        <!-- Start Container Area -->
+        <div class="content-container">
+            <div class="header">
+                <h1 class="text-center p-b-5">Talk with someone nearby</h1>
+
+                <div class="switch-toggle switch-3 switch-candy">
+                    <input id="online" name="state-d" type="radio" checked="checked">
+                    <label for="online" onclick="onlineCheck()">Online</label>
+                    
+                    <input id="busy" name="state-d" type="radio" checked="">
+                    <label for="busy" onclick="busyCheck()">Busy</label>
+                    
+                    <input id="invisible" name="state-d" type="radio" checked="">
+                    <label for="invisible" onclick="invisibleCheck()">Invisible</label>
+                    
+                    <a id="toggle-candy" class="switch-candy-green"></a>
+                </div>
+            </div>
+
+            <div id="friends">
+                <a href="nearby-chat.html">
+                    <div class="friend">
+                        <img src="img/profile/1_copy.jpg" />
+                        <p>
+                            <strong>Bosun</strong>
+                            <span>200 m</span>
+                        </p>
+                        <div class="status available"></div>
+                    </div>
+                </a>
+                
+                <div class="friend">
+                    <img src="img/profile/2_copy.jpg" />
+                    <p>
+                        <strong>Odohie</strong>
+                        <span>425 m</span>
+                    </p>
+                    <div class="status away"></div>
+                </div>
+                
+                <div class="friend">
+                    <img src="img/profile/3_copy.jpg" />
+                    <p>
+                        <strong>Tomas</strong>
+                        <span>2 km</span>
+                    </p>
+                    <div class="status inactive"></div>
+                </div>
+                
+                <div class="friend">
+                    <img src="img/profile/4_copy.jpg" />
+                    <p>
+                        <strong>Kenny87</strong>
+                        <span>3.2 km</span>
+                    </p>
+                    <div class="status inactive"></div>
+                </div>
+                
+                <div class="friend">
+                    <img src="img/profile/5_copy.jpg" />
+                    <p>
+                        <strong>Mugtree2390</strong>
+                        <span>5 km</span>
+                    </p>
+                    <div class="status inactive"></div>
+                </div>
+                
+                <div class="friend invisible">
+                    <img src="img/profile/5_copy.jpg" />
+                    <p>
+                        <strong>ruffsWater</strong>
+                        <span>5 km</span>
+                    </p>
+                    <div class="status"></div>
+                </div>
+            </div>  
+            
+        </div>
+        <!-- End Container Area -->
+    </div>
+    <!-- End Precontainer Wrapper -->
+
+    <!-- Start Footer Nav Area -->
+        <div class="default-footer">
+            <div class="mobile-bottom-bar">
+                <a href="home.html" class="footer-link">
+                    <i class="fas fa-list-alt"></i>
+                    <span class='footer-text'>Home</span>
+                </a>
+                <a href="gmap.html" class="footer-link">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class='footer-text'>Restrooms</span>
+                </a>
+                <a href="mindfulness.html" class="footer-link">
+                    <i class="fas fa-spa"></i>
+                    <span class='footer-text'>Mindfulness</span>
+                </a>
+                <a href="#" class="footer-link">
+                    <i class="fas fa-comments"></i>
+                    <span class='footer-text'>Nearby</span>
+                </a>
+                <a href="profile-card.html" class="footer-link">
+                    <i class="fas fa-user-circle"></i>
+                    <span class='footer-text'>Profile</span>
+                </a>
+            </div>
+        </div>      
+    <!-- End Footer Nav Area -->
+    </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.min.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+    <!-- paged tabs script -->
+    <script src="js/page-tabs.js"></script>
+    <!-- end paged tabs script-->
+    <!-- replace radio checkbox script -->
+    <script src="js/replace-radio-checkbox"></script>
+    <!-- end replace radio checkbox script -->
+    <!-- Start Sidebar script -->
+    <script type="text/javascript">
+        /* Set the width of the sidbar to 250px */
+        function openNav() {
+            /*document.getElementById("sidebar").style.width = "250px";*/
+            document.getElementById("sidebar").style.left = "0px";
+        }
+
+        /* Set the width of the sidebar to 0 */
+        function closeNav() {
+            /*document.getElementById("sidebar").style.width = "0";*/
+            document.getElementById("sidebar").style.left = "-260px";
+        }
+    </script>
+    <!-- End Sidebar script -->
+    <!-- Start swipe sidebar script -->
+    <script type="text/javascript">
+        $(function() {
+            $("#swipe-area").swipe( {
+                //Generic swipe handler for all directions
+                swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+
+                    switch(direction){
+                        case "right":
+                            openNav();
+                            break;
+                        case "left":
+                            closeNav();
+                            break;
+                    }
+                },
+                //Default is 75px, set to 0 for demo so any distance triggers swipe
+                threshold:75
+            }); 
+            
+            /* Set the width of the sidbar to 250px */
+            function openNav() {
+                /*document.getElementById("sidebar").style.width = "250px";*/
+                document.getElementById("sidebar").style.left = "0px";
+            }
+
+            /* Set the width of the sidebar to 0 */
+            function closeNav() {
+                /*document.getElementById("sidebar").style.width = "0";*/
+                document.getElementById("sidebar").style.left = "-260px";
+            }
+        });
+    </script>
+    <!-- End swipe sidebar script -->
+    <!-- Start Toggle Reveal script -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("input[name$='feeling']").click(function() {
+                var inputVal = $(this).val();
+
+                $("div.toggleReveal").hide();
+                $("#toggleReveal-" + inputVal).show();
+            });
+        });
+        
+        $(document).ready(function() {
+            $("input[name$='symptom']").click(function() {
+                var inputVal = $(this).val();
+
+                $("div.toggleReveal").hide();
+                $("#toggleReveal-" + inputVal).show();
+            });
+        });
+    </script>
+    <!-- End Toggle Reveal script -->
+</html> 

@@ -1,0 +1,244 @@
+.card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: auto;
+    /*-webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19),
+        0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19),
+        0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+    background-color: rgb(255, 255, 255);
+    padding: 0.8rem;
+    width: 33rem;*/
+    width: 100%;
+}
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.rating-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    /*padding: 0.4rem 0.8rem;*/
+    width: 100%;
+}
+
+.rating-text p {
+    color: rgba(0, 0, 16, 0.8);
+    /*font-size: 1.3rem;*/
+    padding: 0.3rem;
+}
+
+.rating {
+    /*background-color: rgba(0, 0, 16, 0.8);
+    padding: 0.4rem 0.4rem 0.1rem 0.4rem;*/
+    border-radius: 2.2rem;
+    margin-bottom: 5%;
+}
+
+.tracker-label{
+    display: inline-block;
+    position: relative;
+}
+
+.tracker-label-txt{
+    position: absolute;
+    top: 80px;
+    left: 10px;
+}
+
+svg {
+    fill: rgb(242, 242, 242);
+    height: 3.6rem;
+    width: 3.6rem;
+    margin: 0.2rem;
+}
+
+img.img-responsive{
+    /*max-width: 20%;*/
+    height: 7rem;
+    width: 7rem;
+    margin: 0.8rem 1rem;
+}
+
+.rating-form-2 svg {
+    height: 3rem;
+    width: 3rem;
+    margin: 0.5rem;
+}
+
+.rating-form-2 img.img-responsive{
+    height: 3rem;
+    width: 3rem;
+    margin: 0.5rem;
+}
+
+#radios label {
+    position: relative;
+}
+
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+input[type="radio"] + svg {
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+input[type="radio"] + img{
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+/*input[class="super-happy"]:hover + svg,
+input[class="super-happy"]:checked + svg,
+input[class="super-happy"]:focus + svg {
+    fill: rgb(0, 109, 217);
+}
+
+input[class="happy"]:hover + svg,
+input[class="happy"]:checked + svg,
+input[class="happy"]:focus + svg {
+    fill: rgb(0, 204, 79);
+}
+
+input[class="neutral"]:hover + svg,
+input[class="neutral"]:checked + svg,
+input[class="neutral"]:focus + svg {
+    fill: rgb(232, 214, 0);
+}
+
+input[class="sad"]:hover + svg,
+input[class="sad"]:checked + svg,
+input[class="sad"]:focus + svg {
+    fill: rgb(229, 132, 0);
+}
+
+input[class="super-sad"]:hover + svg,
+input[class="super-sad"]:checked + svg,
+input[class="super-sad"]:focus + svg {
+    fill: rgb(239, 42, 16);
+}
+*/
+
+input[class="good"]:hover + img,
+input[class="good"]:checked + img,
+input[class="good"]:focus + img {
+    border: 1px solid rgb(0, 109, 217);
+}
+
+input[class="okay"]:hover + img,
+input[class="okay"]:checked + img,
+input[class="okay"]:focus + img {
+    border: 1px solid rgb(0, 204, 79);
+}
+
+input[class="bad"]:hover + img,
+input[class="bad"]:checked + img,
+input[class="bad"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
+}
+
+input[class="pain-low"]:hover + img,
+input[class="pain-low"]:checked + img,
+input[class="pain-low"]:focus + img {
+    border: 1px solid rgb(232, 214, 0);
+}
+
+input[class="pain-medium"]:hover + img,
+input[class="pain-medium"]:checked + img,
+input[class="pain-medium"]:focus + img {
+    border: 1px solid rgb(239, 42, 16);
+}
+
+input[class="pain-high"]:hover + img,
+input[class="pain-high"]:checked + img,
+input[class="pain-high"]:focus + img {
+    border: 1px solid rgb(232, 214, 0);
+}
+
+input[class="stress-low"]:hover + img,
+input[class="stress-low"]:checked + img,
+input[class="stress-low"]:focus + img {
+    border: 1px solid rgb(239, 42, 16);
+}
+
+input[class="stress-medium"]:hover + img,
+input[class="stress-medium"]:checked + img,
+input[class="stress-medium"]:focus + img {
+    border: 1px solid rgb(239, 42, 16);
+}
+
+input[class="stress-high"]:hover + img,
+input[class="stress-high"]:checked + img,
+input[class="stress-high"]:focus + img {
+    border: 1px solid rgb(239, 42, 16);
+}
+
+input[class="bowel-light"]:hover + img,
+input[class="bowel-light"]:checked + img,
+input[class="bowel-light"]:focus + img {
+    border: 1px solid rgb(0, 109, 217);
+}
+
+input[class="bowel-medium"]:hover + img,
+input[class="bowel-medium"]:checked + img,
+input[class="bowel-medium"]:focus + img {
+    border: 1px solid rgb(0, 204, 79);
+}
+
+input[class="bowel-heavy"]:hover + img,
+input[class="bowel-heavy"]:checked + img,
+input[class="bowel-heavy"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
+}
+
+input[class="hard-lumps"]:hover + img,
+input[class="hard-lumps"]:checked + img,
+input[class="hard-lumps"]:focus + img {
+    border: 1px solid rgb(0, 109, 217);
+}
+
+input[class="lumpy-sausage"]:hover + img,
+input[class="lumpy-sausage"]:checked + img,
+input[class="lumpy-sausage"]:focus + img {
+    border: 1px solid rgb(0, 204, 79);
+}
+
+input[class="cracked-sausage"]:hover + img,
+input[class="cracked-sausage"]:checked + img,
+input[class="cracked-sausage"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
+}
+
+input[class="snake"]:hover + img,
+input[class="snake"]:checked + img,
+input[class="snake"]:focus + img {
+    border: 1px solid rgb(0, 109, 217);
+}
+
+input[class="soft-blobs"]:hover + img,
+input[class="soft-blobs"]:checked + img,
+input[class="soft-blobs"]:focus + img {
+    border: 1px solid rgb(0, 204, 79);
+}
+
+input[class="mushy"]:hover + img,
+input[class="mushy"]:checked + img,
+input[class="mushy"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
+}
+
+input[class="liquid"]:hover + img,
+input[class="liquid"]:checked + img,
+input[class="liquid"]:focus + img {
+    border: 1px solid rgb(229, 132, 0);
+}

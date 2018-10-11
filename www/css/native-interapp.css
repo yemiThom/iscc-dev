@@ -93,7 +93,7 @@ h6 { font-size: .75em; }
 
 p { font-size:1em; line-height:1.2; }
 
-a, a:visited, a:hover, a:active { color: inherit; }
+a, a:visited, a:hover, a:active { color: inherit; cursor: none !important; }
 
 input,
 input:focus,

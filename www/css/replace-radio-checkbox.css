@@ -129,116 +129,135 @@ input[class="super-sad"]:focus + svg {
 }
 */
 
-input[class="good"]:hover + img,
+/*input[class="good"]:hover + img,*/
 input[class="good"]:checked + img,
 input[class="good"]:focus + img {
-    border: 1px solid rgb(0, 109, 217);
+    /*border: 1px solid rgb(0, 109, 217);*/
+    border: 5px solid #70c66b;
 }
 
-input[class="okay"]:hover + img,
+/*input[class="okay"]:hover + img,*/
 input[class="okay"]:checked + img,
 input[class="okay"]:focus + img {
-    border: 1px solid rgb(0, 204, 79);
+    /*border: 1px solid rgb(0, 204, 79);*/
+    border: 5px solid #ffce54;
 }
 
-input[class="bad"]:hover + img,
+/*input[class="bad"]:hover + img,*/
 input[class="bad"]:checked + img,
 input[class="bad"]:focus + img {
-    border: 1px solid rgb(229, 132, 0);
+    /*border: 1px solid rgb(229, 132, 0);*/
+    border: 5px solid #d35e62;
 }
 
-input[class="pain-low"]:hover + img,
+/*input[class="pain-low"]:hover + img,*/
 input[class="pain-low"]:checked + img,
 input[class="pain-low"]:focus + img {
-    border: 1px solid rgb(232, 214, 0);
+    /*border: 1px solid rgb(232, 214, 0);*/
+    border: 5px solid #70c66b;
 }
 
-input[class="pain-medium"]:hover + img,
+/*input[class="pain-medium"]:hover + img,*/
 input[class="pain-medium"]:checked + img,
 input[class="pain-medium"]:focus + img {
-    border: 1px solid rgb(239, 42, 16);
+    /*border: 1px solid rgb(239, 42, 16);*/
+    border: 5px solid #ffce54;
 }
 
-input[class="pain-high"]:hover + img,
+/*input[class="pain-high"]:hover + img,*/
 input[class="pain-high"]:checked + img,
 input[class="pain-high"]:focus + img {
-    border: 1px solid rgb(232, 214, 0);
+    /*border: 1px solid rgb(232, 214, 0);*/
+    border: 5px solid #d35e62;
 }
 
-input[class="stress-low"]:hover + img,
+/*input[class="stress-low"]:hover + img,*/
 input[class="stress-low"]:checked + img,
 input[class="stress-low"]:focus + img {
-    border: 1px solid rgb(239, 42, 16);
+    /*border: 1px solid rgb(239, 42, 16);*/
+    border: 5px solid #70c66b;
 }
 
-input[class="stress-medium"]:hover + img,
+/*input[class="stress-medium"]:hover + img,*/
 input[class="stress-medium"]:checked + img,
 input[class="stress-medium"]:focus + img {
-    border: 1px solid rgb(239, 42, 16);
+    /*border: 1px solid rgb(239, 42, 16);*/
+    border: 5px solid #ffce54;
 }
 
-input[class="stress-high"]:hover + img,
+/*input[class="stress-high"]:hover + img,*/
 input[class="stress-high"]:checked + img,
 input[class="stress-high"]:focus + img {
-    border: 1px solid rgb(239, 42, 16);
+    /*border: 1px solid rgb(239, 42, 16);*/
+    border: 5px solid #d35e62;
 }
 
-input[class="bowel-light"]:hover + img,
+/*input[class="bowel-light"]:hover + img,*/
 input[class="bowel-light"]:checked + img,
 input[class="bowel-light"]:focus + img {
-    border: 1px solid rgb(0, 109, 217);
+    /*border: 1px solid rgb(0, 109, 217);*/
+    border: 5px solid #70c66b;
 }
 
-input[class="bowel-medium"]:hover + img,
+/*input[class="bowel-medium"]:hover + img,*/
 input[class="bowel-medium"]:checked + img,
 input[class="bowel-medium"]:focus + img {
-    border: 1px solid rgb(0, 204, 79);
+    /*border: 1px solid rgb(0, 204, 79);*/
+    border: 5px solid #ffce54;
 }
 
-input[class="bowel-heavy"]:hover + img,
+/*input[class="bowel-heavy"]:hover + img,*/
 input[class="bowel-heavy"]:checked + img,
 input[class="bowel-heavy"]:focus + img {
-    border: 1px solid rgb(229, 132, 0);
+    /*border: 5px solid rgb(229, 132, 0);*/
+    border: 5px solid #d35e62;
 }
 
-input[class="hard-lumps"]:hover + img,
+/*input[class="hard-lumps"]:hover + img,*/
 input[class="hard-lumps"]:checked + img,
 input[class="hard-lumps"]:focus + img {
-    border: 1px solid rgb(0, 109, 217);
+    /*border: 1px solid rgb(0, 109, 217);*/
+    border: 5px solid #46A641;
 }
 
-input[class="lumpy-sausage"]:hover + img,
+/*input[class="lumpy-sausage"]:hover + img,*/
 input[class="lumpy-sausage"]:checked + img,
 input[class="lumpy-sausage"]:focus + img {
-    border: 1px solid rgb(0, 204, 79);
+    /*border: 1px solid rgb(0, 204, 79);*/
+    border: 5px solid #46A641;
 }
 
-input[class="cracked-sausage"]:hover + img,
+/*input[class="cracked-sausage"]:hover + img,*/
 input[class="cracked-sausage"]:checked + img,
 input[class="cracked-sausage"]:focus + img {
-    border: 1px solid rgb(229, 132, 0);
+    /*border: 1px solid rgb(229, 132, 0);*/
+    border: 5px solid #509592;
 }
 
-input[class="snake"]:hover + img,
+/*input[class="snake"]:hover + img,*/
 input[class="snake"]:checked + img,
 input[class="snake"]:focus + img {
-    border: 1px solid rgb(0, 109, 217);
+    /*border: 1px solid rgb(0, 109, 217);*/
+    border: 5px solid #F4B684;
 }
 
-input[class="soft-blobs"]:hover + img,
+/*input[class="soft-blobs"]:hover + img,*/
 input[class="soft-blobs"]:checked + img,
 input[class="soft-blobs"]:focus + img {
-    border: 1px solid rgb(0, 204, 79);
+    /*border: 1px solid rgb(0, 204, 79);*/
+    border: 5px solid #CD8851;
 }
 
-input[class="mushy"]:hover + img,
+/*input[class="mushy"]:hover + img,*/
 input[class="mushy"]:checked + img,
 input[class="mushy"]:focus + img {
-    border: 1px solid rgb(229, 132, 0);
+    /*border: 1px solid rgb(229, 132, 0);*/
+    border: 5px solid #F28386;
 }
 
-input[class="liquid"]:hover + img,
+/*input[class="liquid"]:hover + img,*/
 input[class="liquid"]:checked + img,
 input[class="liquid"]:focus + img {
-    border: 1px solid rgb(229, 132, 0);
+    /*border: 1px solid rgb(229, 132, 0);*/
+    border: 5px solid #A82C2F;
 }

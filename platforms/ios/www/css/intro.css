@@ -1,0 +1,73 @@
+.content-container .content{
+    margin: 20px auto;
+    /*width:400px;
+    height:400px;*/
+    /*
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;*/
+}
+.welcome-title{
+    font-family: Raleway-Black;
+    text-align: center;
+    color: #ffffff;
+}
+.welcome-subtitle{
+    font-family: Raleway-Black;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 10%;
+}
+.left-circle{
+    height: 100px;
+    width: 100px;
+    /*margin: 8px;*/
+    border-radius: 50%;
+    display: inline-block;
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center center;
+    background-position: center center;
+    box-shadow: 3px 4px rgba(0,0,0,0.2);
+    -moz-box-shadow: 3px 4px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 3px 4px rgba(0,0,0,0.2);
+    -o-box-shadow: 3px 4px rgba(0,0,0,0.2);
+}
+.right-circle{
+    height: 100px;
+    width: 100px;
+    margin-left: 8%;
+    border-radius: 50%;
+    display: inline-block;
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center center;
+    background-position: center center;
+    box-shadow: 3px 4px rgba(0,0,0,0.2);
+    -moz-box-shadow: 3px 4px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 3px 4px rgba(0,0,0,0.2);
+    -o-box-shadow: 3px 4px rgba(0,0,0,0.2);
+}
+.right-txtBlock{
+    float: right;
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    color: #ffffff;
+}
+.left-txtBlock{
+    display: inline-block;
+    width: 50%;
+    color: #ffffff;
+}
+.panel{
+    width: 100%;
+    padding: 2% 5%;
+}
+
+#healthcare{ background-image: url("../img/intro/healthcare.jpeg"); }
+#restrooms{ background-image: url("../img/intro/restrooms.jpg"); }
+#mindfulness{ background-image: url("../img/intro/mindfulness.jpeg"); }
+#nearby{ background-image: url("../img/intro/nearby.jpeg"); }

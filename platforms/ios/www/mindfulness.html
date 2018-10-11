@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gutsy- Mindfulness</title>
+
+        <!-- Style Sheets -->
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+        <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+        <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+        <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
+        <link rel="stylesheet" type="text/css" href="css/replace-radio-checkbox.css">
+        <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+
+        <!-- javascript -->
+        <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+        <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+    </head>
+    <body>
+    <!-- Start Header Area -->
+        <header class="default-header">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="header-top d-flex justify-content-between align-items-center">
+                        <div class="logo">
+                            <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" /> <!--position: fixed; right: 10px; bottom: 10px" />-->
+                            <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                        </div>
+                        <div>
+                            <div class="main-menubar d-flex align-items-center">
+                                <h2>Gutsy</h2>
+                            </div>
+                            <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    <!-- End Header Area -->
+     <!-- Sidebar -->
+        <div id="sidebar" class="sidenav"><!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+            <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+            <a href="index.html">Login page</a>
+            <a href="register-email.html">Register</a>
+            <!--   <a href="register-index.html">Register page 2</a>
+            <a href="register-profile.html">Register page 3</a> -->
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+            <a href="sound-player.html">Sound Player</a>
+            <a href="event-cal.html">Events Calendar</a>
+			<a href="index.html">Log out</a>
+        </div>
+    <!-- Side Bar -->
+
+    <!-- Start Precontainer Wrapper -->
+    <div class="pre-container-wrapper">
+        <!--<div id="swipe-area" class="swipe-area"><br/><br/><br/>Text Area</div>-->
+        <!-- Start Container Area -->
+        <div class="content-container">
+            <div class="header">
+                <h1 class="text-center">Mindfulness</h1>
+            </div>
+            
+            <div class="tabs">
+
+                <input type="radio" id="tab1" name="tab-control" checked>
+                <input type="radio" id="tab2" name="tab-control">
+                <input type="radio" id="tab3" name="tab-control">  
+                <ul>
+                    <li title="Exhale">
+                        <label for="tab1" role="button">
+                            <i class="fas fa-leaf"></i>
+                            <br><span>Exhale</span>
+                        </label>
+                    </li>
+                    <li title="Exercise">
+                        <label for="tab2" role="button">
+                            <i class="fas fa-dumbbell"></i>
+                            <br><span>Exercise</span>
+                        </label>
+                    </li>
+                    <li title="Stretch">
+                        <label for="tab3" role="button">
+                            <i class="fas fa-spa"></i>
+                            <br><span>Stretch</span>
+                        </label>
+                    </li>
+                </ul>
+
+                <!--<div class="slider"><div class="indicator"></div></div>-->
+                <div class="content">
+                    <section>
+                        <h2>Exhale</h2>
+                        
+                        <div class="tab-grids">
+                            <div id="tab-exhale" class="tab-grid">
+                                <div class="exhale-img-first">
+                                    <a href="#"><img src="img/fitness/breathe.jpeg"></a>
+                                    <h3 class="text-block">Breathe</h3>
+                                </div>
+                                <div class="exhale-imgs">
+                                    <a href="#"><img src="img/fitness/restore.jpeg"></a>
+                                    <h3 class="text-block">Restore</h3>
+                                </div>
+                                <div class="exhale-img-first">
+                                    <a href="#"><img src="img/fitness/unwind.jpeg"></a>
+                                    <h3 class="text-block">Unwind</h3>
+                                </div>
+                                <div class="exhale-imgs">
+                                    <a href="#"><img src="img/fitness/focus.jpeg"></a>
+                                    <h3 class="text-block">Focus</h3>
+                                </div>
+                                <div class="exhale-img-first">
+                                    <a href="#"><img src="img/fitness/breathe1.jpeg"></a>
+                                    <h3 class="text-block">Breathe pt.2</h3>
+                                </div>
+                                <div class="exhale-imgs">
+                                    <a href="#"><img src="img/fitness/restore1.jpeg"></a>
+                                    <h3 class="text-block">Restore pt.2</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--br/>
+                        <p><a href="profile-card.html" style="text-decoration: none; display: block; text-align: center; background-color: cornflowerblue;">Show Restroom ID Card</a></p-->
+
+                    </section>
+                    <section>
+                        <h2>Exercise</h2>
+                        
+                        <div class="tab-grids">
+                            <div id="tab-exercise" class="tab-grid">
+                                <div class="exercise-pre-div m-b-5">
+                                    <div class="exercise-img-first">
+                                        <!--<a href="#"><img src="img/fitness/walkit.jpeg" class="round-img"></a>-->
+                                        <a href="#"><div style="background-image: url(img/fitness/walkit.jpeg);" class="round-div"></div></a>
+                                        <h3>Walk It</h3>
+                                    </div>
+                                    <div class="exercise-imgs">
+                                        <!--<a href="#"><img src="img/fitness/run1.jpeg" class="round-img"></a>-->
+                                        <a href="#"><div style="background-image: url(img/fitness/run1.jpeg);" class="round-div"></div></a>
+                                        <h3>First Run</h3>
+                                    </div>
+                                    <div class="exercise-img-first">
+                                        <!--<a href="#"><img src="img/fitness/run2.jpeg" class="round-img"></a>-->
+                                        <a href="#"><div style="background-image: url(img/fitness/run2.jpeg);" class="round-div"></div></a>
+                                        <h3>Second Run</h3>
+                                    </div>
+                                </div>
+
+                                <div class="exercise-pre-div m-b-5">
+                                    <div class="exercise-imgs">
+                                        <!--<a href="#"><img src="img/fitness/cycle.jpeg" class="round-img"></a>-->
+                                        <a href="#"><div style="background-image: url(img/fitness/cycle.jpeg);" class="round-div"></div></a>
+                                        <h3>Cycling</h3>
+                                    </div>
+                                    <div class="exercise-img-first">
+                                        <!--<a href="#"><img src="img/fitness/walkit.jpeg" class="round-img"></a>-->
+                                        <a href="#"><div style="background-image: url(img/fitness/parkwalk.jpeg);" class="round-div"></div></a>
+                                        <h3>Park Walk</h3>
+                                    </div>
+                                    <div class="exercise-imgs">
+                                        <!--<a href="#"><img src="img/fitness/run1.jpeg" class="round-img"></a>-->
+                                        <a href="#"><div style="background-image: url(img/fitness/run3.jpeg);" class="round-div"></div></a>
+                                        <h3>Third Run</h3>
+                                    </div>
+                                </div>
+
+                                <div class="exercise-pre-div m-b-5">
+                                    <div class="exercise-img-first">
+                                        <!--<a href="#"><img src="img/fitness/run2.jpeg" class="round-img"></a>-->
+                                        <a href="#"><div style="background-image: url(img/fitness/parkwalk2.jpeg);" class="round-div"></div></a>
+                                        <h3>Park Walk 2</h3>
+                                    </div>
+                                    <div class="exercise-imgs">
+                                        <!--<a href="#"><img src="img/fitness/cycle.jpeg" class="round-img"></a>-->
+                                        <a href="#"><div style="background-image: url(img/fitness/cycle2.jpeg);" class="round-div"></div></a>
+                                        <h3>Cycling Fun</h3>
+                                    </div>
+                                    <div class="exercise-img-first">
+                                        <!--<a href="#"><img src="img/fitness/run2.jpeg" class="round-img"></a>-->
+                                        <a href="#"><div style="background-image: url(img/fitness/jog.jpeg);" class="round-div"></div></a>
+                                        <h3>Gentle Jog</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </section>
+                    <section>
+                        <h2>Stretch</h2>
+                        
+                        <div class="tab-grids">
+                                <div id="tab-stretch" class="tab-grid">
+                                    <div class="stretch-img-first">
+                                        <a href="#"><img src="img/fitness/intro.jpeg"></a>
+                                        <h3 class="text-block2">Introductions</h3>
+                                    </div>
+                                    <div class="stretch-imgs">
+                                        <a href="#"><img src="img/fitness/beginner1.jpeg"></a>
+                                        <h3 class="text-block2">Beginner Poses</h3>
+                                    </div>
+                                    <div class="stretch-img-first">
+                                        <a href="#"><img src="img/fitness/beginner2.jpeg"></a>
+                                        <h3 class="text-block2">Beginner Poses (pt. 2)</h3>
+                                    </div>
+                                    <div class="stretch-imgs">
+                                        <a href="#"><img src="img/fitness/intermediate1.jpeg"></a>
+                                        <h3 class="text-block2">Intermediate</h3>
+                                    </div>
+                                    <div class="stretch-img-first">
+                                        <a href="#"><img src="img/fitness/intermediate2.jpeg"></a>
+                                        <h3 class="text-block2">Intermediate (pt. 2)</h3>
+                                    </div>
+                                    <div class="stretch-imgs">
+                                        <a href="#"><img src="img/fitness/advanced.jpeg"></a>
+                                        <h3 class="text-block2">Advanced</h3>
+                                    </div>
+                                    <div class="stretch-imgs">
+                                        <a href="#"><img src="img/fitness/restorative1.jpeg"></a>
+                                        <h3 class="text-block2">Restorative</h3>
+                                    </div>
+                                    <div class="stretch-imgs">
+                                        <a href="#"><img src="img/fitness/restorative2.jpeg"></a>
+                                        <h3 class="text-block2">Restorative (pt. 2)</h3>
+                                    </div>
+                                </div>
+                            </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- End Container Area -->
+    </div>
+    <!-- End Precontainer Wrapper -->
+
+    <!-- Start Footer Nav Area -->
+        <div class="default-footer">
+            <div class="mobile-bottom-bar">
+                <a href="home.html" class="footer-link">
+                    <i class="fas fa-list-alt"></i>
+                    <span class='footer-text'>Home</span>
+                </a>
+                <a href="gmap.html" class="footer-link">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class='footer-text'>Restrooms</span>
+                </a>
+                <a href="mindfulness.html" class="footer-link">
+                    <i class="fas fa-spa"></i>
+                    <span class='footer-text'>Mindfulness</span>
+                </a>
+                <a href="nearby.html" class="footer-link">
+                    <i class="fas fa-comments"></i>
+                    <span class='footer-text'>Nearby</span>
+                </a>
+                <a href="profile-card.html" class="footer-link">
+                    <i class="fas fa-user-circle"></i>
+                    <span class='footer-text'>Profile</span>
+                </a>
+            </div>
+        </div>      
+    <!-- End Footer Nav Area -->
+    </body>
+    <!-- fast click script -->
+    <script type='text/javascript' src='js/fastclick.min.js'></script>
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+    <!-- paged tabs script -->
+    <script src="js/page-tabs.js"></script>
+    <!-- end paged tabs script-->
+    <!-- replace radio checkbox script -->
+    <script src="js/replace-radio-checkbox"></script>
+    <!-- end replace radio checkbox script -->
+    <!-- start fast click script -->
+    <!-- end fast click sript -->
+    <!-- Start Sidebar script -->
+    <script type="text/javascript">
+        /* Set the width of the sidbar to 250px */
+        function openNav() {
+            /*document.getElementById("sidebar").style.width = "250px";*/
+            document.getElementById("sidebar").style.left = "0px";
+        }
+
+        /* Set the width of the sidebar to 0 */
+        function closeNav() {
+            /*document.getElementById("sidebar").style.width = "0";*/
+            document.getElementById("sidebar").style.left = "-260px";
+        }
+    </script>
+    <!-- End Sidebar script -->
+    <!-- Start swipe sidebar script -->
+    <script type="text/javascript">
+        $(function() {
+            $("#swipe-area").swipe( {
+                //Generic swipe handler for all directions
+                swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+
+                    switch(direction){
+                        case "right":
+                            openNav();
+                            break;
+                        case "left":
+                            closeNav();
+                            break;
+                    }
+                },
+                //Default is 75px, set to 0 for demo so any distance triggers swipe
+                threshold:75
+            }); 
+            
+            /* Set the width of the sidbar to 250px */
+            function openNav() {
+                /*document.getElementById("sidebar").style.width = "250px";*/
+                document.getElementById("sidebar").style.left = "0px";
+            }
+
+            /* Set the width of the sidebar to 0 */
+            function closeNav() {
+                /*document.getElementById("sidebar").style.width = "0";*/
+                document.getElementById("sidebar").style.left = "-260px";
+            }
+        });
+    </script>
+    <!-- End swipe sidebar script -->
+</html> 
