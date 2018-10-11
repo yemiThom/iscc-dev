@@ -101,6 +101,7 @@ select:focus,
 textarea:focus,
 button:focus { outline: none; }
 
+.color-white{color: #ffffff}
 .color-grey{color: #ecf0f1}
 .color-torq{color: #33cccc}
 .color-blue{color: #2980b9}

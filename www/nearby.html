@@ -1,70 +1,93 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Gutsy</title>
 
-        <!-- Style Sheets -->
-        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/home.css">
-        <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
-        <link rel="stylesheet" type="text/css" href="css/main-nav.css">
-        <link rel="stylesheet" type="text/css" href="css/nearby-chat.css">
-        <link rel="stylesheet" type="text/css" href="css/nearby-chat-toggle.css">
-        <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
-        
-        <!-- javascript -->
-        <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
-        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-        <script type='text/javascript' src='js/nearby.js'></script>
-        <script type='text/javascript' src='js/client.js'></script>
-        <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+<head>
+    <title>Gutsy</title>
 
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!--
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+    <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/nearby-chat.css">
+    <link rel="stylesheet" type="text/css" href="css/nearby-chat-toggle.css">
+    <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+
+    <!-- javascript -->
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type='text/javascript' src='js/nearby.js'></script>
+    <script type='text/javascript' src='js/client.js'></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--
         user-scalable=no doesn't allow users to zoom
         initial-scale=1 means the zoom level when the app is loaded. 1=100%
         maximum-scale=1 means the max zoom level user can zoom
         minimum-scale-1 means the min zoom level user can zoom
         -->
-        <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
           width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
         width=device-width, height=device-height, viewport-fit=cover" />
-    </head>
-    <body>
+</head>
+
+<body>
     <!-- Start Header Area -->
-        <header class="default-header">
-            <div class="container">
-                <div class="header-wrap">
-                    <div class="header-top d-flex justify-content-between align-items-center">
-                        <div class="logo">
-                            <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" /> <!--position: fixed; right: 10px; bottom: 10px" />-->
-                            <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+    <header class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <h2>Gutsy</h2>
                         </div>
-                        <div>
-                            <div class="main-menubar d-flex align-items-center">
-                                <h2>Gutsy</h2>
-                            </div>
-                            <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
-                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
     <!-- End Header Area -->
-     <!-- Sidebar -->
-        <div id="sidebar" class="sidenav"><!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
-            <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidenav">
+        <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            Hi there, <a id="email_value"></a>
+            <a href="intro.html">Intro</a>
+        </div>
+
+        <div class="sidenav-section">
             <a href="index.html">Login page</a>
-            <a href="register-email.html">Register</a>
-            <!--   <a href="register-index.html">Register page 2</a>
-            <a href="register-profile.html">Register page 3</a> -->
+            <a href="register.html">Register</a>
+        </div>
+
+        <!--   <a href="register-index.html">Register page 2</a>
+        <a href="register-profile.html">Register page 3</a> -->
+
+        <div class="sidenav-section">
             <a href="cols-helper.html">Colonoscopy Helper</a>
             <a href="sound-player.html">Sound Player</a>
             <a href="event-cal.html">Events Calendar</a>
-			<a href="index.html">Log out</a>
         </div>
+
+        <div class="sidenav-section">
+            <a href="data-to-pdf.html">Data to PDF</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+    </div>
     <!-- Side Bar -->
 
     <!-- Start Precontainer Wrapper -->
@@ -78,13 +101,13 @@
                 <div class="switch-toggle switch-3 switch-candy">
                     <input id="online" name="state-d" type="radio" checked="checked">
                     <label for="online" onclick="onlineCheck()">Online</label>
-                    
+
                     <input id="busy" name="state-d" type="radio" checked="">
                     <label for="busy" onclick="busyCheck()">Busy</label>
-                    
+
                     <input id="invisible" name="state-d" type="radio" checked="">
                     <label for="invisible" onclick="invisibleCheck()">Invisible</label>
-                    
+
                     <a id="toggle-candy" class="switch-candy-green"></a>
                 </div>
             </div>
@@ -100,7 +123,7 @@
                         <div class="status available"></div>
                     </div>
                 </a>
-                
+
                 <div class="friend">
                     <img src="img/profile/2_copy.jpg" />
                     <p>
@@ -109,7 +132,7 @@
                     </p>
                     <div class="status away"></div>
                 </div>
-                
+
                 <div class="friend">
                     <img src="img/profile/3_copy.jpg" />
                     <p>
@@ -118,7 +141,7 @@
                     </p>
                     <div class="status inactive"></div>
                 </div>
-                
+
                 <div class="friend">
                     <img src="img/profile/4_copy.jpg" />
                     <p>
@@ -127,7 +150,7 @@
                     </p>
                     <div class="status inactive"></div>
                 </div>
-                
+
                 <div class="friend">
                     <img src="img/profile/5_copy.jpg" />
                     <p>
@@ -136,7 +159,7 @@
                     </p>
                     <div class="status inactive"></div>
                 </div>
-                
+
                 <div class="friend invisible">
                     <img src="img/profile/5_copy.jpg" />
                     <p>
@@ -145,42 +168,42 @@
                     </p>
                     <div class="status"></div>
                 </div>
-            </div>  
-            
+            </div>
+
         </div>
         <!-- End Container Area -->
     </div>
     <!-- End Precontainer Wrapper -->
 
     <!-- Start Footer Nav Area -->
-        <div class="default-footer">
-            <div class="mobile-bottom-bar">
-                <a href="home.html" class="footer-link">
-                    <i class="fas fa-list-alt"></i>
-                    <span class='footer-text'>Home</span>
-                </a>
-                <a href="gmap.html" class="footer-link">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span class='footer-text'>Restrooms</span>
-                </a>
-                <a href="mindfulness.html" class="footer-link">
-                    <i class="fas fa-spa"></i>
-                    <span class='footer-text'>Mindfulness</span>
-                </a>
-                <a href="#" class="footer-link">
-                    <i class="fas fa-comments"></i>
-                    <span class='footer-text'>Nearby</span>
-                </a>
-                <a href="profile-card.html" class="footer-link">
-                    <i class="fas fa-user-circle"></i>
-                    <span class='footer-text'>Profile</span>
-                </a>
-            </div>
-        </div>      
+    <div class="default-footer">
+        <div class="mobile-bottom-bar">
+            <a href="home.html" class="footer-link">
+                <i class="fas fa-list-alt"></i>
+                <span class='footer-text'>Home</span>
+            </a>
+            <a href="gmap.html" class="footer-link">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class='footer-text'>Restrooms</span>
+            </a>
+            <a href="mindfulness.html" class="footer-link">
+                <i class="fas fa-spa"></i>
+                <span class='footer-text'>Mindfulness</span>
+            </a>
+            <a href="#" class="footer-link">
+                <i class="fas fa-comments"></i>
+                <span class='footer-text'>Nearby</span>
+            </a>
+            <a href="profile-card.html" class="footer-link">
+                <i class="fas fa-user-circle"></i>
+                <span class='footer-text'>Profile</span>
+            </a>
+        </div>
+    </div>
     <!-- End Footer Nav Area -->
-    </body>
-    <!-- test native notifications -->
-    <script>
+</body>
+<!-- test native notifications -->
+<script>
         /*showAlert: function(message, title){
             if(navigator.notification){
                 navigator.notification.alert(message, null, title, 'Ok');
@@ -188,28 +211,61 @@
                 alert(title ? (title + ": " + message) : message);
             }
         }*/
-    </script>    
-    <!-- test native notifications -->
+</script>
+<!-- test native notifications -->
 
-    <!-- fast click script -->
-    <script type='text/javascript' src='js/fastclick.min.js'></script>
+<!-- fast click script -->
+<script type='text/javascript' src='js/fastclick.min.js'></script>
 
-    <script>
-        if ('addEventListener' in document) {
-            document.addEventListener('DOMContentLoaded', function() {
-                FastClick.attach(document.body);
-            }, false);
-        }
-    </script>
-    <!-- end fast click script -->
-    <!-- paged tabs script -->
-    <script src="js/page-tabs.js"></script>
-    <!-- end paged tabs script-->
-    <!-- replace radio checkbox script -->
-    <script src="js/replace-radio-checkbox"></script>
-    <!-- end replace radio checkbox script -->
-    <!-- Start Sidebar script -->
-    <script type="text/javascript">
+<script>
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function () {
+            FastClick.attach(document.body);
+        }, false);
+    }
+</script>
+<!-- end fast click script -->
+<!-- paged tabs script -->
+<script src="js/page-tabs.js"></script>
+<!-- end paged tabs script-->
+<!-- replace radio checkbox script -->
+<script src="js/replace-radio-checkbox"></script>
+<!-- end replace radio checkbox script -->
+<!-- Start Sidebar script -->
+<script type="text/javascript">
+    /* Set the width of the sidbar to 250px */
+    function openNav() {
+        /*document.getElementById("sidebar").style.width = "250px";*/
+        document.getElementById("sidebar").style.left = "0px";
+    }
+
+    /* Set the width of the sidebar to 0 */
+    function closeNav() {
+        /*document.getElementById("sidebar").style.width = "0";*/
+        document.getElementById("sidebar").style.left = "-260px";
+    }
+</script>
+<!-- End Sidebar script -->
+<!-- Start swipe sidebar script -->
+<script type="text/javascript">
+    $(function () {
+        $("#swipe-area").swipe({
+            //Generic swipe handler for all directions
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+
+                switch (direction) {
+                    case "right":
+                        openNav();
+                        break;
+                    case "left":
+                        closeNav();
+                        break;
+                }
+            },
+            //Default is 75px, set to 0 for demo so any distance triggers swipe
+            threshold: 75
+        });
+
         /* Set the width of the sidbar to 250px */
         function openNav() {
             /*document.getElementById("sidebar").style.width = "250px";*/
@@ -221,61 +277,29 @@
             /*document.getElementById("sidebar").style.width = "0";*/
             document.getElementById("sidebar").style.left = "-260px";
         }
-    </script>
-    <!-- End Sidebar script -->
-    <!-- Start swipe sidebar script -->
-    <script type="text/javascript">
-        $(function() {
-            $("#swipe-area").swipe( {
-                //Generic swipe handler for all directions
-                swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+    });
+</script>
+<!-- End swipe sidebar script -->
+<!-- Start Toggle Reveal script -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("input[name$='feeling']").click(function () {
+            var inputVal = $(this).val();
 
-                    switch(direction){
-                        case "right":
-                            openNav();
-                            break;
-                        case "left":
-                            closeNav();
-                            break;
-                    }
-                },
-                //Default is 75px, set to 0 for demo so any distance triggers swipe
-                threshold:75
-            }); 
-            
-            /* Set the width of the sidbar to 250px */
-            function openNav() {
-                /*document.getElementById("sidebar").style.width = "250px";*/
-                document.getElementById("sidebar").style.left = "0px";
-            }
-
-            /* Set the width of the sidebar to 0 */
-            function closeNav() {
-                /*document.getElementById("sidebar").style.width = "0";*/
-                document.getElementById("sidebar").style.left = "-260px";
-            }
+            $("div.toggleReveal").hide();
+            $("#toggleReveal-" + inputVal).show();
         });
-    </script>
-    <!-- End swipe sidebar script -->
-    <!-- Start Toggle Reveal script -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("input[name$='feeling']").click(function() {
-                var inputVal = $(this).val();
+    });
 
-                $("div.toggleReveal").hide();
-                $("#toggleReveal-" + inputVal).show();
-            });
-        });
-        
-        $(document).ready(function() {
-            $("input[name$='symptom']").click(function() {
-                var inputVal = $(this).val();
+    $(document).ready(function () {
+        $("input[name$='symptom']").click(function () {
+            var inputVal = $(this).val();
 
-                $("div.toggleReveal").hide();
-                $("#toggleReveal-" + inputVal).show();
-            });
+            $("div.toggleReveal").hide();
+            $("#toggleReveal-" + inputVal).show();
         });
-    </script>
-    <!-- End Toggle Reveal script -->
-</html> 
+    });
+</script>
+<!-- End Toggle Reveal script -->
+
+</html>

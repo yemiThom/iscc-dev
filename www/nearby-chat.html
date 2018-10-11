@@ -1,65 +1,91 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Gutsy</title>
 
-        <!-- Style Sheets -->
-        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/home.css">
-        <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
-        <link rel="stylesheet" type="text/css" href="css/main-nav.css">
-        <link rel="stylesheet" type="text/css" href="css/nearby-chat.css">
-        <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
-        
-        <!-- javascript -->
-        <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
-        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-        <script type='text/javascript' src='js/nearby-chat.js'></script>
-        <script type='text/javascript' src="js/adapter-latest.js"></script>
+<head>
+    <title>Gutsy</title>
 
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!--
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+    <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/nearby-chat.css">
+    <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+
+    <!-- javascript -->
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type='text/javascript' src='js/nearby-chat.js'></script>
+    <script type='text/javascript' src="js/adapter-latest.js"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--
         user-scalable=no doesn't allow users to zoom
         initial-scale=1 means the zoom level when the app is loaded. 1=100%
         maximum-scale=1 means the max zoom level user can zoom
         minimum-scale-1 means the min zoom level user can zoom
         -->
-        <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
           width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
         width=device-width, height=device-height, viewport-fit=cover" />
-    </head>
-    <body onload="createConnection();">
+</head>
+
+<body onload="createConnection();">
     <!-- Start Header Area -->
-        <header class="default-header">
-            <div class="container">
-                <div class="header-wrap">
-                    <div class="header-top d-flex justify-content-between align-items-center">
-                        <div class="logo">
-                            <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" /> <!--position: fixed; right: 10px; bottom: 10px" />-->
-                            <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+    <header class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <h2>Gutsy - Nearby</h2>
                         </div>
-                        <div>
-                            <div class="main-menubar d-flex align-items-center">
-                                <h2>Gutsy - Nearby</h2>
-                            </div>
-                            <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
-                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                     </div>
                 </div>
             </div>
-        </header>
-    <!-- End Header Area -->
-     <!-- Sidebar -->
-        <div id="sidebar" class="sidenav"><!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
-            <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
-            <a href="index.html">Login page</a>
-            <a href="register-index.html">Register</a>
-            <a href="register-email.html">Register page 2</a>
-            <a href="register-profile.html">Register page 3</a>
-            <a href="cols-helper.html">Colonoscopy Helper</a>
         </div>
+    </header>
+    <!-- End Header Area -->
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidenav">
+        <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            Hi there, <a id="email_value"></a>
+            <a href="intro.html">Intro</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html">Login page</a>
+            <a href="register.html">Register</a>
+        </div>
+
+        <!--   <a href="register-index.html">Register page 2</a>
+        <a href="register-profile.html">Register page 3</a> -->
+
+        <div class="sidenav-section">
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+            <a href="sound-player.html">Sound Player</a>
+            <a href="event-cal.html">Events Calendar</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="data-to-pdf.html">Data to PDF</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+    </div>
     <!-- Side Bar -->
 
     <!-- Start Precontainer Wrapper -->
@@ -71,21 +97,21 @@
                 <h1 class="text-center p-b-5">Talk with someone nearby</h1>
             </div>-->
 
-            <div id="chatview" class="p1">      
+            <div id="chatview" class="p1">
                 <div id="profile">
-        
+
                     <div id="close">
                         <!--<div class="cy"></div>
                         <div class="cx"></div>-->
                         <a href="nearby.html"><i class="fas fa-times"></i></a>
                     </div>
-                    
+
                     <p>Bosun</p>
                     <span>200 meters nearby</span>
                 </div>
                 <div id="chat-messages">
                     <label>Thursday 02</label>
-                    
+
                     <div class="message">
                         <img src="img/profile/1_copy.jpg" />
                         <div class="bubble received">
@@ -94,16 +120,16 @@
                             <span>3 min</span>
                         </div>
                     </div>
-                    
+
                     <div class="message right">
                         <img src="img/profile/2_copy.jpg" />
                         <div class="bubble sent">
-                                Donec vitae urna sed nunc fringilla molestie?
+                            Donec vitae urna sed nunc fringilla molestie?
                             <!--div class="corner"></div-->
                             <span>1 min</span>
                         </div>
                     </div>
-                    
+
                     <div class="message">
                         <img src="img/profile/1_copy.jpg" />
                         <div class="bubble received">
@@ -112,16 +138,17 @@
                             <span>1 min</span>
                         </div>
                     </div>
-                    
+
                     <div class="message right">
                         <img src="img/profile/2_copy.jpg" />
                         <div class="bubble sent">
-                            Proin molestie iaculis consectetur. Vestibulum facilisis, arcu ut rutrum tempus, tellus arcu tempor tortor, nec euismod dolor diam sed ligula?
+                            Proin molestie iaculis consectetur. Vestibulum facilisis, arcu ut rutrum tempus, tellus
+                            arcu tempor tortor, nec euismod dolor diam sed ligula?
                             <!--div class="corner"></div-->
                             <span>1 min</span>
                         </div>
                     </div>
-                    
+
                     <div class="message">
                         <img src="img/profile/1_copy.jpg" />
                         <div class="bubble received">
@@ -130,7 +157,7 @@
                             <span>Now</span>
                         </div>
                     </div>
-                    
+
                     <div class="message right">
                         <img src="img/profile/2_copy.jpg" />
                         <div class="bubble sent">
@@ -139,16 +166,16 @@
                             <span>Now</span>
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
                 <div id="sendmessage">
                     <input type="text" id="dataChannelSend" placeholder="Send message..." />
                     <button id="sendButton"></button>
                 </div>
-            
+
             </div>
-        
+
         </div>
         <!-- End Container Area -->
     </div>
@@ -180,26 +207,59 @@
             </div>
         </div>      
     !-- End Footer Nav Area -->
-    </body>
-    <!-- fast click script -->
-    <script type='text/javascript' src='js/fastclick.min.js'></script>
+</body>
+<!-- fast click script -->
+<script type='text/javascript' src='js/fastclick.min.js'></script>
 
-    <script>
-        if ('addEventListener' in document) {
-            document.addEventListener('DOMContentLoaded', function() {
-                FastClick.attach(document.body);
-            }, false);
-        }
-    </script>
-    <!-- end fast click script -->
-    <!-- paged tabs script -->
-    <script src="js/page-tabs.js"></script>
-    <!-- end paged tabs script-->
-    <!-- replace radio checkbox script -->
-    <script src="js/replace-radio-checkbox"></script>
-    <!-- end replace radio checkbox script -->
-    <!-- Start Sidebar script -->
-    <script type="text/javascript">
+<script>
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function () {
+            FastClick.attach(document.body);
+        }, false);
+    }
+</script>
+<!-- end fast click script -->
+<!-- paged tabs script -->
+<script src="js/page-tabs.js"></script>
+<!-- end paged tabs script-->
+<!-- replace radio checkbox script -->
+<script src="js/replace-radio-checkbox"></script>
+<!-- end replace radio checkbox script -->
+<!-- Start Sidebar script -->
+<script type="text/javascript">
+    /* Set the width of the sidbar to 250px */
+    function openNav() {
+        /*document.getElementById("sidebar").style.width = "250px";*/
+        document.getElementById("sidebar").style.left = "0px";
+    }
+
+    /* Set the width of the sidebar to 0 */
+    function closeNav() {
+        /*document.getElementById("sidebar").style.width = "0";*/
+        document.getElementById("sidebar").style.left = "-260px";
+    }
+</script>
+<!-- End Sidebar script -->
+<!-- Start swipe sidebar script -->
+<script type="text/javascript">
+    $(function () {
+        $("#swipe-area").swipe({
+            //Generic swipe handler for all directions
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+
+                switch (direction) {
+                    case "right":
+                        openNav();
+                        break;
+                    case "left":
+                        closeNav();
+                        break;
+                }
+            },
+            //Default is 75px, set to 0 for demo so any distance triggers swipe
+            threshold: 75
+        });
+
         /* Set the width of the sidbar to 250px */
         function openNav() {
             /*document.getElementById("sidebar").style.width = "250px";*/
@@ -211,61 +271,29 @@
             /*document.getElementById("sidebar").style.width = "0";*/
             document.getElementById("sidebar").style.left = "-260px";
         }
-    </script>
-    <!-- End Sidebar script -->
-    <!-- Start swipe sidebar script -->
-    <script type="text/javascript">
-        $(function() {
-            $("#swipe-area").swipe( {
-                //Generic swipe handler for all directions
-                swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+    });
+</script>
+<!-- End swipe sidebar script -->
+<!-- Start Toggle Reveal script -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("input[name$='feeling']").click(function () {
+            var inputVal = $(this).val();
 
-                    switch(direction){
-                        case "right":
-                            openNav();
-                            break;
-                        case "left":
-                            closeNav();
-                            break;
-                    }
-                },
-                //Default is 75px, set to 0 for demo so any distance triggers swipe
-                threshold:75
-            }); 
-            
-            /* Set the width of the sidbar to 250px */
-            function openNav() {
-                /*document.getElementById("sidebar").style.width = "250px";*/
-                document.getElementById("sidebar").style.left = "0px";
-            }
-
-            /* Set the width of the sidebar to 0 */
-            function closeNav() {
-                /*document.getElementById("sidebar").style.width = "0";*/
-                document.getElementById("sidebar").style.left = "-260px";
-            }
+            $("div.toggleReveal").hide();
+            $("#toggleReveal-" + inputVal).show();
         });
-    </script>
-    <!-- End swipe sidebar script -->
-    <!-- Start Toggle Reveal script -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("input[name$='feeling']").click(function() {
-                var inputVal = $(this).val();
+    });
 
-                $("div.toggleReveal").hide();
-                $("#toggleReveal-" + inputVal).show();
-            });
-        });
-        
-        $(document).ready(function() {
-            $("input[name$='symptom']").click(function() {
-                var inputVal = $(this).val();
+    $(document).ready(function () {
+        $("input[name$='symptom']").click(function () {
+            var inputVal = $(this).val();
 
-                $("div.toggleReveal").hide();
-                $("#toggleReveal-" + inputVal).show();
-            });
+            $("div.toggleReveal").hide();
+            $("#toggleReveal-" + inputVal).show();
         });
-    </script>
-    <!-- End Toggle Reveal script -->
-</html> 
+    });
+</script>
+<!-- End Toggle Reveal script -->
+
+</html>

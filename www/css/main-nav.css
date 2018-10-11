@@ -105,18 +105,26 @@ nav {
 }
 
 /* The navigation menu links */
+.sidenav-section{
+    width: 100%;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 2rem;
+    color: #818181;
+    display: block;
+    padding: 8px 8px 8px 32px;
+}
+
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    color: #33cccc;
     display: block;
     transition: 0.3s;
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: #f1f1f1;
+.sidenav a:hover, .sidenav a:focus {
+    background-color: #ecf0f1;
 }
 
 /* Position and style the close button (top right corner) */
