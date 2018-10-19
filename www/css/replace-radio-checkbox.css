@@ -50,7 +50,8 @@
 .tracker-label-txt{
     position: absolute;
     top: 80px;
-    left: 10px;
+    left: 20px;
+    font-size: 1.25rem;
 }
 
 svg {
@@ -64,7 +65,7 @@ img.img-responsive{
     /*max-width: 20%;*/
     height: 7rem;
     width: 7rem;
-    margin: 0.8rem 1rem;
+    margin: 0.8rem 2rem;
 }
 
 .rating-form-2 svg {

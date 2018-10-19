@@ -610,7 +610,11 @@ iframe {
 .popup .content {
   max-height: 30%;
   overflow: auto;
-  font-size: 0.8rem;
+  font-size: 1rem;
+}
+
+.popup .content a{
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 700px){
