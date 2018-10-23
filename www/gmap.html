@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <script type='application/javascript' src='js/fastclick.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="js/gmap.js"></script>
@@ -40,7 +41,7 @@
                     </div>
                     <div>
                         <div class="main-menubar d-flex align-items-center">
-                            <h2>Gutsy</h2>
+                            <img src="img/icons/myibd-logo-white.png">
                         </div>
                         <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                     </div>
@@ -119,18 +120,17 @@
         </div>
     </div>
     <!-- End Footer Nav Area -->
-</body>
-<!-- fast click script ->
-<script type='text/javascript' src='js/fastclick.min.js'></script>
 
-<script>
-    if ('addEventListener' in document) {
-        document.addEventListener('DOMContentLoaded', function () {
-            FastClick.attach(document.body);
-        }, false);
-    }
-</script>
-<-- end fast click script -->
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+</body>
 <!-- Start Sidebar script -->
 <script type="text/javascript">
     /* Set the width of the sidbar to 250px */

@@ -57,6 +57,11 @@ input
     src: url('../fonts/raleway/Raleway-Bold.ttf'); 
 }
 
+@font-face{
+    font-family: Lato-Bold;
+    src: url('https://fonts.googleapis.com/css?family=Lato');
+}
+
 
 @media (min-width: 858px) {
     /*html { font-size: 12px; }*/
@@ -83,7 +88,7 @@ input
     html { font-size: 10px; }
 }
 
-body, input, textarea { font-family: Verdana, 'Gill Sans', 'Gill Sans MT', 'Calibri', Tahoma, sans-serif }
+body, input, textarea { font-family: 'Lato-Bold', Verdana, 'Gill Sans', 'Gill Sans MT', 'Calibri', Tahoma, sans-serif }
 
 h1 { font-size: 2em; }
 h2 { font-size: 1.5em; }
@@ -101,12 +106,23 @@ select:focus,
 textarea:focus,
 button:focus { outline: none; }
 
+.color-grey-dark{color: #72737b}
+.color-magenta{color: #d123bf}
+.color-lylac{color: #775ba6}
+.color-blue-dark{color: #414b76}
+
+.bg-grey-dark{background-color: #72737b}
+.bg-magenta{background-color: #d123bf}
+.bg-lylac{background-color: #775ba6}
+.bg-blue-dark{background-color: #414b76}
+
 .color-white{color: #ffffff}
 .color-grey{color: #ecf0f1}
 .color-torq{color: #33cccc}
 .color-blue{color: #2980b9}
 .color-navy{color: #2c3e50}
 
+.bg-white{background-color: #ffffff !important}
 .bg-grey{background-color: #ecf0f1 !important}
 .bg-torq{background-color: #33cccc !important}
 .bg-blue{background-color: #2980b9 !important}

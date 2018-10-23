@@ -16,9 +16,10 @@
     <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
 
     <!-- javascript -->
+    <script type='application/javascript' src='js/fastclick.min.js'></script>
+    <script type='text/javascript' src='js/homeCalTracker.js'></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-    <script type='text/javascript' src='js/homeCalTracker.js'></script>
     <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
 
     <!-- jQuery library -->
@@ -48,7 +49,7 @@
                     </div>
                     <div>
                         <div class="main-menubar d-flex align-items-center">
-                            <h2>Gutsy</h2>
+                            <img src="img/icons/myibd-logo-white.png">
                         </div>
                         <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                     </div>
@@ -67,24 +68,28 @@
 
         <div class="sidenav-section">
             <h4>Support</h4>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
             <a href="https://www.survey.iscc.ie/living-with-ibd">Living With IBD</a>
             <a href="https://www.iscc.ie/living-well-with-ibd">Living Well With IBD</a>
         </div>
 
         <div class="sidenav-section">
             <h4>Contact</h4>
-            <a href="https://www.iscc.ie/contact">Contact</a>
+            <a href="https://www.iscc.ie/contact" target="_blank" data-rel="external">Contact</a>
         </div>
 
-        <div class="sidenav-section">
+        <div class="sidenav-section" onclick="window.open('https://www.iscc.ie/support-line', '_blank', 'location=yes')">
             <h4>Support</h4>
-            <a href="https://www.iscc.ie/support-line">Support Telephone Line</a>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="#">Support Telephone Line</a>
         </div>
-
-        <div class="sidenav-section">
-            <h4>FAQ</h4>
-            <a href="https://www.iscc.ie/faq">FAQ</a>
-        </div>
+        
+        <a href="#" onclick="cordova.InAppBrowser.open('https://www.iscc.ie/faq', 'system', 'location=yes');"></a>
+            <div class="sidenav-section">
+                <h4>FAQ</h4>
+                <a>FAQ</a>
+            </div>
+        </a>
 
         <div class="sidenav-section">
             <a href="index.html" onclick="signOut()">Log out</a>
@@ -92,20 +97,9 @@
 
         <div class="sidenav-section">
             <a href="index.html">Login page</a>
-            <a href="register.html">Register</a>
-        </div>
-
-        <!--   <a href="register-index.html">Register page 2</a>
-                <a href="register-profile.html">Register page 3</a> -->
-
-        <div class="sidenav-section">
-            <a href="cols-helper.html">Colonoscopy Helper</a>
-            <a href="sound-player.html">Sound Player</a>
-            <a href="event-cal.html">Events Calendar</a>
         </div>
 
         <div class="sidenav-section">
-            <a href="intro.html">Intro</a>
             <a href="data-to-pdf.html">Data to PDF</a>
         </div>
 
@@ -121,7 +115,7 @@
 
 
             <div class="content">
-                <h1 class="welcome-title color-navy">Welcome to <span class="color-torq">Gutsy</span></h1>
+                <h1 class="welcome-title color-blue-dark">Welcome to <span class="color-lylac">myIBD</span></h1>
 
                 <a href="health-tracker.html">
                     <div class="panel-long">
@@ -129,7 +123,7 @@
                             <div class="panel-bg-layer" id="healthcare-layercolor"></div>
                         </div>
                         <div class="txtBlock">
-                            <h2 class="color-grey">Health Tracker</h2>
+                            <h2 class="color-white">Health Tracker</h2>
                             <!--p class="color-navy">Lorem ipsum dolor sit amet, ne novum debet vocent nam. Vis an solum posse quaerendum, in nulla fierent philosophia his.</p-->
                         </div>
                     </div>
@@ -141,7 +135,7 @@
                             <div class="panel-bg-layer" id="restrooms-layercolor"></div>
                         </div>
                         <div class="txtBlock">
-                            <h2 class="color-grey">Restrooms</h2>
+                            <h2 class="color-white">Restrooms</h2>
                             <!--p class="color-navy">Et his cibo nulla delectus. Quaestio facilisis per ne, case fabellas singulis id ius.</p-->
                         </div>
                     </div>
@@ -153,7 +147,7 @@
                             <div class="panel-bg-layer" id="mindfulness-layercolor"></div>
                         </div>
                         <div class="txtBlock">
-                            <h2 class="color-grey">Mindfulness</h2>
+                            <h2 class="color-white">Mindfulness</h2>
                             <!--p class="color-navy">Eu idque dictas mea, ex sed sint dicat. Ea novum harum referrentur his, eu utamur assentior vim, at prima inermis alienum cum.</p-->
                         </div>
                     </div>
@@ -165,7 +159,7 @@
                             <div class="panel-bg-layer" id="nearby-layercolor"></div>
                         </div>
                         <div class="txtBlock">
-                            <h2 class="color-grey">Nearby</h2>
+                            <h2 class="color-white">Nearby</h2>
                             <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
                         </div>
                     </div>
@@ -177,7 +171,7 @@
                             <div class="panel-bg-layer" id="nowaiting-layercolor"></div>
                         </div>
                         <div class="txtBlock">
-                            <h2 class="color-grey">No Waiting</h2>
+                            <h2 class="color-white">No Waiting</h2>
                             <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
                         </div>
                     </div>
@@ -190,7 +184,7 @@
                                 <div class="panel-bg-layer" id="extra1-layercolor"></div>
                             </div>
                             <div class="txtBlock">
-                                <h3 class="color-grey">Colonoscopy <br/> Helper</h3>
+                                <h3 class="color-white">Colonoscopy <br /> Helper</h3>
                                 <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
                             </div>
                         </div>
@@ -201,7 +195,7 @@
                                 <div class="panel-bg-layer" id="events-layercolor"></div>
                             </div>
                             <div class="txtBlock">
-                                <h3 class="color-grey">Events</h3>
+                                <h3 class="color-white">Events</h3>
                                 <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
                             </div>
                         </div>
@@ -214,7 +208,7 @@
                                 <div class="panel-bg-layer" id="extra2-layercolor"></div>
                             </div>
                             <div class="txtBlock">
-                                <h3 class="color-grey">Colonoscopy <br/> Helper</h3>
+                                <h3 class="color-white">Colonoscopy <br /> Helper</h3>
                                 <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
                             </div>
                         </div>
@@ -225,14 +219,14 @@
                                 <div class="panel-bg-layer" id="extra3-layercolor"></div>
                             </div>
                             <div class="txtBlock">
-                                <h3 class="color-grey">Events</h3>
+                                <h3 class="color-white">Events</h3>
                                 <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
                             </div>
                         </div>
                     </a>
                 </div>
 
-                <br/><br/>
+                <br /><br />
                 <!--<div class="box" id="healthcare">Healthcare</div>
                 <div class="box" id="restrooms">Restrooms</div>
                 <div class="box" id="mindfulness">Mindfulness</div>
@@ -273,25 +267,23 @@
         </div>
     </div>
     <!-- End Footer Nav Area -->
-</body>
-<!-- Start Sidebar script -->
-<script type="text/javascript">
-    /* Set the width of the sidbar to 250px */
-    function openNav() {
-        /*document.getElementById("sidebar").style.width = "250px";*/
-        document.getElementById("sidebar").style.left = "0px";
-    }
 
-    /* Set the width of the sidebar to 0 */
-    function closeNav() {
-        /*document.getElementById("sidebar").style.width = "0";*/
-        document.getElementById("sidebar").style.left = "-260px";
-    }
-</script>
-<!-- End Sidebar script -->
-<!-- fast click script ->
-    <script type='text/javascript' src='js/fastclick.js'></script>
+    <!-- Start Sidebar script -->
+    <script type="text/javascript">
+        /* Set the width of the sidbar to 250px */
+        function openNav() {
+            /*document.getElementById("sidebar").style.width = "250px";*/
+            document.getElementById("sidebar").style.left = "0px";
+        }
 
+        /* Set the width of the sidebar to 0 */
+        function closeNav() {
+            /*document.getElementById("sidebar").style.width = "0";*/
+            document.getElementById("sidebar").style.left = "-260px";
+        }
+    </script>
+    <!-- End Sidebar script -->
+    <!-- fast click script -->
     <script>
         if ('addEventListener' in document) {
             document.addEventListener('DOMContentLoaded', function() {
@@ -299,6 +291,7 @@
             }, false);
         }
     </script>
-    <-- end fast click script -->
+    <!-- end fast click script -->
+</body>
 
 </html>

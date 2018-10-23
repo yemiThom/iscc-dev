@@ -95,7 +95,7 @@
     bottom: -8px;
     height: 1px;
     width: 50%;  /* or 100px */
-    border-bottom: 3px solid #33cccc;
+    border-bottom: 3px solid #d123bf;
     transform: translate(-50%, -50%);
 }
 

@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
 
     <!-- javascript -->
+    <script type='application/javascript' src='js/fastclick.min.js'></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 
@@ -45,7 +46,7 @@
                     </div>
                     <div>
                         <div class="main-menubar d-flex align-items-center">
-                            <h2>Gutsy</h2>
+                            <img src="img/icons/myibd-logo-white.png">
                         </div>
                         <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                     </div>
@@ -368,18 +369,18 @@
         </div>
     </div>
     <!-- End Footer Nav Area -->
+    
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->    
 </body>
-<!-- fast click script ->
-<script type='text/javascript' src='js/fastclick.min.js'></script>
 
-<script>
-    if ('addEventListener' in document) {
-        document.addEventListener('DOMContentLoaded', function () {
-            FastClick.attach(document.body);
-        }, false);
-    }
-</script>
-<-- end fast click script -->
 <!-- paged tabs script -->
 <script src="js/page-tabs.js"></script>
 <!-- end paged tabs script-->

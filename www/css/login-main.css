@@ -110,8 +110,11 @@ iframe {
 .txt1 {
   font-family: Raleway-Regular;
   font-size: 16px;
-  color: #2c3e50;
+  color: #775ba6;
   line-height: 1.4;
+}
+.txt1:hover{
+  color: #414b76;
 }
 .txt2 {
   font-family: Raleway-Regular;
@@ -126,7 +129,7 @@ iframe {
 
 .hov1:hover {
   /*border-color: #d33f8d;*/
-  border-color: #33cccc;
+  border-color: #775ba6;
 }
 
 
@@ -199,7 +202,7 @@ iframe {
 .login100-form-title {
   font-family: Raleway-Black;
   font-size: 30px;
-  color: #33cccc;
+  color: #775ba6;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
@@ -208,6 +211,9 @@ iframe {
   display: block;
 }
 
+.login100-form-title img{
+  height: 50%;
+}
 
 /*---------------------------------------------*/
 .wrap-input100 {
@@ -243,7 +249,7 @@ iframe {
   height: 100%;
   box-shadow: 0px 0px 0px 0px;
   /*color: rgba(211,63,141, 0.6);*/
-  color: rgba(51, 204, 204, 0.6);
+  color: rgba(119, 91, 166, 0.6);
 }
 
 .input100:focus + .focus-input100 {
@@ -267,7 +273,7 @@ iframe {
 
 .symbol-input100 {
   font-size: 24px;
-  color: #999999;
+  color: #72737b;
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -290,10 +296,13 @@ iframe {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
+.symbol-input100 img{
+  height: 30%;
+}
 
 .input100:focus + .focus-input100 + .symbol-input100 {
   /*color: #d33f8d;*/
-  color: #33cccc;
+  color: #775ba6;
   padding-left: 18px;
 }
 
@@ -334,7 +343,7 @@ iframe {
   border-radius: 3px;
   background: #fff;
   /*border: 2px solid #d33f8d;*/
-  border: 2px solid #33cccc;
+  border: 2px solid #775ba6;
   left: 0;
   top: 48%;
   -webkit-transform: translateY(-50%);
@@ -346,7 +355,7 @@ iframe {
 
 .input-checkbox100:checked + .label-checkbox100::before {
   /*color: #d33f8d;*/
-  color: #33cccc;
+  color: #775ba6;
 }
 
 
@@ -373,7 +382,7 @@ iframe {
   height: 62px;
   border-radius: 3px;
   /*background: #d33f8d;*/
-  background: #33cccc;
+  background: #775ba6;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

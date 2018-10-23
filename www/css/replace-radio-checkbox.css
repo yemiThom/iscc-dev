@@ -49,7 +49,7 @@
 
 .tracker-label-txt{
     position: absolute;
-    top: 80px;
+    top: 60px;
     left: 20px;
     font-size: 1.25rem;
 }
@@ -63,7 +63,13 @@ svg {
 
 img.img-responsive{
     /*max-width: 20%;*/
-    height: 7rem;
+    height: 5rem;
+    width: 5rem;
+    margin: 0.8rem 2rem;
+}
+img.img-responsive2{
+    /*max-width: 20%;*/
+    height: 5rem;
     width: 7rem;
     margin: 0.8rem 2rem;
 }
@@ -215,50 +221,22 @@ input[class="bowel-heavy"]:focus + img {
 }
 
 /*input[class="hard-lumps"]:hover + img,*/
-input[class="hard-lumps"]:checked + img,
-input[class="hard-lumps"]:focus + img {
+input[class="stool-hard"]:checked + img,
+input[class="stool-hard"]:focus + img {
     /*border: 1px solid rgb(0, 109, 217);*/
     border: 5px solid #46A641;
 }
 
 /*input[class="lumpy-sausage"]:hover + img,*/
-input[class="lumpy-sausage"]:checked + img,
-input[class="lumpy-sausage"]:focus + img {
+input[class="stool-medium"]:checked + img,
+input[class="stool-medium"]:focus + img {
     /*border: 1px solid rgb(0, 204, 79);*/
     border: 5px solid #46A641;
 }
 
 /*input[class="cracked-sausage"]:hover + img,*/
-input[class="cracked-sausage"]:checked + img,
-input[class="cracked-sausage"]:focus + img {
+input[class="stool-soft"]:checked + img,
+input[class="stool-soft"]:focus + img {
     /*border: 1px solid rgb(229, 132, 0);*/
     border: 5px solid #509592;
-}
-
-/*input[class="snake"]:hover + img,*/
-input[class="snake"]:checked + img,
-input[class="snake"]:focus + img {
-    /*border: 1px solid rgb(0, 109, 217);*/
-    border: 5px solid #F4B684;
-}
-
-/*input[class="soft-blobs"]:hover + img,*/
-input[class="soft-blobs"]:checked + img,
-input[class="soft-blobs"]:focus + img {
-    /*border: 1px solid rgb(0, 204, 79);*/
-    border: 5px solid #CD8851;
-}
-
-/*input[class="mushy"]:hover + img,*/
-input[class="mushy"]:checked + img,
-input[class="mushy"]:focus + img {
-    /*border: 1px solid rgb(229, 132, 0);*/
-    border: 5px solid #F28386;
-}
-
-/*input[class="liquid"]:hover + img,*/
-input[class="liquid"]:checked + img,
-input[class="liquid"]:focus + img {
-    /*border: 1px solid rgb(229, 132, 0);*/
-    border: 5px solid #A82C2F;
 }

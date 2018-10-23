@@ -10,7 +10,7 @@
     left: 0;
     width: 100% !important;
     z-index: 9;
-    background-color: #ffffff;
+    background-color: #72737b;
     padding: 5px 0;
     box-shadow: 2.213px -2.213px 2px 0px rgba(158, 158, 158, 0.3);
 }
@@ -18,7 +18,7 @@
 .mobile-bottom-bar {
     width: 100%;
     height: 5rem;/*2.778rem;*/
-    background: #ffffff;
+    background: #72737b;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -40,7 +40,7 @@
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     text-align: center;
-    color: #2c3e50;
+    color: #ffffff;
     text-transform: capitalize;
     font-size: 1.5rem;/*0.8125rem;*/
     font-weight: bold;
@@ -57,7 +57,7 @@
 }
 
 .mobile-bottom-bar .footer-link:focus, .mobile-bottom-bar .footer-link:active {
-    color: #0c3e5f;
+    color: #ffffff;
 }
 
 .mobile-bottom-bar .footer-text {
@@ -65,7 +65,7 @@
     top: 2px;
     font-weight: bold;
     font-size: 0.75rem;
-    color: #0c3e5f;
+    color: #ffffff;
     display: block;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
