@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Profile Card</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link rel='stylesheet prefetch' href='https://use.fontawesome.com/releases/v5.0.8/css/all.css'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+
+    <link rel="stylesheet" href="css/IDCard_style.css">
+    <link rel="stylesheet" href="css/native-interapp.css">
+
+    <script type='application/javascript' src='js/fastclick.min.js'></script>
+    <!-- 
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+</head>
+
+<body onLoad="checkCardLang()">
+
+    <div class="wrapper">
+        <div class="top-icons">
+            <a href="home.html"><i class="fas fa-long-arrow-alt-left"></i></a>
+            <div class="topLogo">
+                <h4>Gutsy</h4>
+            </div>
+        </div>
+
+        <div class="no-waiting-container">
+            <div class="scrolling-wrapper">
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/ARABIC.jpg')">
+                    <h2>Arabic</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/CROATIAN.jpg')">
+                    <h2>Croatian</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/DANISH.jpg')">
+                    <h2>Danish</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/DUTCH.jpg')">
+                    <h2>Dutch</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/FINNISH.jpg')">
+                    <h2>Finnish</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/FRENCH.jpg')">
+                    <h2>French</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/GERMAN.jpg')">
+                    <h2>German</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/GREEK.jpg')">
+                    <h2>Greek</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/ICELAND.jpg')">
+                    <h2>Iceland</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/ITALIAN.jpg')">
+                    <h2>Italian</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/NORWEGIAN.jpg')">
+                    <h2>Norwegian</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/POLISH.jpg')">
+                    <h2>Polish</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/PORTUGUESE.jpg')">
+                    <h2>Portuguese</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/SPANISH.jpg')">
+                    <h2>Spanish</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/SWEDISH.jpg')">
+                    <h2>Swedish</h2>
+                </div>
+                <div class="scrolling-card" onclick="changeImg('img/no-waiting/TURKISH.jpg')">
+                    <h2>Turkish</h2>
+                </div>
+            </div>
+
+            <div class="no-waiting-cardImg">
+                <img src="img/no-waiting/FRENCH.jpg" id="currentImg" class="rotate imgSizing" alt="no-waiting-card"
+                    title="No Waiting Card">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkCardLang() {
+            if (localStorage.getItem("imgPath") === null) {
+                console.log("localStorage === null:")
+                imgPath = "img/no-waiting/ENGLISH.jpg";
+                changeImg(imgPath);
+            } else {
+                console.log("localStorage === " + localStorage.getItem("imgPath"));
+                changeImg(localStorage.getItem("imgPath"));
+            }
+        }
+
+        function changeImg(imgPath) {
+            var curImage = document.getElementById("currentImg");
+            curImage.src = imgPath;
+            //curImage.style.backgroundImage = "url("+imgPath+")";
+            localStorage.setItem("imgPath", imgPath);
+            console.log(localStorage.getItem("imgPath"));
+        }
+    </script>
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+</body>
+
+</html>

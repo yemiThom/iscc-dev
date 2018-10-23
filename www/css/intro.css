@@ -12,62 +12,109 @@
 .welcome-title{
     font-family: Raleway-Black;
     text-align: center;
-    color: #ffffff;
+    /*color: #ffffff;*/
 }
 .welcome-subtitle{
     font-family: Raleway-Black;
     text-align: center;
-    color: #ffffff;
+    /*color: #ffffff;*/
     margin-bottom: 10%;
 }
-.left-circle{
-    height: 100px;
-    width: 100px;
-    /*margin: 8px;*/
-    border-radius: 50%;
+.panel-short{
+    position: relative;
+    width: 49%;
     display: inline-block;
-    background-clip: padding-box;
-    background-size: cover;
-    background-position: center center;
-    background-position: center center;
-    box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -moz-box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -webkit-box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -o-box-shadow: 3px 4px rgba(0,0,0,0.2);
+    padding: 1% 0;
+    margin-left: 1px;
 }
-.right-circle{
-    height: 100px;
-    width: 100px;
-    margin-left: 8%;
-    border-radius: 50%;
-    display: inline-block;
-    background-clip: padding-box;
-    background-size: cover;
-    background-position: center center;
-    background-position: center center;
-    box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -moz-box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -webkit-box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -o-box-shadow: 3px 4px rgba(0,0,0,0.2);
+.panel-short::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 80%;
+    width: 85%;  /* or 100px */
+    border: 3px solid #ecf0f1;
+    transform: translate(-50%, -50%);
 }
-.right-txtBlock{
-    float: right;
-    display: inline-block;
-    width: 50%;
-    text-align: right;
-    color: #ffffff;
-}
-.left-txtBlock{
-    display: inline-block;
-    width: 50%;
-    color: #ffffff;
-}
-.panel{
+.panel-short-full{
     width: 100%;
-    padding: 2% 5%;
+    height: 140px;
+    padding: 2% 2%;
+    margin: 3% 0;
+}
+.panel-long{
+    position: relative;
+    width: 100%;
+    height: 140px;
+    padding: 2% 2%;
+    margin: 3% 0;
+}
+.panel-bg{
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center center;
+    background-position: center center;
+    height: 140px;
+    filter: blur(0.10px);
+}
+.panel-bg-layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+}
+.txtBlock{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.txtBlock2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*transform: translate(-50%, -50%);*/
+}
+
+.txtBlock h2, .txtBlock h3,
+.txtBlock2 h2, .txtBlock2 h3{
+    font-family: Raleway-Black;
+    font-weight: bold;
+    text-align: center;
+    /*border-bottom: 3px solid #33cccc;
+    text-decoration: underline;
+    text-decoration-color: #33cccc;*/
+}
+/*.txtBlock h3{ font-size: 1.75rem; }*/
+.txtBlock::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    height: 1px;
+    width: 50%;  /* or 100px */
+    border-bottom: 3px solid #d123bf;
+    transform: translate(-50%, -50%);
 }
 
 #healthcare{ background-image: url("../img/intro/healthcare.jpeg"); }
 #restrooms{ background-image: url("../img/intro/restrooms.jpg"); }
 #mindfulness{ background-image: url("../img/intro/mindfulness.jpeg"); }
 #nearby{ background-image: url("../img/intro/nearby.jpeg"); }
+#nowaiting{ background-image: url("../img/intro/nowaiting.jpeg"); }
+#events{ background-image: url("../img/intro/events.jpeg"); }
+#cols-helper{ background-image: url("../img/intro/cols-helper.jpeg"); }
+
+
+#healthcare-layercolor{ background-color: rgba(127,132,223,0.7); }
+#restrooms-layercolor{ background-color: rgba(255,204,102,0.7); }
+#mindfulness-layercolor{ background-color: rgba(255,151,64,0.7); }
+#nearby-layercolor{ background-color: rgba(104,141,225,0.7); }
+#nowaiting-layercolor{ background-color: rgba(41,128,185,0.7); }
+#events-layercolor{ background-color: rgba(18,189,189,0.7); }
+#cols-helper-layercolor{ background-color: rgba(255,204,102,0.7); }
+#extra1-layercolor{ background-color: rgba(255,102,102,0.7); }
+#extra2-layercolor{ background-color: rgba(143,244,143,0.7); }
+#extra3-layercolor{ background-color: rgba(149,176,237,0.7); }

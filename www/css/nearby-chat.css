@@ -46,15 +46,15 @@ z-index:200;
 #topmenu span.history{background-position:-190px 24px; cursor:pointer;}
 #topmenu span.history:hover{background-position:-190px -47px; cursor:pointer;}
 .friend{
-    height:70px;
-    border-bottom:1px solid #e7ebee;        
+    height:80px;
+    border-bottom: 1px solid #ecf0f1;        
     position:relative;
 }
 .friend.invisible{
     display: none;
 }
 .friend:hover{
-    background:#f1f4f6;
+    background:#ecf0f1;
     cursor:pointer;
 }
 .friend img{
@@ -75,11 +75,12 @@ z-index:200;
     padding:15px 0 0 0;         
     float:left;
     width:220px;
+    margin-left: 40px;
 }
 .friend p strong{
     font-weight:600;
-    font-size:15px;
-    color:#2c3e50; 
+    font-size:18px;
+    color:#414b76; 
     display: block;
 }
 .friend p span{
