@@ -137,7 +137,7 @@ nav {
 .sidenav a {
     padding: 8px 8px 8px 22px;
     text-decoration: none;
-    color: #d123bf;
+    color: #ffffff;
     display: block;
     transition: 0.3s;
     font-size: 1.25rem;
@@ -145,7 +145,8 @@ nav {
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .sidenav a:focus {
-    background-color: #ecf0f1;
+    color: #d123bf;
+    background-color: #2B3661;
 }
 
 /* Position and style the close button (top right corner) */
@@ -362,12 +363,11 @@ nav {
 .formRoundedFilled input[type="submit"] {
 	display: block;
 	color: #FFFFFF;
-	background-color: #2980b9;
-	border-color: #2c3e50;
+	background-color: #d123bf;
 	text-align: center;
 	vertical-align: middle;
 	cursor: pointer; 
-	border: 1px solid transparent; 
+	border: 1px solid #414b76; 
 	padding: 6px 16px; 
 	font-size: 14px; 
     border-radius:4px;

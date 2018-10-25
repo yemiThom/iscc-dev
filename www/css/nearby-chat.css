@@ -90,16 +90,16 @@ z-index:200;
     display: block;
 }
 .friend .status{
-    background:#26c281;
     border-radius:50%;  
-    width:9px;
-    height:9px;
+    width:15px;
+    height:15px;
     position:absolute;
     top:31px;
     right:17px;
 }
-.friend .status.away{background:#ffce54;}
-.friend .status.inactive{background:#eaeef0;}
+.friend .status.available{background:#d123bf;}
+.friend .status.away{background:#414b76;}
+.friend .status.inactive{background:#72737b;}
 #search{
     background:#e3e9ed url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/search.png") -11px 0 no-repeat;
     height:60px;

@@ -136,87 +136,19 @@ input[class="super-sad"]:focus + svg {
 }
 */
 
-/*input[class="good"]:hover + img,*/
-input[class="good"]:checked + img,
-input[class="good"]:focus + img {
-    /*border: 1px solid rgb(0, 109, 217);*/
+
+input[class="green"]:checked + img,
+input[class="green"]:focus + img {
     border: 5px solid #70c66b;
 }
 
-/*input[class="okay"]:hover + img,*/
-input[class="okay"]:checked + img,
-input[class="okay"]:focus + img {
-    /*border: 1px solid rgb(0, 204, 79);*/
+input[class="orange"]:checked + img,
+input[class="orange"]:focus + img {
     border: 5px solid #ffce54;
 }
 
-/*input[class="bad"]:hover + img,*/
-input[class="bad"]:checked + img,
-input[class="bad"]:focus + img {
-    /*border: 1px solid rgb(229, 132, 0);*/
-    border: 5px solid #d35e62;
-}
-
-/*input[class="pain-low"]:hover + img,*/
-input[class="pain-low"]:checked + img,
-input[class="pain-low"]:focus + img {
-    /*border: 1px solid rgb(232, 214, 0);*/
-    border: 5px solid #70c66b;
-}
-
-/*input[class="pain-medium"]:hover + img,*/
-input[class="pain-medium"]:checked + img,
-input[class="pain-medium"]:focus + img {
-    /*border: 1px solid rgb(239, 42, 16);*/
-    border: 5px solid #ffce54;
-}
-
-/*input[class="pain-high"]:hover + img,*/
-input[class="pain-high"]:checked + img,
-input[class="pain-high"]:focus + img {
-    /*border: 1px solid rgb(232, 214, 0);*/
-    border: 5px solid #d35e62;
-}
-
-/*input[class="stress-low"]:hover + img,*/
-input[class="stress-low"]:checked + img,
-input[class="stress-low"]:focus + img {
-    /*border: 1px solid rgb(239, 42, 16);*/
-    border: 5px solid #70c66b;
-}
-
-/*input[class="stress-medium"]:hover + img,*/
-input[class="stress-medium"]:checked + img,
-input[class="stress-medium"]:focus + img {
-    /*border: 1px solid rgb(239, 42, 16);*/
-    border: 5px solid #ffce54;
-}
-
-/*input[class="stress-high"]:hover + img,*/
-input[class="stress-high"]:checked + img,
-input[class="stress-high"]:focus + img {
-    /*border: 1px solid rgb(239, 42, 16);*/
-    border: 5px solid #d35e62;
-}
-
-/*input[class="bowel-light"]:hover + img,*/
-input[class="bowel-light"]:checked + img,
-input[class="bowel-light"]:focus + img {
-    /*border: 1px solid rgb(0, 109, 217);*/
-    border: 5px solid #70c66b;
-}
-
-/*input[class="bowel-medium"]:hover + img,*/
-input[class="bowel-medium"]:checked + img,
-input[class="bowel-medium"]:focus + img {
-    /*border: 1px solid rgb(0, 204, 79);*/
-    border: 5px solid #ffce54;
-}
-
-/*input[class="bowel-heavy"]:hover + img,*/
-input[class="bowel-heavy"]:checked + img,
-input[class="bowel-heavy"]:focus + img {
-    /*border: 5px solid rgb(229, 132, 0);*/
+input[class="red"]:checked + img,
+input[class="red"]:focus + img {
     border: 5px solid #d35e62;
 }
 

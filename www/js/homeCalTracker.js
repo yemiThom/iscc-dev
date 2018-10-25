@@ -62,7 +62,6 @@ function saveHTInputData() {
     var healthTrackerContentData2;
 
     if(document.getElementById("good").checked){
-        console.log("good day has been checked");
         healthtrackerDay = document.getElementById("good").value;
     }
     if(document.getElementById("okay").checked){
@@ -92,37 +91,52 @@ function saveHTInputData() {
         healthtrackerStress = document.getElementById("stress-high").value;
     }
 
-    if(document.getElementById("hard-lumps").checked){
-        healthtrackerStool = document.getElementById("hard-lumps").value;
+    if(document.getElementById("stool-hard").checked){
+        healthtrackerStool = document.getElementById("stool-hard").value;
     }
-    if(document.getElementById("lumpy-sausage").checked){
-        healthtrackerStool = document.getElementById("lumpy-sausage").value;
+    if(document.getElementById("stool-medium").checked){
+        healthtrackerStool = document.getElementById("stool-medium").value;
     }
-    if(document.getElementById("cracked-sausage").checked){
-        healthtrackerStool = document.getElementById("cracked-sausage").value;
-    }
-    if(document.getElementById("snake").checked){
-        healthtrackerStool = document.getElementById("snake").value;
-    }
-    if(document.getElementById("soft-blobs").checked){
-        healthtrackerStool = document.getElementById("soft-blobs").value;
-    }
-    if(document.getElementById("mushy").checked){
-        healthtrackerStool = document.getElementById("mushy").value;
-    }
-    if(document.getElementById("liquid").checked){
-        healthtrackerStool = document.getElementById("liquid").value;
+    if(document.getElementById("stool-soft").checked){
+        healthtrackerStool = document.getElementById("stool-soft").value;
     }
 
     if(document.getElementById("bowel-light").checked){
-        healthtrackerBowels = document.getElementById("bowel-light").value;
+        healthtrackerStool = document.getElementById("bowel-light").value;
     }
     if(document.getElementById("bowel-medium").checked){
-        healthtrackerBowels = document.getElementById("bowel-medium").value;
+        healthtrackerStool = document.getElementById("bowel-medium").value;
     }
     if(document.getElementById("bowel-heavy").checked){
-        healthtrackerBowels = document.getElementById("bowel-heavy").value;
+        healthtrackerStool = document.getElementById("bowel-heavy").value;
     }
+
+    if(document.getElementById("1-4").checked){
+        healthtrackerStool = document.getElementById("1-4").value;
+    }
+    if(document.getElementById("5-8").checked){
+        healthtrackerBowels = document.getElementById("5-8").value;
+    }
+    if(document.getElementById("9OrMore").checked){
+        healthtrackerBowels = document.getElementById("9OrMore").value;
+    }
+
+    if(document.getElementById("1-2").checked){
+        healthtrackerBowels = document.getElementById("1-2").value;
+    }
+    if(document.getElementById("3-4").checked){
+        healthtrackerBowels = document.getElementById("3-4").value;
+    }
+    if(document.getElementById("5OrMore").checked){
+        healthtrackerBowels = document.getElementById("5OrMore").value;
+    }
+
+    healthTrackerMedName = document.getElementById("medicationName").value;
+    healthTrackerMedsDoseNum = document.getElementById("dosageNum").value;
+    healthtrackerMedsSelect = document.getElementById("medsDoseSel");
+    healthtrackerMedsSelectVal = healthtrackerMedsSelect.options[healthtrackerMedsSelect.selectedIndex].text;
+    healthTrackerMedsComments = document.getElementById("meds-comment").value;
+    healthTrackerCompletePrescipt = document.getElementById("healthtracker_prescription").checked;
 
     healthtrackerBFDescipt = document.getElementById("healthtracker_describe-bf").value;
     healthtrackerBFPain = document.getElementById("healthtracker_pain-bf").checked;
@@ -132,14 +146,6 @@ function saveHTInputData() {
 
     healthtrackerDIDescipt = document.getElementById("healthtracker_describe-di").value;
     healthtrackerDIPain = document.getElementById("healthtracker_pain-di").checked;
-
-    healthTrackerMedName = document.getElementById("medicationName").value;
-    healthTrackerMedsDoseNum = document.getElementById("dosageNum").value;
-    healthtrackerMedsSelect = document.getElementById("medsDoseSel");
-    healthtrackerMedsSelectVal = healthtrackerMedsSelect.options[healthtrackerMedsSelect.selectedIndex].text;
-    healthTrackerMedsComments = document.getElementById("meds-comment").value;
-    healthTrackerCompletePrescipt = document.getElementById("completePrescription").checked;
-
 
     //console.log(healthtrackerBFDescipt);
 
@@ -158,12 +164,12 @@ function saveHTInputData() {
     a.href = URL.createObjectURL(file);
     a.download = filename + ".txt";*/
 	
-    var textToSaveAsBlob = new Blob([healthTrackerContentData1], {type:"text/plain"});
+    var textToSaveAsBlob = new Blob([healthTrackerContentData1 + healthTrackerContentData2], {type:"text/plain"});
     var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
 	var d = new Date();
  
     var downloadLink = document.createElement("a");
-    downloadLink.download = "healthData " + d;
+    downloadLink.download = "myIBD_healthData_" + d;
     downloadLink.innerHTML = "Download File";
     downloadLink.href = textToSaveAsURL;
     downloadLink.onclick = destroyClickedElement;

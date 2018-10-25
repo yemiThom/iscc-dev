@@ -1,7 +1,7 @@
 .calender{
 	position: relative;
     padding:2em 3em 0;
-    background: #33cccc;
+    background: #775ba6;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#82bed4+0,ec7f84+100 /
 	background: rgb(130,190,212); /* Old browsers /
 	background: -moz-linear-gradient(top,  rgba(51,204,204,1) 0%, rgba(41,128,185,1) 100%); /* FF3.6-15 /
@@ -17,16 +17,16 @@
     margin:-6px auto 0;
 }
 .events ul{
-	border-bottom:1px solid #EBEBEB;
-	padding:1.7em 0;
+	border-bottom:1px solid #d123bf;
+	padding: 2.25em 0;
 }
 .events ul:nth-child(3){
 	border-bottom:none;
 }
 .events ul li:nth-child(1){
 	float: left;
-    /*font-size:1.5rem;*/
-    color: #2c3e50;
+    font-size:1.25rem;
+    color: #414b76;
     list-style-type: none;
     font-weight: 600;
     letter-spacing: 2px;
@@ -35,13 +35,13 @@
 .events ul li:nth-child(2){
 	float: right;
     font-size:1.5rem;
-    color: #33cccc;
+    color: #775ba6;
     list-style-type: none;
     font-weight: 600;
 }
 .events ul li i{
 	font-size:.5rem;
-	color:#999;
+	color:#72737b;
 	font-style:normal;
 }
 
@@ -49,14 +49,12 @@
 
 .cal1 .clndr .clndr-controls {
     position: relative;
-   color: #2c3e50;
+   color: #414b76;
    font-size: 1.2em;
    text-transform: uppercase;
    padding: /*20px*/ 0;
    text-align: center;
    margin-bottom: 0.5em/*1em*/;
- }
- .cal1{
  }
  .cal1 .clndr .clndr-controls .month {
      text-align: center;
@@ -141,7 +139,7 @@
  }
  .cal1 .clndr .clndr-table tr .day.today.event {
    background: #ecf0f1;
-   color: #2c3e50;
+   color: #414b76;
  }
  .day.today.event:hover{
      color:#FFF;
@@ -159,7 +157,7 @@
  .cal1 .clndr .clndr-table tr .adjacent-month {
    width: 100%;
    height: inherit;
-   color:#2c3e50;
+   color:#414b76;
  }
  @media all and (max-width:1024px) {
      .cal1 .clndr .clndr-table tr {
@@ -199,12 +197,12 @@
          font-size: 1em;
      }
      .cal1 .clndr .clndr-table tr .day .day-contents {
-         font-size: .7em;
+         font-size: 1.25em;
      }
  }
  @media all and (max-width:375px) {
      .cal1 .clndr .clndr-controls .month {
-         font-size: .8em;
+         font-size: 1.5em;
      }
      .cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button {
          width: 25px;
@@ -219,7 +217,7 @@
          background-size: 100%;
      }
      .cal1 .clndr .clndr-table .header-days .header-day {
-         font-size: 14px;
+         font-size: 18px;
      }
  }
  @media all and (max-width:320px) {
