@@ -319,14 +319,14 @@
   .tabset > label:hover::after,
   .tabset > input:focus + label::after,
   .tabset > input:checked + label::after {
-    background: #33cccc;
+    background: #775ba6;
   }
   
   .tabset > input:checked + label {
     /*border-color: #ccc;*/
     border-bottom: 1px solid #fff;
     margin-bottom: -1px;
-    color: #33cccc;
+    color: #775ba6;
   }
   
   .tab-panel {
@@ -391,7 +391,7 @@
 }
 
 input:checked + .checkbox-slider {
-    background-color: #33cccc;
+    background-color: #775ba6;
 }
 
 input:focus + .checkbox-slider {

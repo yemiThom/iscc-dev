@@ -172,6 +172,9 @@ body {
 .topLogo{
   float: right;
 }
+.topLogo img{
+  height: 35px;
+}
 .logoImg{
   height: 45%;
   width: 45%;

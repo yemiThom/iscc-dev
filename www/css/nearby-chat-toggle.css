@@ -234,9 +234,9 @@ left: 83%; }
     color: #fff;
     font-weight: bold;
     text-align: center;
-    text-shadow: 1px 1px 1px #191b1e; }
+    text-shadow: 1px 1px 1px #414b76; }
 .switch-light.switch-candy input ~ span span:first-child, .switch-light.switch-candy input:checked ~ span span:nth-child(2), .switch-candy input:checked + label {
-    color: #333;
+    color: #ecf0f1;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
 .switch-candy a {
     border: 1px solid #2c3e50;
@@ -246,9 +246,9 @@ left: 83%; }
     background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), transparent);
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent); 
 }
-.switch-candy-red { background-color: #d35e62; }
-.switch-candy-yellow { background-color: #ffce54; }
-.switch-candy-green { background-color: #70c66b; }
+.switch-candy-grey { background-color: #72737b; }
+.switch-candy-magenta { background-color: #d123bf; }
+.switch-candy-blue { background-color: #414b76; }
 /* iOS Theme
 */
 .switch-ios.switch-light span span {
