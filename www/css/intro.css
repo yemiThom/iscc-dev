@@ -77,37 +77,44 @@
     left: 0;
     /*transform: translate(-50%, -50%);*/
 }
+.txtBlock-img{
+    width: 25%;
+    display: block;
+    margin: 6px auto;
+}
 
 .txtBlock h2, .txtBlock h3,
 .txtBlock2 h2, .txtBlock2 h3{
-    font-family: Raleway-Black;
-    font-weight: bold;
+    font-weight: inherit;
     text-align: center;
-    /*border-bottom: 3px solid #33cccc;
+    text-transform: capitalize;
+    /*
+    font-family: Raleway-Black;
+    border-bottom: 3px solid #33cccc;
     text-decoration: underline;
     text-decoration-color: #33cccc;*/
 }
-/*.txtBlock h3{ font-size: 1.75rem; }*/
+/*.txtBlock h3{ font-size: 1.75rem; }
 .txtBlock::before{
     content: "";
     position: absolute;
     left: 50%;
     bottom: -8px;
     height: 1px;
-    width: 50%;  /* or 100px */
+    width: 50%;  /* or 100px *
     border-bottom: 3px solid #d123bf;
     transform: translate(-50%, -50%);
-}
+}*/
 
-#healthcare{ background-image: url("../img/intro/healthcare.jpeg"); }
-#restrooms{ background-image: url("../img/intro/restrooms.jpg"); }
-#mindfulness{ background-image: url("../img/intro/mindfulness.jpeg"); }
-#nearby{ background-image: url("../img/intro/nearby.jpeg"); }
-#nowaiting{ background-image: url("../img/intro/nowaiting.jpeg"); }
-#events{ background-image: url("../img/intro/events.jpeg"); }
-#cols-helper{ background-image: url("../img/intro/cols-helper.jpeg"); }
+#healthcare{ background-image: url("../img/intro/tracker.jpg"); }
+#restrooms{ background-image: url("../img/intro/restrooms2.jpg"); }
+#mindfulness{ background-image: url("../img/intro/mindfulness.jpg"); }
+#nearby{ background-image: url("../img/intro/nearby.jpg"); }
+#nowaiting{ background-image: url("../img/intro/nowaiting.jpg"); }
+#events{ background-image: url("../img/intro/events.jpg"); }
+#cols-helper{ background-image: url("../img/intro/colonoscopy.jpg"); }
 
-
+#generic-layercolor{ background-color: rgba(0, 0, 0, 0.25); }
 #healthcare-layercolor{ background-color: rgba(127,132,223,0.7); }
 #restrooms-layercolor{ background-color: rgba(255,204,102,0.7); }
 #mindfulness-layercolor{ background-color: rgba(255,151,64,0.7); }

@@ -1,0 +1,79 @@
+{
+  "_from": "git+https://github.com/AppLozic/Applozic-Cordova-PhoneGap-Chat-Plugin.git",
+  "_id": "Applozic-Cordova-PhoneGap-Chat-Plugin@0.7.0",
+  "_inBundle": false,
+  "_integrity": "sha1-MGJSS2D/QOtsbHFEIipsdkkq9mE=",
+  "_location": "/Applozic-Cordova-PhoneGap-Chat-Plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/AppLozic/Applozic-Cordova-PhoneGap-Chat-Plugin.git",
+    "rawSpec": "https://github.com/AppLozic/Applozic-Cordova-PhoneGap-Chat-Plugin.git",
+    "saveSpec": "git+https://github.com/AppLozic/Applozic-Cordova-PhoneGap-Chat-Plugin.git",
+    "fetchSpec": "https://github.com/AppLozic/Applozic-Cordova-PhoneGap-Chat-Plugin.git",
+    "gitCommittish": "master"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/AppLozic/Applozic-Cordova-PhoneGap-Chat-Plugin.git#d29f9b919d0736e858360736a8bbc1ad5a6c69a0",
+  "_spec": "https://github.com/AppLozic/Applozic-Cordova-PhoneGap-Chat-Plugin.git",
+  "_where": "/Users/devashish/Documents/Github/Ionic/cutePuppyPics/node_modules",
+  "author": {
+    "name": "Applozic"
+  },
+  "bugs": {
+    "url": "https://issues.apache.org/jira/browse/CB"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "om.applozic.phonegap",
+    "platforms": [
+      "firefoxos",
+      "android",
+      "amazon-fireos",
+      "ubuntu",
+      "ios",
+      "blackberry10",
+      "wp7",
+      "wp8",
+      "windows8",
+      "browser",
+      "windows"
+    ]
+  },
+  "deprecated": false,
+  "description": "Applozic-Cordova-PhoneGap-Chat-Plugin",
+  "engines": {
+    "cordovaDependencies": {
+      "3.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/AppLozic/Applozic-Cordova-PhoneGap-Chat-Plugin#readme",
+  "keywords": [
+    "cordova",
+    "camera",
+    "ecosystem:cordova",
+    "cordova-firefoxos",
+    "cordova-android",
+    "cordova-amazon-fireos",
+    "cordova-ubuntu",
+    "cordova-ios",
+    "cordova-blackberry10",
+    "cordova-wp7",
+    "cordova-wp8",
+    "cordova-windows8",
+    "cordova-browser",
+    "cordova-windows"
+  ],
+  "license": "Apache-2.0",
+  "name": "Applozic-Cordova-PhoneGap-Chat-Plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AppLozic/Applozic-Cordova-PhoneGap-Chat-Plugin.git"
+  },
+  "version": "0.7.0"
+}

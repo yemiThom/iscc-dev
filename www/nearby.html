@@ -19,8 +19,13 @@
     <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
     <script type='text/javascript' src='js/nearby.js'></script>
-    <script type='text/javascript' src='js/client.js'></script>
-    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <!--<script type='text/javascript' src='js/client.js'></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js">
+    </script><script src="node_modules/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+    </script>-->
+    
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -101,8 +106,8 @@
             <div class="header">
                 <h1 class="text-center p-b-10">Talk with someone nearby</h1>
 
-                <div class="switch-toggle switch-3 switch-candy">
-                    <input id="online" name="state-d" type="radio" checked="checked">
+                <div id="switch-toggle" class="switch-toggle switch-3 switch-candy">
+                    <input id="online" name="state-d" type="radio" checked="">
                     <label for="online" onclick="onlineCheck()">Online</label>
 
                     <input id="busy" name="state-d" type="radio" checked="">
@@ -234,7 +239,7 @@
 <script src="js/page-tabs.js"></script>
 <!-- end paged tabs script-->
 <!-- replace radio checkbox script -->
-<script src="js/replace-radio-checkbox"></script>
+<script src="js/replace-radio-checkbox.js"></script>
 <!-- end replace radio checkbox script -->
 <!-- Start Sidebar script -->
 <script type="text/javascript">
