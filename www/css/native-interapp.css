@@ -96,9 +96,22 @@ h3 { font-size: 1.17em; }
 h5 { font-size: .83em; }
 h6 { font-size: .75em; }
 
-p { font-size:1em; line-height:1.2; }
+p { font-size:1em; line-height:1.2; margin: 5px auto; }
 
 a, a:visited, a:hover, a:active { color: inherit; cursor: none !important; }
+
+
+ul{
+    line-height: 1.5rem;
+    padding-bottom: 5%;
+    color: #414b76;
+}
+ul li::before{
+    content: "•"; 
+    color: #d123bf;
+    padding: 2%;
+    margin-left: -0.5em
+}
 
 input,
 input:focus,

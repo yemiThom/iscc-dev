@@ -158,6 +158,24 @@ nav {
     margin-left: 50px;
 }
 
+.sidenav .icon1{
+    width: 15%;
+    float: right;
+    margin-right: 20%;
+}
+
+.sidenav .icon2{
+    width: 15%;
+    float: right;
+    margin-right: 50%;
+}
+
+.sidenav .icon3{
+    width: 15%;
+    float: right;
+    margin-right: 43%;
+}
+
 .container {
     margin-right: auto;
     margin-left: auto;

@@ -65,29 +65,47 @@
         </div>
 
         <div class="sidenav-section">
+            <img class="icon3" src="img/icons/faq.png" />
+            <h4>Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <img class="icon1" src="img/icons/contact.png" />
+            <h4>Contact</h4>
+            <a href="https://www.iscc.ie/contact" target="_blank" data-rel="external">Contact</a>
+        </div>
+
+        <div class="sidenav-section" onclick="window.open('https://www.iscc.ie/support-line', '_blank', 'location=yes')">
+            <img class="icon1" src="img/icons/support.png" />
             <h4>Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
             <a href="https://www.survey.iscc.ie/living-with-ibd">Living With IBD</a>
             <a href="https://www.iscc.ie/living-well-with-ibd">Living Well With IBD</a>
-        </div>
-
-        <div class="sidenav-section">
-            <h4>Contact</h4>
-            <a href="https://www.iscc.ie/contact">Contact</a>
-        </div>
-
-        <div class="sidenav-section">
-            <h4>Support</h4>
             <a href="https://www.iscc.ie/support-line">Support Telephone Line</a>
         </div>
 
+        <a href="#" onclick="cordova.InAppBrowser.open('https://www.iscc.ie/faq', 'system', 'location=yes');"></a>
         <div class="sidenav-section">
+            <img class="icon2" src="img/icons/faq.png" />
             <h4>FAQ</h4>
-            <a href="https://www.iscc.ie/faq">FAQ</a>
+            <a>FAQ</a>
         </div>
+        </a>
 
         <div class="sidenav-section">
             <a href="index.html" onclick="signOut()">Log out</a>
         </div>
+
+        <!--div class="sidenav-section">
+                <a href="register.html">Register Screen</a>
+            </div>
+    
+            <div class="sidenav-section">
+                <a href="data-to-pdf.html">Data to PDF</a>
+            </div>-->
+
     </div>
     <!-- Side Bar -->
 
@@ -196,16 +214,16 @@
         </div>
     </div>
     <!-- End Footer Nav Area -->
-    
-<!-- fast click script -->
-<script>
-    if ('addEventListener' in document) {
-        document.addEventListener('DOMContentLoaded', function () {
-            FastClick.attach(document.body);
-        }, false);
-    }
-</script>
-<!-- end fast click script -->
+
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
 </body>
 <!-- paged tabs script -->
 <script src="js/page-tabs.js"></script>
@@ -503,4 +521,5 @@
     });
 </script>
 <!-- End of video player script -->
+
 </html>

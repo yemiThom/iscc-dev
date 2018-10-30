@@ -33,7 +33,9 @@
         width=device-width, height=device-height, viewport-fit=cover" />
 </head>
 
-<body onload="createConnection();">
+<!--body onload="createConnection();"-->
+
+<body>
     <!-- Start Header Area -->
     <header class="default-header">
         <div class="container">
@@ -64,26 +66,47 @@
         </div>
 
         <div class="sidenav-section">
-            <a href="index.html">Login page</a>
-            <a href="register.html">Register</a>
-        </div>
-
-        <!--   <a href="register-index.html">Register page 2</a>
-        <a href="register-profile.html">Register page 3</a> -->
-
-        <div class="sidenav-section">
+            <img class="icon3" src="img/icons/faq.png" />
+            <h4>Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
             <a href="cols-helper.html">Colonoscopy Helper</a>
-            <a href="sound-player.html">Sound Player</a>
-            <a href="event-cal.html">Events Calendar</a>
         </div>
 
         <div class="sidenav-section">
-            <a href="data-to-pdf.html">Data to PDF</a>
+            <img class="icon1" src="img/icons/contact.png" />
+            <h4>Contact</h4>
+            <a href="https://www.iscc.ie/contact" target="_blank" data-rel="external">Contact</a>
         </div>
+
+        <div class="sidenav-section" onclick="window.open('https://www.iscc.ie/support-line', '_blank', 'location=yes')">
+            <img class="icon1" src="img/icons/support.png" />
+            <h4>Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="https://www.survey.iscc.ie/living-with-ibd">Living With IBD</a>
+            <a href="https://www.iscc.ie/living-well-with-ibd">Living Well With IBD</a>
+            <a href="https://www.iscc.ie/support-line">Support Telephone Line</a>
+        </div>
+
+        <a href="#" onclick="cordova.InAppBrowser.open('https://www.iscc.ie/faq', 'system', 'location=yes');"></a>
+        <div class="sidenav-section">
+            <img class="icon2" src="img/icons/faq.png" />
+            <h4>FAQ</h4>
+            <a>FAQ</a>
+        </div>
+        </a>
 
         <div class="sidenav-section">
             <a href="index.html" onclick="signOut()">Log out</a>
         </div>
+
+        <!--div class="sidenav-section">
+                <a href="register.html">Register Screen</a>
+            </div>
+    
+            <div class="sidenav-section">
+                <a href="data-to-pdf.html">Data to PDF</a>
+            </div>-->
+
     </div>
     <!-- Side Bar -->
 
@@ -105,14 +128,14 @@
                         <a href="nearby.html"><i class="fas fa-times"></i></a>
                     </div>
 
-                    <p>Bosun</p>
-                    <span>200 meters nearby</span>
+                    <p>ISCCDEV</p>
+                    <!--span>200 meters nearby</span>-->
                 </div>
                 <div id="chat-messages">
                     <label>Thursday 02</label>
 
                     <div class="message">
-                        <img src="img/profile/1_copy.jpg" />
+                        <!--img src="img/profile/1_copy.jpg" />-->
                         <div class="bubble received">
                             Lorem ipsum dolor sit amet!
                             <!--div class="corner"></div-->
@@ -121,7 +144,7 @@
                     </div>
 
                     <div class="message right">
-                        <img src="img/profile/2_copy.jpg" />
+                        <!--img src="img/profile/2_copy.jpg" />-->
                         <div class="bubble sent">
                             Donec vitae urna sed nunc fringilla molestie?
                             <!--div class="corner"></div-->
@@ -130,7 +153,7 @@
                     </div>
 
                     <div class="message">
-                        <img src="img/profile/1_copy.jpg" />
+                        <!--img src="img/profile/1_copy.jpg" />-->
                         <div class="bubble received">
                             Duis vitae varius neque
                             <!--div class="corner"></div-->
@@ -139,7 +162,7 @@
                     </div>
 
                     <div class="message right">
-                        <img src="img/profile/2_copy.jpg" />
+                        <!--img src="img/profile/2_copy.jpg" />-->
                         <div class="bubble sent">
                             Proin molestie iaculis consectetur. Vestibulum facilisis, arcu ut rutrum tempus, tellus
                             arcu tempor tortor, nec euismod dolor diam sed ligula?
@@ -149,7 +172,7 @@
                     </div>
 
                     <div class="message">
-                        <img src="img/profile/1_copy.jpg" />
+                        <!--img src="img/profile/1_copy.jpg" />-->
                         <div class="bubble received">
                             Sed a luctus lorem
                             <!--div class="corner"></div-->
@@ -158,7 +181,7 @@
                     </div>
 
                     <div class="message right">
-                        <img src="img/profile/2_copy.jpg" />
+                        <!--img src="img/profile/2_copy.jpg" />-->
                         <div class="bubble sent">
                             <textarea id="dataChannelReceive" disabled style="border:none;background:none;"></textarea>
                             <!--div class="corner"></div-->

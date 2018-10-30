@@ -139,7 +139,8 @@ z-index:200;
     color:#fff;
 }
 .p1 #profile{
-    background:#fff url("../img/timeline1.png");
+    /*background:#fff url("../img/timeline1.png");*/
+    background-color: #414b76;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -230,8 +231,8 @@ z-index:200;
     position:relative;
     float:left;
 }
-.received{ background:#33cccc; color:#ecf0f1; }
-.sent{ background:#ecf0f1; color:#2c3e50; }
+.received{ background:#775ba6; color:#ffffff; }
+.sent{ background:#ecf0f1; color:#414b76; }
 #chat-messages div.message.right .bubble{
     float:right;
     border-radius:5px 5px 0px 5px ;
