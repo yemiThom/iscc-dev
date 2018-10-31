@@ -1,16 +1,16 @@
-var tid = setInterval( function () {
-    if ( document.readyState !== 'complete' ) return;
-    clearInterval( tid ); 
-    
+var tid = setInterval(function () {
+    if (document.readyState !== 'complete') return;
+    clearInterval(tid);
+
 
     var nearbyTogState = localStorage.getItem("nearbyTogState");
 
-    if(nearbyTogState == "online"){
+    if (nearbyTogState == "online") {
         console.log("toggle state: online");
         onlineCheck();
         changeTestIndicator("online");
 
-    }else if(nearbyTogState == "busy"){
+    } else if (nearbyTogState == "busy") {
         console.log("toggle state: busy");
         testIndicator.classList.add("away");
         testIndicator.classList.remove("available");
@@ -18,16 +18,16 @@ var tid = setInterval( function () {
         busyCheck();
         changeTestIndicator("busy");
 
-    }else{
+    } else {
         console.log("toggle state: invisible");
         testIndicator.classList.add("inactive");
         testIndicator.classList.remove("available");
         testIndicator.classList.remove("away");
-        invisibleCheck();  
-        changeTestIndicator("invisible");      
+        invisibleCheck();
+        changeTestIndicator("invisible");
     }
 
-}, 100 );
+}, 100);
 
 function onlineCheck() {
     document.getElementById("online").checked = true;
@@ -58,26 +58,26 @@ function invisibleCheck() {
     document.getElementById("toggle-candy").className = "switch-candy-grey";
 
     changeTestIndicator("invisible");
-    
+
     localStorage.setItem("nearbyTogState", "invisible");
 }
 
-function changeTestIndicator(str){
-    
+function changeTestIndicator(str) {
+
     var testIndicator = document.getElementById("devTest");
 
-    if(str == "online"){
+    if (str == "online") {
 
         testIndicator.classList.add("available");
         testIndicator.classList.remove("away");
         testIndicator.classList.remove("inactive");
-    }else if(str == "busy"){
+    } else if (str == "busy") {
 
         testIndicator.classList.remove("available");
         testIndicator.classList.add("away");
         testIndicator.classList.remove("inactive");
-    }else{
-        
+    } else {
+
         testIndicator.classList.remove("available");
         testIndicator.classList.remove("away");
         testIndicator.classList.add("inactive");
@@ -85,10 +85,63 @@ function changeTestIndicator(str){
 }
 
 
-function showAlert(message, title){
-    if(navigator.notification){
+function showAlert(message, title) {
+    if (navigator.notification) {
         navigator.notification.alert(message, null, title, 'Ok');
-    }else{
+    } else {
         alert(title ? (title + ": " + message) : message);
     }
 }
+$(document).ready(function () {
+    $(".friend").each(function () {
+        $(this).click(function () {
+            var childOffset = $(this).offset();
+            var parentOffset = $(this).parent().parent().offset();
+            var childTop = childOffset.top - parentOffset.top;
+            /*var clone = $(this).find('img').eq(0).clone();*/
+            var top = childTop + 12 + "px";
+
+            /*$(clone).css({'top': top}).addClass("floatingImg").appendTo("#chatbox");*/
+
+            setTimeout(function () { $("#profile p").addClass("animate"); $("#profile").addClass("animate"); }, 100);
+            setTimeout(function () {
+                $("#chat-messages").addClass("animate");
+                $('.cx, .cy').addClass('s1');
+                setTimeout(function () { $('.cx, .cy').addClass('s2'); }, 100);
+                setTimeout(function () { $('.cx, .cy').addClass('s3'); }, 200);
+            }, 150);
+
+            /*$('.floatingImg').animate({
+                'width': "68px",
+                'left':'108px',
+                'top':'20px'
+            }, 200);*/
+
+            var name = $(this).find("p strong").html();
+            var email = $(this).find("p span").html();
+            $("#profile p").html(name);
+            $("#profile span").html(email);
+
+            /*$(".message").not(".right").find("img").attr("src", $(clone).attr("src"));*/
+            $('#friends').fadeOut();
+            $('#chatview').fadeIn();
+
+
+            $('#close').unbind("click").click(function () {
+                $("#chat-messages, #profile, #profile p").removeClass("animate");
+                $('.cx, .cy').removeClass("s1 s2 s3");
+                /*$('.floatingImg').animate({
+                    'width': "40px",
+                    'top':top,
+                    'left': '12px'
+                }, 200, function(){$('.floatingImg').remove()});*/
+
+                setTimeout(function () {
+                    $('#chatview').fadeOut();
+                    $('#friends').fadeIn();
+                }, 50);
+            });
+
+        });
+    });
+});

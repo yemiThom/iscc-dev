@@ -58,7 +58,7 @@ input
 }
 
 @font-face{
-    font-family: Lato-Bold;
+    font-family: Lato;
     src: url('https://fonts.googleapis.com/css?family=Lato');
 }
 
@@ -88,7 +88,7 @@ input
     html { font-size: 10px; }
 }
 
-body, input, textarea { font-family: 'Lato-Bold', Verdana, 'Gill Sans', 'Gill Sans MT', 'Calibri', Tahoma, sans-serif }
+body, input, textarea { font-family: 'Lato', Verdana, 'Gill Sans', 'Gill Sans MT', 'Calibri', Tahoma, sans-serif }
 
 h1 { font-size: 2em; }
 h2 { font-size: 1.5em; }
@@ -100,17 +100,25 @@ p { font-size:1em; line-height:1.2; margin: 5px auto; }
 
 a, a:visited, a:hover, a:active { color: inherit; cursor: none !important; }
 
+ul { list-style-type: none; }
 
-ul{
+.ul-style{
     line-height: 1.5rem;
     padding-bottom: 5%;
     color: #414b76;
 }
-ul li::before{
+.ul-style li::before{
     content: "•"; 
     color: #d123bf;
     padding: 2%;
     margin-left: -0.5em
+}
+
+.ul-style li .ul-style li::before{
+    content: "-"; 
+    color: #775ba6;
+    padding: 2%;
+    margin-left: 1.5em
 }
 
 input,
