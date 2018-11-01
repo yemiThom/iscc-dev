@@ -1,4 +1,4 @@
-const AWS_REGION = 'EU_WEST_1';
+const AWS_REGION = 'eu-west-1';
 const AWS_IDENTITY_POOL_ID = 'eu-west-1:a360eda2-dfd8-441e-b011-4582e383c639';
 const AWS_IOT_ENDPOINT = 'a3lwf0gnov039g.iot.eu-west-1.amazonaws.com';
 const APP_NAME = 'chat';
@@ -89,7 +89,7 @@ function initClient(requestUrl, clientId) {
   // called when the client loses its connection
   function onConnectionLost(responseObject) {
     if (responseObject.errorCode !== 0) {
-      console.log("onConnectionLost:" + responseObject.errorMessage);
+      console.log("onConnectionLost: " + responseObject.errorMessage);
     } else {
       console.log("onConnectionLost");
     }

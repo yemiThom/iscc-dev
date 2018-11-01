@@ -1,0 +1,260 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Outputs:
+  IdentityPoolId:
+    Value:
+      Ref: ChatIdentityPool
+Parameters:
+  AwsIoTEndpoint:
+    Type: String
+Resources:
+  ChatFunction:
+    Properties:
+      Code:
+        S3Bucket: iscciot
+        S3Key: aa016b9c460ba94120c3f3ac7aa230e8
+      Environment:
+        Variables:
+          AWS_IOT_ENDPOINT:
+            Ref: AwsIoTEndpoint
+      Handler: index.handler
+      Role:
+        Fn::GetAtt:
+        - ChatFunctionRole
+        - Arn
+      Runtime: nodejs6.10
+    Type: AWS::Lambda::Function
+  ChatFunctionRole:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+        Version: '2012-10-17'
+      ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+      - PolicyDocument:
+          Statement:
+          - Action: iot:Connect
+            Effect: Allow
+            Resource:
+            - '*'
+          - Action: dynamodb:Query
+            Effect: Allow
+            Resource:
+            - Fn::GetAtt:
+              - ChatTable
+              - Arn
+          - Action: iot:Publish
+            Effect: Allow
+            Resource:
+            - Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/chat/in/*
+            - Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/chat/pub/*
+          Version: '2012-10-17'
+        PolicyName: ChatFunctionRolePolicy
+    Type: AWS::IAM::Role
+  ChatIdentityPool:
+    Properties:
+      AllowUnauthenticatedIdentities: true
+      IdentityPoolName: chatPool
+    Type: AWS::Cognito::IdentityPool
+  ChatIdentityPoolRoleAttachment:
+    Properties:
+      IdentityPoolId:
+        Ref: ChatIdentityPool
+      Roles:
+        unauthenticated:
+          Fn::GetAtt:
+          - CognitoUnauthenticatedRole
+          - Arn
+    Type: AWS::Cognito::IdentityPoolRoleAttachment
+  ChatPresenceRule:
+    Properties:
+      RuleName: chatPresenceRule
+      TopicRulePayload:
+        Actions:
+        - Lambda:
+            FunctionArn:
+              Fn::GetAtt:
+              - ChatFunction
+              - Arn
+        AwsIotSqlVersion: '2016-03-23'
+        RuleDisabled: false
+        Sql: SELECT * FROM '$aws/events/presence/#'
+    Type: AWS::IoT::TopicRule
+  ChatPresenceRulePermission:
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName:
+        Fn::GetAtt:
+        - ChatFunction
+        - Arn
+      Principal: iot.amazonaws.com
+      SourceAccount:
+        Ref: AWS::AccountId
+      SourceArn:
+        Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:rule/${ChatPresenceRule}
+    Type: AWS::Lambda::Permission
+  ChatPublishRole:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service:
+            - iot.amazonaws.com
+        Version: 2012-10-17
+      Policies:
+      - PolicyDocument:
+          Statement:
+          - Action: iot:Publish
+            Effect: Allow
+            Resource:
+              Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/chat/pub/*
+          Version: 2012-10-17
+        PolicyName: ChatPublishPolicy
+    Type: AWS::IAM::Role
+  ChatPublishRule:
+    Properties:
+      RuleName: chatPubRule
+      TopicRulePayload:
+        Actions:
+        - Republish:
+            RoleArn:
+              Fn::GetAtt:
+              - ChatPublishRole
+              - Arn
+            Topic: chat/pub${room}
+        AwsIotSqlVersion: '2016-03-23'
+        RuleDisabled: false
+        Sql: SELECT *, clientId() AS clientId, timestamp() AS timestamp FROM 'chat/out'
+          WHERE NOT isUndefined(message) AND NOT isUndefined(room)
+    Type: AWS::IoT::TopicRule
+  ChatRule:
+    Properties:
+      RuleName: chatRule
+      TopicRulePayload:
+        Actions:
+        - Lambda:
+            FunctionArn:
+              Fn::GetAtt:
+              - ChatFunction
+              - Arn
+        AwsIotSqlVersion: '2016-03-23'
+        RuleDisabled: false
+        Sql: SELECT *, clientId() AS clientId, timestamp() AS timestamp FROM 'chat/out'
+    Type: AWS::IoT::TopicRule
+  ChatRulePermission:
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName:
+        Fn::GetAtt:
+        - ChatFunction
+        - Arn
+      Principal: iot.amazonaws.com
+      SourceAccount:
+        Ref: AWS::AccountId
+      SourceArn:
+        Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:rule/${ChatRule}
+    Type: AWS::Lambda::Permission
+  ChatStoreRole:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service:
+            - iot.amazonaws.com
+        Version: '2012-10-17'
+      Policies:
+      - PolicyDocument:
+          Statement:
+          - Action: dynamodb:PutItem
+            Effect: Allow
+            Resource:
+            - Fn::GetAtt:
+              - ChatTable
+              - Arn
+          Version: '2012-10-17'
+        PolicyName: ChatStorePolicy
+    Type: AWS::IAM::Role
+  ChatStoreRule:
+    Properties:
+      RuleName: chatStore
+      TopicRulePayload:
+        Actions:
+        - DynamoDBv2:
+            PutItem:
+              TableName: chat
+            RoleArn:
+              Fn::GetAtt:
+              - ChatStoreRole
+              - Arn
+        AwsIotSqlVersion: '2016-03-23'
+        RuleDisabled: false
+        Sql: SELECT *, timestamp() AS timestamp, round(timestamp() / 1000) + 86400
+          AS ttl FROM 'chat/pub/#'
+    Type: AWS::IoT::TopicRule
+  ChatTable:
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: room
+        AttributeType: S
+      - AttributeName: timestamp
+        AttributeType: N
+      KeySchema:
+      - AttributeName: room
+        KeyType: HASH
+      - AttributeName: timestamp
+        KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TableName: chat
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+    Type: AWS::DynamoDB::Table
+  CognitoUnauthenticatedRole:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRoleWithWebIdentity
+          Condition:
+            StringEquals:
+              cognito-identity.amazonaws.com:aud:
+                Ref: ChatIdentityPool
+          Effect: Allow
+          Principal:
+            Federated: cognito-identity.amazonaws.com
+        Version: '2012-10-17'
+      Policies:
+      - PolicyDocument:
+          Statement:
+          - Action: iot:Connect
+            Effect: Allow
+            Resource:
+            - '*'
+          - Action: iot:Publish
+            Effect: Allow
+            Resource:
+            - Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/chat/out
+            - Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/chat/stream
+          - Action: iot:Subscribe
+            Effect: Allow
+            Resource:
+            - Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topicfilter/chat/in/*
+            - Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topicfilter/chat/pub/*
+          - Action: iot:Receive
+            Effect: Allow
+            Resource:
+            - Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/chat/in/*
+            - Fn::Sub: arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/chat/pub/*
+          Version: '2012-10-17'
+        PolicyName: CognitoUnauthenticatedPolicy
+    Type: AWS::IAM::Role
