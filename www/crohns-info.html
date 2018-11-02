@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gutsy - Crohn's Disease</title>
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+    <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
+    <link rel="stylesheet" type="text/css" href="css/vid-player.css">
+    <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+
+    <!-- javascript -->
+    <script type='application/javascript' src='js/fastclick.min.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+</head>
+
+<body>
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <img src="img/icons/myibd-logo-white.png">
+                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidenav">
+        <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            <a id="email_value"></a>
+        </div>
+
+        <div class="sidenav-section">
+            <img class="icon3" src="img/icons/faq.png" />
+            <h4>Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="uc-info.html">Ulcerative Colitis</a>
+            <a href="get-diagnosis.html">Getting a Diagnosis</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <img class="icon1" src="img/icons/contact.png" />
+            <h4>Contact</h4>
+            <a href="https://www.iscc.ie/contact" target="_blank" data-rel="external">Contact</a>
+        </div>
+
+        <div class="sidenav-section" onclick="window.open('https://www.iscc.ie/support-line', '_blank', 'location=yes')">
+            <img class="icon1" src="img/icons/support.png" />
+            <h4>Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="https://www.survey.iscc.ie/living-with-ibd">Living With IBD</a>
+            <a href="https://www.iscc.ie/living-well-with-ibd">Living Well With IBD</a>
+            <a href="https://www.iscc.ie/support-line">Support Telephone Line</a>
+        </div>
+
+        <a href="#" onclick="cordova.InAppBrowser.open('https://www.iscc.ie/faq', 'system', 'location=yes');"></a>
+        <div class="sidenav-section">
+            <img class="icon2" src="img/icons/faq.png" />
+            <h4>FAQ</h4>
+            <a>FAQ</a>
+        </div>
+        </a>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+
+        <!--div class="sidenav-section">
+                <a href="register.html">Register Screen</a>
+            </div>
+    
+            <div class="sidenav-section">
+                <a href="data-to-pdf.html">Data to PDF</a>
+            </div>-->
+
+    </div>
+    <!-- Side Bar -->
+
+    <!-- Start Precontainer Wrapper -->
+    <div class="pre-container-wrapper">
+        <!--<div id="swipe-area" class="swipe-area"><br/><br/><br/>Text Area</div>-->
+        <!-- Start Container Area -->
+        <div class="content-container">
+            <div class="header">
+                <h1 class="text-center">Crohn's Disease</h1>
+            </div>
+            <div style="margin: 10px;">
+                <h2>DEFINITION</h2>
+                <p>
+                    Crohn’s Disease is an Inflammatory Bowel disease. It can result in inflammation of any part of the
+                    gut, from the mouth to the anus. The most common area affected is the end small bowel/small
+                    intestine. Often the gut becomes inflamed in patches of varying sizes and severity, with healthy
+                    parts of gut in-between these sections.
+                </p>
+                <p>
+                    Crohn’s Disease is a chronic condition. This means that it is ongoing and life-long, although you
+                    may have periods of good health (remission), as well as times when symptoms are more active
+                    (relapses or flare-ups).
+                </p>
+                <p><br /></p>
+
+                <h2>SYMPTOMS</h2>
+                <p>
+                    Symptoms vary from person to person. The severity of the symptoms depends on disease activity, the
+                    location of the inflammation, the body’s own response to the disease and the influence of
+                    medications to fight the disease.
+                </p>
+                <p>
+                    <ul class="ul-style">
+                        <li>Diarrhoea or loose stools</li>
+                        <li>Fever (sometimes in the form of night sweats</li>
+                        <li>Fatigue, tiredness</li>
+                        <li>Anaemia (low blood count)</li>
+                        <li>Nausea, vomiting</li>
+                        <li>Cramps, abdominal pain</li>
+                        <li>Fistulae, particularly perianal fistulae (connections or short cuts between the bowel and
+                            the skin or the bowel and other organs)</li>
+                        <li>Skin tags</li>
+                        <li>Weight loss</li>
+                        <li>Mouth ulcers</li>
+                        <li>Deep ulcers in the bowel or stomach</li>
+                        <li>Growth can be affected with children</li>
+                    </ul>
+                </p><br />
+
+                <h2>DEMOGRAPHICS (WHO GETS IT?)</h2>
+                <p>
+                    Population based studies from a range of European countries suggest a similar rise in new cases in
+                    the adult population.<br />
+                    In Denmark, the mean incident rate for UC in 1995-1998 was 14.4 per 100,000 per year for women and
+                    13.8 for men, increasing to 23.2 per 100,000 per year for women and 23.4 for men in the period of
+                    2009-2011. <br />
+                    The mean incident rate for CD in 1995-1998 was 7.8 per 100,000 per year for women and 5.6 for men,
+                    increasing to 10.3 per 100,000 per year for women and 8.9 for men in the period of 2009-2012. <br />
+                    A recent systematic review suggest the highest reported prevalence values for IBD were in Europe
+                    (UC, 505 per 100,000 persons; CD, 322 per 100,000 persons) and North America (UC, 249 per 100,000
+                    persons; 310 per 100,000 persons).
+                </p>
+                <p>
+                    Based on these figures, it can be estimated that in 2018 there were approximately 24,259 UC
+                    patients and 15,468 CD patients in Ireland (based on population at 2018 census 4,803,748).
+                </p>
+
+                <p><br /></p>
+                <h2>CAUSES</h2>
+                <p>
+                    The causes for Crohn’s disease are not fully understood at present.<br />
+                    Recent research has pointed to several possible causes for Crohn’s Disease including;
+                </p>
+                <p>
+                    <ul>
+                        <li>An underlying genetic cause</li>
+                        <li>Bacteria in the gut causing issues with the immune system resulting in increased
+                            inflammation</li>
+                        <li>Triggers such as bacteria, viruses, diet, smoking and stress.</li>
+                    </ul>
+                </p>
+                <br />
+
+                <h2>TREATMENTS</h2>
+                <p>
+                    Treatment of Crohn’s disease can be divided into non-medical, medical and surgical.
+                    These treatments depend on the stage and severity of the disease.<br/>
+                    Often a combination of all three may be necessary whether controlling active flares or maintaining
+                    stable disease.<br/>
+                    The aim of these treatments is to heal the inflammation that is causing the above symptoms and help
+                    return to a normal quality life, stabilising the disease in the long term.
+                    The course of the disease is often unpredictable so treatments can change from time to time where
+                    necessary.
+                </p>
+                <p>
+                    <ul class="ul-style">
+                        <li>
+                            NON-MEDICAL
+                            
+                            <ul class="ul-style">
+                                <li>DIET</li>
+                                <li>HEALTH AND FITNESS</li>
+                                <li>LIFE STYLE</li>
+                                <li>STOPPING SMOKING</li>
+                            </ul>
+                        </li>
+                        <li>
+                            MEDICAL
+                            <ul class="ul-style">
+                                <li>TABLETS</li>
+                                <li>ENEMAS</li>
+                                <li>SUPPOSITORIES</li>
+                                <li>INJECTIONS</li>
+                                <li>INFUSIONS</li>
+                            </ul>
+                        </li>
+                        <li>SURGICAL</li>
+                    </ul>
+                </p>
+
+                <p><br /></p>
+                <h2>COMPLICATIONS </h2>
+                <p>
+                    There are complications both inside and outside the gut.<br />
+                    Within the gut complications include strictures, perforations and fistulae (see glossary of terms
+                    for more information on each).<br />
+                    Complications outside the gut are less common but include;
+                </p>
+                <p>
+                    <ul class="ul-style">
+                        <li>Joints - inflammation of the large and small joints of the arms, legs, pelvis and spine.
+                            This can cause pain, swelling and restriction of normal movements in the joints affected.
+                            (Arthritis, Sacro-ileitis)</li>
+                        <li>Skin - painful, red skin especially on the shins (Erythema Nodosum/Pyoderma)</li>
+                        <li>Eyes - painful, red, gritty watery eyes (Iritis, Conjunctivitis)</li>
+                        <li>Liver abnormalities due to involvement of the cells (Chronic Active Hepatitis) or bile
+                            ducts (Primary Sclerosing Chonangitis)</li>
+                        <li>Anaemia (Low blood count)</li>
+                    </ul>
+                </p>
+                <br />
+            </div>
+        </div>
+        <!-- End Container Area -->
+    </div>
+    <!-- End Precontainer Wrapper -->
+
+    <!-- Start Footer Nav Area -->
+    <div class="default-footer">
+        <div class="mobile-bottom-bar">
+            <a href="home.html" class="footer-link">
+                <i class="fas fa-home"></i>
+                <span class='footer-text'>Home</span>
+            </a>
+            <a href="health-tracker.html" class="footer-link">
+                <i class="fas fa-file-contract"></i>
+                <span class='footer-text'>Health Tracker</span>
+            </a>
+            <a href="gmap.html" class="footer-link">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class='footer-text'>Restrooms</span>
+            </a>
+            <a href="mindfulness.html" class="footer-link">
+                <i class="fas fa-spa"></i>
+                <span class='footer-text'>Mindfulness</span>
+            </a>
+            <a href="nearby.html" class="footer-link">
+                <i class="fas fa-comments"></i>
+                <span class='footer-text'>Nearby</span>
+            </a>
+            <!--a href="profile-card.html" class="footer-link">
+                <i class="fas fa-user-circle"></i>
+                <span class='footer-text'>Profile</span>
+            </a-->
+        </div>
+    </div>
+    <!-- End Footer Nav Area -->
+
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+</body>
+<!-- paged tabs script -->
+<script src="js/page-tabs.js"></script>
+<!-- end paged tabs script-->
+<!-- Start Sidebar script -->
+<script type="text/javascript">
+    /* Set the width of the sidbar to 250px */
+    function openNav() {
+        /*document.getElementById("sidebar").style.width = "250px";*/
+        document.getElementById("sidebar").style.left = "0px";
+    }
+
+    /* Set the width of the sidebar to 0 */
+    function closeNav() {
+        /*document.getElementById("sidebar").style.width = "0";*/
+        document.getElementById("sidebar").style.left = "-260px";
+    }
+</script>
+<!-- End Sidebar script -->
+<!-- Start swipe sidebar script ->
+<script type="text/javascript">
+    $(function () {
+        $("#swipe-area").swipe({
+            //Generic swipe handler for all directions
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+
+                switch (direction) {
+                    case "right":
+                        openNav();
+                        break;
+                    case "left":
+                        closeNav();
+                        break;
+                }
+            },
+            //Default is 75px, set to 0 for demo so any distance triggers swipe
+            threshold: 75
+        });
+
+        /* Set the width of the sidbar to 250px */
+        function openNav() {
+            /*document.getElementById("sidebar").style.width = "250px";*/
+            document.getElementById("sidebar").style.left = "0px";
+        }
+
+        /* Set the width of the sidebar to 0 */
+        function closeNav() {
+            /*document.getElementById("sidebar").style.width = "0";*/
+            document.getElementById("sidebar").style.left = "-260px";
+        }
+    });
+</script>
+<-- End swipe sidebar script -->
+
+</html>

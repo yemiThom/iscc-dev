@@ -149,6 +149,11 @@ nav {
     background-color: #2B3661;
 }
 
+.closebtn:hover, .closebtn:focus{
+    color: #d123bf;
+    background-color: #414b76 !important;
+}
+
 /* Position and style the close button (top right corner) */
 .sidenav .closebtn {
     position: absolute;
@@ -156,6 +161,24 @@ nav {
     right: 25px;
     font-size: 25px;
     margin-left: 50px;
+}
+
+.sidenav .icon1{
+    width: 15%;
+    float: right;
+    margin-right: 20%;
+}
+
+.sidenav .icon2{
+    width: 15%;
+    float: right;
+    margin-right: 50%;
+}
+
+.sidenav .icon3{
+    width: 15%;
+    float: right;
+    margin-right: 43%;
 }
 
 .container {

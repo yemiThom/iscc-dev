@@ -658,7 +658,7 @@ iframe {
 }
 .privacy-content ul li::before{
   content: "•"; 
-  color: #33cccc;
+  color: #414b76;
   padding: 2%;
   margin-left: -1em
 }

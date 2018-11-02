@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin id="com.applozic.phonegap"
+    version="0.8.0"
+    xmlns="http://www.phonegap.com/ns/plugins/1.0">
+
+    <name>Applozic</name>
+
+    <dependency id="cordova-plugin-cocoapod-support"/>
+
+    <engines>
+        <engine
+        name="cordova"
+        version=">=3.4.0" />
+    </engines>
+
+    <asset
+    src="www/applozic.js"
+    target="js/applozic.js" />
+
+    <js-module
+        name="applozic"
+        src="www/applozic.js">
+        <clobbers target="applozic" />
+    </js-module>
+
+    <platform name="android">
+
+        <config-file
+            parent="/*"
+            target="res/xml/config.xml">
+            <feature name="ApplozicCordovaPlugin">
+                <param
+                name="android-package"
+                value="com.applozic.phonegap.ApplozicCordovaPlugin" />
+            </feature>
+        </config-file>
+
+        <source-file
+        src="src/android/ApplozicCordovaPlugin.java"
+        target-dir="src/com/applozic/phonegap/" />
+        <source-file
+        src="src/android/FcmInstanceIDListenerService.java"
+        target-dir="src/com/applozic/phonegap/notification" />
+        <source-file
+        src="src/android/FcmListenerService.java"
+        target-dir="src/com/applozic/phonegap/notification" />
+        <source-file
+        src="src/android/GetMessageListTask.java"
+        target-dir="src/com/applozic/phonegap/" />
+        <source-file
+        src="src/android/AlChannelInfoTask.java"
+        target-dir="src/com/applozic/phonegap/" />
+        <source-file
+        src="src/android/MessageParamsModel.java"
+        target-dir="src/com/applozic/phonegap/" />
+        <source-file
+        src="src/android/applozic-settings.json"
+        target-dir="assets" />
+
+        <framework
+        custom="true"
+        src="src/android/build.gradle"
+        type="gradleReference" />
+
+        <config-file
+            parent="/manifest/application"
+            target="AndroidManifest.xml">
+
+            <!--  <meta-data android:name="com.applozic.application.key"
+             android:value="applozic-sample-app" /> --> <!-- Applozic Application Key -->
+
+            <!--  <meta-data android:name="com.applozic.mobicomkit.notification.smallIcon"
+             android:resource="@mipmap/icon" /> --> <!-- Launcher white Icon -->
+
+            <meta-data
+            android:name="main_folder_name"
+            android:value="chat" /> <!-- Attachment Folder Name -->
+
+            <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAYB1vPc4cpn_FJv68eS_ZGe1UasBNwxLI" />  <!--Replace with your geo api key from google developer console  -->
+            <!-- For testing purpose use AIzaSyAYB1vPc4cpn_FJv68eS_ZGe1UasBNwxLI
+             To disable the location sharing via map add this line ApplozicSetting.getInstance(context).disableLocationSharingViaMap(); in onSuccess of Applozic UserLoginTask -->
+
+            <meta-data
+            android:name="activity.open.on.notification"
+            android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" /> <!-- NOTE : Do NOT change this value -->
+
+            <meta-data
+            android:name="com.package.name"
+            android:value="${applicationId}" /> <!-- NOTE: Do NOT change this, it should remain same i.e 'com.package.name' -->
+
+            <provider
+              android:name="com.applozic.mobicomkit.uiwidgets.ALFileProvider"
+              android:authorities="${applicationId}.provider"
+              android:exported="false"
+              android:grantUriPermissions="true">
+              <meta-data
+                  android:name="android.support.FILE_PROVIDER_PATHS"
+                  android:resource="@xml/applozic_provider_paths" />
+          </provider>
+
+            <activity
+                android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"
+                android:label="@string/app_name"
+                android:launchMode="singleTask"
+                android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+                android:parentActivityName="MainActivity"
+                android:theme="@style/ApplozicTheme">
+                <!-- Parent activity meta-data to support API level 7+ -->
+                <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+            </activity>
+
+            <activity
+                android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"
+                android:label="@string/activity_contacts_list"
+                android:name="com.applozic.mobicomkit.uiwidgets.people.activity.MobiComKitPeopleActivity"
+                android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+                android:theme="@style/ApplozicTheme"
+                android:windowSoftInputMode="adjustResize">
+                <!-- Parent activity meta-data to support API level 7+ -->
+                <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+                <intent-filter>
+                    <action android:name="android.intent.action.SEARCH" />
+                </intent-filter>
+                <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_contacts" />
+            </activity>
+
+            <activity
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:label="Image"
+                android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.FullScreenImageActivity"
+                android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+                android:theme="@style/Applozic_FullScreen_Theme">
+                <!-- Parent activity meta-data to support API level 7+ -->
+                <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+            </activity>
+
+            <activity
+                android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"
+                android:launchMode="singleTop"
+                android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ContactSelectionActivity"
+                android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+                android:theme="@style/ApplozicTheme">
+                <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+            </activity>
+
+            <activity
+                android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"
+                android:launchMode="singleTop"
+                android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelCreateActivity"
+                android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+                android:theme="@style/ApplozicTheme">
+                <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+            </activity>
+
+            <activity
+                android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"
+                android:launchMode="singleTop"
+                android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelNameActivity"
+                android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+                android:theme="@style/ApplozicTheme"></activity>
+
+            <activity
+                android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"
+                android:launchMode="singleTop"
+                android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelInfoActivity"
+                android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+                android:theme="@style/ApplozicTheme">
+                <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+            </activity>
+
+            <activity
+                android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"
+                android:launchMode="singleTop"
+                android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.MobiComAttachmentSelectorActivity"
+                android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+                android:theme="@style/ApplozicTheme"
+                android:windowSoftInputMode="stateHidden|adjustResize">
+                <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+            </activity>
+
+            <activity
+                android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"
+                android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.MobicomLocationActivity"
+                android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+                android:theme="@style/ApplozicTheme"
+                android:windowSoftInputMode="adjustResize"></activity>
+
+            <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
+            <service
+            android:exported="false"
+            android:name="com.applozic.mobicomkit.api.conversation.MessageIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+            <service android:name="org.eclipse.paho.android.service.MqttService" />
+
+            <service
+            android:exported="false"
+            android:name="com.applozic.mobicomkit.api.conversation.ApplozicIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+            <service
+            android:exported="false"
+            android:name="com.applozic.mobicomkit.api.conversation.ApplozicMqttIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+            <service
+            android:exported="false"
+            android:name="com.applozic.mobicomkit.api.people.UserIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+            <service
+            android:exported="false"
+            android:name="com.applozic.mobicomkit.api.conversation.ConversationIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+            <service android:name="com.applozic.phonegap.notification.FcmListenerService">
+                <intent-filter>
+                    <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                </intent-filter>
+            </service>
+
+            <service
+                android:exported="false"
+                android:name="com.applozic.phonegap.notification.FcmInstanceIDListenerService">
+                <intent-filter>
+                    <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                </intent-filter>
+            </service>
+
+            <receiver android:name="com.applozic.mobicomkit.broadcast.TimeChangeBroadcastReceiver">
+                <intent-filter>
+                    <action android:name="android.intent.action.TIME_SET" />
+                    <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                </intent-filter>
+            </receiver>
+            <receiver
+                android:enabled="true"
+                android:exported="true"
+                android:name="com.applozic.mobicomkit.broadcast.ConnectivityReceiver">
+                <intent-filter>
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+        <config-file
+            parent="/manifest"
+            target="AndroidManifest.xml">
+            <!--
+             <uses-permission android:name="<APP_PKG_NAME>.permission.MAPS_RECEIVE" />
+             <permission android:name="<APP_PKG_NAME>.permission.MAPS_RECEIVE" android:protectionLevel="signature" />
+             -->
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_CONTACTS" />
+            <uses-permission android:name="android.permission.VIBRATE" />
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.CALL_PHONE" />
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+        </config-file>
+
+    </platform>
+
+    <platform name="ios">
+
+        <pods-config ios-min-version="9.0" use-frameworks="true"/>
+        <pod name="Applozic" version="5.7.0" />
+
+        <config-file
+            parent="/widget"
+            target="config.xml">
+            <feature name="ApplozicCordovaPlugin">
+                <param
+                name="ios-package"
+                value="ApplozicCordovaPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file
+            parent="NSCameraUsageDescription"
+            target="*-Info.plist">
+            <string>Allow Camera</string>
+        </config-file>
+
+
+        <config-file
+            parent="NSPhotoLibraryAddUsageDescription"
+            target="*-Info.plist">
+            <string>Allow Write</string>
+        </config-file>
+
+
+        <config-file
+            parent="NSContactsUsageDescription"
+            target="*-Info.plist">
+            <string>Allow Contacts</string>
+        </config-file>
+
+
+        <config-file
+            parent="NSLocationWhenInUseUsageDescription"
+            target="*-Info.plist">
+            <string>Allow location sharing</string>
+        </config-file>
+
+
+        <config-file
+            parent="NSMicrophoneUsageDescription"
+            target="*-Info.plist">
+            <string>Allow MicroPhone</string>
+        </config-file>
+
+
+        <config-file
+            parent="NSPhotoLibraryUsageDescription"
+            target="*-Info.plist">
+            <string>Allow Photos</string>
+        </config-file>
+
+
+        <header-file
+        src="src/ios/ApplozicCordovaPlugin.h"
+        target-dir="ApplozicPlugin" />
+        <source-file
+        src="src/ios/ApplozicCordovaPlugin.m"
+        target-dir="ApplozicPlugin" />
+
+        <header-file
+        src="src/ios/ALChatManager.h"
+        target-dir="ApplozicPlugin" />
+        <source-file
+        src="src/ios/ALChatManager.m"
+        target-dir="ApplozicPlugin" />
+    </platform>
+
+    <platform name="wp7">
+        <source-file src="src/wp7/Applozic.cs" />
+    </platform>
+
+</plugin>

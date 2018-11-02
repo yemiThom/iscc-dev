@@ -16,11 +16,36 @@
 
     <!-- javascript -->
     <script type='application/javascript' src='js/fastclick.min.js'></script>
-    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <!--<script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-    <script type='text/javascript' src='js/nearby.js'></script>
-    <script type='text/javascript' src='js/client.js'></script>
-    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+    <!-- AWS chatrooms -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.85.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- socket.io ->
+    <script type="text/javascript" src="http://cdn.socket.io/socket.io-1.0.3.js"></script>
+    <script type="text/javascript" src="js/server.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('deviceready', function () {
+            socket.on('connect', function () {
+                socket.on('text', function (text) {
+                    alert(text);
+                });
+            });
+        });
+    </script-->
+    <!--script type='text/javascript' src='js/client.js'></script-->
+
+    <!--script src="node_modules/socket.io/lib/index.js"></script>
+    <script>
+        var socket = io("localhost:3000");
+    </script-->
+
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -67,29 +92,49 @@
         </div>
 
         <div class="sidenav-section">
+            <img class="icon3" src="img/icons/faq.png" />
+            <h4>Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="uc-info.html">Ulcerative Colitis</a>
+            <a href="get-diagnosis.html">Getting a Diagnosis</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <img class="icon1" src="img/icons/contact.png" />
+            <h4>Contact</h4>
+            <a href="https://www.iscc.ie/contact" target="_blank" data-rel="external">Contact</a>
+        </div>
+
+        <div class="sidenav-section" onclick="window.open('https://www.iscc.ie/support-line', '_blank', 'location=yes')">
+            <img class="icon1" src="img/icons/support.png" />
             <h4>Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
             <a href="https://www.survey.iscc.ie/living-with-ibd">Living With IBD</a>
             <a href="https://www.iscc.ie/living-well-with-ibd">Living Well With IBD</a>
-        </div>
-
-        <div class="sidenav-section">
-            <h4>Contact</h4>
-            <a href="https://www.iscc.ie/contact">Contact</a>
-        </div>
-
-        <div class="sidenav-section">
-            <h4>Support</h4>
             <a href="https://www.iscc.ie/support-line">Support Telephone Line</a>
         </div>
 
+        <a href="#" onclick="cordova.InAppBrowser.open('https://www.iscc.ie/faq', 'system', 'location=yes');"></a>
         <div class="sidenav-section">
+            <img class="icon2" src="img/icons/faq.png" />
             <h4>FAQ</h4>
-            <a href="https://www.iscc.ie/faq">FAQ</a>
+            <a>FAQ</a>
         </div>
+        </a>
 
         <div class="sidenav-section">
             <a href="index.html" onclick="signOut()">Log out</a>
         </div>
+
+        <!--div class="sidenav-section">
+                <a href="register.html">Register Screen</a>
+            </div>
+    
+            <div class="sidenav-section">
+                <a href="data-to-pdf.html">Data to PDF</a>
+            </div>-->
+
     </div>
     <!-- Side Bar -->
 
@@ -101,8 +146,8 @@
             <div class="header">
                 <h1 class="text-center p-b-10">Talk with someone nearby</h1>
 
-                <div class="switch-toggle switch-3 switch-candy">
-                    <input id="online" name="state-d" type="radio" checked="checked">
+                <div id="switch-toggle" class="switch-toggle switch-3 switch-candy">
+                    <input id="online" name="state-d" type="radio" checked="">
                     <label for="online" onclick="onlineCheck()">Online</label>
 
                     <input id="busy" name="state-d" type="radio" checked="">
@@ -116,61 +161,93 @@
             </div>
 
             <div id="friends">
-                <a href="nearby-chat.html">
-                    <div class="friend">
-                        <!--img src="img/profile/1_copy.jpg" /-->
-                        <p>
-                            <strong>Bosun</strong>
-                            <span>200 m</span>
-                        </p>
-                        <div class="status available"></div>
+                <div class="friend">
+                    <!--img src="img/profile/1_copy.jpg" /-->
+                    <p>
+                        <strong>ISCCDev</strong>
+                        <span>200 m</span>
+                    </p>
+                    <div id="devTest" class="status available"></div>
+                </div>
+            </div>
+
+            <div id="chatview" class="p1">
+                <div id="profile">
+
+                    <div id="close">
+                        <div class="cy"></div>
+                        <div class="cx"></div>
+                        <!--<a href="nearby.html"><i class="fas fa-times"></i></a>-->
                     </div>
-                </a>
 
-                <div class="friend">
-                    <!--img src="img/profile/2_copy.jpg" /-->
-                    <p>
-                        <strong>Odohie</strong>
-                        <span>425 m</span>
-                    </p>
-                    <div class="status away"></div>
+                    <p>ISCCDEV</p>
+                    <span>200 meters nearby</span>
+                </div>
+                <div id="chat-messages">
+                    <!--<label>Thursday 02</label>
+
+                    <div class="message">
+                        <!-img src="img/profile/1_copy.jpg" />->
+                        <div class="bubble received">
+                            Lorem ipsum dolor sit amet!
+                            <!-div class="corner"></div->
+                            <span>3 min</span>
+                        </div>
+                    </div>
+
+                    <div class="message right">
+                        <!-img src="img/profile/2_copy.jpg" />->
+                        <div class="bubble sent">
+                            Donec vitae urna sed nunc fringilla molestie?
+                            <!-div class="corner"></div->
+                            <span>1 min</span>
+                        </div>
+                    </div>
+
+                    <div class="message">
+                        <!-img src="img/profile/1_copy.jpg" />->
+                        <div class="bubble received">
+                            Duis vitae varius neque
+                            <!-div class="corner"></div->
+                            <span>1 min</span>
+                        </div>
+                    </div>
+
+                    <div class="message right">
+                        <!-img src="img/profile/2_copy.jpg" />->
+                        <div class="bubble sent">
+                            Proin molestie iaculis consectetur. Vestibulum facilisis, arcu ut rutrum tempus, tellus
+                            arcu tempor tortor, nec euismod dolor diam sed ligula?
+                            <!-div class="corner"></div->
+                            <span>1 min</span>
+                        </div>
+                    </div>
+
+                    <div class="message">
+                        <!-img src="img/profile/1_copy.jpg" />->
+                        <div class="bubble received">
+                            Sed a luctus lorem
+                            <!-div class="corner"></div->
+                            <span>Now</span>
+                        </div>
+                    </div>
+
+                    <div class="message right">
+                        <!-img src="img/profile/2_copy.jpg" />->
+                        <div class="bubble sent">
+                            <textarea id="dataChannelReceive" disabled style="border:none;background:none;"></textarea>
+                            <!-div class="corner"></div->
+                            <span>Now</span>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="friend">
-                    <!--img src="img/profile/3_copy.jpg" /-->
-                    <p>
-                        <strong>Tomas</strong>
-                        <span>2 km</span>
-                    </p>
-                    <div class="status inactive"></div>
-                </div>
-
-                <div class="friend">
-                    <!--img src="img/profile/4_copy.jpg" /-->
-                    <p>
-                        <strong>Kenny87</strong>
-                        <span>3.2 km</span>
-                    </p>
-                    <div class="status inactive"></div>
-                </div>
-
-                <div class="friend">
-                    <!--img src="img/profile/5_copy.jpg" /-->
-                    <p>
-                        <strong>Mugtree2390</strong>
-                        <span>5 km</span>
-                    </p>
-                    <div class="status inactive"></div>
-                </div>
-
-                <div class="friend invisible">
-                    <!--img src="img/profile/5_copy.jpg" /-->
-                    <p>
-                        <strong>ruffsWater</strong>
-                        <span>5 km</span>
-                    </p>
-                    <div class="status"></div>
-                </div>
+                <div id="sendmessage">
+                    <input type="text" id="dataChannelSend" placeholder="Send message..." />
+                    <button id="sendButton"></button>
+                </div>-->
+                <div id='container'><div id="messages" class="col-xs-12"><div class="page-header"><h1>Loading...</h1></div></div></div>
             </div>
 
         </div>
@@ -217,6 +294,14 @@
         }
     </script>
     <!-- end fast click script -->
+
+    <!-- myIBD Server script -->
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='js/nearbychat.js'></script>
+    <script type='text/javascript' src='js/nearby.js'></script>
+    
 </body>
 <!-- test native notifications -->
 <script>
@@ -229,12 +314,11 @@
         }*/
 </script>
 <!-- test native notifications -->
-
 <!-- paged tabs script -->
 <script src="js/page-tabs.js"></script>
 <!-- end paged tabs script-->
 <!-- replace radio checkbox script -->
-<script src="js/replace-radio-checkbox"></script>
+<script src="js/replace-radio-checkbox.js"></script>
 <!-- end replace radio checkbox script -->
 <!-- Start Sidebar script -->
 <script type="text/javascript">
@@ -251,7 +335,7 @@
     }
 </script>
 <!-- End Sidebar script -->
-<!-- Start swipe sidebar script -->
+<!-- Start swipe sidebar script --
 <script type="text/javascript">
     $(function () {
         $("#swipe-area").swipe({
@@ -283,7 +367,7 @@
             document.getElementById("sidebar").style.left = "-260px";
         }
     });
-</script>
+</script-->
 <!-- End swipe sidebar script -->
 <!-- Start Toggle Reveal script -->
 <script type="text/javascript">
