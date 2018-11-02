@@ -12,17 +12,17 @@ var tid = setInterval(function () {
 
     } else if (nearbyTogState == "busy") {
         console.log("toggle state: busy");
-        testIndicator.classList.add("away");
+        /*testIndicator.classList.add("away");
         testIndicator.classList.remove("available");
-        testIndicator.classList.remove("inactive");
+        testIndicator.classList.remove("inactive");*/
         busyCheck();
         changeTestIndicator("busy");
 
     } else {
         console.log("toggle state: invisible");
-        testIndicator.classList.add("inactive");
+        /*testIndicator.classList.add("inactive");
         testIndicator.classList.remove("available");
-        testIndicator.classList.remove("away");
+        testIndicator.classList.remove("away");*/
         invisibleCheck();
         changeTestIndicator("invisible");
     }
