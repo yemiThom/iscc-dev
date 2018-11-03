@@ -188,6 +188,7 @@ const htmlPage = `
             </div>
 
             <div id="chatview" class="p1">
+			<input type="text" class="form-control" id="user" placeholder="Your name" style="display: none;">
 			%CONTENT%
             </div>
 
@@ -423,6 +424,8 @@ function sendAllMessages(inputData) {
 
 function clientConnected(data) {
 
+	var initUser = document.getElementById('user').value;
+
     var clientTopic = APP_NAME + "/in/" + data.clientId;
 
     function run(message) {
@@ -433,7 +436,7 @@ function clientConnected(data) {
         console.log('subscribe: ' + pubTopic);
         client.subscribe(pubTopic);
 
-        document.getElementById('container').innerHTML = message.htmlContent;
+        document.getElementById('chatview').innerHTML = message.htmlContent;
 
         store.replaceURLWithHTMLLinks = function(text) {
             var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
@@ -447,12 +450,19 @@ function clientConnected(data) {
             store.messages.forEach((m) => {
                 var displayText = store.replaceURLWithHTMLLinks(store.htmlEntities(m.text));
                 if ('user' in m) {
-                    html += '<p><strong>' + m.user + '</strong>: ' + displayText + '</p>';
+					if(m.user == initUser){
+						//html += '<p><strong>' + m.user + '</strong>: ' + displayText + '</p>';
+						html += '<div class="message right"><div class="bubble sent"><span>' + m.user + '</span>';
+					}else{
+						html += '<div class="message"><div class="bubble received"><span>' + m.user + '</span>';
+					}
+					
                 } else {
-                    html += '<div class="page-header"><h1>' + displayText + '</h1></div>';
+                    //html += '<div class="page-header"><h1>' + displayText + '</h1></div>';
+					html += displayText + '</div></div>';
                 }
             });
-            document.getElementById('messages').innerHTML = html;
+            document.getElementById('chat-messages').innerHTML = html;
             window.scrollTo(0,document.body.scrollHeight);
         };
         store.sendMessage = function(msg) {
@@ -469,6 +479,7 @@ function clientConnected(data) {
 
         if (localStorage.getItem(store.room) != null) {
             document.getElementById('user').value = JSON.parse(localStorage.getItem(store.room)).user;
+			initUser = document.getElementById('user').value;
         }
 
         var form = document.getElementById('lineForm');
@@ -524,8 +535,11 @@ function processHttpRequest(req, callback) {
             "Content-Type": "text/html"
         },
         body: htmlPage.replace("%CONTENT%",
-            '<div id="messages" class="col-xs-12"><div class="page-header"><h1>Loading chat room ' +
-            req.path + ' ...</h1></div></div>'
+            /*'<div id="messages" class="col-xs-12"><div class="page-header"><h1>Loading chat room ' +
+            req.path + ' ...</h1></div></div>'*/
+			'<div id="profile"><div id="close"><div class="cy"></div><div class="cx"></div></div><p></p><span></span></div>'+
+			'<div id="chat-messages">' + req.path + '</div><div id="sendmessage"><input type="text" id="dataChannelSend" placeholder="Send message..." />'+
+			'<button id="sendButton"></button></div>'
         )
     };
     console.log("response: " + JSON.stringify(response));
