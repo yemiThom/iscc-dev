@@ -45,6 +45,8 @@ z-index:200;
 #topmenu span.chats:hover{background-position:-95px -46px; cursor:pointer;}
 #topmenu span.history{background-position:-190px 24px; cursor:pointer;}
 #topmenu span.history:hover{background-position:-190px -47px; cursor:pointer;}
+
+.invisible-friends{ display: none; }
 .friend{
     height:80px;
     border-bottom: 1px solid #ecf0f1;        

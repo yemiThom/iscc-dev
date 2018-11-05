@@ -5,6 +5,8 @@ const APP_NAME = 'chat';
 
 var store = {}; // To be used for "global" variables
 
+var cnctClientId,cnctRequestUrl;
+
 /**
  * utilities to do sigv4
  * @class SigV4Utils
@@ -124,6 +126,9 @@ function connectClient() {
     console.log('clientId: ' + clientId);
     var requestUrl = SigV4Utils.getSignedUrl(
       AWS_IOT_ENDPOINT, AWS.config.region, AWS.config.credentials);
+    
+    cnctClientId = clientId; cnctRequestUrl = requestUrl;
+
     initClient(requestUrl, clientId);
   });
 }
