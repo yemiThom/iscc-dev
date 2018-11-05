@@ -323,11 +323,13 @@
             document.addEventListener('DOMContentLoaded', function() {
            
                 let membershipType = localStorage.getItem("MemberType");
+                let invoice = localStorage.getItem("Invoices");
                 if(membershipType== undefined || membershipType == null || membershipType == ""){
                     $('#verifyiscc').html("Verify Membership");
                 }
                 else{
                     $('#verifyiscc').html(membershipType);
+                    //$('#verifyiscc').html(membershipType);
                 }
                 //FastClick.attach(document.body);
             }, false);

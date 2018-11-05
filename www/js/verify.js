@@ -14,6 +14,13 @@ function loginOnApi(){
   
   }
 
+  var invoiceData = {
+    accessToken : '',
+    accountId : ''
+  
+  }
+
+
 
 
   if(data.username == ""){
@@ -58,6 +65,20 @@ var memberSettings = {
   "data": memberData 
 }
 
+var invoiceSettings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://infinite-thicket-67578.herokuapp.com/login/InvoiceData",
+  //"url": "http://localhost:3000/login/MemberData",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded"
+
+  },
+  "processData": false,
+  "data": invoiceData 
+}
+
 
 
 
@@ -68,6 +89,7 @@ $.ajax(settings).done(function (response) {
     localStorage.setItem("access_token", response.access_token);
     memberData.accessToken = response.access_token;
     memberData.accountId = response.Permissions[0].AccountId;
+    getInvoiceData();
     getMemberData();
   
   }
@@ -77,11 +99,32 @@ $.ajax(settings).done(function (response) {
 
 });
 
+function getInvoiceData(){
 
+   let invoiceDataSend = `accessToken=${invoiceData.accessToken}&accountId=${invoiceData.accountId}`;
+  invoiceSettings.data = invoiceDataSend;
+  
+  $.ajax(memberSettings).done(function (response) {
+
+    if(response[0].Name)
+    {
+      localStorage.setItem("Invoices", response[0].Name);
+      ;
+  
+      
+    }
+    else{
+        alert('No invoices');
+    }
+  
+  });
+}
+ 
 function getMemberData(){
 
   let memberDataSend = `accessToken=${memberData.accessToken}&accountId=${memberData.accountId}`;
   memberSettings.data = memberDataSend;
+
   $.ajax(memberSettings).done(function (response) {
 
     if(response[0].Name)
