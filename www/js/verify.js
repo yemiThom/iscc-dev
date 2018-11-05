@@ -31,7 +31,7 @@ function loginOnApi(){
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://frozen-savannah-60393.herokuapp.com/login",
+  "url": "https://infinite-thicket-67578.herokuapp.com/login",
   //  "url": "http://localhost:3000/login",
   
   "method": "POST",
@@ -47,7 +47,7 @@ var settings = {
 var memberSettings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://frozen-savannah-60393.herokuapp.com/login/MemberData",
+  "url": "https://infinite-thicket-67578.herokuapp.com/login/MemberData",
   //"url": "http://localhost:3000/login/MemberData",
   "method": "POST",
   "headers": {

@@ -11,6 +11,7 @@
     <script src="js/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript" src='js/config.js'></script>
     <script type="text/javascript" src='js/index.js'></script>
+    <script type="text/javascript" src='js/verify.js'></script>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/home.css">
@@ -70,7 +71,10 @@
         <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
         <div class="sidenav-section">
             <a id="email_value"></a>
+            <a id="verifyiscc" href="verify.html"></a>
         </div>
+
+
 
         <div class="sidenav-section">
             <img class="icon3" src="img/icons/faq.png"/>
@@ -312,6 +316,23 @@
         }
     </script>
     <!-- end fast click script -->
-</body>
 
+
+<script>
+ if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+           
+                let membershipType = localStorage.getItem("MemberType");
+                if(membershipType== undefined || membershipType == null || membershipType == ""){
+                    $('#verifyiscc').html("Verify Membership");
+                }
+                else{
+                    $('#verifyiscc').html(membershipType);
+                }
+                //FastClick.attach(document.body);
+            }, false);
+        }
+
+</script>
+</body>
 </html>
