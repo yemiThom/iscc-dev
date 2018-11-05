@@ -483,7 +483,7 @@ function clientConnected(data) {
         }
 
         var form = document.getElementById('lineForm');
-        form.addEventListener('submit', function(evt) {
+        form.addEventListener('sendButton', function(evt) {
             evt.preventDefault();
             var user = document.getElementById('user');
             var line = document.getElementById('line');

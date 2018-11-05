@@ -16,9 +16,17 @@
 
     <!-- javascript -->
     <script type='application/javascript' src='js/fastclick.min.js'></script>
-    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <!--<script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
+    
+    <!-- Cognito login -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -125,11 +133,11 @@
                     <div class="button agileinfo"></div>
                 </div>
                 <div id="video">
-                    <video src="vid/1.mp4"></video>
-                    <!--<video src="https://youtu.be/5iw8PHYCQb0"></video>
+                    <!--video src="vid/1.mp4"></video>-->
+                    <video src="https://youtu.be/5iw8PHYCQb0"></video>
                     <div class='embed-container'>
                         <iframe src='https://www.youtube.com/embed//5iw8PHYCQb0' frameborder='0' allowfullscreen></iframe>
-                    </div> -->
+                    </div>
                     <!--p>Your device does not support this Video element.</p-->
                 </div>
                 <div id="controls" class="bg-lylac">
@@ -245,7 +253,7 @@
     }
 </script>
 <!-- End Sidebar script -->
-<!-- Start swipe sidebar script -->
+<!-- Start swipe sidebar script ->
 <script type="text/javascript">
     $(function () {
         $("#swipe-area").swipe({
@@ -277,7 +285,7 @@
             document.getElementById("sidebar").style.left = "-260px";
         }
     });
-</script>
+</script>-->
 <!-- End swipe sidebar script -->
 <!-- Start video player script -->
 <script>
