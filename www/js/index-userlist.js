@@ -43,6 +43,7 @@ function getUsernameList(){
                 document.getElementById("friends").innerHTML += '<div class="friend"><!--img src="img/profile/1_copy.jpg" /--><p><strong>'+
                 item.username +'</strong><span>Distance Unknown</span></p><div class="status available"></div></div>';
             });
+            makeFriendsClickable();
         }
     });
 }

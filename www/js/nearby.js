@@ -98,7 +98,9 @@ function showAlert(message, title) {
         alert(title ? (title + ": " + message) : message);
     }
 }
-$(document).ready(function () {
+//$(document).ready(function () {
+function makeFriendsClickable(){
+    console.log("Gon make all dese ere clickable");
     $(".friend").each(function () {
         $(this).click(function () {
             var childOffset = $(this).offset();
@@ -150,4 +152,5 @@ $(document).ready(function () {
 
         });
     });
-});
+}
+//});
