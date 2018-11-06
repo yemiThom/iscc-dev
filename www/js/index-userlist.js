@@ -16,6 +16,8 @@ var tid = setInterval(function () {
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 function sendUsername(dataInput) {
 
+    username = dataInput;
+
     var params = {
         TableName: 'users',
         Item: { "username": dataInput }
@@ -39,13 +41,28 @@ function getUsernameList(){
             console.log("Scan succeeded: displaying data now");
 
             data.Items.forEach(function(item){
-                console.log("item data: " + item.username);
+                console.log("item data: " + item.username + "; " + item.status);
                 document.getElementById("friends").innerHTML += '<div class="friend"><!--img src="img/profile/1_copy.jpg" /--><p><strong>'+
-                item.username +'</strong><span>Distance Unknown</span></p><div class="status available"></div></div>';
+                item.username +'</strong><span>Distance Unknown</span></p><div id="' + item.username + '" class="status"></div></div>';
+                document.getElementById(item.username).classList.add(item.status);
             });
             makeFriendsClickable();
         }
     });
+}
+
+function setOnlineStatus(status){
+    console.log("Setting online status: " + status);
+    var params = {
+        TableName: 'users',
+        Item: { "username": username, "status": status }
+    };
+
+    dynamodb.put(params, function(err, data){
+        if (err) console.log(err);
+        else{console.log('Data info: ' + data)}
+    });
+
 }
 
 //var timerVar = setInterval(getUsernameList(), 5000);
@@ -57,6 +74,7 @@ setTimeout(getUsernameList(), 5000);
 //});
 
 function checkEmailValContent(currusername){
+    console.log("curreusername: "+currusername);
     if(document.getElementById('email_value').textContent == ""){
         console.log("Null ID reference: email_value");
     }else{

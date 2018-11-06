@@ -39,6 +39,8 @@ function onlineCheck() {
 
     changeTestIndicator("online");
 
+    setTimeout(setOnlineStatus("online"), 100);
+
     localStorage.setItem("nearbyTogState", "online");
 }
 
@@ -52,6 +54,8 @@ function busyCheck() {
 
     changeTestIndicator("busy");
 
+    setTimeout(setOnlineStatus("busy"), 100);
+
     localStorage.setItem("nearbyTogState", "busy");
 }
 
@@ -64,6 +68,8 @@ function invisibleCheck() {
     document.getElementById("friends").classList.add("invisible-friends");
 
     changeTestIndicator("invisible");
+
+    setTimeout(setOnlineStatus("invisible"), 100);
 
     localStorage.setItem("nearbyTogState", "invisible");
 }
