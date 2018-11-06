@@ -35,6 +35,8 @@ function onlineCheck() {
     document.getElementById("invisible").checked = false;
     document.getElementById("toggle-candy").className = "switch-candy-magenta";
 
+    document.getElementById("friends").classList.remove("invisible-friends");
+
     changeTestIndicator("online");
 
     localStorage.setItem("nearbyTogState", "online");
@@ -46,6 +48,8 @@ function busyCheck() {
     document.getElementById("invisible").checked = false;
     document.getElementById("toggle-candy").className = "switch-candy-blue";
 
+    document.getElementById("friends").classList.remove("invisible-friends");
+
     changeTestIndicator("busy");
 
     localStorage.setItem("nearbyTogState", "busy");
@@ -56,6 +60,8 @@ function invisibleCheck() {
     document.getElementById("busy").checked = false;
     document.getElementById("invisible").checked = true;
     document.getElementById("toggle-candy").className = "switch-candy-grey";
+
+    document.getElementById("friends").classList.add("invisible-friends");
 
     changeTestIndicator("invisible");
 
