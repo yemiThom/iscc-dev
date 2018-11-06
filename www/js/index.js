@@ -20,7 +20,8 @@
 			
 			
 			cognitoUser.getUserAttributes(function(err, result) {
-				document.getElementById("email_value").innerHTML = result[2].getValue();		
+                document.getElementById("email_value").innerHTML = result[2].getValue();
+                checkEmailValContent(result[2].getValue());		
 				if (err) {
 					console.log(err);
 					return;

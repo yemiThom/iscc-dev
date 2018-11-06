@@ -10,9 +10,6 @@ var tid = setInterval(function () {
 
     console.log("username: " + username);
     
-    sendUsername(username);
-    //insert username into chat username box
-    //document.getElementById('user').value = username;
 
 }, 100);
 
@@ -51,7 +48,20 @@ function getUsernameList(){
 }
 
 //var timerVar = setInterval(getUsernameList(), 5000);
+setTimeout(getUsernameList(), 5000);
 
-/*$(document).ready(function () {
-    getUsernameList();
-});*/
+//$(document).ready(function () {
+    //getUsernameList();
+    //setTimeout(checkEmailValContent(), 100000);
+//});
+
+function checkEmailValContent(currusername){
+    if(document.getElementById('email_value').textContent == ""){
+        console.log("Null ID reference: email_value");
+    }else{
+        console.log("email_value content found");
+        sendUsername(currusername);
+        //insert username into chat username box
+        //document.getElementById('user').value = username;
+    }
+}
