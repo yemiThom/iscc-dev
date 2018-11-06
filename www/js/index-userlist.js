@@ -44,12 +44,14 @@ function getUsernameList(){
             data.Items.forEach(function(item){
                 console.log("item data: " + item.username);
                 document.getElementById("friends").innerHTML += '<div class="friend"><!--img src="img/profile/1_copy.jpg" /--><p><strong>'+
-                item.username +'</strong><span>Distance Unknown</span></p><div id="devTest" class="status available"></div></div>';
+                item.username +'</strong><span>Distance Unknown</span></p><div class="status available"></div></div>';
             });
         }
     });
 }
 
-//if(document.onload){
+//var timerVar = setInterval(getUsernameList(), 5000);
+
+/*$(document).ready(function () {
     getUsernameList();
-//}
+});*/
