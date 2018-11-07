@@ -355,6 +355,10 @@ exports.handler = (event, context, callback) => {
     }
 };
 
+function testFNRange(){
+    console.log("FN RANGE: IS GOOD!");
+}
+
 function routeData(data) {
     if ('eventType' in data) {
         console.log(data.eventType + ': ' + data.clientId);

@@ -8,7 +8,7 @@ var tid = setInterval(function () {
     if (nearbyTogState == "online") {
         console.log("toggle state: online");
         onlineCheck();
-        changeTestIndicator("devTest", "online");
+        //changeTestIndicator("devTest", "online");
 
     } else if (nearbyTogState == "busy") {
         console.log("toggle state: busy");
@@ -16,7 +16,7 @@ var tid = setInterval(function () {
         testIndicator.classList.remove("available");
         testIndicator.classList.remove("inactive");*/
         busyCheck();
-        changeTestIndicator("devTest", "busy");
+        //changeTestIndicator("devTest", "busy");
 
     } else {
         console.log("toggle state: invisible");
@@ -24,7 +24,7 @@ var tid = setInterval(function () {
         testIndicator.classList.remove("available");
         testIndicator.classList.remove("away");*/
         invisibleCheck();
-        changeTestIndicator("devTest", "invisible");
+        //changeTestIndicator("devTest", "invisible");
     }
 
 }, 100);
