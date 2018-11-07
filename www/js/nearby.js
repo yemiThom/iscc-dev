@@ -8,7 +8,7 @@ var tid = setInterval(function () {
     if (nearbyTogState == "online") {
         console.log("toggle state: online");
         onlineCheck();
-        changeTestIndicator("online");
+        changeTestIndicator("devTest", "online");
 
     } else if (nearbyTogState == "busy") {
         console.log("toggle state: busy");
@@ -16,7 +16,7 @@ var tid = setInterval(function () {
         testIndicator.classList.remove("available");
         testIndicator.classList.remove("inactive");*/
         busyCheck();
-        changeTestIndicator("busy");
+        changeTestIndicator("devTest", "busy");
 
     } else {
         console.log("toggle state: invisible");
@@ -24,7 +24,7 @@ var tid = setInterval(function () {
         testIndicator.classList.remove("available");
         testIndicator.classList.remove("away");*/
         invisibleCheck();
-        changeTestIndicator("invisible");
+        changeTestIndicator("devTest", "invisible");
     }
 
 }, 100);
@@ -67,6 +67,8 @@ function invisibleCheck() {
 
     document.getElementById("friends").classList.add("invisible-friends");
 
+    //document.getElementById("render-msg") = "<h3>You are currently offline...</h3>"
+
     changeTestIndicator("invisible");
 
     setTimeout(setOnlineStatus("invisible"), 100);
@@ -74,25 +76,25 @@ function invisibleCheck() {
     localStorage.setItem("nearbyTogState", "invisible");
 }
 
-function changeTestIndicator(str) {
+function changeTestIndicator(id, str) {
 
-    var testIndicator = document.getElementById("devTest");
+    var testIndicator = document.getElementById(id);
 
     if (str == "online") {
 
-        testIndicator.classList.add("available");
-        testIndicator.classList.remove("away");
-        testIndicator.classList.remove("inactive");
+        testIndicator.classList.add("online");
+        testIndicator.classList.remove("busy");
+        testIndicator.classList.remove("invisible");
     } else if (str == "busy") {
 
-        testIndicator.classList.remove("available");
-        testIndicator.classList.add("away");
-        testIndicator.classList.remove("inactive");
+        testIndicator.classList.remove("online");
+        testIndicator.classList.add("busy");
+        testIndicator.classList.remove("invisible");
     } else {
 
-        testIndicator.classList.remove("available");
-        testIndicator.classList.remove("away");
-        testIndicator.classList.add("inactive");
+        testIndicator.classList.remove("online");
+        testIndicator.classList.remove("busy");
+        testIndicator.classList.add("invisible");
     }
 }
 

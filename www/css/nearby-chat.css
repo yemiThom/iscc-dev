@@ -52,9 +52,9 @@ z-index:200;
     border-bottom: 1px solid #ecf0f1;        
     position:relative;
 }
-.friend.invisible{
+/*.friend.invisible{
     display: none;
-}
+}*/
 .friend:hover{
     background:#ecf0f1;
     cursor:pointer;
@@ -99,9 +99,9 @@ z-index:200;
     top:31px;
     right:17px;
 }
-.friend .status.available{background:#d123bf;}
-.friend .status.away{background:#414b76;}
-.friend .status.inactive{background:#72737b;}
+.friend .status.online{background:#d123bf;}
+.friend .status.busy{background:#414b76;}
+.friend .status.invisible{background:#72737b;}
 #search{
     background:#e3e9ed url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/search.png") -11px 0 no-repeat;
     height:60px;
