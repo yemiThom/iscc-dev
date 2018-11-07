@@ -44,9 +44,9 @@ function getUsernameList(thisUser){
             console.log("Scan succeeded: displaying data now");
 
             data.Items.forEach(function(item){
-                console.log("item data: " + item.username + "; " + item.status);
+                console.log("item data: " + item.username + "; " + item.userstatus);
                 document.getElementById("friends").innerHTML += '<div class="friend"><!--img src="img/profile/1_copy.jpg" /--><p><strong>'+
-                item.username +'</strong><span>Distance Unknown</span></p><div id="' + item.username + '" class="status '+item.status+'"></div></div>';
+                item.username +'</strong><span>Distance Unknown</span></p><div id="' + item.username + '" class="status '+item.userstatus+'"></div></div>';
                 //document.getElementById(item.username).classList.add(item.status);
             });
             makeFriendsClickable();

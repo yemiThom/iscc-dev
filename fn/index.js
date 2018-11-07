@@ -29,7 +29,7 @@ const htmlPage = `
     <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
 
     <!-- javascript -->
-    <script type='application/javascript' src='js/fastclick.min.js'></script>
+    <script type='application/javascript' src='js/fastclick.js'></script>
     <!--<script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
@@ -41,7 +41,13 @@ const htmlPage = `
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <script type='text/javascript' src='js/nearbychat.js'></script>
+    <!-- Cognito login -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
 
     <!-- socket.io ->
     <script type="text/javascript" src="http://cdn.socket.io/socket.io-1.0.3.js"></script>
@@ -143,14 +149,6 @@ const htmlPage = `
             <a href="index.html" onclick="signOut()">Log out</a>
         </div>
 
-        <!--div class="sidenav-section">
-                <a href="register.html">Register Screen</a>
-            </div>
-    
-            <div class="sidenav-section">
-                <a href="data-to-pdf.html">Data to PDF</a>
-            </div>-->
-
     </div>
     <!-- Side Bar -->
 
@@ -160,7 +158,7 @@ const htmlPage = `
         <!-- Start Container Area -->
         <div class="content-container">
             <div class="header">
-                <h1 class="text-center p-b-10">Talk with someone nearby</h1>
+                <h3 class="text-center p-b-10">Talk with someone nearby</h3>
 
                 <div id="switch-toggle" class="switch-toggle switch-3 switch-candy">
                     <input id="online" name="state-d" type="radio" checked="">
@@ -177,19 +175,26 @@ const htmlPage = `
             </div>
 
             <div id="friends">
-                <div class="friend">
-                    <!--img src="img/profile/1_copy.jpg" /-->
-                    <p>
-                        <strong>ISCCDev</strong>
-                        <span>200 m</span>
-                    </p>
-                    <div id="devTest" class="status available"></div>
-                </div>
+                <!--button onclick="setOnlineStatus('busy')">Set User Status</button-->
             </div>
 
+            <div id="render-msg"></div>
+
             <div id="chatview" class="p1">
-			<input type="text" class="form-control" id="user" placeholder="Your name" style="display: none;">
-			%CONTENT%
+                <div id="profile">
+
+                    <div id="close">
+                        <div class="cy"></div>
+                        <div class="cx"></div>
+                        <!--<a href="nearby.html"><i class="fas fa-times"></i></a>-->
+                    </div>
+
+                    <p></p>
+                    <span></span>
+                </div>
+                <div id="chat-messages">
+                    
+                </div>
             </div>
 
         </div>
@@ -220,10 +225,6 @@ const htmlPage = `
                 <i class="fas fa-comments"></i>
                 <span class='footer-text'>Nearby</span>
             </a>
-            <!--a href="profile-card.html" class="footer-link">
-                <i class="fas fa-user-circle"></i>
-                <span class='footer-text'>Profile</span>
-            </a-->
         </div>
     </div>
     <!-- End Footer Nav Area -->
@@ -241,7 +242,9 @@ const htmlPage = `
     
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='js/nearbychat.js'></script>
     <script type='text/javascript' src='js/nearby.js'></script>
+    <script type="text/javascript" src='js/index-userlist.js'></script>
     
 </body>
 <!-- test native notifications -->
@@ -310,28 +313,6 @@ const htmlPage = `
     });
 </script-->
 <!-- End swipe sidebar script -->
-<!-- Start Toggle Reveal script -->
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("input[name$='feeling']").click(function () {
-            var inputVal = $(this).val();
-
-            $("div.toggleReveal").hide();
-            $("#toggleReveal-" + inputVal).show();
-        });
-    });
-
-    $(document).ready(function () {
-        $("input[name$='symptom']").click(function () {
-            var inputVal = $(this).val();
-
-            $("div.toggleReveal").hide();
-            $("#toggleReveal-" + inputVal).show();
-        });
-    });
-</script>
-<!-- End Toggle Reveal script -->
-
 </html>
 `;
 

@@ -135,14 +135,6 @@
             <a href="index.html" onclick="signOut()">Log out</a>
         </div>
 
-        <!--div class="sidenav-section">
-                <a href="register.html">Register Screen</a>
-            </div>
-    
-            <div class="sidenav-section">
-                <a href="data-to-pdf.html">Data to PDF</a>
-            </div>-->
-
     </div>
     <!-- Side Bar -->
 
@@ -169,15 +161,6 @@
             </div>
 
             <div id="friends">
-                <!--<div class="friend">
-                    img src="img/profile/1_copy.jpg" /
-                    <p>
-                        <strong>ISCCDev</strong>
-                        <span>200 m</span>
-                    </p>
-                    <div id="devTest" class="status available"></div>
-                </div>-->
-
                 <!--button onclick="setOnlineStatus('busy')">Set User Status</button-->
             </div>
 
@@ -192,74 +175,12 @@
                         <!--<a href="nearby.html"><i class="fas fa-times"></i></a>-->
                     </div>
 
-                    <p>ISCCDEV</p>
-                    <span>200 meters nearby</span>
+                    <p></p>
+                    <span></span>
                 </div>
                 <div id="chat-messages">
-                    <!--<label>Thursday 02</label>
-
-                    <div class="message">
-                        <!-img src="img/profile/1_copy.jpg" />->
-                        <div class="bubble received">
-                            Lorem ipsum dolor sit amet!
-                            <!-div class="corner"></div->
-                            <span>3 min</span>
-                        </div>
-                    </div>
-
-                    <div class="message right">
-                        <!-img src="img/profile/2_copy.jpg" />->
-                        <div class="bubble sent">
-                            Donec vitae urna sed nunc fringilla molestie?
-                            <!-div class="corner"></div->
-                            <span>1 min</span>
-                        </div>
-                    </div>
-
-                    <div class="message">
-                        <!-img src="img/profile/1_copy.jpg" />->
-                        <div class="bubble received">
-                            Duis vitae varius neque
-                            <!-div class="corner"></div->
-                            <span>1 min</span>
-                        </div>
-                    </div>
-
-                    <div class="message right">
-                        <!-img src="img/profile/2_copy.jpg" />->
-                        <div class="bubble sent">
-                            Proin molestie iaculis consectetur. Vestibulum facilisis, arcu ut rutrum tempus, tellus
-                            arcu tempor tortor, nec euismod dolor diam sed ligula?
-                            <!-div class="corner"></div->
-                            <span>1 min</span>
-                        </div>
-                    </div>
-
-                    <div class="message">
-                        <!-img src="img/profile/1_copy.jpg" />->
-                        <div class="bubble received">
-                            Sed a luctus lorem
-                            <!-div class="corner"></div->
-                            <span>Now</span>
-                        </div>
-                    </div>
-
-                    <div class="message right">
-                        <!-img src="img/profile/2_copy.jpg" />->
-                        <div class="bubble sent">
-                            <textarea id="dataChannelReceive" disabled style="border:none;background:none;"></textarea>
-                            <!-div class="corner"></div->
-                            <span>Now</span>
-                        </div>
-                    </div>
-
+                    
                 </div>
-
-                <div id="sendmessage">
-                    <input type="text" id="dataChannelSend" placeholder="Send message..." />
-                    <button id="sendButton"></button>
-                </div>-->
-                <div id='container'><div id="messages" class="col-xs-12"><div class="page-header"><h1>Loading...</h1></div></div></div>
             </div>
 
         </div>
@@ -290,10 +211,6 @@
                 <i class="fas fa-comments"></i>
                 <span class='footer-text'>Nearby</span>
             </a>
-            <!--a href="profile-card.html" class="footer-link">
-                <i class="fas fa-user-circle"></i>
-                <span class='footer-text'>Profile</span>
-            </a-->
         </div>
     </div>
     <!-- End Footer Nav Area -->
@@ -382,26 +299,4 @@
     });
 </script-->
 <!-- End swipe sidebar script -->
-<!-- Start Toggle Reveal script -->
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("input[name$='feeling']").click(function () {
-            var inputVal = $(this).val();
-
-            $("div.toggleReveal").hide();
-            $("#toggleReveal-" + inputVal).show();
-        });
-    });
-
-    $(document).ready(function () {
-        $("input[name$='symptom']").click(function () {
-            var inputVal = $(this).val();
-
-            $("div.toggleReveal").hide();
-            $("#toggleReveal-" + inputVal).show();
-        });
-    });
-</script>
-<!-- End Toggle Reveal script -->
-
 </html>
