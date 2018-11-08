@@ -11,7 +11,7 @@ Resources:
     Properties:
       Code:
         S3Bucket: iscciot
-        S3Key: 1e1eca49bc78d9351e9845154e96a886
+        S3Key: 52f52c09b279a48a4990e3b05d83f21c
       Environment:
         Variables:
           AWS_IOT_ENDPOINT:
