@@ -193,7 +193,7 @@ const htmlPage = `
                     <span></span>
                 </div>
                 <div id="chat-messages">
-                    
+                    %CONTENT%
                 </div>
             </div>
 
@@ -354,10 +354,6 @@ exports.handler = (event, context, callback) => {
         routeData(event);
     }
 };
-
-function testFNRange(){
-    console.log("FN RANGE: IS GOOD!");
-}
 
 function routeData(data) {
     if ('eventType' in data) {
@@ -523,7 +519,7 @@ function processHttpRequest(req, callback) {
             /*'<div id="messages" class="col-xs-12"><div class="page-header"><h1>Loading chat room ' +
             req.path + ' ...</h1></div></div>'*/
 			'<div id="profile"><div id="close"><div class="cy"></div><div class="cx"></div></div><p></p><span></span></div>'+
-			'<div id="chat-messages">' + req.path + '</div><div id="sendmessage"><input type="text" id="line" placeholder="Send message..." />'+
+			'<div id="chat-messages"><h1>Loading messages of room ' + req.path + '</div><div id="sendmessage"><input type="text" id="line" placeholder="Send message..." />'+
 			'<button id="sendButton"></button></div>'
         )
     };
