@@ -10,8 +10,8 @@ Resources:
   ChatFunction:
     Properties:
       Code:
-        S3Bucket: iscciot
-        S3Key: 52f52c09b279a48a4990e3b05d83f21c
+        S3Bucket: isccgutapp
+        S3Key: e6f36b2f460040e6da83a2fa119f1701
       Environment:
         Variables:
           AWS_IOT_ENDPOINT:

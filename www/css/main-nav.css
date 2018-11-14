@@ -57,7 +57,7 @@ body {
     left: 0;
     width: 100% !important;
     background-color: #414b76;
-    padding: 6px 0;
+    padding: 3% 0;
     z-index: 9;
     /*
     box-shadow: -2.213px 2.213px 2px 0px rgba(158, 158, 158, 0.3);*/
@@ -90,8 +90,9 @@ body {
 }
 
 .main-menubar img{
-    width: 25%;
-    margin-left: 70%;
+    max-width: 41%;
+    width: 300px;
+    margin-left: 60%;
 }
 
 nav {
@@ -204,7 +205,10 @@ nav {
 /*.main-menubar {
     position: relative;
 }*/
-
+img.toggle{
+    max-width: 15%;
+    width: 200px;
+}
 .toggle-content-1 {
 	display: none;
 	height: 0;

@@ -175,7 +175,6 @@ const htmlPage = `
             </div>
 
             <div id="friends">
-                <!--button onclick="setOnlineStatus('busy')">Set User Status</button-->
             </div>
 
             <div id="render-msg"></div>
@@ -193,6 +192,7 @@ const htmlPage = `
                     <span></span>
                 </div>
                 <div id="chat-messages">
+                    <input type="text" class="form-control" id="user" placeholder="Your name" style="display: none;">
                     %CONTENT%
                 </div>
             </div>
@@ -405,8 +405,8 @@ function sendAllMessages(inputData) {
 
 function clientConnected(data) {
 
-    var initUser = document.getElementById('email_value').value;
-    console.log("InitUser: " + initUser);
+    //var initUser = document.getElementById('email_value').value;
+    //console.log("InitUser: " + initUser);
 
     var clientTopic = APP_NAME + "/in/" + data.clientId;
 
@@ -432,16 +432,16 @@ function clientConnected(data) {
             store.messages.forEach((m) => {
                 var displayText = store.replaceURLWithHTMLLinks(store.htmlEntities(m.text));
                 if ('user' in m) {
-					if(m.user == initUser){
-						//html += '<p><strong>' + m.user + '</strong>: ' + displayText + '</p>';
-						html += '<div class="message right"><div class="bubble sent"><span>' + m.user + '</span>';
-					}else{
-						html += '<div class="message"><div class="bubble received"><span>' + m.user + '</span>';
-					}
+					//if(m.user == initUser){
+						html += '<p><strong>' + m.user + '</strong>: ' + displayText + '</p>';
+						//html += '<div class="message right"><div class="bubble sent"><span>' + m.user + '</span>';
+					//}else{
+						//html += '<div class="message"><div class="bubble received"><span>' + m.user + '</span>';
+					//}
 					
                 } else {
-                    //html += '<div class="page-header"><h1>' + displayText + '</h1></div>';
-					html += displayText + '</div></div>';
+                    html += '<div class="page-header"><h1>' + displayText + '</h1></div>';
+					//html += displayText + '</div></div>';
                 }
             });
             document.getElementById('chat-messages').innerHTML = html;

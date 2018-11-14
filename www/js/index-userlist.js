@@ -1,18 +1,3 @@
-var username = "";
-/*var tid = setInterval(function () {
-    if (document.readyState !== 'complete') return;
-    clearInterval(tid);
-
-    if (document.readyState === 'complete') {
-        console.log("document ready!");
-        username = document.getElementById('email_value').textContent;
-    }
-
-    console.log("username: " + username);
-    
-
-}, 100);*/
-
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 function sendUsername(dataInput) {
 
@@ -54,8 +39,8 @@ function getUsernameList(thisUser){
     });
 }
 
-function setOnlineStatus(status){
-    console.log("Setting online status: " + status);
+function setOnlineStatus(username, status){
+    console.log("Setting username: " + username + "; Setting online status: " + status);
     var params = {
         TableName: 'users',
         Item: { "username": username, "userstatus": status }
@@ -78,12 +63,13 @@ function setOnlineStatus(status){
 
 function checkEmailValContent(currusername){
     console.log("curreusername: "+currusername);
-    username = currusername;
+    //username = currusername;
     if(document.getElementById('email_value').textContent == ""){
         console.log("Null ID reference: email_value");
     }else{
         console.log("email_value content found");
         sendUsername(currusername);
+        setOnlineStatus(currusername);
         getUsernameList(currusername);
         //insert username into chat username box
         //document.getElementById('user').value = username;

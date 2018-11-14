@@ -1,6 +1,6 @@
 const AWS_REGION = 'eu-west-1';
-const AWS_IDENTITY_POOL_ID = 'eu-west-1:a360eda2-dfd8-441e-b011-4582e383c639';
-const AWS_IOT_ENDPOINT = 'a3lwf0gnov039g.iot.eu-west-1.amazonaws.com';
+const AWS_IDENTITY_POOL_ID = 'eu-west-1:f5aa88b2-2870-45ee-b4c0-90042b5912f3';
+const AWS_IOT_ENDPOINT = 'a3lwf0gnov039g-ats.iot.eu-west-1.amazonaws.com';
 const APP_NAME = 'chat';
 
 var store = {}; // To be used for "global" variables
@@ -51,6 +51,7 @@ SigV4Utils.getSignedUrl = function(host, region, credentials) {
   }
 
   var requestUrl = protocol + '://' + host + uri + '?' + canonicalQuerystring;
+  console.log("RequestURL: "+ requestUrl);
   return requestUrl;
 };
 
@@ -74,14 +75,20 @@ function initClient(requestUrl, clientId) {
     // Once a connection has been made, make a subscription and send a message.
     console.log("onConnect");
     client.subscribe(APP_NAME + "/in/" + clientId);
+    console.log("client subscribed");
     var message;
     message = new Paho.MQTT.Message(JSON.stringify({
       connected: true,
       host: window.location.hostname,
       path: window.location.pathname
     }));
+    console.log("message host name: " + window.location.pathname);
+    console.log("message object created");
     message.destinationName = APP_NAME + "/out";
+    console.log("message destination name created: " + message.destinationName);
     client.send(message);
+    console.log("client.send(message) called");
+    console.log("message: " + message);
   }
 
   function onFailure() {

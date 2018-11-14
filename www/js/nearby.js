@@ -8,23 +8,14 @@ var tid = setInterval(function () {
     if (nearbyTogState == "online") {
         console.log("toggle state: online");
         onlineCheck();
-        //changeTestIndicator("devTest", "online");
 
     } else if (nearbyTogState == "busy") {
         console.log("toggle state: busy");
-        /*testIndicator.classList.add("away");
-        testIndicator.classList.remove("available");
-        testIndicator.classList.remove("inactive");*/
         busyCheck();
-        //changeTestIndicator("devTest", "busy");
 
     } else {
         console.log("toggle state: invisible");
-        /*testIndicator.classList.add("inactive");
-        testIndicator.classList.remove("available");
-        testIndicator.classList.remove("away");*/
         invisibleCheck();
-        //changeTestIndicator("devTest", "invisible");
     }
 
 }, 100);
@@ -37,11 +28,11 @@ function onlineCheck() {
 
     document.getElementById("friends").classList.remove("invisible-friends");
 
-    changeTestIndicator("online");
-
-    setTimeout(setOnlineStatus("online"), 100);
+    document.getElementById("render-msg").innerHTML = "";
 
     localStorage.setItem("nearbyTogState", "online");
+    setOnlineStatus(localStorage.getItem("username"), "online");
+
 }
 
 function busyCheck() {
@@ -52,11 +43,11 @@ function busyCheck() {
 
     document.getElementById("friends").classList.remove("invisible-friends");
 
-    changeTestIndicator("busy");
-
-    setTimeout(setOnlineStatus("busy"), 100);
+    document.getElementById("render-msg").innerHTML = "";
 
     localStorage.setItem("nearbyTogState", "busy");
+    setOnlineStatus(localStorage.getItem("username"), "busy");
+
 }
 
 function invisibleCheck() {
@@ -67,35 +58,10 @@ function invisibleCheck() {
 
     document.getElementById("friends").classList.add("invisible-friends");
 
-    //document.getElementById("render-msg") = "<h3>You are currently offline...</h3>"
-
-    changeTestIndicator("invisible");
-
-    setTimeout(setOnlineStatus("invisible"), 100);
+    document.getElementById("render-msg").innerHTML = "<h4>You are now offline...</h4>"
 
     localStorage.setItem("nearbyTogState", "invisible");
-}
-
-function changeTestIndicator(id, str) {
-
-    var testIndicator = document.getElementById(id);
-
-    if (str == "online") {
-
-        testIndicator.classList.add("online");
-        testIndicator.classList.remove("busy");
-        testIndicator.classList.remove("invisible");
-    } else if (str == "busy") {
-
-        testIndicator.classList.remove("online");
-        testIndicator.classList.add("busy");
-        testIndicator.classList.remove("invisible");
-    } else {
-
-        testIndicator.classList.remove("online");
-        testIndicator.classList.remove("busy");
-        testIndicator.classList.add("invisible");
-    }
+    setOnlineStatus(localStorage.getItem("username"), "invisible");
 }
 
 

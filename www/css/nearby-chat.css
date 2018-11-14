@@ -297,6 +297,11 @@ div.message.right .corner{
 #sendmessage button:focus{
     outline: 0;     
 }
+#render-msg{
+    padding:10px;
+    display: block;
+    text-align: center;
+}
 
 #close{
     position:absolute;
