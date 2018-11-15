@@ -140,18 +140,13 @@
 
 
                 <div class="cal-header">
-                    <!--<i id="cal-prev" class="fas fa-arrow-circle-left cal-prev"></i>-->
-                    <span class="cal-input"><input type="text" id="datepicker" value="" disabled /></span>
-                    <!--<i id="cal-next" class="fas fa-arrow-circle-right cal-next"></i>-->
+                    <i id="cal-prev" class="fas fa-arrow-circle-left cal-prev"></i>
+                    <span class="cal-input"><input type="text" id="datepicker" value=""/></span>
+					<span class="cal-input"><button id="getData" >GET </button></span>
+                    <i id="cal-next" class="fas fa-arrow-circle-right cal-next"></i>
                 </div>
 
-                <div id="submitDiv" class="formRoundedEmpty">
-                    <form id="healthtracker_submit">
-                        <input id="submit" type="submit" Name="UserLogSubmit" value="Save" onclick="saveHTInputData()">
-                        <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
-                    </form>
-                </div>
-
+                
                 <div id="htOutput"></div>
             </div>
 
@@ -372,7 +367,7 @@
                             </div>
                         </diV>
                         <div id="toggleReveal-movement" class="nodisplay toggleReveal">
-                            <h3 class="color-blue-dark">Bowel Freequency?</h3>
+                            <h3 class="color-blue-dark">Bowel Frequency?</h3>
                             <div class="card scrolling-wrapper">
                                 <div class="rating-container">
                                     <!--<div class="rating-text">
@@ -431,7 +426,13 @@
                                                 <img class="img-responsive2" src="img/icons/level3-icon.png" />
                                                 <span class="tracker-label-txt">5 or more</span>
                                             </label>
-
+											<br>
+											<div id="submitDiv" class="formRoundedEmpty">
+												<form id="healthtracker_submit">
+													<input id="submitData" type="button" Name="UserLogSubmit" value="Save">
+													<!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
+												</form>
+											</div>
                                         </form>
                                     </div>
                                 </div>

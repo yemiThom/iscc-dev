@@ -1,185 +1,236 @@
-/*** Home Calendar Date Picker ***/
-
-// add calendar pop-out when input text is focused on //
-/*jQuery(function () {
-    jQuery('#datepicker').datepicker();
-
-    jQuery("input").bind("change", function () {
-        console.error("change detected");
-    });
-
-
-});*/
-
-var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-var date = new Date();
-
+ var dateList=[]; 
+ var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+ var date = new Date();
+  var today = new Date(); 
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = yyyy +'-'+ mm+ '-' +dd;
+    $('#datepicker').attr('value', today);
 $(function () {
-    $('#datepicker').val(date.toLocaleDateString("en-en", options));
+    $('#datepicker').val(date.toLocaleDateString("en-en"));
 
     $('#cal-prev').click(function () {
         date.setDate(date.getDate() - 1);
-        $('#datepicker').val(date.toLocaleDateString("en-en", options))
+        $('#datepicker').val(date.toLocaleDateString("en-en", options));
+		getForDate();
     });
+	
     $('#cal-next').click(function () {
         date.setDate(date.getDate() + 1);
-        $('#datepicker').val(date.toLocaleDateString("en-en", options))
+        $('#datepicker').val(date.toLocaleDateString("en-en", options));
     });
+}); 
+
+$(document).ready(function(){
+  
+    
+
+
+
+//ADD SYMPTOMS
+
+  $("#submitData").click(function() {
+
+    //Sumbit health tracker data for particular day
+    
+
+        var username = document.getElementById("email_value").innerHTML;
+        
+        //  var day = "good";
+        var pain;
+        var stress;
+        var stool;
+        var bowelm;
+
+        var bowelf;
+        var bvisit;
+
+
+        var created_date = new Date();
+
+        var healthTrackerLUDescipt;
+        var healthTrackerLUPain;
+
+        var healthTrackerDIDescipt;
+        var healthTrackerDIPain;
+
+        var healthTrackerMedName;
+        var healthTrackerMedsDoseNum;
+        var healthTrackerMedsSelect;
+        var healthTrackerMedsSelectVal;
+        var healthTrackerMedsComments;
+        var healthTrackerCompletePrescipt;
+
+        var healthTrackerContentData1;
+        var healthTrackerContentData2;
+
+
+        if(document.getElementById("good").checked){
+            day = document.getElementById("good").value;
+        }
+        if(document.getElementById("okay").checked){
+            day = document.getElementById("okay").value;
+        }
+        if(document.getElementById("bad").checked){
+            day = document.getElementById("bad").value;
+        }
+        
+        if(document.getElementById("pain-low").checked){
+            pain = document.getElementById("pain-low").value;
+        }
+        if(document.getElementById("pain-medium").checked){
+            pain = document.getElementById("pain-medium").value;
+        }
+        if(document.getElementById("pain-high").checked){
+            pain = document.getElementById("pain-high").value;
+        }
+
+        if(document.getElementById("stress-low").checked){
+            stress = document.getElementById("stress-low").value;
+        }
+        if(document.getElementById("stress-medium").checked){
+            stress = document.getElementById("stress-medium").value;
+        }
+        if(document.getElementById("stress-high").checked){
+            stress = document.getElementById("stress-high").value;
+        }
+
+        if(document.getElementById("stool-hard").checked){
+            stool = document.getElementById("stool-hard").value;
+        }
+        if(document.getElementById("stool-medium").checked){
+            stool = document.getElementById("stool-medium").value;
+        }
+        if(document.getElementById("stool-soft").checked){
+            stool = document.getElementById("stool-soft").value;
+        }
+
+        if(document.getElementById("bowel-light").checked){
+            bowelm = document.getElementById("bowel-light").value;
+        }
+        if(document.getElementById("bowel-medium").checked){
+            bowelm = document.getElementById("bowel-medium").value;
+        }
+        if(document.getElementById("bowel-heavy").checked){
+            bowelm = document.getElementById("bowel-heavy").value;
+        }
+
+        if(document.getElementById("1-4").checked){
+            bowelf = document.getElementById("1-4").value;
+        }
+        if(document.getElementById("5-8").checked){
+            bowelf = document.getElementById("5-8").value;
+        }
+        if(document.getElementById("9OrMore").checked){
+            bowelf = document.getElementById("9OrMore").value;
+        }
+
+        if(document.getElementById("1-2").checked){
+            bvisit = document.getElementById("1-2").value;
+        }
+        if(document.getElementById("3-4").checked){
+            bvisit = document.getElementById("3-4").value;
+        }
+        if(document.getElementById("5OrMore").checked){
+            bvisit = document.getElementById("5OrMore").value;
+        }
+
+
+
+
+        var data = [{
+                "username":username, 
+                "date":date, 
+                "pain":pain,
+                "stress":stress, 
+                "stool":stool, 
+                "bowelm":bowelm, 
+                "bowelf":bowelf, 
+                "bvisit":bvisit, 
+                "created_date":created_date
+            }];
+
+        
+
+$.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
+        data: JSON.stringify(data),
+        accept: "application/json",
+        contentType: "application/json",
+        method: "POST",
+        success: function () {
+            alert("Day added");
+            dateList.push(date);
+			console.log(data);
+            //if(isInArray(dateList, date))
+        {
+            document.getElementById("submitData").disabled = true;       
+        }
+            console.log(dateList);
+        },
+        error: function(){
+                alert("Not added");
+            }
+    });
+
+
+
+    });
+
+
+//GET ALL DATA
+$("#getAllData").click(function() {
+
+
+$.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
+    data: { get_param: 'value' }, 
+    type: 'GET',  
+    dataType: 'json',
+    success: function (data) { 
+        $.each(data, function(index, element) {
+            console.log(element);
+            
+        });
+    }
 });
 
-/*** End Home Calendar Date Picker ***/
+});
+//Get for specific date
 
-// Show local storage data in results element
-//localStorage.removeItem("test");
-document.getElementById("htOutput").innerHTML = localStorage.getItem("test");
-// Show local storage data in results element
-
-/** save input datas **/
-function saveHTInputData() {
-    var healthTrackerDay;
-    var healthTrackerPain;
-    var healthTrackerStress;
-    var healthTrackerStool;
-    var healthTrackerBowels;
-
-    var healthTrackerBFDescipt;
-    var healthTrackerBFPain;
-
-    var healthTrackerLUDescipt;
-    var healthTrackerLUPain;
-
-    var healthTrackerDIDescipt;
-    var healthTrackerDIPain;
-
-    var healthTrackerMedName;
-    var healthTrackerMedsDoseNum;
-    var healthTrackerMedsSelect;
-    var healthTrackerMedsSelectVal;
-    var healthTrackerMedsComments;
-    var healthTrackerCompletePrescipt;
-
-    var healthTrackerContentData1;
-    var healthTrackerContentData2;
-
-    if(document.getElementById("good").checked){
-        healthtrackerDay = document.getElementById("good").value;
-    }
-    if(document.getElementById("okay").checked){
-        healthtrackerDay = document.getElementById("okay").value;
-    }
-    if(document.getElementById("bad").checked){
-        healthtrackerDay = document.getElementById("bad").value;
-    }
-    
-    if(document.getElementById("pain-low").checked){
-        healthtrackerPain = document.getElementById("pain-low").value;
-    }
-    if(document.getElementById("pain-medium").checked){
-        healthtrackerPain = document.getElementById("pain-medium").value;
-    }
-    if(document.getElementById("pain-high").checked){
-        healthtrackerPain = document.getElementById("pain-high").value;
-    }
-
-    if(document.getElementById("stress-low").checked){
-        healthtrackerStress = document.getElementById("stress-low").value;
-    }
-    if(document.getElementById("stress-medium").checked){
-        healthtrackerStress = document.getElementById("stress-medium").value;
-    }
-    if(document.getElementById("stress-high").checked){
-        healthtrackerStress = document.getElementById("stress-high").value;
-    }
-
-    if(document.getElementById("stool-hard").checked){
-        healthtrackerStool = document.getElementById("stool-hard").value;
-    }
-    if(document.getElementById("stool-medium").checked){
-        healthtrackerStool = document.getElementById("stool-medium").value;
-    }
-    if(document.getElementById("stool-soft").checked){
-        healthtrackerStool = document.getElementById("stool-soft").value;
-    }
-
-    if(document.getElementById("bowel-light").checked){
-        healthtrackerStool = document.getElementById("bowel-light").value;
-    }
-    if(document.getElementById("bowel-medium").checked){
-        healthtrackerStool = document.getElementById("bowel-medium").value;
-    }
-    if(document.getElementById("bowel-heavy").checked){
-        healthtrackerStool = document.getElementById("bowel-heavy").value;
-    }
-
-    if(document.getElementById("1-4").checked){
-        healthtrackerStool = document.getElementById("1-4").value;
-    }
-    if(document.getElementById("5-8").checked){
-        healthtrackerBowels = document.getElementById("5-8").value;
-    }
-    if(document.getElementById("9OrMore").checked){
-        healthtrackerBowels = document.getElementById("9OrMore").value;
-    }
-
-    if(document.getElementById("1-2").checked){
-        healthtrackerBowels = document.getElementById("1-2").value;
-    }
-    if(document.getElementById("3-4").checked){
-        healthtrackerBowels = document.getElementById("3-4").value;
-    }
-    if(document.getElementById("5OrMore").checked){
-        healthtrackerBowels = document.getElementById("5OrMore").value;
-    }
-
-    healthTrackerMedName = document.getElementById("medicationName").value;
-    healthTrackerMedsDoseNum = document.getElementById("dosageNum").value;
-    healthtrackerMedsSelect = document.getElementById("medsDoseSel");
-    healthtrackerMedsSelectVal = healthtrackerMedsSelect.options[healthtrackerMedsSelect.selectedIndex].text;
-    healthTrackerMedsComments = document.getElementById("meds-comment").value;
-    healthTrackerCompletePrescipt = document.getElementById("healthtracker_prescription").checked;
-
-    healthtrackerBFDescipt = document.getElementById("healthtracker_describe-bf").value;
-    healthtrackerBFPain = document.getElementById("healthtracker_pain-bf").checked;
-
-    healthtrackerLUDescipt = document.getElementById("healthtracker_describe-lu").value;
-    healthtrackerLUPain = document.getElementById("healthtracker_pain-lu").checked;
-
-    healthtrackerDIDescipt = document.getElementById("healthtracker_describe-di").value;
-    healthtrackerDIPain = document.getElementById("healthtracker_pain-di").checked;
-
-    //console.log(healthtrackerBFDescipt);
-
-    healthTrackerContentData1 = "1: " + healthTrackerDay + "; 2: " + healthTrackerPain + "; 3: " + healthTrackerStress + "; 4: " + healthTrackerStool + "; 5: " + healthTrackerBowels + "; 6: " + healthTrackerBFDescipt + "; 7: " + healthTrackerBFPain;
-    healthTrackerContentData2 = "; 8: " + healthTrackerLUDescipt + "; 9: " + healthTrackerLUPain + "; 10: " + healthTrackerDIDescipt + "; 11: " + healthTrackerDIPain + "; 12: " + healthTrackerMedName + "; 13: " + healthTrackerMedsDoseNum + "; 14: " + healthTrackerMedsSelectVal + "; 15: " + healthTrackerMedsComments + "; 16: " + healthTrackerCompletePrescipt;
-
-    localStorage.setItem("test", healthTrackerContentData1 + healthTrackerContentData2);
-    //var blob = new Blob([healthTrackerContentData], {type: "text/plain;charset=utf-8"});
-    //saveAs(blob, "test.txt");
-    /*var content, text = document.getElementsByName("text")[0].value;
-    var pic = document.getElementById("pic").value, filename = document.getElementsByName("name")[0].value;
-    content = text + "<br><br>" + pic;
-
-    var a = document.getElementById("a");
-    var file = new Blob([content], { type: 'text/plain' });
-    a.href = URL.createObjectURL(file);
-    a.download = filename + ".txt";*/
+   });
 	
-    var textToSaveAsBlob = new Blob([healthTrackerContentData1 + healthTrackerContentData2], {type:"text/plain"});
-    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-	var d = new Date();
- 
-    var downloadLink = document.createElement("a");
-    downloadLink.download = "myIBD_healthData_" + d;
-    downloadLink.innerHTML = "Download File";
-    downloadLink.href = textToSaveAsURL;
-    downloadLink.onclick = destroyClickedElement;
-    downloadLink.style.display = "none";
-    document.body.appendChild(downloadLink);
- 
-    downloadLink.click();
+	function getForDate(){
+	//$("#getData").click(function() {
 
-}
- 
-function destroyClickedElement(event){
-    document.body.removeChild(event.target);
+
+		$.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
+			data: { get_param: 'value' }, 
+			type: 'GET',  
+			dataType: 'json',
+			success: function (data) { 
+				$.each(data, function(index, element) {
+					if(element.username == "testuser"){
+					console.log(element);
+					console.log(element.date.toString().substring(0,10));
+					var datadate = element.date.toString().substring(0,10)
+					var datearray = document.getElementById("datepicker").value.split("/");
+					var newdateorder = datearray[2] + '/' + datearray[0] + '/' + datearray[1];
+					var newdate = newdateorder.replace(/\//g, '-');
+					console.log(newdate);
+						if (datadate = newdate){
+							alert("Data exists");
+						}else{
+							alert("No Data for this date");
+						}
+					}
+				})
+			}
+
+		});
+	//});
+	}
+
+	function isInArray(array, search)
+{
+    return array.indexOf(search) >= 0;
 }
