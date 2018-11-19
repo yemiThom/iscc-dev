@@ -22,6 +22,8 @@
     <script src="js/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript" src='js/config.js'></script>
     <script type="text/javascript" src='js/index.js'></script>
+	<script async src="js/zxing.js"></script>
+	<script src="js/video.js"></script>	
 
     <!-- javascript -->
     <script type='application/javascript' src='js/fastclick.js'></script>
@@ -166,7 +168,7 @@
                             <br><span>Diet</span>
                         </label>
                     </li>
-                    <li title="Diet">
+                    <li title="Data">
                         <label for="tab4" role="button">
                             <i class="fas fa-barcode"></i>
                             <br><span>Data</span>
@@ -543,6 +545,18 @@
                                     <!--a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a-->
                                     <textarea id="healthtracker_describe-di" class="text-areas" rows="5" cols="20"
                                         placeholder="Describe your meal..."></textarea>
+										
+										<h1>Barcode Reader</h1>
+							<div>Barcode result: <span id="dbr"></span></div>
+							  <div class="select">
+								<label for="videoSource">Video source: </label><select id="videoSource"></select>
+							  </div>
+							  <button id="go">Read Barcode</button>
+							  <div>
+								<video muted autoplay id="video" playsinline="true"></video>
+								<canvas id="pcCanvas" width="640" height="480" style="display: none; float: bottom;"></canvas>
+								<canvas id="mobileCanvas" width="240" height="320" style="display: none; float: bottom;"></canvas>
+							  </div>
 
                                     <!-- Rounded switch -->
                                     <div class="checkbox-div">
