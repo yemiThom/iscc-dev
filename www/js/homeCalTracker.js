@@ -1,43 +1,59 @@
  var dateList=[]; 
- var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+ var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
  var date = new Date();
-  var today = new Date(); 
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = yyyy +'-'+ mm+ '-' +dd;
-    $('#datepicker').attr('value', today);
-$(function () {
-    $('#datepicker').val(date.toLocaleDateString("en-en"));
+ var username = document.getElementById("email_value").innerHTML;
+        
+   // var today = new Date(); 
+   // var dd = today.getDate();
+   // var mm = today.getMonth()+1; //January is 0!
+   // var yyyy = today.getFullYear();
+   // if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = yyyy +'-'+ mm+ '-' +dd;
+    $('#datepicker').attr('value', date);
 
+    $(function () {
+    $('#datepicker').val(date.toLocaleDateString("en-en"));
     $('#cal-prev').click(function () {
         date.setDate(date.getDate() - 1);
         $('#datepicker').val(date.toLocaleDateString("en-en", options));
-		getForDate();
+        getForDate();
     });
-	
+    
     $('#cal-next').click(function () {
         date.setDate(date.getDate() + 1);
         $('#datepicker').val(date.toLocaleDateString("en-en", options));
-    });
-}); 
+        getForDate();
+        });
+    }); 
 
-$(document).ready(function(){
-  
-    
+    //Start of document ready function
+    $(document).ready(function(){
+        getForDate();
+        getDoclog();
 
 
+         //DIET LOG VARIABLES
+        var medication = document.getElementById("medicationName").value;
+        var dosage = document.getElementById("dosageNum").value;
+        var dosageMeasure = document.getElementById("medsDoseSel");
+        var dosageMeasureValue = document.getElementById("medsDoseSel").value;
+        var comment = document.getElementById("meds-comment").value;
+        var complete = document.getElementById("healthtracker_prescription").value;
+        var created_date = new Date();   
+          
 
-//ADD SYMPTOMS
+           var docdata = [{
+                "user":"testuser",
+                "medication": medication,
+                "dosage": dosage + " " + dosageMeasureValue,
+                //"comment": comment,
+                "complete": complete,
+                "created_date":created_date
+             }];  
 
-  $("#submitData").click(function() {
-
-    //Sumbit health tracker data for particular day
-    
-
-        var username = document.getElementById("email_value").innerHTML;
-        
-        //  var day = "good";
+      //ADD SYMPTOMS
+        $("#submitData").click(function() {
+   
+        // var day = "good";
         var pain;
         var stress;
         var stool;
@@ -46,24 +62,12 @@ $(document).ready(function(){
         var bowelf;
         var bvisit;
 
-
-        var created_date = new Date();
-
-        var healthTrackerLUDescipt;
-        var healthTrackerLUPain;
-
-        var healthTrackerDIDescipt;
-        var healthTrackerDIPain;
-
-        var healthTrackerMedName;
-        var healthTrackerMedsDoseNum;
-        var healthTrackerMedsSelect;
-        var healthTrackerMedsSelectVal;
-        var healthTrackerMedsComments;
-        var healthTrackerCompletePrescipt;
-
-        var healthTrackerContentData1;
-        var healthTrackerContentData2;
+        // var healthTrackerLUDescipt;
+        // var healthTrackerLUPain;
+        // var healthTrackerDIDescipt;
+        // var healthTrackerDIPain;
+        // var healthTrackerContentData1;
+        // var healthTrackerContentData2;
 
 
         if(document.getElementById("good").checked){
@@ -137,10 +141,8 @@ $(document).ready(function(){
         }
 
 
-
-
-        var data = [{
-                "username":username, 
+        var symptomdata = [{
+                "username":"testuser", 
                 "date":date, 
                 "pain":pain,
                 "stress":stress, 
@@ -151,86 +153,218 @@ $(document).ready(function(){
                 "created_date":created_date
             }];
 
-        
+       
 
-$.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
-        data: JSON.stringify(data),
-        accept: "application/json",
-        contentType: "application/json",
-        method: "POST",
-        success: function () {
-            alert("Day added");
-            dateList.push(date);
-			console.log(data);
-            //if(isInArray(dateList, date))
-        {
-            document.getElementById("submitData").disabled = true;       
-        }
-            console.log(dateList);
-        },
-        error: function(){
+
+    //POST STATEMENT FOR SYMPTOMS
+    $.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
+            data: JSON.stringify(symptomdata),
+            accept: "application/json",
+            contentType: "application/json",
+            method: "POST",
+            success: function () {
+                alert("Day added");
+                dateList.push(date);
+                console.log(symptomdata);
+                //if(isInArray(dateList, date))
+            {
+                document.getElementById("submitData").disabled = true;       
+            }
+                console.log(dateList);
+            },
+            error: function(){
                 alert("Not added");
             }
+        });
+    
+     });
+
+    //POST STATEMENT FOR DOCDATA
+    $("#submitDocData").click(function() {
+    $.ajax("https://fast-garden-93601.herokuapp.com/api/doclogs", {
+            data: JSON.stringify(docdata),
+            accept: "application/json",
+            contentType: "application/json",
+            method: "POST",
+            success: function () {
+                alert("Day added");
+                dateList.push(date);
+                console.log(docdata);
+                //if(isInArray(dateList, date))
+            {
+                document.getElementById("submitDocData").disabled = true;       
+            }
+                console.log(dateList);
+            },
+            error: function(){
+                alert("Not added");
+            }
+        });
     });
 
 
+    //GET ALL SYMPTOM DATA
+    $("#getData").click(function() {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
+            data: { get_param: 'value' }, 
+            type: 'GET',  
+            dataType: 'json',
+            success: function (data) { 
+                $.each(data, function(index, element) {
+                    console.log(element);
+                });
+            }
+        });
+    });
 
+    //GET ALL FOOD DATA
+    $("#getAllFoodData").click(function() {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/food", {
+            data: { get_param: 'value' }, 
+            type: 'GET',  
+            dataType: 'json',
+            success: function (data) { 
+                $.each(data, function(index, element) {
+                    console.log(element);
+                });
+            }
+        });
+    });
+
+    //GET ALL DOCLOG DATA
+    $("#getAllDoclogData").click(function() {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/doclog", {
+            data: { get_param: 'value' }, 
+            type: 'GET',  
+            dataType: 'json',
+            success: function (data) { 
+                $.each(data, function(index, element) {
+                    console.log(element);
+                });
+            }
+        });
     });
 
 
-//GET ALL DATA
-$("#getAllData").click(function() {
-
-
-$.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
-    data: { get_param: 'value' }, 
-    type: 'GET',  
-    dataType: 'json',
-    success: function (data) { 
-        $.each(data, function(index, element) {
-            console.log(element);
-            
+    //End of Document on load 
+   });
+    
+    //GET HEALTH TRACKER FOR SPECIFIC DATE
+    function getForDate(){
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
+            data: { get_param: 'value' }, 
+            type: 'GET',  
+            dataType: 'json',
+            success: function (data) { 
+                $.each(data, function(index, element) {
+                    if(element.username == "testuser"){
+                    console.log(element.date.toString().substring(0,10));
+                    var datadate = element.date.toString().substring(0,10);
+                    var pickerDate  = document.getElementById('datepicker').value; 
+                    console.log("DATE ARRAY: "+ pickerDate);
+                    var splitDate = pickerDate.split("/");
+                    var newdate= splitDate[2] + '-' + splitDate[0] + '-' + splitDate[1];
+                    console.log(newdate);
+                        if (datadate == newdate){
+                            alert("Data exists");
+                            console.log(element);
+                            document.getElementById("good").checked = true;
+                            if(element.pain = "low"){
+                                document.getElementById("pain-low").checked = true;
+                            }
+                            if(element.pain = "medium"){
+                                document.getElementById("pain-medium").checked = true;
+                            }
+                            if(element.pain = "high"){
+                                document.getElementById("pain-high").checked = true;
+                            }
+                            if(element.stress = "low"){
+                                document.getElementById("stress-low").checked = true;
+                            }
+                            if(element.stress = "medium"){
+                                document.getElementById("stress-medium").checked = true;
+                            }
+                            if(element.stress = "hard"){
+                                document.getElementById("stress-high").checked = true;
+                            }
+                            if(element.stool = "soft"){
+                                document.getElementById("stool-soft").checked = true;
+                            }
+                            if(element.stool = "medium"){
+                                document.getElementById("stool-medium").checked = true;
+                            }
+                            if(element.stool = "hard"){
+                                document.getElementById("stool-hard").checked = true;
+                            }
+                            if(element.bowelm = "light"){
+                                document.getElementById("bowel-light").checked = true;
+                            }
+                            if(element.bowelm = "medium"){
+                                document.getElementById("bowel-medium").checked = true;
+                            }
+                            if(element.bowelm = "heavy"){
+                                document.getElementById("bowel-heavy").checked = true;
+                            }
+                            if(element.bowelf = "1-4"){
+                                document.getElementById("1-4").checked = true;
+                            }
+                            if(element.bowelf = "5-8"){
+                                document.getElementById("5-8").checked = true;
+                            }
+                            if(element.bowelf = "9OrMore"){
+                                document.getElementById("9OrMore").checked = true;
+                            }
+                            if(element.bvisit = "1-2"){
+                                document.getElementById("1-2").checked = true;
+                            }
+                            if(element.bvisit = "3-4"){
+                                document.getElementById("3-4").checked = true;
+                            }
+                            if(element.bvisit = "5OrMore"){
+                                document.getElementById("5OrMore").checked = true;
+                            }
+                        }
+                        else{
+                            alert("No Data for this date");
+                        }
+                    }
+                });
+            }
         });
     }
-});
-
-});
-//Get for specific date
-
-   });
-	
-	function getForDate(){
-	//$("#getData").click(function() {
 
 
-		$.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
-			data: { get_param: 'value' }, 
-			type: 'GET',  
-			dataType: 'json',
-			success: function (data) { 
-				$.each(data, function(index, element) {
-					if(element.username == "testuser"){
-					console.log(element);
-					console.log(element.date.toString().substring(0,10));
-					var datadate = element.date.toString().substring(0,10)
-					var datearray = document.getElementById("datepicker").value.split("/");
-					var newdateorder = datearray[2] + '/' + datearray[0] + '/' + datearray[1];
-					var newdate = newdateorder.replace(/\//g, '-');
-					console.log(newdate);
-						if (datadate = newdate){
-							alert("Data exists");
-						}else{
-							alert("No Data for this date");
-						}
-					}
-				})
-			}
+    //GET DIET LOG FOR SPECIFIC DAY
+    function getDoclog(){
+         $.ajax("https://fast-garden-93601.herokuapp.com/api/doclogs", {
+            data: { get_param: 'value' },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data){
+                $.each(data, function(index, element) {
+                if(element.user == username){
+                    // console.log(element.date.toString().substring(0,10));
+                    // var datadate = element.date.toString().substring(0,10);
+                    // var pickerDate  = document.getElementById('datepicker').value; 
+                    // console.log("DATE ARRAY: "+ pickerDate);
+                    // var splitDate = pickerDate.split("/");
+                    // var newdate= splitDate[2] + '-' + splitDate[0] + '-' + splitDate[1];
+                    // console.log(newdate);
+                    // if (datadate == newdate){
+                    //      alert("Data exists");
+                           console.log("Doclog: " + element);
+                            document.getElementById("medicationName").value = element.medication;
+                            document.getElementById("dosageNum").value = element.dosage;
+                           // document.getElementById("meds-comment").value = comment
+                            document.getElementById("healthtracker_prescription").value = element.complete;
+             //   }
+                   }
+                });
+            }
+        });
+    }
 
-		});
-	//});
-	}
-
-	function isInArray(array, search)
+    function isInArray(array, search)
 {
     return array.indexOf(search) >= 0;
 }

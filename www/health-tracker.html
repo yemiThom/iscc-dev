@@ -23,15 +23,6 @@
     <script type="text/javascript" src='js/config.js'></script>
     <script type="text/javascript" src='js/index.js'></script>
 
-    <!-- Style Sheets for sessions and login
-        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
-    <script src="js/amazon-cognito-auth.min.js"></script>
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
-    <script src="js/amazon-cognito-identity.min.js"></script>
-    <script type="text/javascript" src='js/config.js'></script>
-    <script type="text/javascript" src='js/index.js'></script>
-    <!-- Style Sheets -->
-
     <!-- javascript -->
     <script type='application/javascript' src='js/fastclick.js'></script>
     <!--<script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
@@ -142,7 +133,7 @@
                 <div class="cal-header">
                     <i id="cal-prev" class="fas fa-arrow-circle-left cal-prev"></i>
                     <span class="cal-input"><input type="text" id="datepicker" value=""/></span>
-					<span class="cal-input"><button id="getData" >GET </button></span>
+					<!-- <span class="cal-input"><button id="getDoclog" onclick="getDoclog()" >GET </button></span> -->
                     <i id="cal-next" class="fas fa-arrow-circle-right cal-next"></i>
                 </div>
 
@@ -178,7 +169,7 @@
                     <li title="Diet">
                         <label for="tab4" role="button">
                             <i class="fas fa-barcode"></i>
-                            <br><span>Food Tracker</span>
+                            <br><span>Data</span>
                         </label>
                     </li>
                 </ul>
@@ -481,6 +472,10 @@
                                 <span>YES</span>
                             </div>
                         </div>
+                       <form id="healthtracker_submit">
+                                                    <input id="submitDocData" type="button" value="Save">
+                                                    <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
+                       </form> 
                         <!--/div-->
                     </section>
                     <section>
@@ -567,6 +562,17 @@
                             </div>
                         </div>
                     </section>
+                    <section>
+                        <h2 class="color-blue-dark">Data</h2>
+
+
+                            HEKKKIII
+                            UBUIVYF
+                            HVJVJHV
+                            HVHVHC
+                            HV
+
+                    </section>    
                     <br />
                 </div>
             </div>
