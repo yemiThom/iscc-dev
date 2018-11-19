@@ -45,7 +45,7 @@
     font-size: 1.5rem;/*0.8125rem;*/
     font-weight: bold;
     text-decoration: none;
-    padding: 0.907rem 1rem;
+    padding: 0.907rem 1.2rem;
 }
 
 .mobile-bottom-bar .footer-link i.fa {
@@ -54,6 +54,11 @@
     font-size: 1rem;
     vertical-align: middle;
     width: 100%;
+}
+
+.mobile-bottom-bar .footer-link img{
+    width: 15px;
+    max-width: 60%;
 }
 
 .mobile-bottom-bar .footer-link:focus, .mobile-bottom-bar .footer-link:active {

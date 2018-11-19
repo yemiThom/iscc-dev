@@ -5,8 +5,6 @@ const APP_NAME = 'chat';
 
 var store = {}; // To be used for "global" variables
 
-var cnctClientId,cnctRequestUrl;
-
 /**
  * utilities to do sigv4
  * @class SigV4Utils
@@ -22,6 +20,12 @@ SigV4Utils.getSignatureKey = function(key, date, region, service) {
 };
 
 SigV4Utils.getSignedUrl = function(host, region, credentials) {
+  console.log("host: "+host);
+  console.log("region: "+region);
+  console.log("credentials.accessKeyId: "+credentials.accessKeyId);
+  console.log("credentials.secretAccessKey: "+credentials.secretAccessKey);
+  console.log("credentials.sessionToken: "+credentials.sessionToken);
+
   var datetime = AWS.util.date.iso8601(new Date()).replace(/[:\-]|\.\d{3}/g, '');
   var date = datetime.substr(0, 8);
 
@@ -133,8 +137,6 @@ function connectClient() {
     console.log('clientId: ' + clientId);
     var requestUrl = SigV4Utils.getSignedUrl(
       AWS_IOT_ENDPOINT, AWS.config.region, AWS.config.credentials);
-    
-    cnctClientId = clientId; cnctRequestUrl = requestUrl;
 
     initClient(requestUrl, clientId);
   });
