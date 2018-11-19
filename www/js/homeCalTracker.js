@@ -16,12 +16,14 @@
         date.setDate(date.getDate() - 1);
         $('#datepicker').val(date.toLocaleDateString("en-en", options));
         getForDate();
+		getDoclog();
     });
     
     $('#cal-next').click(function () {
         date.setDate(date.getDate() + 1);
         $('#datepicker').val(date.toLocaleDateString("en-en", options));
         getForDate();
+		getDoclog();
         });
     }); 
 
@@ -31,21 +33,21 @@
         getDoclog();
 
 
-         //DIET LOG VARIABLES
-        var medication = document.getElementById("medicationName").value;
-        var dosage = document.getElementById("dosageNum").value;
-        var dosageMeasure = document.getElementById("medsDoseSel");
-        var dosageMeasureValue = document.getElementById("medsDoseSel").value;
-        var comment = document.getElementById("meds-comment").value;
-        var complete = document.getElementById("healthtracker_prescription").value;
+       
         var created_date = new Date();   
           
-
-           var docdata = [{
-                "user":"testuser",
+			  //DOC LOG VARIABLES
+			var medication = document.getElementById("medicationName").value;
+			var dosage = document.getElementById("dosageNum").value;
+			var dosageMeasure = document.getElementById("medsDoseSel");
+			var dosageMeasureValue = document.getElementById("medsDoseSel").value;
+			var comment = document.getElementById("meds-comment").value;
+			var complete = document.getElementById("healthtracker_prescription").value;
+			var docdata = [{
+                "username":"testuser",
                 "medication": medication,
-                "dosage": dosage + " " + dosageMeasureValue,
-                //"comment": comment,
+                "dosage": dosage,
+                "comment": comment,
                 "complete": complete,
                 "created_date":created_date
              }];  
@@ -53,7 +55,7 @@
       //ADD SYMPTOMS
         $("#submitData").click(function() {
    
-        // var day = "good";
+        var day;
         var pain;
         var stress;
         var stool;
@@ -143,6 +145,7 @@
 
         var symptomdata = [{
                 "username":"testuser", 
+				"day":day,
                 "date":date, 
                 "pain":pain,
                 "stress":stress, 
@@ -269,7 +272,15 @@
                         //    alert("Data exists");
                             console.log(element);
 							document.getElementById("submitData").disabled = true; 
-                            document.getElementById("good").checked = true;
+                            if(element.day = "good"){
+							document.getElementById("good").checked = true;
+							}
+							if(element.day = "okay"){
+							document.getElementById("okay").checked = true;
+							}
+							if(element.day = "bad"){
+							document.getElementById("good").checked = true;
+							}
                             if(element.pain = "low"){
                                 document.getElementById("pain-low").checked = true;
                             }
@@ -326,8 +337,9 @@
                             }
                         }
                         else{
-                            alert("No Data for this date");
+							console.log("No data for this date");
 							document.getElementById("good").checked = false;
+							document.getElementById("submitData").disabled = false; 
                             if(element.pain = "low"){
                                 document.getElementById("pain-low").checked = false;
                             }
@@ -398,7 +410,7 @@
             dataType: 'json',
             success: function (data){
                 $.each(data, function(index, element) {
-                if(element.user == username){
+                if(element.user == "testuser"){
                     // console.log(element.date.toString().substring(0,10));
                     // var datadate = element.date.toString().substring(0,10);
                     // var pickerDate  = document.getElementById('datepicker').value; 
@@ -409,11 +421,12 @@
                     // if (datadate == newdate){
                     //      alert("Data exists");
                            console.log("Doclog: " + element);
-                            document.getElementById("medicationName").value = element.medication;
-                            document.getElementById("dosageNum").value = element.dosage;
-                           // document.getElementById("meds-comment").value = comment
-                            document.getElementById("healthtracker_prescription").value = element.complete;
+                           document.getElementById("medicationName").value = element.medication;
+                           document.getElementById("dosageNum").value = element.dosage;
+                           document.getElementById("meds-comment").value = element.comment
+                           document.getElementById("healthtracker_prescription").value = element.complete;
              //   }
+			 
                    }
                 });
             }
