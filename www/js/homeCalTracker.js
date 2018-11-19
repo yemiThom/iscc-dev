@@ -266,7 +266,7 @@
                     var newdate= splitDate[2] + '-' + splitDate[0] + '-' + splitDate[1];
                     console.log(newdate);
                         if (datadate == newdate){
-                            alert("Data exists");
+                        //    alert("Data exists");
                             console.log(element);
                             document.getElementById("good").checked = true;
                             if(element.pain = "low"){
@@ -326,6 +326,61 @@
                         }
                         else{
                             alert("No Data for this date");
+							document.getElementById("good").checked = false;
+                            if(element.pain = "low"){
+                                document.getElementById("pain-low").checked = false;
+                            }
+                            if(element.pain = "medium"){
+                                document.getElementById("pain-medium").checked = false;
+                            }
+                            if(element.pain = "high"){
+                                document.getElementById("pain-high").checked = false;
+                            }
+                            if(element.stress = "low"){
+                                document.getElementById("stress-low").checked = false;
+                            }
+                            if(element.stress = "medium"){
+                                document.getElementById("stress-medium").checked = false;
+                            }
+                            if(element.stress = "hard"){
+                                document.getElementById("stress-high").checked = false;
+                            }
+                            if(element.stool = "soft"){
+                                document.getElementById("stool-soft").checked = false;
+                            }
+                            if(element.stool = "medium"){
+                                document.getElementById("stool-medium").checked = false;
+                            }
+                            if(element.stool = "hard"){
+                                document.getElementById("stool-hard").checked = false;
+                            }
+                            if(element.bowelm = "light"){
+                                document.getElementById("bowel-light").checked = false;
+                            }
+                            if(element.bowelm = "medium"){
+                                document.getElementById("bowel-medium").checked = false;
+                            }
+                            if(element.bowelm = "heavy"){
+                                document.getElementById("bowel-heavy").checked = false;
+                            }
+                            if(element.bowelf = "1-4"){
+                                document.getElementById("1-4").checked = false;
+                            }
+                            if(element.bowelf = "5-8"){
+                                document.getElementById("5-8").checked = false;
+                            }
+                            if(element.bowelf = "9OrMore"){
+                                document.getElementById("9OrMore").checked = false;
+                            }
+                            if(element.bvisit = "1-2"){
+                                document.getElementById("1-2").checked = false;
+                            }
+                            if(element.bvisit = "3-4"){
+                                document.getElementById("3-4").checked = false;
+                            }
+                            if(element.bvisit = "5OrMore"){
+                                document.getElementById("5OrMore").checked = false;
+                            }
                         }
                     }
                 });
