@@ -268,6 +268,7 @@
                         if (datadate == newdate){
                         //    alert("Data exists");
                             console.log(element);
+							document.getElementById("submitData").disabled = true; 
                             document.getElementById("good").checked = true;
                             if(element.pain = "low"){
                                 document.getElementById("pain-low").checked = true;
