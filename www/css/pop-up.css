@@ -167,6 +167,43 @@ body{
     text-shadow: 0 0 5px #414b76;
 }
 
+.star-rating-display {
+    unicode-bidi: bidi-override;
+    color: #72737b;
+    display: block;
+    position: relative;
+}
+.star-rating-display:before, .star-rating-display:after{
+    content: "★★★★★";
+    display: block;
+    white-space: nowrap;
+}
+.star-rating-display:before{
+    color: #414b76;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    overflow: hidden;
+}
+.star-rating-display:after{
+    z-index: 0;
+}
+.star-rating-display[data-rating="1"]:before {
+    width: 20%;
+}
+.star-rating-display[data-rating="2"]:before {
+    width: 40%;
+}
+.star-rating-display[data-rating="3"]:before {
+    width: 60%;
+}
+.star-rating-display[data-rating="4"]:before {
+    width: 80%;
+}
+.star-rating-display[data-rating="5"]:before {
+    width: 100%;
+}
+
 @media screen and (max-width: 700px){
     .box{
         width: 70%;

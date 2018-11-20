@@ -93,7 +93,7 @@ function initMap() {
             lng: lng,
             title: title,
             content: '<a href = "https://google.com/maps/place/"' + lat + ',' + lng + '>Get Directions</a>',
-            rating: rating,
+            rating: '<div class="star-rating-display" data-rating="'+rating+'"></div>',
             btype: btype,
             created_date: created_date
         }
