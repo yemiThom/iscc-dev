@@ -135,19 +135,25 @@
             <div class="content">
                 <div class="displayBlock padding-btm">
                     <label class="displayBlock">Place Name:</label>
-                    <input id="medicationName" class="txtBorder" type="text">
+                    <input id="placeName" class="txtBorder" type="text">
                 </div>
             </div>
 
             <div class="content">
                 <div class="displayBlock padding-btm">
-                    <label class="displayBlock">Location:</label>
-                    <input id="medicationName" class="txtBorder" type="text">
+                    <label class="displayBlock">Type of Establishment:</label>
+                    <div class="custom-select dispInlineBlock">
+                        <select id="medsDoseSel" class="styledSelect">
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                            <option value="business">Business</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <label>Leave your review:</label>
-            <textarea id="meds-comment" class="text-areas" rows="6" cols="40" placeholder="What did you think?"></textarea>
+            <textarea id="meds-comment" class="text-areas txtBorder" rows="6" cols="35" placeholder="What did you think?"></textarea>
 
             <form class="star-rating">
                 <label>
@@ -180,6 +186,12 @@
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                 </label>
+            </form>
+            <br/>
+            <br/>
+            <!-- Submit Button -->
+            <form id="review_submit" class="reviewBtn">
+                <input id="bathroomData" type="button" value="Submit Review">
             </form>
         </div>
     </div>
