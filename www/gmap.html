@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/native-interapp.css">
     <link rel="stylesheet" href="css/main-nav.css">
     <link rel="stylesheet" href="css/toiletFinder.css">
+    <link rel="stylesheet" href="css/pop-up.css">
     <link rel="stylesheet" href="css/footer-nav.css">
 
     <!-- Cognito login -->
@@ -117,6 +118,72 @@
     <!-- Start Map Div -->
     <div id="map"></div>
     <!-- End Map Div -->
+
+    <div class="reviewBtn_div">
+        <a class="button" href="#popup1">Create a review here</a>
+    </div>
+
+    <!--Start pop-up form Div -->
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Create a review</h2>
+            <h3>At your location</h3>
+            <a class="close" href="#">&times;</a>
+            <br/>
+            <br/>
+
+            <div class="content">
+                <div class="displayBlock padding-btm">
+                    <label class="displayBlock">Place Name:</label>
+                    <input id="medicationName" class="txtBorder" type="text">
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="displayBlock padding-btm">
+                    <label class="displayBlock">Location:</label>
+                    <input id="medicationName" class="txtBorder" type="text">
+                </div>
+            </div>
+
+            <label>Leave your review:</label>
+            <textarea id="meds-comment" class="text-areas" rows="6" cols="40" placeholder="What did you think?"></textarea>
+
+            <form class="rating">
+                <label>
+                    <input type="radio" name="stars" value="1" />
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input type="radio" name="stars" value="2" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input type="radio" name="stars" value="3" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input type="radio" name="stars" value="4" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input type="radio" name="stars" value="5" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+            </form>
+        </div>
+    </div>
+    <!--End pop-up form Div -->
 
     <!-- Start Footer Nav Area -->
     <div class="default-footer">

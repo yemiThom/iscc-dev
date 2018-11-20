@@ -89,6 +89,7 @@ input
 }
 
 body, input, textarea { font-family: 'Lato', Verdana, 'Gill Sans', 'Gill Sans MT', 'Calibri', Tahoma, sans-serif }
+input, textarea { font-size: 1rem; }
 
 h1 { font-size: 2em; }
 h2 { font-size: 1.5em; }

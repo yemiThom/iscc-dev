@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
     <link rel="stylesheet" type="text/css" href="css/homeCalTracker.css">
     <link rel="stylesheet" type="text/css" href="css/barcodeScanner.css">
+    <link rel="stylesheet" type="text/css" href="css/pop-up.css">
 
     <!-- Cognito login -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -23,8 +24,8 @@
     <script src="js/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript" src='js/config.js'></script>
     <script type="text/javascript" src='js/index.js'></script>
-	<script async src="js/zxing.js"></script>
-	<script src="js/video.js"></script>	
+    <script async src="js/zxing.js"></script>
+    <script src="js/video.js"></script>
 
     <!-- javascript -->
     <script type='application/javascript' src='js/fastclick.js'></script>
@@ -135,12 +136,12 @@
 
                 <div class="cal-header">
                     <i id="cal-prev" class="fas fa-arrow-circle-left cal-prev"></i>
-                    <span class="cal-input"><input type="text" id="datepicker" value=""/></span>
-					<!-- <span class="cal-input"><button id="getDoclog" onclick="getDoclog()" >GET </button></span> -->
+                    <span class="cal-input"><input type="text" id="datepicker" value="" /></span>
+                    <!-- <span class="cal-input"><button id="getDoclog" onclick="getDoclog()" >GET </button></span> -->
                     <i id="cal-next" class="fas fa-arrow-circle-right cal-next"></i>
                 </div>
 
-                
+
                 <div id="htOutput"></div>
             </div>
 
@@ -171,12 +172,8 @@
                     </li>
                     <li title="Data">
                         <label for="tab4" role="button">
-                            <i class="fas fa-barcode"></i>
-<<<<<<< HEAD
-                            <br><span>Barcode Scanner</span>
-=======
+                            <i class="fas fa-chart-bar"></i>
                             <br><span>Data</span>
->>>>>>> master
                         </label>
                     </li>
                 </ul>
@@ -424,13 +421,15 @@
                                                 <img class="img-responsive2" src="img/icons/level3-icon.png" />
                                                 <span class="tracker-label-txt">5 or more</span>
                                             </label>
-											<br>
-											<div id="submitDiv" class="formRoundedEmpty">
-												<form id="healthtracker_submit">
-													<input id="submitData" type="button" Name="UserLogSubmit" value="Save">
-													<!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
-												</form>
-											</div>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <div id="submitDiv" class="goScan">
+                                                <form id="healthtracker_submit" class="goScan">
+                                                    <input id="submitData" type="button" Name="UserLogSubmit" value="Save">
+                                                    <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
+                                                </form>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -479,10 +478,10 @@
                                 <span>YES</span>
                             </div>
                         </div>
-                       <form id="healthtracker_submit">
-                                                    <input id="submitDocData" type="button" value="Save">
-                                                    <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
-                       </form> 
+                        <form id="healthtracker_submit" class="goScan">
+                            <input id="submitDocData" type="button" value="Save">
+                            <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
+                        </form>
                         <!--/div-->
                     </section>
                     <section>
@@ -550,8 +549,8 @@
                                     <!--a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a-->
                                     <textarea id="healthtracker_describe-di" class="text-areas" rows="5" cols="20"
                                         placeholder="Describe your meal..."></textarea>
-										
-										
+
+
 
                                     <!-- Rounded switch -->
                                     <div class="checkbox-div">
@@ -570,15 +569,7 @@
                                 </section>
                             </div>
                         </div>
-						
-						
-						<iframe src="barcodescanner.html" width="100%">
-						<p>Your browser does not support iframes.</p>
-						</iframe>
 
-                    </section>
-                    <section>
-<<<<<<< HEAD
                         <h2 class="color-blue-dark">Barcode Scanner</h2>
                         
                         <div class="goScan">
@@ -589,20 +580,34 @@
 
                             <input type="button" value="Go" disabled>
                         </div>
+                        <br/>
+                        <div class="scannerBtn_div">
+                            <a class="button" href="#popup1">Open scanner</a>
+                        </div>
+
+                         <!--Start pop-up form Div -->
+                        <div id="popup1" class="overlay">
+                            <div class="popup1">
+                                <a class="close" href="#">&times;</a>
+
+                                <iframe src="barcodescanner.html" style="width:100%; height:400px;">
+                                    <p>Your device does not support iframes.</p>
+                                </iframe>
+                            </div>
+                        </div>
 
                     </section>
-=======
+                    <section>
                         <h2 class="color-blue-dark">Data</h2>
 
 
-                            HEKKKIII
-                            UBUIVYF
-                            HVJVJHV
-                            HVHVHC
-                            HV
+                        HEKKKIII
+                        UBUIVYF
+                        HVJVJHV
+                        HVHVHC
+                        HV
 
-                    </section>    
->>>>>>> master
+                    </section>
                     <br />
                 </div>
             </div>
@@ -616,27 +621,27 @@
         <div class="mobile-bottom-bar">
             <a href="home.html" class="footer-link">
                 <!--i class="fas fa-home"></i-->
-                <img src="img/icons/home.png"/>
+                <img src="img/icons/home.png" />
                 <span class='footer-text'>Home</span>
             </a>
             <a href="health-tracker.html" class="footer-link">
                 <!--i class="fas fa-file-contract"></i-->
-                <img src="img/icons/healthtracker.png"/>
+                <img src="img/icons/healthtracker.png" />
                 <span class='footer-text'>Health Tracker</span>
             </a>
             <a href="gmap.html" class="footer-link">
                 <!--i class="fas fa-map-marker-alt"></i-->
-                <img src="img/icons/restrooms.png" style="width: 11px;"/>
+                <img src="img/icons/restrooms.png" style="width: 11px;" />
                 <span class='footer-text'>Restrooms</span>
             </a>
             <a href="mindfulness.html" class="footer-link">
                 <!--i class="fas fa-spa"></i-->
-                <img src="img/icons/mindfulness.png"/>
+                <img src="img/icons/mindfulness.png" />
                 <span class='footer-text'>Mindfulness</span>
             </a>
             <a href="nearby.html" class="footer-link">
                 <!--i class="fas fa-comments"></i-->
-                <img src="img/icons/nearby.png" style="width: 13px;"/>
+                <img src="img/icons/nearby.png" style="width: 13px;" />
                 <span class='footer-text'>Nearby</span>
             </a>
             <!--a href="profile-card.html" class="footer-link">
