@@ -83,7 +83,7 @@ function initMap() {
     //var lng = document.getElementById("lng");
     var title = document.getElementById("title");
     var rating = document.getElementById("rating");
-    var btype = ocument.getElementById("btype");
+    var btype = document.getElementById("btype");
 
     //var review
 
