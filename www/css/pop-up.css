@@ -104,9 +104,9 @@ body{
 .star-rating {
     display: inline-block;
     position: relative;
-    height: 50px;
-    line-height: 50px;
-    font-size: 50px;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 2.5rem;
 }
 
 .star-rating label {
