@@ -11,7 +11,7 @@ Resources:
     Properties:
       Code:
         S3Bucket: isccgutapp
-        S3Key: e6f36b2f460040e6da83a2fa119f1701
+        S3Key: e84b8afdd89d097d6bd4bfc2afad1024
       Environment:
         Variables:
           AWS_IOT_ENDPOINT:
