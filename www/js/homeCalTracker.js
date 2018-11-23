@@ -1,14 +1,207 @@
- var dateList=[]; 
- var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
- var date = new Date();
- var username = document.getElementById("email_value").innerHTML;
-        
-   // var today = new Date(); 
-   // var dd = today.getDate();
-   // var mm = today.getMonth()+1; //January is 0!
-   // var yyyy = today.getFullYear();
-   // if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = yyyy +'-'+ mm+ '-' +dd;
-    $('#datepicker').attr('value', date);
+
+//FOOD VARIABLES
+var username = "testusername";
+var meal; 
+var foodInput = document.getElementById("foodnameInput").value;
+var created_date = new Date();
+
+        if(document.getElementById("tab1-1").checked){
+            meal = "breakfast";
+        }
+        if(document.getElementById("tab2-1").checked){
+            meal = "lunch"
+        }
+        if(document.getElementById("tab3-1").checked){
+            meal = "dinner"
+        }
+
+
+        $("#addFood").click(function() {
+
+        var brand = document.getElementById("brand").value;      
+        var foodname = document.getElementById("foodname").value;
+        //var servingsize = document.getElementById("servingsize").value;
+        var servingsPerContainer = document.getElementById("servingsPerContainer").value;
+        var created_date = new Date();
+        var barcode = document.getElementById("trackingCode").value;
+
+        var food = {
+            "brand": brand,
+            "foodname": foodname,
+            "servingsPerContainer": servingsPerContainer,
+            "barcode": barcode,
+            "created_date": created_date
+            };
+
+            alert(JSON.stringify(food));
+
+        console.log(food);    
+        alert(food);
+
+         $.ajax("https://fast-garden-93601.herokuapp.com/api/food", {
+                 data: JSON.stringify(food),
+                 accept: "application/json",
+                 contentType: "application/json",
+                 method: "POST",
+                 success: function () {
+                     console.log(data);
+                     alert("Added");
+                      $("#foodDatabase").hide();
+                      $("#showFoodAdd").show();
+                 },
+                 error: function(){
+                     alert("Not added");
+                      $("#foodDatabase").hide();
+                      $("#showFoodAdd").show();
+                 }
+             });
+         });    
+
+//GET ALL FOOD DATA
+    function getFood(){
+    //$("#getAllFoodData").click(function() {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/food", {
+            data: { get_param: 'value' }, 
+            type: 'GET',  
+            dataType: 'json',
+            success: function (data) { 
+                var rows = '';
+                $("#selector").empty();
+                $("#selector2").empty();
+                $.each(data, function(index, element) {
+                   console.log(element);
+                   foodrow = '<option>'+element.foodname+'</option>';
+                   idrow = '<option>'+element.id+'</option>';
+                   console.log(element.foodname);
+                   $("#selector").append(foodrow);
+                   $("#selector2").append(idrow);
+                });
+            }
+        });
+    //});
+}
+
+//GET SPECIFIC FOOD DATA BASED ON SELECTOR
+function getFoodItem(){
+    var id = $("#selector2").val();
+     $.ajax("https://fast-garden-93601.herokuapp.com/api/food/" + id, {
+            data: { get_param: 'value' }, 
+            type: 'GET',  
+            dataType: 'json',
+            success: function (data) { 
+                $.each(data, function(index, element) {
+                   console.log(element);
+                    document.getElementById("brandInput").value = element.brand;    
+                    document.getElementById("foodnameInput").value = element.foodname;
+                    document.getElementById("servingsizeInput").value = element.servingsize;
+                    document.getElementById("servingsPerContainerInput").value = element.servingsPerContainer;
+                    document.getElementById("trackingCodeInput").value = element.barcode;
+                });
+            }
+        });
+
+}
+
+
+var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
+var date = new Date();
+
+//DIET LOG VARIABLES
+
+
+//LOG DIET
+    $("#logDiet").click(function() {
+        var pain;
+        var foodInput = document.getElementById("foodnameInput").value; 
+        var servingInput = document.getElementById("servingInput").value;
+
+        if(document.getElementById("healthtracker_pain-bf").value = "NO") {
+         pain = "no";
+             } 
+        else {
+         pain = "yes";
+          }   
+
+        if(document.getElementById("good").checked){
+            day = document.getElementById("good").value;
+                }
+        if(document.getElementById("okay").checked){
+            day = document.getElementById("okay").value;
+                }
+
+        var dietlog = {
+            "username": username,
+            "date": date,
+            "meal": meal,
+            "food": foodInput,
+            "pain": pain,
+            "servingsize": servingsize,
+            "created_date": created_date
+            };
+
+            alert("Stringified: " + JSON.stringify(dietlog));
+
+        console.log(dietlog);    
+        alert(dietlog);
+
+         $.ajax("https://fast-garden-93601.herokuapp.com/api/dietlogs", {
+                 data: JSON.stringify(dietlog),
+                 accept: "application/json",
+                 contentType: "application/json",
+                 method: "POST",
+                 success: function () {
+                     console.log(dietlog);
+                     alert("Added");
+                 },
+                 error: function(){
+                     alert("Not added");
+                }
+            });
+
+         });  
+
+
+
+//GET ALL DIET LOG DATA
+    var x = document.getElementById('tabletest');
+    var x2 = document.getElementById('tabletest2');
+    var x3 = document.getElementById('tabletest3');
+    var x4 = document.getElementById('tabletest4');
+    $("#getAllDietlogData").click(function() {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/dietlogs", {
+            data: { get_param: 'value' }, 
+            type: 'GET',  
+            dataType: 'json',
+            success: function (data) { 
+                $('#dietLogTable').empty();
+                $.each(data, function(index, element) {
+                    if(element.username="testuser"){
+                    console.log(element);
+                    var tr = (
+                        '<tr>' + 
+                        '<td>' + element.date.toString().substring(0,10) + 
+                        '<td>' + element.meal + 
+                        '<td>' + element.food +
+                        '<td>' + element.pain +
+                        '<td>' + element.servingsize 
+                        + '</tr>'
+                        );
+                    $('#dietLogTable').append(tr);}
+                });
+                if (x.style.display === 'none') {
+                    x.style.display = 'block';
+                }
+            },
+            error: function(){
+                alert("Data missing");
+;            }
+        });
+    });
+
+
+
+//DATE PICKER
+ $('#datepicker').attr('value', date);
 
     $(function () {
     $('#datepicker').val(date.toLocaleDateString("en-en"));
@@ -27,30 +220,49 @@
         });
     }); 
 
+
+    $("#getAllDocLogData").click(function() {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/doclogs", {
+            data: { get_param: 'value' }, 
+            type: 'GET',  
+            dataType: 'json',
+            success: function (data) { 
+                $('#docLogTable').empty();
+                $.each(data, function(index, element) {
+                    if(element.username="testuser"){
+                    console.log(element);
+                    var tr = (
+                        '<tr>' + 
+                        '<td>' + element.date.toString().substring(0,10) + '<td>' +
+                        '<td>' + element.medication + 
+                        '<td>' + element.dosage +
+                        '<td>' + element.comment + 
+                        '<td>' + element.complete +
+                        + '</tr>'
+                        );
+                    $('#docLogTable').append(tr); }
+                });
+                if (x3.style.display === 'none') {
+                    x3.style.display = 'block';
+                }
+            },
+            error: function(){
+                alert("Data missing");
+;            }
+        });
+    });
+
     //Start of document ready function
     $(document).ready(function(){
         getForDate();
         getDoclog();
-
+        getFood();
 
        
         var created_date = new Date();   
           
 			  //DOC LOG VARIABLES
-			var medication = document.getElementById("medicationName").value;
-			var dosage = document.getElementById("dosageNum").value;
-			var dosageMeasure = document.getElementById("medsDoseSel");
-			var dosageMeasureValue = document.getElementById("medsDoseSel").value;
-			var comment = document.getElementById("meds-comment").value;
-			var complete = document.getElementById("healthtracker_prescription").value;
-			var docdata = [{
-                "username":"testuser",
-                "medication": medication,
-                "dosage": dosage,
-                "comment": comment,
-                "complete": complete,
-                "created_date":created_date
-             }];  
+			
 
       //ADD SYMPTOMS
         $("#submitData").click(function() {
@@ -60,17 +272,8 @@
         var stress;
         var stool;
         var bowelm;
-
         var bowelf;
         var bvisit;
-
-        // var healthTrackerLUDescipt;
-        // var healthTrackerLUPain;
-        // var healthTrackerDIDescipt;
-        // var healthTrackerDIPain;
-        // var healthTrackerContentData1;
-        // var healthTrackerContentData2;
-
 
         if(document.getElementById("good").checked){
             day = document.getElementById("good").value;
@@ -184,26 +387,44 @@
 
     //POST STATEMENT FOR DOCDATA
     $("#submitDocData").click(function() {
-    $.ajax("https://fast-garden-93601.herokuapp.com/api/doclogs", {
+            var medication = document.getElementById("medicationName").value;
+            var dosage = document.getElementById("dosageNum").value;
+            var dosageMeasure = document.getElementById("medsDoseSel");
+            var dosageMeasureValue = document.getElementById("medsDoseSel").value;
+            var comment = document.getElementById("meds-comment").value;
+            var complete = document.getElementById("healthtracker_prescription").value;
+            
+            var docdata = [{
+                "username":"testuser",
+                "date":date,
+                "medication": medication,
+                "dosage": dosage,
+                "comment": comment,
+                "complete": complete,
+                "created_date":created_date
+             }];  
+    
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/doclogs", {
             data: JSON.stringify(docdata),
             accept: "application/json",
             contentType: "application/json",
             method: "POST",
             success: function () {
                 alert("Day added");
-                dateList.push(date);
+                alert(docdata);
                 console.log(docdata);
-                //if(isInArray(dateList, date))
-            {
-                document.getElementById("submitDocData").disabled = true;       
-            }
-                console.log(dateList);
             },
             error: function(){
                 alert("Not added");
             }
         });
     });
+
+   
+
+
+
+
 
 
     //GET ALL SYMPTOM DATA
@@ -220,33 +441,160 @@
         });
     });
 
-    //GET ALL FOOD DATA
-    $("#getAllFoodData").click(function() {
-        $.ajax("https://fast-garden-93601.herokuapp.com/api/food", {
+//GET SYMPTOM DATA   
+    $("#getAllSymptomData").click(function() {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
             data: { get_param: 'value' }, 
             type: 'GET',  
             dataType: 'json',
             success: function (data) { 
+                $('#symptomTable').empty();
                 $.each(data, function(index, element) {
+                    if(element.username == "testuser"){
                     console.log(element);
+                    var tr = (
+                        '<tr>' + 
+                        '<td>' + element.date.toString().substring(0,10) +
+                        '<td>' + element.day + 
+                        '<td>' + element.pain + 
+                        '<td>' + element.stress + 
+                        '<td>' + element.stool +
+                        '<td>' + element.bowelm + 
+                        '<td>' + element.bowelf + 
+                        '<td>' + element.bvisit + 
+                        + '</tr>'
+                        );
+                    $('#symptomTable').append(tr); }
                 });
+                if (x2.style.display === 'none') {
+                    x2.style.display = 'block';
+                }
+            },
+            error: function(){
+                alert("Data missing");
+            }
+        });
+    });
+
+
+    //Gra DATA   
+    
+    
+    var graph = document.getElementById('graph');
+    $("#getGraphData").click(function() {
+        $("#showGraph").show();
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
+            data: { get_param: 'value' }, 
+            type: 'GET',  
+            dataType: 'json',
+            success: function (data) { 
+                $('#graphTable').empty();
+                $.each(data, function(index, element) {
+                    if(element.username == "testuser"){
+                    console.log(element);
+
+
+                             if(element.day = "good"){
+                            var dayGraph = 3;
+                            }
+                            if(element.day = "okay"){
+                            dayGraph = 2;
+                            }
+                            if(element.day = "bad"){
+                            dayGraph = 1;
+                            }
+                            if(element.pain = "low"){
+                            var painGraph = 1;
+                            }
+                            if(element.pain = "medium"){
+                            painGraph = 2;
+                            }
+                            if(element.pain = "high"){
+                            painGraph = 3;
+                            }
+                            if(element.stress = "low"){
+                            var stressGraph = 1;
+                            }
+                            if(element.stress = "medium"){
+                            stressGraph = 2;
+                            }
+                            if(element.stress = "hard"){
+                            stressGraph = 3;
+                            }
+                            if(element.stool = "soft"){
+                            var stoolGraph = 1;
+                            }
+                            if(element.stool = "medium"){
+                            stoolGraph = 2;
+                            }
+                            if(element.stool = "hard"){
+                            stoolGraph = 3;
+                            }
+                            if(element.bowelm = "light"){
+                            var bowelmGraph = 1;
+                            }
+                            if(element.bowelm = "medium"){
+                            bowelmGraph = 2;
+                            }
+                            if(element.bowelm = "heavy"){
+                            bowelmGraph = 3;
+                            }
+                            if(element.bowelf = "1-4"){
+                            var bowelfGraph = 1;
+                            }
+                            if(element.bowelf = "5-8"){
+                            bowelfGraph = 2;
+                            }
+                            if(element.bowelf = "9OrMore"){
+                            bowelfGraph =3;
+                            }
+                            if(element.bvisit = "1-2"){
+                            bvisitGraph = 1;
+                            }
+                            if(element.bvisit = "3-4"){
+                            bvisitGraph = 2;
+                            }
+                            if(element.bvisit = "5OrMore"){
+                            bvisitGraph = 3;
+                            }
+
+                    var tr = (
+                        '<tr>' + 
+                        '<td>' + element.date.toString().substring(0,10) + 
+                        '<td>' + dayGraph +
+                        '<td>' + painGraph +
+                        '<td>' + stressGraph +
+                        '<td>' + stoolGraph +
+                        '<td>' + bowelmGraph +
+                        '<td>' + bowelfGraph +
+                        '<td>' + bvisitGraph +
+                        + '</tr>'
+                        );
+                    $('#graphTable').append(tr); }
+                });
+                if (x4.style.display === 'none') {
+                    x4.style.display = 'block';
+                }
+            },
+            error: function(){
+                alert("Data missing");
             }
         });
     });
 
     //GET ALL DOCLOG DATA
-    $("#getAllDoclogData").click(function() {
-        $.ajax("https://fast-garden-93601.herokuapp.com/api/doclog", {
-            data: { get_param: 'value' }, 
-            type: 'GET',  
-            dataType: 'json',
-            success: function (data) { 
-                $.each(data, function(index, element) {
-                    console.log(element);
-                });
-            }
-        });
-    });
+    // $("#getAllDoclogData").click(function() {
+    //     $.ajax("https://fast-garden-93601.herokuapp.com/api/doclog", {
+    //         data: { get_param: 'value' }, 
+    //         type: 'GET',  
+    //         dataType: 'json',
+    //         success: function (data) { 
+    //             $.each(data, function(index, element) {
+    //                 console.log(element);
+    //             });
+    //         }
+    //     });
+    // });
 
 
     //End of Document on load 
@@ -410,28 +758,75 @@
             dataType: 'json',
             success: function (data){
                 $.each(data, function(index, element) {
-                if(element.user == "testuser"){
-                    // console.log(element.date.toString().substring(0,10));
-                    // var datadate = element.date.toString().substring(0,10);
-                    // var pickerDate  = document.getElementById('datepicker').value; 
-                    // console.log("DATE ARRAY: "+ pickerDate);
-                    // var splitDate = pickerDate.split("/");
-                    // var newdate= splitDate[2] + '-' + splitDate[0] + '-' + splitDate[1];
-                    // console.log(newdate);
-                    // if (datadate == newdate){
-                    //      alert("Data exists");
-                           console.log("Doclog: " + element);
-                           document.getElementById("medicationName").value = element.medication;
-                           document.getElementById("dosageNum").value = element.dosage;
-                           document.getElementById("meds-comment").value = element.comment
-                           document.getElementById("healthtracker_prescription").value = element.complete;
-             //   }
+                if(element.username = "testuser"){
+                       console.log(element.date);
+                       console.log(element.date.toString().substring(0,10));
+                       var datadate = element.date.toString().substring(0,10);
+                       var pickerDate  = document.getElementById('datepicker').value; 
+                       console.log("DATE ARRAY: "+ pickerDate);
+                       var splitDate = pickerDate.split("/");
+                       var newdate= splitDate[2] + '-' + splitDate[0] + '-' + splitDate[1];
+                       console.log(newdate);
+                       if (datadate == newdate){
+                        //    alert("Data exists");
+                            document.getElementById("medicationName").value = element.medication;
+                            document.getElementById("dosageNum").value = element.dosage;
+                            document.getElementById("meds-comment").value = element.comment
+                            document.getElementById("healthtracker_prescription").value = element.complete;
+                         
+                      }   
 			 
-                   }
-                });
-            }
-        });
+                }
+            });
+        }
+    });
+     }
+
+    function addToLogInput(){
+
+    var foodnameInput = document.getElementById("foodnameInput");
+    var selectorInput = document.getElementById("selector").value;
+    foodnameInput.value = selectorInput;
+
+
     }
+
+    function showFoodAdd(){
+        $("#foodDatabase").show();
+        $("#showFoodAdd").hide();
+    }
+
+     $("#close").click(function() {
+        x.style.display = 'none';
+        $("#tablebody").empty();
+
+    });
+
+      $("#close2").click(function() {
+        x2.style.display = 'none';
+        $("#tablebody2").empty();
+
+    });
+
+      $("#close3").click(function() {
+        x3.style.display = 'none';
+        $("#tablebody3").empty();
+
+    });
+
+      $("#close4").click(function() {
+        x4.style.display = 'none';
+        $("#tablebody4").empty();
+        $("#showGraph").hide();
+
+    });
+
+      $("#showGraph").click(function()
+    {
+        makeChart9();
+    });
+
+
 
     function isInArray(array, search)
 {
