@@ -332,6 +332,7 @@ const htmlContent = `
 </div>
 
 <div id="sendmessage">
+    <input type="text" class="form-control" id="user" placeholder="Your name" style="display:none">
 	<input type="text" id="dataChannelSend" placeholder="Send message..." />
 	<button id="sendButton"></button>
 </div>
@@ -464,7 +465,7 @@ function clientConnected(data) {
 			initUser = JSON.parse(localStorage.getItem(store.room)).user;
         }
 
-        var form = document.getElementById('lineForm');
+        var form = document.getElementById('sendmessage');
         form.addEventListener('sendButton', function(evt) {
             evt.preventDefault();
             var user = document.getElementById('user');

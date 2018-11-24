@@ -119,6 +119,7 @@ function initClient(requestUrl, clientId) {
       run(payload);
     } else if ('onMessageArrived' in store) {
       store.onMessageArrived(message.destinationName, payload);
+      console.log("onMessageArrived from store");
     } else {
       console.log('ignored: ' + message.destinationName + " -> " + message.payloadString);
     }
