@@ -465,6 +465,7 @@ function clientConnected(data) {
 			initUser = JSON.parse(localStorage.getItem(store.room)).user;
         }
 
+        console.log("docElemByID[email_value]: "+document.getElementById('email_value'));
         var form = document.getElementById('sendmessage');
         form.addEventListener('submit', function(evt) {
             evt.preventDefault();
