@@ -141,9 +141,23 @@
 
             <div class="content">
                 <div class="displayBlock padding-btm">
+                    <label class="displayBlock">Place Lat:</label>
+                    <input id="placeLat" class="txtBorder" type="text">
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="displayBlock padding-btm">
+                    <label class="displayBlock">Place Lng:</label>
+                    <input id="placeLng" class="txtBorder" type="text">
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="displayBlock padding-btm">
                     <label class="displayBlock">Type of Establishment:</label>
                     <div class="custom-select dispInlineBlock">
-                        <select id="medsDoseSel" class="styledSelect">
+                        <select id="btype" class="styledSelect">
                             <option value="public">Public</option>
                             <option value="private">Private</option>
                             <option value="business">Business</option>
@@ -156,7 +170,7 @@
             <!--<div class="star-rating-display" data-rating="4"></div>-->
 
             <label>Leave your review:</label>
-            <textarea id="meds-comment" class="text-areas txtBorder" rows="6" cols="35" placeholder="What did you think?"></textarea>
+            <textarea id="rating" class="text-areas txtBorder" rows="6" cols="35" placeholder="What did you think?"></textarea>
 
             <form class="star-rating">
                 <label>
@@ -174,7 +188,7 @@
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                 </label>
-                <!--label>
+                <label>
                     <input type="radio" name="stars" value="4" />
                     <span class="icon">★</span>
                     <span class="icon">★</span>
@@ -188,14 +202,14 @@
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                     <span class="icon">★</span>
-                </label-->
+                </label>
             </form>
             <br/>
             <br/>
             <!-- Submit Button -->
-            <form id="review_submit" class="reviewBtn">
+            <div id="review_submit" class="reviewBtn">
                 <input id="bathroomData" type="button" value="Submit Review">
-            </form>
+            </div>
         </div>
     </div>
     <!--End pop-up form Div -->
