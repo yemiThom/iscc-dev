@@ -407,6 +407,7 @@ function sendAllMessages(inputData) {
 function clientConnected(data) {
 
     var initUser = "";//document.getElementById('email_value').value;
+    document.getElementById('user').value = document.getElementById('email_value').value;
     //console.log("InitUser: " + initUser);
 
     var clientTopic = APP_NAME + "/in/" + data.clientId;
