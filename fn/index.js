@@ -407,7 +407,6 @@ function sendAllMessages(inputData) {
 function clientConnected(data) {
 
     var initUser = "";//document.getElementById('email_value').value;
-    document.getElementById('user').value = document.getElementById('email_value').value;
     //console.log("InitUser: " + initUser);
 
     var clientTopic = APP_NAME + "/in/" + data.clientId;
@@ -469,7 +468,8 @@ function clientConnected(data) {
         var form = document.getElementById('sendmessage');
         form.addEventListener('submit', function(evt) {
             evt.preventDefault();
-            var user = document.getElementById('user');
+            //var user = document.getElementById('user');
+            var user = document.getElementById('email_value').value;
             var line = document.getElementById('dataChannelSend');
             if (user.value !== '' && line.value !== '') {
                 localStorage.setItem(store.room, JSON.stringify({ user: user.value }));
