@@ -334,7 +334,7 @@ const htmlContent = `
 <div id="sendmessage">
     <input type="text" class="form-control" id="user" placeholder="Your name" style="display:none">
 	<input type="text" id="dataChannelSend" placeholder="Send message..." />
-	<button id="sendButton"></button>
+	<button type="submit" id="sendButton"></button>
 </div>
 `;
 
@@ -466,10 +466,10 @@ function clientConnected(data) {
         }
 
         var form = document.getElementById('sendmessage');
-        form.addEventListener('sendButton', function(evt) {
+        form.addEventListener('submit', function(evt) {
             evt.preventDefault();
             var user = document.getElementById('user');
-            var line = document.getElementById('line');
+            var line = document.getElementById('dataChannelSend');
             if (user.value !== '' && line.value !== '') {
                 localStorage.setItem(store.room, JSON.stringify({ user: user.value }));
                 store.sendMessage({ room: store.room, message: { user: user.value, text: line.value }});
