@@ -731,7 +731,7 @@ $(document).ready(function() {
   })(window);
 
   // TEST: image for web notifications
-  var iconImage = '../img/fitness/breathe.jpeg';
+  var iconImage = 'http://iscc-imgs.s3.amazonaws.com/fitness/breathe.jpeg';
 
   AP.init({
     playList: [{

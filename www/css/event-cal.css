@@ -71,7 +71,7 @@
      width: 35px;
      height: 28px;
      text-indent: -4000px;
-     background: url(../img/2.png) no-repeat 0px 0px;
+     background: url(http://iscc-imgs.s3.amazonaws.com/2.png) no-repeat 0px 0px;
      cursor: pointer;
      -webkit-user-select: none;
      -moz-user-select: none;
@@ -87,7 +87,7 @@
      width: 35px;
      height: 28px;
      text-indent: -4000px;
-     background:url(../img/1.png) no-repeat 0px 0px;
+     background:url(http://iscc-imgs.s3.amazonaws.com/1.png) no-repeat 0px 0px;
      cursor: pointer;
      -webkit-user-select: none;
      -moz-user-select: none;
@@ -207,13 +207,13 @@
      .cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button {
          width: 25px;
          height: 25px;
-         background: url(../img/2.png) no-repeat 0px 0px;
+         background: url(http://iscc-imgs.s3.amazonaws.com/2.png) no-repeat 0px 0px;
          background-size: 100%;
      }
      .cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button{
          width: 25px;
          height: 25px;
-         background: url(../img/1.png) no-repeat 0px 0px;
+         background: url(http://iscc-imgs.s3.amazonaws.com/1.png) no-repeat 0px 0px;
          background-size: 100%;
      }
      .cal1 .clndr .clndr-table .header-days .header-day {

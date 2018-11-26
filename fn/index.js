@@ -90,13 +90,13 @@ const htmlPage = `
             <div class="header-wrap">
                 <div class="header-top d-flex justify-content-between align-items-center">
                     <div class="logo">
-                        <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" />
+                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png" onclick="openNav()" style=" max-width:100%;" />
                         <!--position: fixed; right: 10px; bottom: 10px" />-->
-                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                        <!--<a href="#home"><img src="http://iscc-imgs.s3.amazonaws.com/logo.png" alt="" style=" max-width:20%;"></a>-->
                     </div>
                     <div>
                         <div class="main-menubar d-flex align-items-center">
-                            <img src="img/icons/myibd-logo-white.png">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/myibd-logo-white.png">
                         </div>
                         <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                     </div>
@@ -114,7 +114,7 @@ const htmlPage = `
         </div>
 
         <div class="sidenav-section">
-            <img class="icon3" src="img/icons/faq.png" />
+            <img class="icon3" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" />
             <h4>Info</h4>
             <a href="crohns-info.html">Crohn's Disease</a>
             <a href="uc-info.html">Ulcerative Colitis</a>
@@ -123,13 +123,13 @@ const htmlPage = `
         </div>
 
         <div class="sidenav-section">
-            <img class="icon1" src="img/icons/contact.png" />
+            <img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" />
             <h4>Contact</h4>
             <a href="https://www.iscc.ie/contact" target="_blank" data-rel="external">Contact</a>
         </div>
 
         <div class="sidenav-section" onclick="window.open('https://www.iscc.ie/support-line', '_blank', 'location=yes')">
-            <img class="icon1" src="img/icons/support.png" />
+            <img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" />
             <h4>Support</h4>
             <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
             <a href="https://www.survey.iscc.ie/living-with-ibd">Living With IBD</a>
@@ -139,7 +139,7 @@ const htmlPage = `
 
         <a href="#" onclick="cordova.InAppBrowser.open('https://www.iscc.ie/faq', 'system', 'location=yes');"></a>
         <div class="sidenav-section">
-            <img class="icon2" src="img/icons/faq.png" />
+            <img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" />
             <h4>FAQ</h4>
             <a>FAQ</a>
         </div>

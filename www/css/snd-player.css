@@ -1,5 +1,5 @@
 .bg-img{
-    background-image: url("../img/snd-player-img.jpg");
+    background-image: url("http://iscc-imgs.s3.amazonaws.com/snd-player-img.jpg");
     background-clip: padding-box;
     background-size: cover;
     background-position: center center;

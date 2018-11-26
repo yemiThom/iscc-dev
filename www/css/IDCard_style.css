@@ -214,12 +214,12 @@ body {
 }
 
 .bg{
-    background-image: url("../img/no-waiting/FRENCH.jpg");
+    background-image: url("http://iscc-imgs.s3.amazonaws.com/no-waiting/FRENCH.jpg");
     background-repeat: no-repeat;
     height: 100%;
 }
 .bg-img{
-  background-image: url("../img/no-waiting/FRENCH.jpg");
+  background-image: url("http://iscc-imgs.s3.amazonaws.com/no-waiting/FRENCH.jpg");
   background-clip: padding-box;
   background-size: contain;
   background-repeat: no-repeat;

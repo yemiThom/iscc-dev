@@ -64,7 +64,7 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	background: url(../img/media-player/video-icons/play-button.png);
+	background: url(http://iscc-imgs.s3.amazonaws.com/media-player/video-icons/play-button.png);
 	-webkit-background-size: 100%;
 	-moz-background-size: 100%; 
 	background-size: 100%;
@@ -156,7 +156,7 @@
 #videoContainer #controls .playButton .playPause {
 	width: 13px;
 	height: 13px;
-	background: url(../img/media-player/video-icons/play.png);
+	background: url(http://iscc-imgs.s3.amazonaws.com/media-player/video-icons/play.png);
 	-webkit-background-size: 100%;
 	-moz-background-size: 100%; 
 	background-size: 100%;
@@ -275,7 +275,7 @@
 #videoContainer #controls .volume .icon {
 	width: 14px;
 	height: 12px;
-	background: url(../img/media-player/video-icons/volume.png);
+	background: url(http://iscc-imgs.s3.amazonaws.com/media-player/video-icons/volume.png);
 	-webkit-background-size: 100%;
 	-moz-background-size: 100%; 
 	background-size: 100%;
@@ -328,7 +328,7 @@
 #videoContainer #controls .scale .icon {
 	width: 15px;
 	height: 15px; 
-	background: url(../img/media-player/video-icons/expand.png);
+	background: url(http://iscc-imgs.s3.amazonaws.com/media-player/video-icons/expand.png);
 	-webkit-background-size: 100%;
 	-moz-background-size: 100%; 
 	background-size: 100%;
