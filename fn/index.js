@@ -332,9 +332,9 @@ const htmlContent = `
 </div>
 
 <div id="sendmessage">
-    <input type="text" class="form-control" id="user" placeholder="Your name" style="display:none">
+    <input type="hidden" id="user" placeholder="Your name" value="">
 	<input type="text" id="dataChannelSend" placeholder="Send message..." />
-	<button id="sendButton"></button>
+	<button type="submit" id="sendButton"></button>
 </div>
 `;
 
@@ -433,16 +433,16 @@ function clientConnected(data) {
             store.messages.forEach((m) => {
                 var displayText = store.replaceURLWithHTMLLinks(store.htmlEntities(m.text));
                 if ('user' in m) {
-					if(m.user == initUser){
-						//html += '<p><strong>' + m.user + '</strong>: ' + displayText + '</p>';
-						html += '<div class="message right"><div class="bubble sent"><span>' + m.user + '</span>';
-					}else{
-						html += '<div class="message"><div class="bubble received"><span>' + m.user + '</span>';
-					}
+					//if(m.user == initUser){
+						html += '<p><strong>' + m.user + '</strong>: ' + displayText + '</p>';
+						//html += '<div class="message right"><div class="bubble sent"><span>' + m.user + '</span>';
+					//}else{
+						//html += '<div class="message"><div class="bubble received"><span>' + m.user + '</span>';
+					//}
 					
                 } else {
-                    //html += '<div class="page-header"><h1>' + displayText + '</h1></div>';
-					html += displayText + '</div></div>';
+                    html += '<div class="page-header"><h1>' + displayText + '</h1></div>';
+					//html += displayText + '</div></div>';
                 }
             });
             document.getElementById('chat-messages').innerHTML = html;
@@ -465,11 +465,13 @@ function clientConnected(data) {
 			initUser = JSON.parse(localStorage.getItem(store.room)).user;
         }
 
+        console.log("docElemByID[email_value]: "+document.getElementById('email_value'));
         var form = document.getElementById('sendmessage');
-        form.addEventListener('sendButton', function(evt) {
+        form.addEventListener('submit', function(evt) {
             evt.preventDefault();
-            var user = document.getElementById('user');
-            var line = document.getElementById('line');
+            //var user = document.getElementById('user');
+            var user = document.getElementById('email_value');
+            var line = document.getElementById('dataChannelSend');
             if (user.value !== '' && line.value !== '') {
                 localStorage.setItem(store.room, JSON.stringify({ user: user.value }));
                 store.sendMessage({ room: store.room, message: { user: user.value, text: line.value }});

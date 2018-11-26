@@ -20,11 +20,11 @@ SigV4Utils.getSignatureKey = function(key, date, region, service) {
 };
 
 SigV4Utils.getSignedUrl = function(host, region, credentials) {
-  console.log("host: "+host);
-  console.log("region: "+region);
-  console.log("credentials.accessKeyId: "+credentials.accessKeyId);
-  console.log("credentials.secretAccessKey: "+credentials.secretAccessKey);
-  console.log("credentials.sessionToken: "+credentials.sessionToken);
+  //console.log("host: "+host);
+  //console.log("region: "+region);
+  //console.log("credentials.accessKeyId: "+credentials.accessKeyId);
+  //console.log("credentials.secretAccessKey: "+credentials.secretAccessKey);
+  //console.log("credentials.sessionToken: "+credentials.sessionToken);
 
   var datetime = AWS.util.date.iso8601(new Date()).replace(/[:\-]|\.\d{3}/g, '');
   var date = datetime.substr(0, 8);
@@ -55,7 +55,7 @@ SigV4Utils.getSignedUrl = function(host, region, credentials) {
   }
 
   var requestUrl = protocol + '://' + host + uri + '?' + canonicalQuerystring;
-  console.log("RequestURL: "+ requestUrl);
+  //console.log("RequestURL: "+ requestUrl);
   return requestUrl;
 };
 
@@ -111,7 +111,7 @@ function initClient(requestUrl, clientId) {
 
   // called when a message arrives
   function onMessageArrived(message) {
-    console.log("onMessageArrived:" + message.destinationName + " -> " + message.payloadString);
+    //console.log("onMessageArrived:" + message.destinationName + " -> " + message.payloadString);
     var payload = JSON.parse(message.payloadString);
     if (message.destinationName == APP_NAME + '/in/' + clientId && 'run' in payload) {
       // Only eval messages coming from the "in" topic
