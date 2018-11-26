@@ -17,7 +17,7 @@ function initMap() {
     //new map
     var map = new google.maps.Map(document.getElementById('map'), options);
 
-    var lat, lng;
+
 
     //Get current location
      if (navigator.geolocation) {
@@ -59,6 +59,7 @@ function initMap() {
     alert(JSON.stringify(bathroom));
 
     console.log(JSON.stringify(bathroom));
+    
 
      //SUBMIT BATHROOM
         $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
@@ -75,6 +76,7 @@ function initMap() {
             }
         });
 });
+   getMap();
 //   if (navigator.geolocation) {
 //     navigator.geolocation.getCurrentPosition(showPosition);
 //   } else {
@@ -96,7 +98,8 @@ function initMap() {
 
 //Corresponding to html for Add bathroom 
 
-
+    var lat = document.getElementById("placeLat").value;
+    var lng = document.getElementById("placeLng").value;
     console.log("LATLNG:" + lat + "" + lng);
     /* Code for one marker at a time 
     // Add marker
@@ -167,27 +170,22 @@ function initMap() {
     //     }
     // ];
 
-    var markers = [];
-
-    //Loop through markers
-    for (var i = 0; i < markers.length; i++) {
-        //Add marker
-        addMarker(markers[i]);
-    }
+   
 
     // addMarker({coords:{lat:42.3601, lng:-71.0589},iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
     //  content:'<h1>You are here </h1>'
     // });
     // addMarker({coords:{lat:42.8584, lng:-70.9300},content:'<h1>Location 1 </h1>'});
     // addMarker({coords:{lat:42.7762, lng:-71.0773},content:'<h1>Location 1 </h1>'});
-
+    
 
 
     // Add Marker Function
     function addMarker(props) {
+        var myLatLng = new google.maps.LatLng(props.lat, props.lng);
+        console.log(myLatLng);
         var marker = new google.maps.Marker({
-
-            position: props.coords,
+            position: myLatLng,
             map: map,
             icon: "img/map-icon-test.png"
             //without icon image icon is undefined, not ideal
@@ -203,7 +201,7 @@ function initMap() {
         //Check for content
         if (props.content) {
             var infoWindow = new google.maps.InfoWindow({
-                content: props.content
+                content: "Title: "  + props.title + "<br> Review: " + props.review + "<br> Rating: " + props.rating + "<br> " + props.content
             });
 
             marker.addListener('click', function () {
@@ -214,19 +212,27 @@ function initMap() {
     }
 
     //GET ALL MAP DATA
-    $("#getAllMapData").click(function () {
-        $.ajax("https://fast-garden-93601.herokuapp.com/api/maps", {
+    function getMap() {
+        var markers = [];
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
             data: { get_param: 'value' },
             type: 'GET',
             dataType: 'json',
             success: function (data) {
                 $.each(data, function (index, element) {
                     console.log(element);
-                     markers.push(element);
+                     markers.push(JSON.stringify(element));
+                     console.log("markers:" + markers);
+                     addMarker(element);
                 });
             }
         });
-    });
+    //Loop through markers
+    for (var i = 0; i < markers.length; i++) {
+        //Add marker
+        addMarker(markers[i]);
+    }
+    }
 
 
     //GET ALL REVIEWS FOR USER
@@ -256,6 +262,7 @@ function initMap() {
             success: function (data) {
                 $.each(data, function (index, element) {
                     console.log(element);
+
 
                 });
             }
