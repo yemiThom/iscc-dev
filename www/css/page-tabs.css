@@ -351,7 +351,7 @@
 
 .diet-h3{
     float: left;
-    margin: 0 15%;
+    margin: 0 1%;
 }
 
 /* The switch - the box around the slider */
@@ -421,6 +421,10 @@ input:checked + .checkbox-slider:before {
     display: inline-block;
     font-size: 12px;
     width: 49%;
+}
+
+#dietLog, #foodDatabase{
+    padding: 10px;
 }
 
 /** Medication Tab Styling **/

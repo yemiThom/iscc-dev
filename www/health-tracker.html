@@ -25,10 +25,10 @@
     <script type="text/javascript" src='js/config.js'></script>
     <script type="text/javascript" src='js/index.js'></script>
     <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
-     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <style>
-    table { width: 640px; } /* Make table wider */  
+        table { width: 640px; } /* Make table wider */  
     td, th { border: 1px solid #CCC; } /* Add borders to cells */  
     </style>
     <!-- javascript -->
@@ -58,7 +58,8 @@
             <div class="header-wrap">
                 <div class="header-top d-flex justify-content-between align-items-center">
                     <div class="logo">
-                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png" onclick="openNav()" />
+                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png"
+                            onclick="openNav()" />
                         <!--position: fixed; right: 10px; bottom: 10px" />-->
                         <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
                     </div>
@@ -483,14 +484,17 @@
                             </div>
                         </div>
                         <form id="healthtracker_submit" class="goScan">
-                            <button id="submitDocData" type="button" value="Save">SUBMIT</button>
-                            <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
+                            
+                            <div class="scannerBtn_div">
+                                <button id="submitDocData" class="button" type="button" value="Save">Save</button>
+                                <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
+                            </div>
                         </form>
                         <!--/div-->
                     </section>
                     <section>
                         <h2 class="color-blue-dark">Diet</h2>
-                      
+
 
                         <div class="tabset">
                             <!-- Tab 1 -->
@@ -508,25 +512,27 @@
                                     <!--<h2>Breakfast</h2>-->
                                     <h3 class="diet-h3 color-blue-dark">What did you have?</h3>
                                     <!--a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a-->
-                                   <br>
-                                    <div id = "foodDatabase" style="display: none;">
                                     <br>
-                                    <h3> Add Food to ISCC Database </h3>
-                                        <h2 class="color-blue-dark">Barcode Scanner</h2>
-                                           <div class="goScan">
-                                            <input id="trackingCode" type="text" size="16" placeholder="Tracking Code" class="qrcode-text txtBorder">
+                                    <div id="foodDatabase" style="display: none;">
+                                        <br>
+                                        <h3 class="color-blue-dark"> Add a Food Item to the myIBD Database</h3>
+                                        <h4 class="color-blue-dark">Barcode Scanner</h4>
+                                        <div class="goScan">
+                                            <input id="trackingCode" type="text" size="16" placeholder="Tracking Code"
+                                                class="qrcode-text txtBorder">
                                             <label class="qrcode-text-btn">
-                                                <input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex="-1">
-                                            </label> 
+                                                <input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();"
+                                                    onchange="openQRCamera(this);" tabindex="-1">
+                                            </label>
 
                                             <input type="button" value="Go" disabled>
                                         </div>
-                                        <br/>
+                                        <br />
                                         <div class="scannerBtn_div">
                                             <a class="button" href="#popup1">Open scanner</a>
                                         </div>
 
-                                         <!--Start pop-up form Div -->
+                                        <!--Start pop-up form Div -->
                                         <div id="popup1" class="overlay">
                                             <div class="popup1">
                                                 <a class="close" href="#">&times;</a>
@@ -536,34 +542,41 @@
                                                 </iframe>
                                             </div>
                                         </div>
-                                    <br>  
-                                    Name: <input type="text" id="foodname" class="qrcode-text txtBorder"></input>
-                                    <br>
-                                    Brand: <input type="text" id="brand" class="qrcode-text txtBorder"></input>
-                                    <br>
-                                    Serving: <input type="text" id="servingsize" class="qrcode-text txtBorder"></input>
-                                    <br>
-                                    Servings per Container: <input type="text" id="servingsPerContainer" class="qrcode-text txtBorder"></input>
-                                    <br>
-                                    <button id="addFood" class="button"> ADD </button>
+                                        <br>
+                                        Name: <input type="text" id="foodname" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Brand: <input type="text" id="brand" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Serving: <input type="text" id="servingsize" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Servings per Container: <input type="text" id="servingsPerContainer" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        <div class="scannerBtn_div">
+                                            <button id="addFood" class="button"> ADD </button>
+                                        </div>
                                     </div>
 
 
                                     <div id="dietLog">
-                                    <input type="button" id="showFoodAdd" class="button" value="Add food to Database"onclick="showFoodAdd()"> </input>
-                                    <br>
-                                    FOOD: <select id="selector"></select>
-                                    <select id="selector2" style="display: none;" ></select>
-                                    <button id="selectFood" onClick="addToLogInput()">SELECT</button>
-                                    <br>
-                                    Food: <input type="text" id="foodnameInput" class="qrcode-text txtBorder"></input>
-                                    <br>
-                                    Serving: <input type="text" id="servingInput" class="qrcode-text txtBorder"></input>
-                                    <br>
+
+                                        <div class="goScan m-b-10">
+                                            <input type="button" id="showFoodAdd" class="button m-b-10" value="Add food to Database"
+                                                onclick="showFoodAdd()"> </input>
+                                        </div>
+
+                                        <br>
+                                        FOOD: <select id="selector" class="styledSelect m-b-10"></select>
+                                        <select id="selector2" style="display: none;"></select>
+                                        <button id="selectFood" onClick="addToLogInput()" style="display: none;">SELECT</button>
+                                        <br>
+                                        Food: <input type="text" id="foodnameInput" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Serving: <input type="text" id="servingInput" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
                                         <div class="checkbox-container">
                                             <p>Did you experience any pain during the meal?:</p>
                                         </div>
-                                        <div class="checkbox-container">
+                                        <div class="checkbox-container m-b-10">
                                             <span>NO</span>
                                             <label class="switch">
                                                 <input id="healthtracker_pain-bf" type="checkbox">
@@ -571,18 +584,21 @@
                                             </label>
                                             <span>YES</span>
                                         </div>
-                                        <button id="logDiet" class="button"> ADD </button>
+
+                                        <div class="scannerBtn_div">
+                                            <button id="logDiet" class="button"> ADD </button>
+                                        </div>
 
                                     </div>
 
 
 
 
-                                   <!--  <textarea id="healthtracker_describe-bf" class="text-areas" rows="5" cols="20"
+                                    <!--  <textarea id="healthtracker_describe-bf" class="text-areas" rows="5" cols="20"
                                         placeholder="Describe your meal..."></textarea> -->
 
                                     <!-- Rounded switch -->
-                                   
+
                                 </section>
                                 <section id="lunch" class="tab-panel">
                                     <!--<h2>Lunch</h2>-->
@@ -633,95 +649,95 @@
                             </div>
                         </div>
 
-                        
-                        
+
+
 
 
                     </section>
                     <section>
-                        <input type="button" class="btn" id="getAllDietlogData" value="Show Food Data"/>
-                            <input type="button" class="btn" id="close" value="Close Food Data"/>
-                            <table class="table table-bordered" id="tabletest" style="display:none">
-                              <thead>
-                              <tr>
-                                <th>Date</th>
-                                <th>Meal</th>
-                                <th>Food</th>
-                                <th>Pain</th>
-                                <th>Serving Size</th>
-                              </tr>
-                              </thead>
-                              <tbody id="dietLogTable">
-                              </tbody>
-                            </table>
+                        <input type="button" class="btn" id="getAllDietlogData" value="Show Food Data" />
+                        <input type="button" class="btn" id="close" value="Close Food Data" />
+                        <table class="table table-bordered" id="tabletest" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Meal</th>
+                                    <th>Food</th>
+                                    <th>Pain</th>
+                                    <th>Serving Size</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dietLogTable">
+                            </tbody>
+                        </table>
 
-                    <br>
-                    <br>
-                        <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data"/>
-                            <input type="button" class="btn" id="close2" value="Close Symptom Data"/>
-                            <table class="table table-bordered" id="tabletest2" style="display:none">
-                              <thead>
-                              <tr>
-                                <th>Date</th>
-                                <th>Day</th>
-                                <th>Pain</th>
-                                <th>Stress</th>
-                                <th>Stool Quality</th>
-                                <th>Bowel Movement</th>
-                                <th>Bowel Frequency</th>
-                                <th>Bathroom Visit</th>
-                              </tr>
-                              </thead>
-                              <tbody id="symptomTable">
-                              </tbody>
-                            </table>
-                    <br>
-                    <br>
-                        <input type="button" class="btn" id="getAllDocLogData" value="Show Doctor's Log Data"/>
-                            <input type="button" class="btn" id="close3" value="Close Doctor's Log Data"/>
-                            <table class="table table-bordered" id="tabletest3" style="display:none">
-                              <thead>
-                              <tr>
-                                <th>Date</th>
-                                <th>Medication</th>
-                                <th>Dosage</th>
-                                <th>Comment</th>
-                                <th>Complete</th>
-                              </tr>
-                              </thead>
-                              <tbody id="docLogTable">
-                              </tbody>
-                            </table>  
-                    <br>
-                     <br>
-                        <input type="button" class="btn" id="getGraphData" value="Show Graph Data"/>
-                            <input type="button" class="btn" id="close4" value="Close Graph Data"/>
-                            <table class="table table-bordered" id="tabletest4" style="display:none">
-                              <thead>
-                              <tr>
-                                <th>Date</th>
-                                <th>Day</th>
-                                <th>Pain</th>
-                                <th>Stress</th>
-                                <th>Stool Quality</th>
-                                <th>Bowel Movement</th>
-                                <th>Bowel Frequency</th>
-                                <th>Bathroom Visit</th>
-                              </tr>
-                              </thead>
-                              <tbody id="graphTable">
-                              </tbody>
-                            </table>
+                        <br>
+                        <br>
+                        <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
+                        <input type="button" class="btn" id="close2" value="Close Symptom Data" />
+                        <table class="table table-bordered" id="tabletest2" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Day</th>
+                                    <th>Pain</th>
+                                    <th>Stress</th>
+                                    <th>Stool Quality</th>
+                                    <th>Bowel Movement</th>
+                                    <th>Bowel Frequency</th>
+                                    <th>Bathroom Visit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="symptomTable">
+                            </tbody>
+                        </table>
+                        <br>
+                        <br>
+                        <input type="button" class="btn" id="getAllDocLogData" value="Show Doctor's Log Data" />
+                        <input type="button" class="btn" id="close3" value="Close Doctor's Log Data" />
+                        <table class="table table-bordered" id="tabletest3" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Medication</th>
+                                    <th>Dosage</th>
+                                    <th>Comment</th>
+                                    <th>Complete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="docLogTable">
+                            </tbody>
+                        </table>
+                        <br>
+                        <br>
+                        <input type="button" class="btn" id="getGraphData" value="Show Graph Data" />
+                        <input type="button" class="btn" id="close4" value="Close Graph Data" />
+                        <table class="table table-bordered" id="tabletest4" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Day</th>
+                                    <th>Pain</th>
+                                    <th>Stress</th>
+                                    <th>Stool Quality</th>
+                                    <th>Bowel Movement</th>
+                                    <th>Bowel Frequency</th>
+                                    <th>Bathroom Visit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="graphTable">
+                            </tbody>
+                        </table>
 
-                            <input type="button" class="btn" id="showGraph" value="Show Graph" style="display:none"/>
-                            <div id="chart_div"></div>
-                            
-                            
+                        <input type="button" class="btn" id="showGraph" value="Show Graph" style="display:none" />
+                        <div id="chart_div"></div>
 
 
 
 
-                    <br>            
+
+
+                        <br>
 
 
 
@@ -1000,11 +1016,11 @@
 </script>
 <!--End scanner script -->
 <!-- notification script -->
-    <script>
+<script>
     if ("Notification" in window) {
-            Notification.requestPermission(function (permission) {
-                // If the user accepts, let’s create a notification
-                if (permission === "granted") {
+        Notification.requestPermission(function (permission) {
+            // If the user accepts, let’s create a notification
+            if (permission === "granted") {
                 var notification = new Notification("My title", {
                     tag: "message1",
                     body: "My body"
@@ -1015,9 +1031,9 @@
             }
         });
     }
-    </script>
-    <-- end notification script -->
-<!-- <script async defer
+</script>
+<-- end notification script -->
+    <!-- <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqGpddivbH6TcqlWcbtRu9mFxFjiK3gA&callback=initMap">
     </script>-->
 
