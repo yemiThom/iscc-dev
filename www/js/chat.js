@@ -41,15 +41,17 @@ $("#userWantsToChat").click(function () {
 //pull data out
 function getUserList() {
 	console.log("getUserList called");
-	$.ajax("https://fast-garden-93601.herokuapp.com/api/userChat", {
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers", {
 		data: { get_param: 'value' },
 		contentType: "application/json",
 		method: "GET",
 		success: function (data) {
+			var elementID = '';
 			//iterate through all the elements
 			$.each(data, function (index, element) {
 				//get element.id put that in global variable
-				var elementID = element.id;
+				elementID = element.id;
+				console.log("elementID: " + elementID);
 				//if location is within 5km and username is not mine
 				// then show element.username and element.status
 				document.getElementById("friends").innerHTML += '<div class="friend"><!--img src="img/profile/1_copy.jpg" /--><p><strong>'+
@@ -61,6 +63,13 @@ function getUserList() {
 		}
 	});
 
+}
+
+function addUser(){
+	username = document.getElementById('email_value');
+	console.log("username to add:" + username);
+	status = localStorage("nearbyTogState");
+	console.log("status: "+status);
 }
 
 //click username. send request. POST to conversation table.
@@ -211,4 +220,14 @@ $('#buttonID').click(function () {
 
 	});
 
+});
+
+//Start of document ready function
+$(document).ready(function () {
+	getUserList();
+
+	if(localStorage.getItem("nearbyTogState") == "online" || localStorage.getItem("nearbyTogState") == "busy"){
+		//add username to users
+		addUser();
+	}
 });
