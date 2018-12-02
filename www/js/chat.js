@@ -10,7 +10,7 @@ var username;
 
 $("#userWantsToChat").click(function () {
 
-	var userChat = {
+	var userChat = [{
 		// "username": user,
 		// "lng": lng,
 		// "lat": lat,
@@ -20,7 +20,7 @@ $("#userWantsToChat").click(function () {
 		"lng": "lng",
 		"lat": "lat",
 		"status": "online"
-	};
+	}];
 
 	//put the data in 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/messages", {
@@ -75,11 +75,11 @@ function addUser(){
 //click username. send request. POST to conversation table.
 $("#userSendConversationRequest").click(function () {
 
-	var conversation = {
-		user1 = username1,
-		user2 = selectedUser,
-		accepted = "pending",
-	};
+	var conversation = [{
+		"user1": "username1",
+		"user2": "selectedUser",
+		"accepted": "pending",
+	}];
 
 	//put the data in 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversation", {
@@ -129,7 +129,7 @@ $('#checkForConversation').click(function () {
 
 
 //GET MESSAGES FOR PARTICLUAR CONVERSAYION
-$('#openMessages').click(function () {
+$("#openMessages").click(function () {
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversation/{id}", {
 		data: { get_param: 'value' },
 		contentType: "application/json",
@@ -178,7 +178,7 @@ $("#goOffline").click(function () {
 
 	//put the data in 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatUsers/id", {
-		id = id,
+		// id = id,
 		data: JSON.stringify(message),
 		contentType: "application/json",
 		method: "DELETE",
