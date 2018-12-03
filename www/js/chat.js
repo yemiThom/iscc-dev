@@ -197,8 +197,9 @@ $("#sendMessage").click(function () {
 
 $("#invisible").click(function () {
 	getUserID();
+	addUser();
 
-	//put the data in 
+	/*put the data in 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatUsers/" + userID, {
 		method: "DELETE",
 		success: function () {
@@ -208,7 +209,7 @@ $("#invisible").click(function () {
 			console.log("Couldn't delete - userID: "+userID);
 		}
 
-	});
+	});*/
 });
 
 //pull data out
@@ -266,9 +267,12 @@ $('#buttonID').click(function () {
 
 //Start of document ready function
 $(document).ready(function () {
+	//localStorage.removeItem('userID');
 	getUserList();
 
 	if (localStorage.getItem("nearbyTogState") == "online" || localStorage.getItem("nearbyTogState") == "busy") {
+		//find userid
+		getUserID();
 		//add username to users
 		addUser();
 	}

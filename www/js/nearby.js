@@ -31,6 +31,7 @@ function onlineCheck() {
     document.getElementById("render-msg").innerHTML = "";
 
     localStorage.setItem("nearbyTogState", "online");
+    addUser();
     //setOnlineStatus(localStorage.getItem("username"), "online");
 
 }
@@ -46,6 +47,7 @@ function busyCheck() {
     document.getElementById("render-msg").innerHTML = "";
 
     localStorage.setItem("nearbyTogState", "busy");
+    addUser();
     //setOnlineStatus(localStorage.getItem("username"), "busy");
 
 }
@@ -61,6 +63,7 @@ function invisibleCheck() {
     document.getElementById("render-msg").innerHTML = "<h4>You are now offline...</h4>"
 
     localStorage.setItem("nearbyTogState", "invisible");
+    addUser();
     //setOnlineStatus(localStorage.getItem("username"), "invisible");
 }
 
