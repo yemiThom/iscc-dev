@@ -412,3 +412,10 @@ div.message.right .corner{
     width: 100px;
     height: 100px;
 }
+
+.announcement{
+    padding: 10px 15px 0px;
+    border: 1px solid #72737b;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}

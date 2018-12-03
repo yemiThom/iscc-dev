@@ -98,8 +98,8 @@ function addUser() {
 $("#userSendConversationRequest").click(function () {
 
 	var conversation = [{
-		"user1": "username1",
-		"user2": "selectedUser",
+		"user1": username,
+		"user2": document.getElementById("chatTo").innerHTML,
 		"accepted": "pending",
 	}];
 
@@ -195,6 +195,7 @@ $("#sendButton").click(function () {
 		success: function () {
 			console.log("Added");
 			document.getElementById("dataChannelSend").value = '';
+			//**** Call for messages to show up in chatview ****//
 		},
 		error: function () {
 			console.log("Not added");
