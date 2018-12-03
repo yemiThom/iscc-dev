@@ -1,5 +1,6 @@
-var status;
-var username;
+var status = localStorage.getItem("nearbyTogState");
+var username = localStorage.getItem("username");
+var userID;
 //User goes online/busy
 //status = "online";
 //lng = 34.6;
@@ -54,8 +55,9 @@ function getUserList() {
 				console.log("elementID: " + elementID);
 				//if location is within 5km and username is not mine
 				// then show element.username and element.status
-				document.getElementById("friends").innerHTML += '<div class="friend"><!--img src="img/profile/1_copy.jpg" /--><p><strong>'+
-                element.username +'</strong><span>Distance Unknown</span></p><div id="' + element.username + '" class="status ' + element.status + '"></div></div>';
+				document.getElementById("friends").innerHTML += '<div class="friend"><!--img src="img/profile/1_copy.jpg" /--><p><strong>' +
+					element.username + '</strong><span>Distance Unknown</span></p><div id="' + element.username + '" class="status ' + element.status + '"></div></div>';
+				makeFriendsClickable();
 			});
 		},
 		error: function () {
@@ -65,11 +67,9 @@ function getUserList() {
 
 }
 
-function addUser(){
-	username = localStorage.getItem("username");
+function addUser() {
 	console.log("username to add:" + username);
-	status = localStorage.getItem("nearbyTogState");
-	console.log("status: "+status);
+	console.log("status: " + status);
 
 	var user = {
 		"username": username,
@@ -82,10 +82,10 @@ function addUser(){
 		accept: "application/json",
 		contentType: "application/json",
 		method: "POST",
-		success: function(){
-			console.log("Added User: "+data);
+		success: function () {
+			console.log("Added User: " + data);
 		},
-		error: function(){
+		error: function () {
 			console.log("ALERT: User not added!");
 		}
 	});
@@ -194,23 +194,46 @@ $("#sendMessage").click(function () {
 
 
 $("#invisible").click(function () {
+	getUserID();
 
 	//put the data in 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatUsers/id", {
-		// id = id,
-		data: JSON.stringify(message),
+		id: userID,
 		contentType: "application/json",
 		method: "DELETE",
 		success: function () {
-			alert("Added");
+			alert("Should be deleted!");
 		},
 		error: function () {
-			alert("Not added");
+			alert("Not deleted...");
 		}
 
 	});
 });
 
+//pull data out
+function getUserID() {
+	console.log("getUserID called");
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers", {
+		data: { get_param: 'value' },
+		contentType: "application/json",
+		method: "GET",
+		success: function (data) {
+			//iterate through all the elements
+			$.each(data, function (index, element) {
+				//get element.id if username is user's and put that in local variable
+				if(element.username == username){
+					userID = element.id;
+					console.log("userID: " + userID);
+				}
+			});
+		},
+		error: function () {
+			//go away come back tomorrow 
+		}
+	});
+
+}
 
 
 // --> Go online --> See list of users --> send invite to user 
@@ -225,7 +248,7 @@ $("#invisible").click(function () {
 $('#buttonID').click(function () {
 
 	$.ajax("URL", {
-		data:'',
+		data: '',
 		contentType: "application/json",
 		method: "GET/DELETE/POST",
 		success: function () {
@@ -244,63 +267,8 @@ $('#buttonID').click(function () {
 $(document).ready(function () {
 	getUserList();
 
-	if(localStorage.getItem("nearbyTogState") == "online" || localStorage.getItem("nearbyTogState") == "busy"){
+	if (localStorage.getItem("nearbyTogState") == "online" || localStorage.getItem("nearbyTogState") == "busy") {
 		//add username to users
 		addUser();
-	}
-
-	function makeFriendsClickable(){
-		console.log("Gon make all dese ere clickable");
-		$(".friend").each(function () {
-			$(this).click(function () {
-				var childOffset = $(this).offset();
-				var parentOffset = $(this).parent().parent().offset();
-				var childTop = childOffset.top - parentOffset.top;
-				/*var clone = $(this).find('img').eq(0).clone();*/
-				var top = childTop + 12 + "px";
-	
-				/*$(clone).css({'top': top}).addClass("floatingImg").appendTo("#chatbox");*/
-	
-				setTimeout(function () { $("#profile p").addClass("animate"); $("#profile").addClass("animate"); }, 100);
-				setTimeout(function () {
-					$("#chat-messages").addClass("animate");
-					$('.cx, .cy').addClass('s1');
-					setTimeout(function () { $('.cx, .cy').addClass('s2'); }, 100);
-					setTimeout(function () { $('.cx, .cy').addClass('s3'); }, 200);
-				}, 150);
-	
-				/*$('.floatingImg').animate({
-					'width': "68px",
-					'left':'108px',
-					'top':'20px'
-				}, 200);*/
-	
-				var name = $(this).find("p strong").html();
-				var email = $(this).find("p span").html();
-				$("#profile p").html(name);
-				$("#profile span").html(email);
-	
-				/*$(".message").not(".right").find("img").attr("src", $(clone).attr("src"));*/
-				$('#friends').fadeOut();
-				$('#chatview').fadeIn();
-	
-	
-				$('#close').unbind("click").click(function () {
-					$("#chat-messages, #profile, #profile p").removeClass("animate");
-					$('.cx, .cy').removeClass("s1 s2 s3");
-					/*$('.floatingImg').animate({
-						'width': "40px",
-						'top':top,
-						'left': '12px'
-					}, 200, function(){$('.floatingImg').remove()});*/
-	
-					setTimeout(function () {
-						$('#chatview').fadeOut();
-						$('#friends').fadeIn();
-					}, 50);
-				});
-	
-			});
-		});
 	}
 });

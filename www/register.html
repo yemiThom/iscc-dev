@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="container-login100-form-btn p-t-25">
-                        <button id="mainbutton" class="login100-form-btn" type="button" onclick="registerButton()">
+                        <button id="mainbutton" class="login100-form-btn" type="button" onclick="registerButton()" disabled>
                             Register
                         </button>
                     </div>
@@ -108,7 +108,7 @@
                         </a>
                     </div>
                     <div class="contact100-form-checkbox m-l-55">
-                        <input class="input-checkbox100" id="priv-ckb1" type="checkbox" name="privacy-agreement">
+                        <input class="input-checkbox100" id="priv-ckb1" type="checkbox" name="privacy-agreement" onchange="document.getElementById('mainbutton').disabled = !this.checked;">
                         <label class="label-checkbox100" for="priv-ckb1">
                             I agree to the Privacy Notice
                         </label>
