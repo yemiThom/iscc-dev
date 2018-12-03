@@ -1,6 +1,7 @@
 var status = localStorage.getItem("nearbyTogState");
 var username = localStorage.getItem("username");
 var userID = localStorage.getItem("userID");
+var bearhugSticker = '<div id="bearHug" class="bearHugSticker"></div>';
 //User goes online/busy
 //status = "online";
 //lng = 34.6;
