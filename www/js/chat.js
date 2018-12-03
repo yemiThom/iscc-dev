@@ -1,6 +1,6 @@
 var status = localStorage.getItem("nearbyTogState");
 var username = localStorage.getItem("username");
-var userID;
+var userID = localStorage.getItem("userID");
 //User goes online/busy
 //status = "online";
 //lng = 34.6;
@@ -69,19 +69,21 @@ function getUserList() {
 
 function addUser() {
 	console.log("username to add:" + username);
-	console.log("status: " + status);
+	console.log("status to add: " + status);
+	console.log("userid to add: " + userID);
 
 	var user = {
 		"username": username,
 		"location": "here",
 		"status": status,
+		"id": userID,
 	}
 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers", {
 		data: JSON.stringify(user),
 		accept: "application/json",
 		contentType: "application/json",
-		method: "POST",
+		method: "PUT",
 		success: function () {
 			console.log("Added User: " + data);
 		},
@@ -197,15 +199,13 @@ $("#invisible").click(function () {
 	getUserID();
 
 	//put the data in 
-	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatUsers/id", {
-		id: userID,
-		contentType: "application/json",
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatUsers/" + userID, {
 		method: "DELETE",
 		success: function () {
-			alert("Should be deleted!");
+			console.log(userID+": Should be deleted!");
 		},
 		error: function () {
-			alert("Not deleted...");
+			console.log("Couldn't delete - userID: "+userID);
 		}
 
 	});
@@ -225,6 +225,7 @@ function getUserID() {
 				if(element.username == username){
 					userID = element.id;
 					console.log("userID: " + userID);
+					localStorage.setItem("userID", userID);
 				}
 			});
 		},
