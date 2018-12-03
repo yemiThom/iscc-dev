@@ -172,10 +172,18 @@ $("#openMessages").click(function () {
 });
 
 //SEND MESSAGE
-$("#sendMessage").click(function () {
+$("#sendButton").click(function () {
+	console.log("Send Button pressed, message should be sent...");
+	var todayDate = new Date();
+	var messageStr = document.getElementById("dataChannelSend").value;
+	var messageTo = document.getElementById("chatTo").innerHTML;
 
 	var message = {
-
+		"date": todayDate,
+		"conversationID": "1",
+		"message": messageStr,
+		"from": username,
+		"to": messageTo
 	};
 
 	//put the data in 
@@ -184,10 +192,11 @@ $("#sendMessage").click(function () {
 		contentType: "application/json",
 		method: "POST",
 		success: function () {
-			alert("Added");
+			console.log("Added");
+			document.getElementById("dataChannelSend").value = '';
 		},
 		error: function () {
-			alert("Not added");
+			console.log("Not added");
 
 		}
 
