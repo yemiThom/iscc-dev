@@ -105,7 +105,7 @@ $("#userSendConversationRequest").click(function () {
 
 	//put the data in 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversation", {
-		data: JSON.stringify(userChat),
+		data: JSON.stringify(conversation),
 		contentType: "application/json",
 		method: "POST",
 		success: function () {

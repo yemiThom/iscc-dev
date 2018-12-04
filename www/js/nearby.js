@@ -63,7 +63,7 @@ function invisibleCheck() {
     document.getElementById("render-msg").innerHTML = "<h4>You are now offline...</h4>"
 
     localStorage.setItem("nearbyTogState", "invisible");
-    addUser();
+    //addUser();
     //setOnlineStatus(localStorage.getItem("username"), "invisible");
 }
 
