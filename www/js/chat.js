@@ -40,6 +40,10 @@ $("#userWantsToChat").click(function () {
 	});
 });
 
+function clearChatView(){
+	document.getElementById("chat-messages").innerHTML = '';
+}
+
 //pull data out
 function getUserList() {
 	console.log("getUserList called");
@@ -56,7 +60,7 @@ function getUserList() {
 				console.log("elementID: " + elementID);
 				//if location is within 5km and username is not mine
 				// then show element.username and element.status
-				document.getElementById("friends").innerHTML += '<div class="friend"><!--img src="img/profile/1_copy.jpg" /--><p><strong>' +
+				document.getElementById("friends").innerHTML += '<div class="friend" onClick="userSendConvoRequest()"><!--img src="img/profile/1_copy.jpg" /--><p><strong>' +
 					element.username + '</strong><span>Distance Unknown</span></p><div id="' + element.username + '" class="status ' + element.status + '"></div></div>';
 				makeFriendsClickable();
 			});
@@ -97,7 +101,6 @@ function addUser() {
 //click username. send request. POST to conversation table.
 //$("#userSendConversationRequest").click(function () {
 function userSendConvoRequest(){
-
 	var conversation = [{
 		"user1": username,
 		"user2": document.getElementById("chatTo").innerHTML,
@@ -105,15 +108,15 @@ function userSendConvoRequest(){
 	}];
 
 	//put the data in 
-	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversation", {
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations", {
 		data: JSON.stringify(conversation),
 		contentType: "application/json",
-		method: "POST",
+		method: "PUT",
 		success: function () {
-			alert("Added");
+			console.log("Sent Convo Request");
 		},
 		error: function () {
-			alert("Not added");
+			alert("Request not sent");
 
 		}
 
