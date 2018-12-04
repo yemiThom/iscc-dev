@@ -102,6 +102,24 @@ body{
     border-radius: 4px;
     margin: 0 auto;
 }
+.requestBtn_div .button {
+    color: #FFFFFF;
+    background-color: #775ba6;
+    text-align: center;
+    vertical-align: middle;
+    padding: 3px 11px;
+    border-radius: 4px;
+    margin: 5px 10%;
+    font-size: 1em;
+    background-color: #414b76;
+    border: 1px solid #d123bf;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+.requestBtn_div .button:hover {
+    background: #d123bf;
+}
 .star-rating {
     display: inline-block;
     position: relative;

@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/nearby-chat.css">
     <link rel="stylesheet" type="text/css" href="css/nearby-chat-toggle.css">
     <link rel="stylesheet" type="text/css" href="css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="css/pop-up.css">
     <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
 
     <!-- jQuery library -->
@@ -188,10 +189,17 @@
                         <!--<div class="announcement">
                             <h2 class="color-blue-dark">Chat Request:<br/> Sent/Pending</h2>
                         </div>-->
+                        <div class="announcement">
+                            <h2 class="color-blue-dark">Chat Request:<br/> Received</h2>
+                            <div class="requestBtn_div">
+                                <button id="acceptRequest" class="button" type="button" value="acceptRequest">Accept</button>
+                                <button id="declineRequest" class="button" type="button" value="declineRequest">Decline</button>
+                            </div>
+                        </div>
                 </div>
 
                 <div id="sendmessage">
-                    <input type="hidden" id="user" placeholder="Your name" value="">
+                    <input type="hidden" id="user" placeholder="Your name" value=""/>
                     <input type="text" id="dataChannelSend" placeholder="Send message..." />
                     <button type="submit" id="sendHugButton"></button>
                     <button type="submit" id="sendButton"></button>
