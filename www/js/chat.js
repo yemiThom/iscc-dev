@@ -95,7 +95,8 @@ function addUser() {
 }
 
 //click username. send request. POST to conversation table.
-$("#userSendConversationRequest").click(function () {
+//$("#userSendConversationRequest").click(function () {
+function userSendConvoRequest(){
 
 	var conversation = [{
 		"user1": username,
@@ -117,7 +118,8 @@ $("#userSendConversationRequest").click(function () {
 		}
 
 	});
-});
+}
+//});
 
 //check for invites.
 $('#checkForConversation').click(function () {
@@ -183,6 +185,38 @@ $("#sendButton").click(function () {
 		"date": todayDate,
 		"conversationID": "1",
 		"message": messageStr,
+		"from": username,
+		"to": messageTo
+	};
+
+	//put the data in 
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/messages", {
+		data: JSON.stringify(message),
+		contentType: "application/json",
+		method: "POST",
+		success: function () {
+			console.log("Added");
+			document.getElementById("dataChannelSend").value = '';
+			//**** Call for messages to show up in chatview ****//
+		},
+		error: function () {
+			console.log("Not added");
+
+		}
+
+	});
+});
+//SEND BearHug
+$("#sendHugButton").click(function () {
+	console.log("Send BearHug Button pressed, :bearhug: code should be sent...");
+	var todayDate = new Date();
+	var messageStr = document.getElementById("dataChannelSend").value;
+	var messageTo = document.getElementById("chatTo").innerHTML;
+
+	var message = {
+		"date": todayDate,
+		"conversationID": "1",
+		"message": ":bearhug:",
 		"from": username,
 		"to": messageTo
 	};
