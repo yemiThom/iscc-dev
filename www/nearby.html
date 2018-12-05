@@ -173,7 +173,7 @@
             <div id="chatview" class="p1">
                 <div id="profile">
 
-                    <div id="close">
+                    <div id="close" onclick="clearChatView();">
                         <div class="cy"></div>
                         <div class="cx"></div>
                         <!--<a href="nearby.html"><i class="fas fa-times"></i></a>-->
@@ -200,7 +200,7 @@
 
                 <div id="sendmessage">
                     <input type="hidden" id="user" placeholder="Your name" value=""/>
-                    <input type="text" id="dataChannelSend" placeholder="Send message..." disabled/>
+                    <input type="text" id="dataChannelSend" placeholder="Type a message..." disabled/>
                     <button type="submit" id="sendHugButton" disabled></button>
                     <button type="submit" id="sendButton" disabled></button>
                 </div>

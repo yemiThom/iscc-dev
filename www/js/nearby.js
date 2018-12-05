@@ -31,7 +31,7 @@ function onlineCheck() {
     document.getElementById("render-msg").innerHTML = "";
 
     localStorage.setItem("nearbyTogState", "online");
-    addUser();
+    //addUser();
     //setOnlineStatus(localStorage.getItem("username"), "online");
 
 }
@@ -47,7 +47,7 @@ function busyCheck() {
     document.getElementById("render-msg").innerHTML = "";
 
     localStorage.setItem("nearbyTogState", "busy");
-    addUser();
+    //addUser();
     //setOnlineStatus(localStorage.getItem("username"), "busy");
 
 }
