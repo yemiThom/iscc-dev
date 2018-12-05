@@ -2,6 +2,7 @@ var status = localStorage.getItem("nearbyTogState");
 var username = localStorage.getItem("username");
 var userID = localStorage.getItem("userID");
 var bearhugSticker = '<div id="bearHug" class="bearHugSticker"></div>';
+var convosID = '';
 //User goes online/busy
 //status = "online";
 //lng = 34.6;
@@ -173,7 +174,10 @@ function checkConvoRequest(){
 						//clear chat view
 						clearChatView();
 						enableInputs();
+						//set convosID
+						convosID = element.id;
 						//get messages
+						getMessages(convosID);
 					}
 				}else if(element.user1 == username2 && element.user2 == username){
 					//convo does exist
@@ -196,7 +200,10 @@ function checkConvoRequest(){
 						//clear chat view
 						clearChatView();
 						enableInputs();
+						//set convosID
+						convosID = element.id;
 						//get messages
+						getMessages(convosID);
 					}
 				}else if(element.user1 != username && element.user2 != username2 && element.user1 != username2 && element.user2 != username){
 					console.log("now to send convo req")
@@ -262,7 +269,7 @@ $('#checkForConversation').click(function () {
 	});
 
 });
-*/
+
 
 //GET MESSAGES FOR PARTICLUAR CONVERSAYION
 $("#openMessages").click(function () {
@@ -284,7 +291,46 @@ $("#openMessages").click(function () {
 		}
 	});
 
-});
+});*/
+
+function getMessages(cid){
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+cid+"/messages", {
+		data: { get_param: 'value' },
+		contentType: "application/json",
+		method: "GET",
+		success: function (data) {
+			//iterate through all the elements
+			$.each(data, function (index, element) {
+				//when you get conv by ID//
+				//list all the messages//
+
+				//if message from = username
+				if(element.from == username){
+					//show sent div
+					//if message is bearhug tag
+					if(element.message == ":bearhug:"){
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date+'</span>'+bearhugSticker+'</div></div>';
+					}else{
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date+'</span>'+element.message+'</div></div>';
+					}
+				//else message being received
+				}else{
+					//show received div
+					//if message is bearhug tag
+					if(element.message == ":bearhug:"){
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date+'</span>'+bearhugSticker+'</div></div>';
+					}else{
+						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received"><span>'+element.date+'</span>'+element.message+'</div></div>';
+					}
+				}
+
+			});
+		},
+		error: function () {
+			//go away come back tomorrow 
+		}
+	});
+}
 
 //SEND MESSAGE
 $("#sendButton").click(function () {
@@ -295,7 +341,7 @@ $("#sendButton").click(function () {
 
 	var message = {
 		"date": todayDate,
-		"conversationID": "1",
+		"conversationID": convosID,
 		"message": messageStr,
 		"from": username,
 		"to": messageTo
@@ -308,8 +354,10 @@ $("#sendButton").click(function () {
 		method: "POST",
 		success: function () {
 			console.log("Added");
+			clearChatView();
 			document.getElementById("dataChannelSend").value = '';
-			//**** Call for messages to show up in chatview ****//
+			//call for messages to show up in chatview
+			getMessages(convosID);
 		},
 		error: function () {
 			console.log("Not added");
@@ -327,7 +375,7 @@ $("#sendHugButton").click(function () {
 
 	var message = {
 		"date": todayDate,
-		"conversationID": "1",
+		"conversationID": convosID,
 		"message": ":bearhug:",
 		"from": username,
 		"to": messageTo
@@ -340,8 +388,10 @@ $("#sendHugButton").click(function () {
 		method: "POST",
 		success: function () {
 			console.log("Added");
+			clearChatView();
 			document.getElementById("dataChannelSend").value = '';
-			//**** Call for messages to show up in chatview ****//
+			//call for messages to show up in chatview
+			getMessages(convosID);
 		},
 		error: function () {
 			console.log("Not added");
