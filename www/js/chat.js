@@ -3,6 +3,7 @@ var username = localStorage.getItem("username");
 var userID = localStorage.getItem("userID");
 var bearhugSticker = '<div id="bearHug" class="bearHugSticker"></div>';
 var convosID = '';
+var currNumRequests = 0;
 //User goes online/busy
 //status = "online";
 //lng = 34.6;
@@ -11,36 +12,6 @@ var convosID = '';
 
 //5bf7058553557b001671ef56
 
-/*$("#userWantsToChat").click(function () {
-
-	var userChat = [{
-		// "username": user,
-		// "lng": lng,
-		// "lat": lat,
-		// "status": status
-
-		"username": "user",
-		"lng": "lng",
-		"lat": "lat",
-		"status": "online"
-	}];
-
-	//put the data in 
-	$.ajax("https://fast-garden-93601.herokuapp.com/api/messages", {
-		data: JSON.stringify(userChat),
-		contentType: "application/json",
-		method: "POST",
-		success: function () {
-			alert("Added");
-		},
-		error: function () {
-			alert("Not added");
-
-		}
-
-	});
-});*/
-
 function clearChatView(){
 	document.getElementById("chat-messages").innerHTML = '';
 }
@@ -48,6 +19,11 @@ function enableInputs(){
 	document.getElementById("dataChannelSend").disabled = false;
 	document.getElementById("sendHugButton").disabled = false;
 	document.getElementById("sendButton").disabled = false;
+}
+function disableInputs(){
+	document.getElementById("dataChannelSend").disabled = true;
+	document.getElementById("sendHugButton").disabled = true;
+	document.getElementById("sendButton").disabled = true;
 }
 
 //pull data out
@@ -166,6 +142,7 @@ function checkConvoRequest(){
 						console.log("request pending, show request announcement");
 						//clear chat view
 						clearChatView();
+						disableInputs();
 						//request still pending 
 						//deal
 						document.getElementById("chat-messages").innerHTML = '<div class="announcement"><h2 class="color-blue-dark">Chat Request with '+username2+':</h2><br/><h3 class="color-blue-dark">Sent/Pending</h3></div>';
@@ -187,6 +164,7 @@ function checkConvoRequest(){
 						console.log("convo request pending...");
 						//clear chat view
 						clearChatView();
+						disableInputs();
 						//request still pending 
 						//deal
 						document.getElementById("chat-messages").innerHTML = '<div class="announcement">'+
@@ -265,59 +243,6 @@ function acceptRequestCall(){
 		});
 }
 //});
-
-/*check for invites.
-$('#checkForConversation').click(function () {
-
-	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversation", {
-		data: { get_param: 'value' },
-		contentType: "application/json",
-		method: "GET",
-		success: function (data) {
-			//iterate through all the elements
-			$.each(data, function (index, element) {
-				//if your username = element.user2 
-				//status == pending
-				//list INVITES 
-
-				//if your username = element.user1 !! element.user2
-				//&& element.status = accepted 
-				//list CONVERSATIONS
-
-				//element.id -> put in an a global variable
-
-			});
-		},
-
-		error: function () {
-			//go away come back tomorrow 
-		}
-	});
-
-});
-
-
-//GET MESSAGES FOR PARTICLUAR CONVERSAYION
-$("#openMessages").click(function () {
-	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversation/{id}", {
-		data: { get_param: 'value' },
-		contentType: "application/json",
-		method: "GET",
-		success: function (data) {
-			//iterate through all the elements
-			$.each(data, function (index, element) {
-				//when you get conv by ID
-				//list all the messages
-
-			});
-		},
-
-		error: function () {
-			//go away come back tomorrow 
-		}
-	});
-
-});*/
 
 function getMessages(cid){
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+cid+"/messages", {
@@ -470,16 +395,45 @@ function getUserID() {
 
 }
 
-
 // --> Go online --> See list of users --> send invite to user 
 // --> get conversations - accept/decline -->  open conversation
 // --> list messages in conversation --> send messadw
 // -->  go offline
 
+function checkForRequests(){
+	var numRequestsChecked = 0;
 
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations", {
+		data: { get_param: 'value' },
+		contentType: "application/json",
+		method: "GET",
+		success: function (data) {
+			console.log("Checking for chat requests");
+			console.log("current number of requests announced: "+ currNumRequests);
+			//iterate through all the elements
+			$.each(data, function (index, element) {
+				//if username = element.username and if request status = pending
+				if(element.user2 == username && element.accepted == "pending"){
+					numRequestsChecked++;
+					//if numRequestsChecked > currNumRequests
+					if(numRequestsChecked > currNumRequests){
+						console.log("Checked: "+numRequestsChecked+" requests.");
+						//send chat request notification
+						requestToChat(element.user1+' sent you a request');						
+						//update currNumRequests
+						currNumRequests = numRequestsChecked;
+						console.log("current number of requests announced: "+ currNumRequests);
+					}
+				}
+			});
+		},
+		error: function () {
+			//go away come back tomorrow 
+		}
+	});
+}
 
-
-//TEMPLATE
+/*//TEMPLATE
 $('#buttonID').click(function () {
 
 	$.ajax("URL", {
@@ -496,7 +450,7 @@ $('#buttonID').click(function () {
 
 	});
 
-});
+});*/
 
 //Start of document ready function
 $(document).ready(function () {
@@ -508,5 +462,6 @@ $(document).ready(function () {
 		getUserID();
 		//add username to users
 		//addUser();
+		setInterval(function(){ checkForRequests(); }, 5000);
 	}
 });
