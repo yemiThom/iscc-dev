@@ -11,7 +11,7 @@ var convosID = '';
 
 //5bf7058553557b001671ef56
 
-$("#userWantsToChat").click(function () {
+/*$("#userWantsToChat").click(function () {
 
 	var userChat = [{
 		// "username": user,
@@ -39,7 +39,7 @@ $("#userWantsToChat").click(function () {
 		}
 
 	});
-});
+});*/
 
 function clearChatView(){
 	document.getElementById("chat-messages").innerHTML = '';
@@ -94,13 +94,13 @@ function addUser() {
 		"status": status
 	}
 
-	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers", {
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers/"+userID, {
 		data: JSON.stringify(user),
 		accept: "application/json",
 		contentType: "application/json",
 		method: "PUT",
 		success: function () {
-			console.log("Added User: " + data);
+			console.log("Added User: " + JSON.stringify(user));
 		},
 		error: function () {
 			console.log("ALERT: User not added!");
@@ -124,7 +124,7 @@ function userSendConvoRequest(){
 		method: "POST",
 		success: function () {
 			console.log("Sent Convo Request");
-			document.getElementById("chat-messages").innerHTML = '<div class="announcement"><h2 class="color-blue-dark">Chat Request:</h2><br/><h3 class="color-blue-dark">Sent/Pending</h3></div>';
+			document.getElementById("chat-messages").innerHTML = '<div class="announcement"><h2 class="color-blue-dark">Chat Request with '+username2+':</h2><br/><h3 class="color-blue-dark">Sent/Pending</h3></div>';
 		},
 		error: function () {
 			alert("Request not sent");
@@ -222,12 +222,11 @@ function checkConvoRequest(){
 
 //$("#acceptRequest").click(function () {
 function acceptRequestCall(){
-		var conversation = [{
+		var conversation = {
 			"user1": document.getElementById("chatTo").innerHTML,
 			"user2": username,
-			"accepted": "accepted",
-			"id": convosID
-		}];
+			"accepted": "accepted"
+		};
 
 		console.log("converstation object data: "+JSON.stringify(conversation));
 	
