@@ -28,7 +28,7 @@ function disableInputs(){
 
 //pull data out
 function getUserList() {
-	console.log("getUserList called");
+	//console.log("getUserList called");
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers", {
 		data: { get_param: 'value' },
 		contentType: "application/json",
@@ -39,7 +39,7 @@ function getUserList() {
 			$.each(data, function (index, element) {
 				//get element.id put that in global variable
 				elementID = element.id;
-				console.log("elementID: " + elementID);
+				//console.log("elementID: " + elementID);
 				//if location is within 5km and username is not mine
 				// then show element.username and element.status
 				if(element.status != "invisible"){
@@ -59,9 +59,9 @@ function getUserList() {
 }
 
 function addUser() {
-	console.log("username to add:" + username);
-	console.log("status to add: " + status);
-	console.log("userid to add: " + userID);
+	//console.log("username to add:" + username);
+	//console.log("status to add: " + status);
+	//console.log("userid to add: " + userID);
 
 	var user = {
 		"username": username,
@@ -117,7 +117,7 @@ function checkConvoRequest(){
 			$(this).on( 'click', function () {
 				var id  = $(this).attr("id");
 				username2 = id;
-				console.log(id);
+				//console.log(id);
 	  		});
 	 	});
    	});
@@ -129,25 +129,28 @@ function checkConvoRequest(){
 		method: 'GET',
 		contentType: 'application/json',
 		success: function (data) {
-			console.log("Checking Convo Exists");
-			console.log("username2 check 1: "+username2);
+			//console.log("Checking Convo Exists");
+			//console.log("username2 check 1: "+username2);
 			$.each(data, function (index, element) {
-				console.log(element.user1 + " " + element.user2);
-				console.log("username2 check 2: "+username2);
+				//console.log(element.user1 + " " + element.user2);
+				//console.log("username2 check 2: "+username2);
 				if(element.user1 == username && element.user2 == username2){
 					//convo does exist
 					//check if pending 
-					console.log("Convo exists: check if pending or not");
+					//console.log("Convo exists: check if pending or not");
 					if(element.accepted == "pending"){
-						console.log("request pending, show request announcement");
+						//console.log("request pending, show request announcement");
 						//clear chat view
 						clearChatView();
 						disableInputs();
 						//request still pending 
 						//deal
 						document.getElementById("chat-messages").innerHTML = '<div class="announcement"><h2 class="color-blue-dark">Chat Request with '+username2+':</h2><br/><h3 class="color-blue-dark">Sent/Pending</h3></div>';
+						//set convosID
+						convosID = element.id;
+						checkConvoStatusChange();
 					}else{
-						console.log("request not pending, show messages");
+						//console.log("request not pending, show messages");
 						//clear chat view
 						clearChatView();
 						enableInputs();
@@ -159,9 +162,9 @@ function checkConvoRequest(){
 				}else if(element.user1 == username2 && element.user2 == username){
 					//convo does exist
 					//check if pending
-					console.log("Convo exists: check if pending or not");
+					//console.log("Convo exists: check if pending or not");
 					if(element.accepted == "pending"){
-						console.log("convo request pending...");
+						//console.log("convo request pending...");
 						//clear chat view
 						clearChatView();
 						disableInputs();
@@ -176,7 +179,7 @@ function checkConvoRequest(){
 						'</div>';
 						convosID = element.id;
 					}else{
-						console.log("Go get messages cause it exists");
+						//console.log("Go get messages cause it exists");
 						//clear chat view
 						clearChatView();
 						enableInputs();
@@ -186,14 +189,14 @@ function checkConvoRequest(){
 						getMessages(convosID);
 					}
 				}else if(element.user1 != username && element.user2 != username2 && element.user1 != username2 && element.user2 != username){
-					console.log("now to send convo req")
+					//console.log("now to send convo req")
 					//no convo 4 you
 					userSendConvoRequest();
 				}
 			});
 		},
 		error: function () {
-			alert("Request not sent");
+			console.log("Request not sent");
 		}
 	});
 }
@@ -372,7 +375,7 @@ $("#invisible").click(function () {
 
 //pull data out
 function getUserID() {
-	console.log("getUserID called");
+	//console.log("getUserID called");
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers", {
 		data: { get_param: 'value' },
 		contentType: "application/json",
@@ -383,7 +386,7 @@ function getUserID() {
 				//get element.id if username is user's and put that in local variable
 				if(element.username == username){
 					userID = element.id;
-					console.log("userID: " + userID);
+					//console.log("userID: " + userID);
 					localStorage.setItem("userID", userID);
 				}
 			});
@@ -419,7 +422,7 @@ function checkForRequests(){
 					if(numRequestsChecked > currNumRequests){
 						console.log("Checked: "+numRequestsChecked+" requests.");
 						//send chat request notification
-						requestToChat(element.user1+' sent you a request');						
+						requestToChat('<span class="announced-name">'+element.user1+'</span> sent you a request');						
 						//update currNumRequests
 						currNumRequests = numRequestsChecked;
 						console.log("current number of requests announced: "+ currNumRequests);
@@ -433,6 +436,40 @@ function checkForRequests(){
 	});
 }
 
+function checkConvoStatusChange(){
+	console.log("convosID: "+convosID);
+
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/", {
+		data: { get_param: 'value' },
+		contentType: "application/json",
+		method: "GET",
+		success: function (data) {
+			//console.log("check convos status data: "+ JSON.stringify(data));
+			console.log("Checking for convo status change");
+			//iterate through all the elements
+			$.each(data, function (index, element) {
+				//if username = element.username and if request status = pending
+				if(element.user1 == username && element.user2 == document.getElementById("chatTo").innerHTML){
+				console.log("element.accpeted: "+element.accepted);
+					if(element.accepted == "pending"){
+						console.log("no change, continue check");
+						//restart convo status check
+						checkConvoStatusChange();
+					}else if(element.accepted != "pending"){
+						console.log("convo status changed from pending");
+						//clear the chat view
+						clearChatView();
+						//enable the input elements
+						enableInputs();
+					}
+				}
+			});
+		},
+		error: function () {
+			//go away come back tomorrow 
+		}
+	});
+}
 /*//TEMPLATE
 $('#buttonID').click(function () {
 
