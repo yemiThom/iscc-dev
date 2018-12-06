@@ -184,17 +184,19 @@ function checkConvoRequest(){
 					//check if pending
 					console.log("Convo exists: check if pending or not");
 					if(element.accepted == "pending"){
+						console.log("convo request pending...");
 						//clear chat view
 						clearChatView();
 						//request still pending 
 						//deal
 						document.getElementById("chat-messages").innerHTML = '<div class="announcement">'+
-						'<h2 class="color-blue-dark">Chat Request:</h2><br/><h3 class="color-blue-dark">Received</h3>'+
+						'<h2 class="color-blue-dark">Chat Request with '+username2+':</h2><br/><h3 class="color-blue-dark">Received</h3>'+
 						'<div class="requestBtn_div">'+
-						'<button id="acceptRequest" class="button" type="button" value="acceptRequest">Accept</button>'+
-						'<button id="declineRequest" class="button" type="button" value="declineRequest">Decline</button>'+
+						'<button id="acceptRequest" class="button" type="button" value="acceptRequest" onClick="acceptRequestCall()">Accept</button>'+
+						'<button id="declineRequest" class="button" type="button" value="declineRequest" onClick="declineRequestCall()">Decline</button>'+
 						'</div>'+
 						'</div>';
+						convosID = element.id;
 					}else{
 						console.log("Go get messages cause it exists");
 						//clear chat view
@@ -218,27 +220,52 @@ function checkConvoRequest(){
 	});
 }
 
-$("#acceptRequest").click(function () {
+//$("#acceptRequest").click(function () {
+function acceptRequestCall(){
 		var conversation = [{
 			"user1": document.getElementById("chatTo").innerHTML,
 			"user2": username,
 			"accepted": "accepted",
+			"id": convosID
 		}];
+
+		console.log("converstation object data: "+JSON.stringify(conversation));
 	
 		//put the data in 
-		$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations", {
+		$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+convosID, {
 			data: JSON.stringify(conversation),
 			contentType: "application/json",
 			method: "PUT",
 			success: function () {
 				console.log("Accepted Convo Request");
+				clearChatView();
+				enableInputs();
 			},
 			error: function () {
-				alert("Request not been accepeted");
+				alert("Request not been accepted");
 			}
 	
 		});
-});
+}
+//});
+
+//$("#declineRequest").click(function () {
+	function declineRequestCall(){
+	
+		//put the data in 
+		$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+convosID, {
+			method: "DELETE",
+			success: function () {
+				console.log("Deleted Convo & Request");
+				clearChatView();
+			},
+			error: function () {
+				alert("Request not been deleted");
+			}
+	
+		});
+}
+//});
 
 /*check for invites.
 $('#checkForConversation').click(function () {
