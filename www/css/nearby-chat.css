@@ -232,6 +232,7 @@ z-index:200;
     border-radius:5px 5px 5px 0px;
     position:relative;
     float:left;
+    min-width: 65px;
 }
 .received{ background:#775ba6; color:#ffffff; }
 .sent{ background:#ecf0f1; color:#414b76; }

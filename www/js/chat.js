@@ -86,7 +86,7 @@ function addUser() {
 
 //click username. send request. POST to conversation table.
 //$("#userSendConversationRequest").click(function () {
-function userSendConvoRequest(id){
+function userSendConvoRequest(){
 	var conversation = [{
 		"user1": username,
 		"user2": document.getElementById("chatTo").innerHTML,
@@ -123,6 +123,7 @@ function checkConvoRequest(){
 	 	});
    	});
 
+				var numData = 0;
 	//alert(username2);
 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations", {
@@ -130,17 +131,23 @@ function checkConvoRequest(){
 		method: 'GET',
 		contentType: 'application/json',
 		success: function (data) {
-			//console.log("Checking Convo Exists");
-			//console.log("username2 check 1: "+username2);
+			console.log("Checking Convo Exists");
+			console.log("username2 check 1: "+username2);
 			$.each(data, function (index, element) {
-				//console.log(element.user1 + " " + element.user2);
-				//console.log("username2 check 2: "+username2);
+				numData++;
+				console.log("numData count: "+numData);
+				//console.log("Data Obj: "+JSON.stringify(data));
+				console.log("Data Obj count: "+Object.keys(data).length);
+
+
+				console.log(element.user1 + " && " + element.user2);
+				console.log("username2 check 2: "+username2);
 				if(element.user1 == username && element.user2 == username2){
 					//convo does exist
 					//check if pending 
-					//console.log("Convo exists: check if pending or not");
+					console.log("Convo exists: check if pending or not");
 					if(element.accepted == "pending"){
-						//console.log("request pending, show request announcement");
+						console.log("request pending, show request announcement");
 						//clear chat view
 						clearChatView();
 						disableInputs();
@@ -150,8 +157,9 @@ function checkConvoRequest(){
 						//set convosID
 						convosID = element.id;
 						checkConvoStatusChange();
+						return false;
 					}else{
-						//console.log("request not pending, show messages");
+						console.log("request not pending, show messages");
 						//clear chat view
 						clearChatView();
 						enableInputs();
@@ -159,11 +167,12 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
+						return false;
 					}
 				}else if(element.user1 == username2 && element.user2 == username){
 					//convo does exist
 					//check if pending
-					//console.log("Convo exists: check if pending or not");
+					console.log("Convo exists: check if pending or not");
 					if(element.accepted == "pending"){
 						//console.log("convo request pending...");
 						//clear chat view
@@ -179,8 +188,9 @@ function checkConvoRequest(){
 						'</div>'+
 						'</div>';
 						convosID = element.id;
+						return false;
 					}else{
-						//console.log("Go get messages cause it exists");
+						console.log("Go get messages cause it exists");
 						//clear chat view
 						clearChatView();
 						enableInputs();
@@ -188,14 +198,16 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
+						return false;
 					}
 				}else{ //if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && alreadyChecked == "false"){
 					//console.log("now to send convo req")
 					console.log("element.id: "+element.id);
 					//no convo 4 you
-					if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && alreadyChecked == "false"){
+					if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && (numData == Object.keys(data).length)){
+						console.log("call userSendConvoRequest()");
 						userSendConvoRequest();
-						alreadyChecked = "true";
+						console.log("set alreadyChecked to true");
 					}
 				}
 			});
@@ -265,12 +277,25 @@ function getMessages(cid){
 
 				//if message from = username
 				if(element.from == username){
+					//calculate which date format to go with
+					//console.log("Date: " +new Date().toISOString());
+					//console.log("Element Date: " +element.date);
+					var dateCheck = new Date().toISOString().substring(0, 10);
+					var elemDate = element.date.toString().substring(0, 10);
+					if(dateCheck == elemDate){
+						//console.log("dates are the same, show time instead: "+ element.date.toString().substring(11, 16));
+						elemDate = element.date.toString().substring(11, 16);
+					}else{
+						//console.log("show dates...");
+						elemDate = + elemDate.toString().substring(0, 10);
+					}
+
 					//show sent div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date.toString().substring(0, 10)+'</span>'+bearhugSticker+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+elemDate+'</span>'+bearhugSticker+'</div></div>';
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date.toString().substring(0, 10)+'</span>'+element.message+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+elemDate+'</span>'+element.message+'</div></div>';
 					}
 				//else message being received
 				}else{
@@ -293,7 +318,7 @@ function getMessages(cid){
 
 //SEND MESSAGE
 $("#sendButton").click(function () {
-	console.log("Send Button pressed, message should be sent...");
+	//console.log("Send Button pressed, message should be sent...");
 	var todayDate = new Date();
 	var messageStr = document.getElementById("dataChannelSend").value;
 	var messageTo = document.getElementById("chatTo").innerHTML;
@@ -312,14 +337,14 @@ $("#sendButton").click(function () {
 		contentType: "application/json",
 		method: "POST",
 		success: function () {
-			console.log("Added");
+			//console.log("Added");
 			clearChatView();
 			document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
 		},
 		error: function () {
-			console.log("Not added");
+			//console.log("Not added");
 
 		}
 
@@ -327,9 +352,9 @@ $("#sendButton").click(function () {
 });
 //SEND BearHug
 $("#sendHugButton").click(function () {
-	console.log("Send BearHug Button pressed, :bearhug: code should be sent...");
+	//console.log("Send BearHug Button pressed, :bearhug: code should be sent...");
 	var todayDate = new Date();
-	var messageStr = document.getElementById("dataChannelSend").value;
+	//var messageStr = document.getElementById("dataChannelSend").value;
 	var messageTo = document.getElementById("chatTo").innerHTML;
 
 	var message = {
@@ -346,14 +371,14 @@ $("#sendHugButton").click(function () {
 		contentType: "application/json",
 		method: "POST",
 		success: function () {
-			console.log("Added");
+			//console.log("Added");
 			clearChatView();
-			document.getElementById("dataChannelSend").value = '';
+			//document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
 		},
 		error: function () {
-			console.log("Not added");
+			//console.log("Not added");
 
 		}
 
@@ -442,7 +467,7 @@ function checkForRequests(){
 }
 
 function checkConvoStatusChange(){
-	console.log("convosID: "+convosID);
+	//console.log("convosID: "+convosID);
 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/", {
 		data: { get_param: 'value' },
