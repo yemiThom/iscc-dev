@@ -86,7 +86,7 @@ function addUser() {
 
 //click username. send request. POST to conversation table.
 //$("#userSendConversationRequest").click(function () {
-function userSendConvoRequest(){
+function userSendConvoRequest(id){
 	var conversation = [{
 		"user1": username,
 		"user2": document.getElementById("chatTo").innerHTML,
@@ -100,7 +100,7 @@ function userSendConvoRequest(){
 		method: "POST",
 		success: function () {
 			console.log("Sent Convo Request");
-			document.getElementById("chat-messages").innerHTML = '<div class="announcement"><h2 class="color-blue-dark">Chat Request with '+username2+':</h2><br/><h3 class="color-blue-dark">Sent/Pending</h3></div>';
+			document.getElementById("chat-messages").innerHTML = '<div class="announcement"><h2 class="color-blue-dark">Chat Request with '+document.getElementById("chatTo").innerHTML+':</h2><br/><h3 class="color-blue-dark">Sent/Pending</h3></div>';
 		},
 		error: function () {
 			alert("Request not sent");
@@ -111,13 +111,14 @@ function userSendConvoRequest(){
 //});
 function checkConvoRequest(){
 	var username2 = '';
+	var alreadyChecked = 'false';
 	
 	$('#friends').each(function(){
 		$(this).find(".friend").each(function(){
 			$(this).on( 'click', function () {
 				var id  = $(this).attr("id");
 				username2 = id;
-				//console.log(id);
+				console.log(id);
 	  		});
 	 	});
    	});
@@ -188,10 +189,14 @@ function checkConvoRequest(){
 						//get messages
 						getMessages(convosID);
 					}
-				}else if(element.user1 != username && element.user2 != username2 && element.user1 != username2 && element.user2 != username){
+				}else{ //if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && alreadyChecked == "false"){
 					//console.log("now to send convo req")
+					console.log("element.id: "+element.id);
 					//no convo 4 you
-					userSendConvoRequest();
+					if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && alreadyChecked == "false"){
+						userSendConvoRequest();
+						alreadyChecked = "true";
+					}
 				}
 			});
 		},
@@ -263,18 +268,18 @@ function getMessages(cid){
 					//show sent div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date+'</span>'+bearhugSticker+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date.toString().substring(0, 10)+'</span>'+bearhugSticker+'</div></div>';
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date+'</span>'+element.message+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date.toString().substring(0, 10)+'</span>'+element.message+'</div></div>';
 					}
 				//else message being received
 				}else{
 					//show received div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date+'</span>'+bearhugSticker+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date.toString().substring(0, 10)+'</span>'+bearhugSticker+'</div></div>';
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received"><span>'+element.date+'</span>'+element.message+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received"><span>'+element.date.toString().substring(0, 10)+'</span>'+element.message+'</div></div>';
 					}
 				}
 
@@ -411,8 +416,8 @@ function checkForRequests(){
 		contentType: "application/json",
 		method: "GET",
 		success: function (data) {
-			console.log("Checking for chat requests");
-			console.log("current number of requests announced: "+ currNumRequests);
+			//console.log("Checking for chat requests");
+			//console.log("current number of requests announced: "+ currNumRequests);
 			//iterate through all the elements
 			$.each(data, function (index, element) {
 				//if username = element.username and if request status = pending
@@ -420,12 +425,12 @@ function checkForRequests(){
 					numRequestsChecked++;
 					//if numRequestsChecked > currNumRequests
 					if(numRequestsChecked > currNumRequests){
-						console.log("Checked: "+numRequestsChecked+" requests.");
+						//console.log("Checked: "+numRequestsChecked+" requests.");
 						//send chat request notification
 						requestToChat('<span class="announced-name">'+element.user1+'</span> sent you a request');						
 						//update currNumRequests
 						currNumRequests = numRequestsChecked;
-						console.log("current number of requests announced: "+ currNumRequests);
+						//console.log("current number of requests announced: "+ currNumRequests);
 					}
 				}
 			});
@@ -499,6 +504,8 @@ $(document).ready(function () {
 		getUserID();
 		//add username to users
 		//addUser();
-		setInterval(function(){ checkForRequests(); }, 5000);
+		var intervalChecks = setInterval(function(){ checkForRequests(); }, 5000);
+	}else{
+		clearInterval(intervalChecks);
 	}
 });
