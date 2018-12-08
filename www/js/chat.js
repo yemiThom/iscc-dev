@@ -283,28 +283,28 @@ function getMessages(cid){
 					var dateCheck = new Date().toISOString().substring(0, 10);
 					var elemDate = element.date.toString().substring(0, 10);
 					if(dateCheck == elemDate){
-						//console.log("dates are the same, show time instead: "+ element.date.toString().substring(11, 16));
+						console.log("dates are the same, show time instead: "+ element.date.toString().substring(11, 16));
 						elemDate = element.date.toString().substring(11, 16);
 					}else{
-						//console.log("show dates...");
-						elemDate = + elemDate.toString().substring(0, 10);
+						console.log("show dates...");
+						elemDate = element.date.toString().substring(0, 10) + ", " + element.date.toString().substring(11, 16);
 					}
 
 					//show sent div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+elemDate+'</span>'+bearhugSticker+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubble"><span>'+elemDate+'</span></div></div>';
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+elemDate+'</span>'+element.message+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+element.message+'</div><div class="dateBubble"><span>'+elemDate+'</span></div></div>';
 					}
 				//else message being received
 				}else{
 					//show received div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent"><span>'+element.date.toString().substring(0, 10)+'</span>'+bearhugSticker+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received"><span>'+element.date.toString().substring(0, 10)+'</span>'+element.message+'</div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received">'+element.message+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';
 					}
 				}
 

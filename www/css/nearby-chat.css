@@ -207,6 +207,9 @@ z-index:200;
     clear:both;
     margin-bottom:10px;
     overflow-y: -webkit-paged-y;
+    position: relative;
+    min-width: 125px;
+    min-height: 55px;
 }
 #chat-messages div.message.right{
     padding: 0 30px 0 0;
@@ -232,7 +235,13 @@ z-index:200;
     border-radius:5px 5px 5px 0px;
     position:relative;
     float:left;
-    min-width: 65px;
+}
+.message .dateBubble{
+    color: #aab8c2;
+    font-size: 11px;
+    position: absolute;
+    right: 31px;
+    bottom: -2px;
 }
 .received{ background:#775ba6; color:#ffffff; }
 .sent{ background:#ecf0f1; color:#414b76; }
