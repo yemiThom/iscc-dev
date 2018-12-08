@@ -1,6 +1,8 @@
 var status = localStorage.getItem("nearbyTogState");
 var username = localStorage.getItem("username");
 var userID = localStorage.getItem("userID");
+var userLat;
+var userLng;
 var bearhugSticker = '<div id="bearHug" class="bearHugSticker"></div>';
 var convosID = '';
 var currNumRequests = 0;
@@ -11,6 +13,30 @@ var currNumRequests = 0;
 //user = "testusername";
 
 //5bf7058553557b001671ef56
+
+
+function getUserLocation(){
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position){
+			userLat = position.coords.latitude;
+			userLng = position.coords.longitude;
+			console.log("lat: "+userLat+"; lng: "+userLng);
+		});
+	}
+
+}
+	 
+/*var getDistance = function(p1, p2) {
+	var R = 6378137; // Earth’s mean radius in meter
+	var dLat = rad(p2.lat() - p1.lat());
+	var dLong = rad(p2.lng() - p1.lng());
+	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+	  Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+	  Math.sin(dLong / 2) * Math.sin(dLong / 2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	var d = R * c;
+	return d; // returns the distance in meter
+};*/
 
 function clearChatView(){
 	document.getElementById("chat-messages").innerHTML = '';
@@ -34,21 +60,44 @@ function getUserList() {
 		contentType: "application/json",
 		method: "GET",
 		success: function (data) {
-			var elementID = '';
 			//iterate through all the elements
 			$.each(data, function (index, element) {
-				//get element.id put that in global variable
-				elementID = element.id;
-				//console.log("elementID: " + elementID);
-				//if location is within 5km and username is not mine
-				// then show element.username and element.status
-				if(element.status != "invisible"){
-					if(element.username != username){
-						document.getElementById("friends").innerHTML += '<div id="' + element.username + '" class="friend" onClick="checkConvoRequest()"><!--img src="img/profile/1_copy.jpg" /--><p class="usernameTo"><strong>' +
-							element.username + '</strong><span>Distance Unknown</span></p><div class="status ' + element.status + '"></div></div>';
-						makeFriendsClickable();
-					}
+				
+				// Converts numeric degrees to radians
+				function toRad(Value) {
+					return Value * Math.PI / 180;
 				}
+
+				function calcDistance(lat1,lng1,lat2,lng2) {
+					var R = 6371; // km
+					var dLat = toRad(lat2-lat1);
+					var dLon = toRad(lng2-lng1);
+					var lat1 = toRad(lat1);
+					var lat2 = toRad(lat2);
+
+					var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+						Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+					var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+					var d = R * c;
+					return Math.round(d);
+				};
+				//console.log("elemLat: "+element.lat+"; elemLng:"+element.lng);
+
+				//console.log(calcDistance(13.4877472,59.3293371,element.lat,element.lng));
+				var distBetween = calcDistance(userLat,userLng,element.lat,element.lng);
+
+				//if(getDistance < 5000){
+					//console.log("distance is less than 5km");
+					//if location is within 5km and username is not mine
+					// then show element.username and element.status
+					if(element.status != "invisible"){
+						if(element.username != username){
+							document.getElementById("friends").innerHTML += '<div id="' + element.username + '" class="friend" onClick="checkConvoRequest()"><!--img src="img/profile/1_copy.jpg" /--><p class="usernameTo"><strong>' +
+								element.username + '</strong><span>IS '+distBetween+'km away</span></p><div class="status ' + element.status + '"></div></div>';
+							makeFriendsClickable();
+						}
+					}
+				//}
 			});
 		},
 		error: function () {
@@ -62,11 +111,12 @@ function addUser() {
 	//console.log("username to add:" + username);
 	//console.log("status to add: " + status);
 	//console.log("userid to add: " + userID);
+	//getUserLocation();
 
 	var user = {
 		"username": username,
-		"lng": "here",
-		"lat": "here",
+		"lng": userLng,
+		"lat": userLat,
 		"status": status
 	}
 
@@ -529,6 +579,8 @@ $(document).ready(function () {
 		getUserID();
 		//add username to users
 		//addUser();
+		console.log("calling getUserLocation");
+		getUserLocation();
 		var intervalChecks = setInterval(function(){ checkForRequests(); }, 5000);
 	}else{
 		clearInterval(intervalChecks);
