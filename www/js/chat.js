@@ -572,6 +572,9 @@ $('#buttonID').click(function () {
 //Start of document ready function
 $(document).ready(function () {
 	//localStorage.removeItem('userID');
+	console.log("calling getUserLocation");
+	getUserLocation();
+	console.log("calling getUserList");
 	getUserList();
 
 	if (localStorage.getItem("nearbyTogState") == "online" || localStorage.getItem("nearbyTogState") == "busy") {
@@ -579,8 +582,6 @@ $(document).ready(function () {
 		getUserID();
 		//add username to users
 		//addUser();
-		console.log("calling getUserLocation");
-		getUserLocation();
 		var intervalChecks = setInterval(function(){ checkForRequests(); }, 5000);
 	}else{
 		clearInterval(intervalChecks);
