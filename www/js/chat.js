@@ -113,25 +113,59 @@ function addUser() {
 	//console.log("userid to add: " + userID);
 	//getUserLocation();
 
-	var user = {
+	/*var user = {
 		"username": username,
 		"lng": userLng,
 		"lat": userLat,
 		"status": status
-	}
+	}*/
 
-	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers/"+userID, {
-		data: JSON.stringify(user),
-		accept: "application/json",
-		contentType: "application/json",
-		method: "PUT",
-		success: function () {
-			console.log("Added User: " + JSON.stringify(user));
-		},
-		error: function () {
-			console.log("ALERT: User not added!");
+	/*console.log("username: "+localStorage.getItem("username"));
+	console.log("userid: "+userID);
+	if(userID == null){
+		userID ='';
+		console.log("userid 2: "+userID);
+		var user = {
+			"username": username,
+			"lng": userLng,
+			"lat": userLat,
+			"status": status
 		}
-	});
+		console.log(JSON.stringify(user));
+		
+		$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers", {
+			data: JSON.stringify(user),
+			accept: "application/json",
+			contentType: "application/json",
+			method: "POST",
+			success: function () {
+				console.log("Added User: " + JSON.stringify(user));
+			},
+			error: function () {
+				console.log("ALERT: User not added!");
+			}
+		});
+	}else{*/
+		var user = {
+			"username": username,
+			"lng": userLng,
+			"lat": userLat,
+			"status": status
+		}
+
+		$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers/"+userID, {
+			data: JSON.stringify(user),
+			accept: "application/json",
+			contentType: "application/json",
+			method: "PUT",
+			success: function () {
+				console.log("Added User: " + JSON.stringify(user));
+			},
+			error: function () {
+				console.log("ALERT: User not added!");
+			}
+		});
+	//}
 }
 
 //click username. send request. POST to conversation table.
