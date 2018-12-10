@@ -1,4 +1,3 @@
-
 //FOOD VARIABLES
 var username = "testusername";
 var meal;
@@ -20,7 +19,7 @@ $("#addFood").click(function () {
 
     var brand = document.getElementById("brand").value;
     var foodname = document.getElementById("foodname").value;
-    //var servingsize = document.getElementById("servingsize").value;
+    var servingsize = document.getElementById("servingsize").value;
     var servingsPerContainer = document.getElementById("servingsPerContainer").value;
     var created_date = new Date();
     var barcode = document.getElementById("trackingCode").value;
@@ -36,7 +35,7 @@ $("#addFood").click(function () {
     alert(JSON.stringify(food));
 
     console.log(food);
-    alert(food);
+   // alert(food);
 
     $.ajax("https://fast-garden-93601.herokuapp.com/api/food", {
         data: JSON.stringify(food),
@@ -183,7 +182,7 @@ $("#getAllDietlogData").click(function () {
                         '<td>' + element.meal +
                         '<td>' + element.food +
                         '<td>' + element.pain +
-                        '<td>' + element.servingsize
+                        '<td>' + element.servingsize.toString()
                         + '</tr>'
                     );
                     $('#dietLogTable').append(tr);
@@ -289,41 +288,41 @@ $(document).ready(function () {
             day = document.getElementById("bad").value;
         }
 
-        if (document.getElementById("pain-low").checked) {
-            pain = document.getElementById("pain-low").value;
+        if (document.getElementById("pain-Low").checked) {
+            pain = document.getElementById("pain-Low").value;
         }
-        if (document.getElementById("pain-medium").checked) {
-            pain = document.getElementById("pain-medium").value;
+        if (document.getElementById("pain-Medium").checked) {
+            pain = document.getElementById("pain-Medium").value;
         }
-        if (document.getElementById("pain-high").checked) {
-            pain = document.getElementById("pain-high").value;
-        }
-
-        if (document.getElementById("stress-low").checked) {
-            stress = document.getElementById("stress-low").value;
-        }
-        if (document.getElementById("stress-medium").checked) {
-            stress = document.getElementById("stress-medium").value;
-        }
-        if (document.getElementById("stress-high").checked) {
-            stress = document.getElementById("stress-high").value;
+        if (document.getElementById("pain-High").checked) {
+            pain = document.getElementById("pain-High").value;
         }
 
-        if (document.getElementById("stool-hard").checked) {
-            stool = document.getElementById("stool-hard").value;
+        if (document.getElementById("stress-Low").checked) {
+            stress = document.getElementById("stress-Low").value;
         }
-        if (document.getElementById("stool-medium").checked) {
-            stool = document.getElementById("stool-medium").value;
+        if (document.getElementById("stress-Medium").checked) {
+            stress = document.getElementById("stress-Medium").value;
         }
-        if (document.getElementById("stool-soft").checked) {
-            stool = document.getElementById("stool-soft").value;
+        if (document.getElementById("stress-High").checked) {
+            stress = document.getElementById("stress-High").value;
+        }
+
+        if (document.getElementById("stool-Hard").checked) {
+            stool = document.getElementById("stool-Hard").value;
+        }
+        if (document.getElementById("stool-Medium").checked) {
+            stool = document.getElementById("stool-Medium").value;
+        }
+        if (document.getElementById("stool-Soft").checked) {
+            stool = document.getElementById("stool-Soft").value;
         }
 
         if (document.getElementById("bowel-light").checked) {
             bowelm = document.getElementById("bowel-light").value;
         }
-        if (document.getElementById("bowel-medium").checked) {
-            bowelm = document.getElementById("bowel-medium").value;
+        if (document.getElementById("bowel-Medium").checked) {
+            bowelm = document.getElementById("bowel-Medium").value;
         }
         if (document.getElementById("bowel-heavy").checked) {
             bowelm = document.getElementById("bowel-heavy").value;
@@ -459,14 +458,13 @@ $(document).ready(function () {
                         var tr = (
                             '<tr>' +
                             '<td>' + element.date.toString().substring(0, 10) +
-                            '<td>' + element.day +
-                            '<td>' + element.pain +
-                            '<td>' + element.stress +
-                            '<td>' + element.stool +
-                            '<td>' + element.bowelm +
-                            '<td>' + element.bowelf +
-                            '<td>' + element.bvisit +
-                            + '</tr>'
+                            '<td>' + element.day + ' ' +
+                            '<td>' + element.pain + ' ' +
+                            '<td>' + element.stress + ' ' +
+                            '<td>' + element.stool + ' ' +
+                            '<td>' + element.bowelm + ' ' +
+                            '<td>' + element.bowelf + ' ' +
+                            '<td>' + element.bvisit + ' </tr>'
                         );
                         $('#symptomTable').append(tr);
                     }
@@ -482,8 +480,6 @@ $(document).ready(function () {
     });
 
 
-    //Gra DATA   
-
 
     var graph = document.getElementById('graph');
     $("#getGraphData").click(function () {
@@ -498,81 +494,101 @@ $(document).ready(function () {
                     if (element.username == "testuser") {
                         console.log(element);
 
-
-                        if (element.day = "good") {
+                        if (element.day == "good") {
                             var dayGraph = 3;
                         }
-                        if (element.day = "okay") {
+                        if (element.day == "okay") {
                             dayGraph = 2;
                         }
-                        if (element.day = "bad") {
+                        if (element.day == "bad") {
                             dayGraph = 1;
                         }
-                        if (element.pain = "low") {
+                        if (element.day == undefined) {
+                            dayGraph = "";
+                        }
+                        if (element.pain == "Low") {
                             var painGraph = 1;
                         }
-                        if (element.pain = "medium") {
+                        if (element.pain == "Medium") {
                             painGraph = 2;
                         }
-                        if (element.pain = "high") {
+                        if (element.pain == "High") {
                             painGraph = 3;
                         }
-                        if (element.stress = "low") {
+                        if (element.pain == undefined) {
+                            painGraph = "";
+                        }
+                        if (element.stress == "Low") {
                             var stressGraph = 1;
                         }
-                        if (element.stress = "medium") {
+                        if (element.stress == "Medium") {
                             stressGraph = 2;
                         }
-                        if (element.stress = "hard") {
+                        if (element.stress == "High") {
                             stressGraph = 3;
                         }
-                        if (element.stool = "soft") {
+                        if (element.stress == undefined) {
+                            stressGraph = "";
+                        }
+                        if (element.stool == "Soft") {
                             var stoolGraph = 1;
                         }
-                        if (element.stool = "medium") {
+                        if (element.stool == "Medium") {
                             stoolGraph = 2;
                         }
-                        if (element.stool = "hard") {
+                        if (element.stool == "Hard") {
                             stoolGraph = 3;
                         }
-                        if (element.bowelm = "light") {
+                        if (element.stool == undefined) {
+                            stoolGraph = "";
+                        }
+                        if (element.bowelm == "Light") {
                             var bowelmGraph = 1;
                         }
-                        if (element.bowelm = "medium") {
+                        if (element.bowelm == "Medium") {
                             bowelmGraph = 2;
                         }
-                        if (element.bowelm = "heavy") {
+                        if (element.bowelm == "Heavy") {
                             bowelmGraph = 3;
                         }
-                        if (element.bowelf = "1-4") {
+                        if (element.bowelm == undefined) {
+                            bowelmGraph = "";
+                        }
+                        if (element.bowelf == "1-4") {
                             var bowelfGraph = 1;
                         }
-                        if (element.bowelf = "5-8") {
+                        if (element.bowelf == "5-8") {
                             bowelfGraph = 2;
                         }
-                        if (element.bowelf = "9OrMore") {
+                        if (element.bowelf == "9OrMore") {
                             bowelfGraph = 3;
                         }
-                        if (element.bvisit = "1-2") {
-                            bvisitGraph = 1;
+                        if (element.bowelf == undefined) {
+                            bowelfGraph = "";
                         }
-                        if (element.bvisit = "3-4") {
+                        if (element.bvisit == "1-2") {
+                            var bvisitGraph = 1;
+                        }
+                        if (element.bvisit == "3-4") {
                             bvisitGraph = 2;
                         }
-                        if (element.bvisit = "5OrMore") {
+                        if (element.bvisit == "5 or more") {
                             bvisitGraph = 3;
+                        }
+                        if (element.bvisit == undefined) {
+                            bvisitGraph = "";
                         }
 
                         var tr = (
                             '<tr>' +
                             '<td>' + element.date.toString().substring(0, 10) +
-                            '<td>' + dayGraph +
-                            '<td>' + painGraph +
-                            '<td>' + stressGraph +
-                            '<td>' + stoolGraph +
-                            '<td>' + bowelmGraph +
-                            '<td>' + bowelfGraph +
-                            '<td>' + bvisitGraph +
+                            '<td>' + dayGraph + ' ' +
+                            '<td>' + painGraph + ' ' +
+                            '<td>' + stressGraph + ' ' +
+                            '<td>' + stoolGraph + ' ' +
+                            '<td>' + bowelmGraph + ' ' +
+                            '<td>' + bowelfGraph + ' ' +
+                            '<td>' + bvisitGraph + ' '
                             + '</tr>'
                         );
                         $('#graphTable').append(tr);
@@ -638,48 +654,48 @@ function getForDate() {
                             document.getElementById("bad").checked = true;
                             $("#toggleReveal-day").slideDown();
                         }
-                        if (element.pain = "low") {
-                            document.getElementById("pain-low").checked = true;
+                        if (element.pain = "Low") {
+                            document.getElementById("pain-Low").checked = true;
                             $("#toggleReveal-pain").slideDown();
                         }
-                        if (element.pain = "medium") {
-                            document.getElementById("pain-medium").checked = true;
+                        if (element.pain = "Medium") {
+                            document.getElementById("pain-Medium").checked = true;
                             $("#toggleReveal-pain").slideDown();
                         }
-                        if (element.pain = "high") {
-                            document.getElementById("pain-high").checked = true;
+                        if (element.pain = "High") {
+                            document.getElementById("pain-High").checked = true;
                             $("#toggleReveal-pain").slideDown();
                         }
-                        if (element.stress = "low") {
-                            document.getElementById("stress-low").checked = true;
+                        if (element.stress = "Low") {
+                            document.getElementById("stress-Low").checked = true;
                             $("#toggleReveal-stress").slideDown();
                         }
-                        if (element.stress = "medium") {
-                            document.getElementById("stress-medium").checked = true;
+                        if (element.stress = "Medium") {
+                            document.getElementById("stress-Medium").checked = true;
                             $("#toggleReveal-stress").slideDown();
                         }
-                        if (element.stress = "hard") {
-                            document.getElementById("stress-high").checked = true;
+                        if (element.stress = "Hard") {
+                            document.getElementById("stress-High").checked = true;
                             $("#toggleReveal-stress").slideDown();
                         }
-                        if (element.stool = "soft") {
-                            document.getElementById("stool-soft").checked = true;
+                        if (element.stool = "Soft") {
+                            document.getElementById("stool-Soft").checked = true;
                             $("#toggleReveal-stool").slideDown();
                         }
-                        if (element.stool = "medium") {
-                            document.getElementById("stool-medium").checked = true;
+                        if (element.stool = "Medium") {
+                            document.getElementById("stool-Medium").checked = true;
                             $("#toggleReveal-stool").slideDown();
                         }
-                        if (element.stool = "hard") {
-                            document.getElementById("stool-hard").checked = true;
+                        if (element.stool = "Hard") {
+                            document.getElementById("stool-Hard").checked = true;
                             $("#toggleReveal-stool").slideDown();
                         }
                         if (element.bowelm = "light") {
                             document.getElementById("bowel-light").checked = true;
                             $("#toggleReveal-movement").slideDown();
                         }
-                        if (element.bowelm = "medium") {
-                            document.getElementById("bowel-medium").checked = true;
+                        if (element.bowelm = "Medium") {
+                            document.getElementById("bowel-Medium").checked = true;
                             $("#toggleReveal-movement").slideDown();
                         }
                         if (element.bowelm = "heavy") {
@@ -723,48 +739,48 @@ function getForDate() {
                             document.getElementById("bad").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.pain = "low") {
-                            document.getElementById("pain-low").checked = false;
+                        if (element.pain = "Low") {
+                            document.getElementById("pain-Low").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.pain = "medium") {
-                            document.getElementById("pain-medium").checked = false;
+                        if (element.pain = "Medium") {
+                            document.getElementById("pain-Medium").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.pain = "high") {
-                            document.getElementById("pain-high").checked = false;
+                        if (element.pain = "High") {
+                            document.getElementById("pain-High").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.stress = "low") {
-                            document.getElementById("stress-low").checked = false;
+                        if (element.stress = "Low") {
+                            document.getElementById("stress-Low").checked = false;
                             $("#toggleReveal-stress").slideUp();
                         }
-                        if (element.stress = "medium") {
-                            document.getElementById("stress-medium").checked = false;
+                        if (element.stress = "Medium") {
+                            document.getElementById("stress-Medium").checked = false;
                             $("#toggleReveal-stress").slideUp();
                         }
-                        if (element.stress = "hard") {
-                            document.getElementById("stress-high").checked = false;
+                        if (element.stress = "Hard") {
+                            document.getElementById("stress-High").checked = false;
                             $("#toggleReveal-stress").slideUp();
                         }
-                        if (element.stool = "soft") {
-                            document.getElementById("stool-soft").checked = false;
+                        if (element.stool = "Soft") {
+                            document.getElementById("stool-Soft").checked = false;
                             $("#toggleReveal-stool").slideUp();
                         }
-                        if (element.stool = "medium") {
-                            document.getElementById("stool-medium").checked = false;
+                        if (element.stool = "Medium") {
+                            document.getElementById("stool-Medium").checked = false;
                             $("#toggleReveal-stool").slideUp();
                         }
-                        if (element.stool = "hard") {
-                            document.getElementById("stool-hard").checked = false;
+                        if (element.stool = "Hard") {
+                            document.getElementById("stool-Hard").checked = false;
                             $("#toggleReveal-stool").slideUp();
                         }
                         if (element.bowelm = "light") {
                             document.getElementById("bowel-light").checked = false;
                             $("#toggleReveal-movement").slideUp();
                         }
-                        if (element.bowelm = "medium") {
-                            document.getElementById("bowel-medium").checked = false;
+                        if (element.bowelm = "Medium") {
+                            document.getElementById("bowel-Medium").checked = false;
                             $("#toggleReveal-movement").slideUp();
                         }
                         if (element.bowelm = "heavy") {
@@ -879,4 +895,8 @@ $("#showGraph").click(function () {
 
 function isInArray(array, search) {
     return array.indexOf(search) >= 0;
+}
+
+window.onload = function() {
+  createChart();
 }

@@ -23,13 +23,19 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
     <script src="js/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript" src='js/config.js'></script>
-    <script type="text/javascript" src='js/index.js'></script>
+
     <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <style>
         table { width: 640px; } /* Make table wider */  
     td, th { border: 1px solid #CCC; } /* Add borders to cells */  
+    #barChart{
+      background-color: white;
+      border-radius: 6px;
+    /*   Check out the fancy shadow  on this one */
+      box-shadow: 0 3rem 5rem -2rem rgba(0, 0, 0, 0.6);
+    }
     </style>
     <!-- javascript -->
     <script type='application/javascript' src='js/fastclick.js'></script>
@@ -40,7 +46,7 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--
-        user-scalable=no doesn't allow users to zoom
+        user-scalable=no doesn't alLow users to zoom
         initial-scale=1 means the zoom level when the app is loaded. 1=100%
         maximum-scale=1 means the max zoom level user can zoom
         minimum-scale-1 means the min zoom level user can zoom
@@ -52,6 +58,9 @@
 </head>
 
 <body>
+  <script type="text/javascript" src='js/index.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript" src='js/chart.js'></script>
     <!-- Start Header Area -->
     <header class="default-header">
         <div class="container">
@@ -236,22 +245,22 @@
                                     <div class="rating">
                                         <form id="healthtracker_pain" class="rating-form">
 
-                                            <label for="pain-low" class="tracker-label">
-                                                <input type="radio" name="pain" class="green" id="pain-low" value="Low" />
+                                            <label for="pain-Low" class="tracker-label">
+                                                <input type="radio" name="pain" class="green" id="pain-Low" value="Low" />
                                                 <img id="toggle-call" class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level1-icon.png" />
 
                                                 <span class="tracker-label-txt">Low</span>
                                             </label>
 
-                                            <label for="pain-medium" class="tracker-label">
-                                                <input type="radio" name="pain" class="orange" id="pain-medium" value="Medium" />
+                                            <label for="pain-Medium" class="tracker-label">
+                                                <input type="radio" name="pain" class="orange" id="pain-Medium" value="Medium" />
                                                 <img id="toggle-call" class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level2-icon.png" />
 
                                                 <span class="tracker-label-txt">Medium</span>
                                             </label>
 
-                                            <label for="pain-high" class="tracker-label">
-                                                <input type="radio" name="pain" class="red" id="pain-high" value="High" />
+                                            <label for="pain-High" class="tracker-label">
+                                                <input type="radio" name="pain" class="red" id="pain-High" value="High" />
                                                 <img id="toggle-call" class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level3-icon.png" />
 
                                                 <span class="tracker-label-txt">High</span>
@@ -272,23 +281,23 @@
                                     <div class="rating">
                                         <form id="healthtracker_stress" class="rating-form">
 
-                                            <label for="stress-low" class="tracker-label">
-                                                <input type="radio" name="stress" class="green" id="stress-low" value="Low" />
+                                            <label for="stress-Low" class="tracker-label">
+                                                <input type="radio" name="stress" class="green" id="stress-Low" value="Low" />
                                                 <img id="toggle-call" class="img-responsive" src="http://iscc-imgs.s3.amazonaws.com/icons/face-good.png" />
 
                                                 <span class="tracker-label-txt">Low</span>
                                             </label>
 
-                                            <label for="stress-medium" class="tracker-label">
-                                                <input type="radio" name="stress" class="orange" id="stress-medium"
+                                            <label for="stress-Medium" class="tracker-label">
+                                                <input type="radio" name="stress" class="orange" id="stress-Medium"
                                                     value="Medium" />
                                                 <img id="toggle-call" class="img-responsive" src="http://iscc-imgs.s3.amazonaws.com/icons/face-okay.png" />
 
                                                 <span class="tracker-label-txt">Medium</span>
                                             </label>
 
-                                            <label for="stress-high" class="tracker-label">
-                                                <input type="radio" name="stress" class="red" id="stress-high" value="High" />
+                                            <label for="stress-High" class="tracker-label">
+                                                <input type="radio" name="stress" class="red" id="stress-High" value="High" />
                                                 <img id="toggle-call" class="img-responsive" src="http://iscc-imgs.s3.amazonaws.com/icons/face-bad.png" />
 
                                                 <span class="tracker-label-txt">High</span>
@@ -309,20 +318,20 @@
                                     <div class="rating">
                                         <form id="healthtracker_stool" class="rating-form">
 
-                                            <label for="stool-hard" class="tracker-label">
-                                                <input type="radio" name="stool" class="green" id="stool-hard" value="Hard" />
+                                            <label for="stool-Hard" class="tracker-label">
+                                                <input type="radio" name="stool" class="green" id="stool-Hard" value="Hard" />
                                                 <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level1-icon.png" />
                                                 <span class="tracker-label-txt">Hard</span>
                                             </label>
 
-                                            <label for="stool-medium" class="tracker-label">
-                                                <input type="radio" name="stool" class="orange" id="stool-medium" value="Medium" />
+                                            <label for="stool-Medium" class="tracker-label">
+                                                <input type="radio" name="stool" class="orange" id="stool-Medium" value="Medium" />
                                                 <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level2-icon.png" />
                                                 <span class="tracker-label-txt">Medium</span>
                                             </label>
 
-                                            <label for="stool-soft" class="tracker-label">
-                                                <input type="radio" name="stool" class="red" id="stool-soft" value="Soft" />
+                                            <label for="stool-Soft" class="tracker-label">
+                                                <input type="radio" name="stool" class="red" id="stool-Soft" value="Soft" />
                                                 <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level3-icon.png" />
                                                 <span class="tracker-label-txt">Soft</span>
                                             </label>
@@ -348,8 +357,8 @@
                                                 <span class="tracker-label-txt">Light</span>
                                             </label>
 
-                                            <label for="bowel-medium" class="tracker-label">
-                                                <input type="radio" name="movement" class="orange" id="bowel-medium"
+                                            <label for="bowel-Medium" class="tracker-label">
+                                                <input type="radio" name="movement" class="orange" id="bowel-Medium"
                                                     value="Medium" />
                                                 <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level2-icon.png" />
                                                 <span class="tracker-label-txt">Medium</span>
@@ -439,10 +448,34 @@
                                     </div>
                                 </div>
                             </div>
+                      <!--        <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
+                        <input type="button" class="btn" id="close2" value="Close Symptom Data" />
+                         -->
+                        <table class="table table-bordered" id="tabletest2" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Day</th>
+                                    <th>Pain</th>
+                                    <th>Stress</th>
+                                    <th>Stool Quality</th>
+                                    <th>Bowel Movement</th>
+                                    <th>Bowel Frequency</th>
+                                    <th>Bathroom Visit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="symptomTable">
+                            </tbody>
+                        </table>
+
+
+
                         </diV>
 
+
+
                         <!--br/>
-                        <p><a href="profile-card.html" style="text-decoration: none; display: block; text-align: center; background-color: cornflowerblue;">Show Restroom ID Card</a></p-->
+                        <p><a href="profile-card.html" style="text-decoration: none; display: block; text-align: center; background-color: cornfLowerblue;">Show Restroom ID Card</a></p-->
 
                     </section>
                     <section>
@@ -491,6 +524,26 @@
                             </div>
                         </form>
                         <!--/div-->
+                        <br>
+
+                         <input type="button" class="btn" id="getAllDocLogData" value="Show Doctor's Log Data" />
+                        <input type="button" class="btn" id="close3" value="Close Doctor's Log Data" />
+                        <table class="table table-bordered" id="tabletest3" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Medication</th>
+                                    <th>Dosage</th>
+                                    <th>Comment</th>
+                                    <th>Complete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="docLogTable">
+                            </tbody>
+                        </table>
+                        <br>
+                        <br>
+                       
                     </section>
                     <section>
                         <h2 class="color-blue-dark">Diet</h2>
@@ -589,6 +642,23 @@
                                             <button id="logDiet" class="button"> ADD </button>
                                         </div>
 
+                                        <br>
+                                        <input type="button" class="button btn m-b-10" id="getAllDietlogData" value="Show Food Data" />
+                                        <input type="button" class="button btn m-b-10" id="close" value="Close Food Data" />
+
+                                        <table class="table table-bordered" id="tabletest" style="display:none">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Meal</th>
+                                                    <th>Food</th>
+                                                    <th>Pain</th>
+                                                    <th>Serving Size</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="dietLogTable">
+                                            </tbody>
+                                        </table>
                                     </div>
 
 
@@ -655,9 +725,9 @@
 
                     </section>
                     <section>
-                        <input type="button" class="btn" id="getAllDietlogData" value="Show Food Data" />
-                        <input type="button" class="btn" id="close" value="Close Food Data" />
-                        <table class="table table-bordered" id="tabletest" style="display:none">
+                    <!--     <input type="button" class="btn" id="getAllDietlogData" value="Show Food Data" />
+                        <input type="button" class="btn" id="close" value="Close Food Data" /> -->
+                        <!-- <table class="table table-bordered" id="tabletest" style="display:none">
                             <thead>
                                 <tr>
                                     <th>Date</th>
@@ -672,10 +742,10 @@
                         </table>
 
                         <br>
-                        <br>
-                        <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
-                        <input type="button" class="btn" id="close2" value="Close Symptom Data" />
-                        <table class="table table-bordered" id="tabletest2" style="display:none">
+                        <br> -->
+                    <!--     <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
+                        <input type="button" class="btn" id="close2" value="Close Symptom Data" /> -->
+                        <!-- <table class="table table-bordered" id="tabletest2" style="display:none">
                             <thead>
                                 <tr>
                                     <th>Date</th>
@@ -690,28 +760,12 @@
                             </thead>
                             <tbody id="symptomTable">
                             </tbody>
-                        </table>
+                        </table> -->
                         <br>
                         <br>
-                        <input type="button" class="btn" id="getAllDocLogData" value="Show Doctor's Log Data" />
-                        <input type="button" class="btn" id="close3" value="Close Doctor's Log Data" />
-                        <table class="table table-bordered" id="tabletest3" style="display:none">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Medication</th>
-                                    <th>Dosage</th>
-                                    <th>Comment</th>
-                                    <th>Complete</th>
-                                </tr>
-                            </thead>
-                            <tbody id="docLogTable">
-                            </tbody>
-                        </table>
-                        <br>
-                        <br>
-                        <input type="button" class="btn" id="getGraphData" value="Show Graph Data" />
-                        <input type="button" class="btn" id="close4" value="Close Graph Data" />
+                   <!--     
+                    <!--     <input type="button" class="btn" id="getGraphData" value="Show Graph Data" />
+                        <input type="button" class="btn" id="close4" value="Close Graph Data" /> -->
                         <table class="table table-bordered" id="tabletest4" style="display:none">
                             <thead>
                                 <tr>
@@ -728,17 +782,27 @@
                             <tbody id="graphTable">
                             </tbody>
                         </table>
-
-                        <input type="button" class="btn" id="showGraph" value="Show Graph" style="display:none" />
-                        <div id="chart_div"></div>
-
-
-
-
-
-
                         <br>
+                        <!-- <input type="button" class="btn" id="getGraphData" value="Refresh" onclick="createChart()" />
+ -->
+                    <div class="container">
+                      <br />
+                      <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                    <!--       Chart.js Canvas Tag -->
+                          <canvas id="barChart"> </canvas>
+                        </div>
+                        <div class="col-md-1"></div>
+                      </div>
+                    </div>
 
+
+
+
+
+
+                        
 
 
                     </section>
