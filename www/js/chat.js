@@ -15,6 +15,7 @@ var currNumRequests = 0;
 //5bf7058553557b001671ef56
 
 
+
 function getUserLocation(){
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function (position){
@@ -62,6 +63,8 @@ function getUserList() {
 		success: function (data) {
 			//iterate through all the elements
 			$.each(data, function (index, element) {
+				
+			console.log("Stringified username: "+JSON.stringify(element.username));
 				
 				// Converts numeric degrees to radians
 				function toRad(Value) {
@@ -153,6 +156,8 @@ function addUser() {
 			"status": status
 		}
 
+		console.log("user[JSON.strigify]: "+JSON.stringify(user));
+
 		$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers/"+userID, {
 			data: JSON.stringify(user),
 			accept: "application/json",
@@ -195,7 +200,6 @@ function userSendConvoRequest(){
 //});
 function checkConvoRequest(){
 	var username2 = '';
-	var alreadyChecked = 'false';
 	
 	$('#friends').each(function(){
 		$(this).find(".friend").each(function(){
@@ -207,7 +211,7 @@ function checkConvoRequest(){
 	 	});
    	});
 
-				var numData = 0;
+	var numData = 0;
 	//alert(username2);
 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations", {
@@ -251,6 +255,8 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
+						//call scroll to bottom of chat view
+						scrollViewToBttm();
 						return false;
 					}
 				}else if(element.user1 == username2 && element.user2 == username){
@@ -282,6 +288,8 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
+						//call scroll to bottom of chat view
+						scrollViewToBttm();
 						return false;
 					}
 				}else{ //if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && alreadyChecked == "false"){
@@ -378,17 +386,34 @@ function getMessages(cid){
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
 						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubble"><span>'+elemDate+'</span></div></div>';
+						
 					}else{
 						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+element.message+'</div><div class="dateBubble"><span>'+elemDate+'</span></div></div>';
+						
 					}
 				//else message being received
 				}else{
+					//calculate which date format to go with
+					//console.log("Date: " +new Date().toISOString());
+					//console.log("Element Date: " +element.date);
+					var dateCheck = new Date().toISOString().substring(0, 10);
+					var elemDate = element.date.toString().substring(0, 10);
+					if(dateCheck == elemDate){
+						console.log("dates are the same, show time instead: "+ element.date.toString().substring(11, 16));
+						elemDate = element.date.toString().substring(11, 16);
+					}else{
+						console.log("show dates...");
+						elemDate = element.date.toString().substring(0, 10) + ", " + element.date.toString().substring(11, 16);
+					}
+
 					//show received div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';			
+						
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received">'+element.message+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received">'+element.message+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';			
+						
 					}
 				}
 
@@ -426,6 +451,8 @@ $("#sendButton").click(function () {
 			document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
+			//call scroll to bottom of chat view
+			scrollViewToBttm();
 		},
 		error: function () {
 			//console.log("Not added");
@@ -460,6 +487,8 @@ $("#sendHugButton").click(function () {
 			//document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
+			//call scroll to bottom of chat view
+			scrollViewToBttm();
 		},
 		error: function () {
 			//console.log("Not added");
@@ -511,11 +540,6 @@ function getUserID() {
 	});
 
 }
-
-// --> Go online --> See list of users --> send invite to user 
-// --> get conversations - accept/decline -->  open conversation
-// --> list messages in conversation --> send messadw
-// -->  go offline
 
 function checkForRequests(){
 	var numRequestsChecked = 0;
@@ -584,6 +608,25 @@ function checkConvoStatusChange(){
 		}
 	});
 }
+
+function scrollViewToBttm(){
+	//const view = document.getElementById("chat-messages");
+
+	/*setInterval(function() {
+		const isScrolledToBottom = view.scrollHeight - view.clientHeight <= view.scrollTop + 1;
+
+		if(isScrolledToBottom){
+			view.scrollTop = view.scrollHeight - view.clientHeight;
+		}
+	}, 500);*/
+
+	//var view = document.querySelector("chat-messages");
+	//view.scrollTop = view.scrollHeight - view.clientHeight;
+
+	$("chat-messages").animate({scrollTop: $(document).height()}, "slow");
+	return false;
+}
+
 /*//TEMPLATE
 $('#buttonID').click(function () {
 
@@ -604,7 +647,8 @@ $('#buttonID').click(function () {
 });*/
 
 //Start of document ready function
-$(document).ready(function () {
+//$(document).ready(function () {
+window.onload = function () {
 	//localStorage.removeItem('userID');
 	console.log("calling getUserLocation");
 	getUserLocation();
@@ -617,7 +661,10 @@ $(document).ready(function () {
 		//add username to users
 		//addUser();
 		var intervalChecks = setInterval(function(){ checkForRequests(); }, 5000);
+
+
 	}else{
 		clearInterval(intervalChecks);
 	}
-});
+}
+//});
