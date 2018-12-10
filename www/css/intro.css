@@ -22,10 +22,10 @@
 }
 .panel-short{
     position: relative;
-    width: 49%;
+    width: 45%;
     display: inline-block;
     padding: 1% 0;
-    margin-left: 1px;
+    margin-left: 3%;
 }
 .panel-short::after{
     content: "";
@@ -33,8 +33,8 @@
     left: 50%;
     top: 50%;
     height: 80%;
-    width: 85%;  /* or 100px */
-    border: 3px solid #ecf0f1;
+    width: 75%;  /* or 100px */
+    border: 3px solid #ffffff;
     transform: translate(-50%, -50%);
 }
 .panel-short-full{
@@ -54,9 +54,10 @@
     background-clip: padding-box;
     background-size: cover;
     background-position: center center;
-    background-position: center center;
     height: 140px;
-    filter: blur(0.10px);
+    width: 90%;
+    margin: 0 auto;
+    /*filter: blur(0.10px);*/
 }
 .panel-bg-layer{
     position: absolute;
