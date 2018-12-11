@@ -91,18 +91,19 @@ function getUserList() {
 				//console.log(calcDistance(13.4877472,59.3293371,element.lat,element.lng));
 				var distBetween = calcDistance(userLat,userLng,element.lat,element.lng);
 
-				//if(getDistance < 5000){
-					//console.log("distance is less than 5km");
-					//if location is within 5km and username is not mine
-					// then show element.username and element.status
+				//if location is within 5km
+				if(distBetween < 6){
+					console.log("distance is less than 5km");
+					//if status is not invisible and username is not mine
 					if(element.status != "invisible"){
 						if(element.username != username){
+							// then show element.username and element.status
 							document.getElementById("friends").innerHTML += '<div id="' + element.username + '" class="friend" onClick="checkConvoRequest()"><!--img src="img/profile/1_copy.jpg" /--><p class="usernameTo"><strong>' +
 								element.username + '</strong><span>IS '+distBetween+'km away</span></p><div class="status ' + element.status + '"></div></div>';
 							makeFriendsClickable();
 						}
 					}
-				//}
+				}
 			});
 		},
 		error: function () {
