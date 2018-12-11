@@ -1,8 +1,8 @@
 var status = localStorage.getItem("nearbyTogState");
 var username = localStorage.getItem("username");
 var userID = localStorage.getItem("userID");
-var userLat;
-var userLng;
+var userLat = localStorage.getItem("userLat");
+var userLng = localStorage.getItem("userLng");
 var bearhugSticker = '<div id="bearHug" class="bearHugSticker"></div>';
 var convosID = '';
 var currNumRequests = 0;
@@ -21,6 +21,8 @@ function getUserLocation(){
 		navigator.geolocation.getCurrentPosition(function (position){
 			userLat = position.coords.latitude;
 			userLng = position.coords.longitude;
+			localStorage.setItem("userLat", userLat);
+			localStorage.setItem("userLng", userLng);
 			console.log("lat: "+userLat+"; lng: "+userLng);
 		});
 	}
@@ -123,9 +125,10 @@ function addUser() {
 		"status": status
 	}*/
 
-	/*console.log("username: "+localStorage.getItem("username"));
+	console.log("username: "+localStorage.getItem("username"));
 	console.log("userid: "+userID);
 	if(userID == null){
+		console.log("userid is null: using POST to add user as new");
 		userID ='';
 		console.log("userid 2: "+userID);
 		var user = {
@@ -148,7 +151,8 @@ function addUser() {
 				console.log("ALERT: User not added!");
 			}
 		});
-	}else{*/
+	}else{
+		console.log("userid is "+userID+": using PUT to update user details");
 		var user = {
 			"username": username,
 			"lng": userLng,
@@ -170,7 +174,7 @@ function addUser() {
 				console.log("ALERT: User not added!");
 			}
 		});
-	//}
+	}
 }
 
 //click username. send request. POST to conversation table.
@@ -519,6 +523,7 @@ $("#invisible").click(function () {
 //pull data out
 function getUserID() {
 	//console.log("getUserID called");
+	console.log("userID: " + userID);
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers", {
 		data: { get_param: 'value' },
 		contentType: "application/json",
@@ -529,13 +534,14 @@ function getUserID() {
 				//get element.id if username is user's and put that in local variable
 				if(element.username == username){
 					userID = element.id;
-					//console.log("userID: " + userID);
 					localStorage.setItem("userID", userID);
+					console.log("userID after being set: " + userID);
 				}
 			});
 		},
 		error: function () {
 			//go away come back tomorrow 
+			console.log("couldn't get user id");
 		}
 	});
 
@@ -650,16 +656,17 @@ $('#buttonID').click(function () {
 //$(document).ready(function () {
 window.onload = function () {
 	//localStorage.removeItem('userID');
-	console.log("calling getUserLocation");
-	getUserLocation();
-	console.log("calling getUserList");
-	getUserList();
 
 	if (localStorage.getItem("nearbyTogState") == "online" || localStorage.getItem("nearbyTogState") == "busy") {
 		//find userid
+		console.log("calling getUserID")
 		getUserID();
 		//add username to users
 		//addUser();
+		console.log("calling getUserLocation");
+		getUserLocation();
+		console.log("calling getUserList");
+		getUserList();
 		var intervalChecks = setInterval(function(){ checkForRequests(); }, 5000);
 
 
