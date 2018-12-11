@@ -18,11 +18,12 @@
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
 
     <!-- javascript -->
     <script type='application/javascript' src='js/fastclick.js'></script>
     <script type='application/javascript' src='js/alertify.js'></script>
-    <!--<script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <!--
     <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>-->
@@ -146,7 +147,7 @@
 
     <!-- Start Precontainer Wrapper -->
     <div class="pre-container-wrapper">
-        <!--<div id="swipe-area" class="swipe-area"><br/><br/><br/>Text Area</div>-->
+        <div id="swipe-area" class="swipe-area"></div>
         <!-- Start Container Area -->
         <div class="content-container">
             <div class="header">
@@ -277,27 +278,33 @@
     function openNav() {
         /*document.getElementById("sidebar").style.width = "250px";*/
         document.getElementById("sidebar").style.left = "0px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "100%";
     }
 
     /* Set the width of the sidebar to 0 */
     function closeNav() {
         /*document.getElementById("sidebar").style.width = "0";*/
         document.getElementById("sidebar").style.left = "-260px";
+            document.getElementById("swipe-area").style.left = "0px";
+            document.getElementById("swipe-area").style.width = "25px";
     }
 </script>
 <!-- End Sidebar script -->
-<!-- Start swipe sidebar script --
+<!-- Start swipe sidebar script -->
 <script type="text/javascript">
-    $(function () {
+    $(document).ready(function () {
         $("#swipe-area").swipe({
             //Generic swipe handler for all directions
             swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
 
                 switch (direction) {
                     case "right":
+                        console.log("swiped right!");
                         openNav();
                         break;
                     case "left":
+                        console.log("swiped left");
                         closeNav();
                         break;
                 }
@@ -305,20 +312,8 @@
             //Default is 75px, set to 0 for demo so any distance triggers swipe
             threshold: 75
         });
-
-        /* Set the width of the sidbar to 250px */
-        function openNav() {
-            /*document.getElementById("sidebar").style.width = "250px";*/
-            document.getElementById("sidebar").style.left = "0px";
-        }
-
-        /* Set the width of the sidebar to 0 */
-        function closeNav() {
-            /*document.getElementById("sidebar").style.width = "0";*/
-            document.getElementById("sidebar").style.left = "-260px";
-        }
     });
-</script-->
+</script>
 <!-- End swipe sidebar script -->
 
 </html>

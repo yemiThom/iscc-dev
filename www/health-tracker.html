@@ -17,8 +17,8 @@
     <link rel="stylesheet" type="text/css" href="css/barcodeScanner.css">
     <link rel="stylesheet" type="text/css" href="css/pop-up.css">
 
-    <!-- Cognito login -->
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Cognito login 
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
     <script src="js/amazon-cognito-auth.min.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
     <script src="js/amazon-cognito-identity.min.js"></script>
@@ -37,14 +37,15 @@
       box-shadow: 0 3rem 5rem -2rem rgba(0, 0, 0, 0.6);
     }
     </style>
-    <!-- javascript -->
-    <script type='application/javascript' src='js/fastclick.js'></script>
-    <!--<script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
-        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-        <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- javascript -->
+    <script type='application/javascript' src='js/fastclick.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+        <!--<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+        <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
+
     <!--
         user-scalable=no doesn't alLow users to zoom
         initial-scale=1 means the zoom level when the app is loaded. 1=100%
@@ -58,7 +59,7 @@
 </head>
 
 <body>
-  <script type="text/javascript" src='js/index.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script type="text/javascript" src='js/chart.js'></script>
     <!-- Start Header Area -->
@@ -132,7 +133,7 @@
 
     <!-- Start Precontainer Wrapper -->
     <div class="pre-container-wrapper">
-        <!--<div id="swipe-area" class="swipe-area"><br/><br/><br/>Text Area</div>-->
+        <div id="swipe-area" class="swipe-area"></div>
         <!-- Start Container Area -->
         <div class="content-container">
             <div class="header">
@@ -440,25 +441,25 @@
                                     </div>
                                 </div>
                             </div>
-                      <!--        <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
+                            <!--        <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
                         <input type="button" class="btn" id="close2" value="Close Symptom Data" />
                          -->
-                        <table class="table table-bordered" id="tabletest2" style="display:none">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Day</th>
-                                    <th>Pain</th>
-                                    <th>Stress</th>
-                                    <th>Stool Quality</th>
-                                    <th>Bowel Movement</th>
-                                    <th>Bowel Frequency</th>
-                                    <th>Bathroom Visit</th>
-                                </tr>
-                            </thead>
-                            <tbody id="symptomTable">
-                            </tbody>
-                        </table>
+                            <table class="table table-bordered" id="tabletest2" style="display:none">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Day</th>
+                                        <th>Pain</th>
+                                        <th>Stress</th>
+                                        <th>Stool Quality</th>
+                                        <th>Bowel Movement</th>
+                                        <th>Bowel Frequency</th>
+                                        <th>Bathroom Visit</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="symptomTable">
+                                </tbody>
+                            </table>
 
 
 
@@ -518,7 +519,7 @@
                         <!--/div-->
                         <br>
 
-                         <input type="button" class="btn" id="getAllDocLogData" value="Show Doctor's Log Data" />
+                        <input type="button" class="btn" id="getAllDocLogData" value="Show Doctor's Log Data" />
                         <input type="button" class="btn" id="close3" value="Close Doctor's Log Data" />
                         <table class="table table-bordered" id="tabletest3" style="display:none">
                             <thead>
@@ -535,7 +536,7 @@
                         </table>
                         <br>
                         <br>
-                       
+
                     </section>
                     <section>
                         <h2 class="color-blue-dark">Diet</h2>
@@ -717,7 +718,7 @@
 
                     </section>
                     <section>
-                    <!--     <input type="button" class="btn" id="getAllDietlogData" value="Show Food Data" />
+                        <!--     <input type="button" class="btn" id="getAllDietlogData" value="Show Food Data" />
                         <input type="button" class="btn" id="close" value="Close Food Data" /> -->
                         <!-- <table class="table table-bordered" id="tabletest" style="display:none">
                             <thead>
@@ -735,7 +736,7 @@
 
                         <br>
                         <br> -->
-                    <!--     <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
+                        <!--     <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
                         <input type="button" class="btn" id="close2" value="Close Symptom Data" /> -->
                         <!-- <table class="table table-bordered" id="tabletest2" style="display:none">
                             <thead>
@@ -755,7 +756,7 @@
                         </table> -->
                         <br>
                         <br>
-                   <!--     
+                        <!--     
                     <!--     <input type="button" class="btn" id="getGraphData" value="Show Graph Data" />
                         <input type="button" class="btn" id="close4" value="Close Graph Data" /> -->
                         <table class="table table-bordered" id="tabletest4" style="display:none">
@@ -777,24 +778,24 @@
                         <br>
                         <!-- <input type="button" class="btn" id="getGraphData" value="Refresh" onclick="createChart()" />
  -->
-                    <div class="container">
-                      <br />
-                      <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-10">
-                    <!--       Chart.js Canvas Tag -->
-                          <canvas id="barChart"> </canvas>
+                        <div class="container">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <!--       Chart.js Canvas Tag -->
+                                    <canvas id="barChart"> </canvas>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
                         </div>
-                        <div class="col-md-1"></div>
-                      </div>
-                    </div>
 
 
 
 
 
 
-                        
+
 
 
                     </section>
@@ -948,49 +949,43 @@
     function openNav() {
         /*document.getElementById("sidebar").style.width = "250px";*/
         document.getElementById("sidebar").style.left = "0px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "100%";
     }
 
     /* Set the width of the sidebar to 0 */
     function closeNav() {
         /*document.getElementById("sidebar").style.width = "0";*/
         document.getElementById("sidebar").style.left = "-260px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "20px";
     }
 </script>
 <!-- End Sidebar script -->
-<!-- Start swipe sidebar script ->
-    <script type="text/javascript">
-        $(function() {
-            $("#swipe-area").swipe( {
-                //Generic swipe handler for all directions
-                swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+<!-- Start swipe sidebar script -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#swipe-area").swipe({
+            //Generic swipe handler for all directions
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
 
-                    switch(direction){
-                        case "right":
-                            openNav();
-                            break;
-                        case "left":
-                            closeNav();
-                            break;
-                    }
-                },
-                //Default is 75px, set to 0 for demo so any distance triggers swipe
-                threshold:75
-            }); 
-            
-            /* Set the width of the sidbar to 250px */
-            function openNav() {
-                /*document.getElementById("sidebar").style.width = "250px";*/
-                document.getElementById("sidebar").style.left = "0px";
-            }
-
-            /* Set the width of the sidebar to 0 */
-            function closeNav() {
-                /*document.getElementById("sidebar").style.width = "0";*/
-                document.getElementById("sidebar").style.left = "-260px";
-            }
+                switch (direction) {
+                    case "right":
+                        console.log("swiped right!");
+                        openNav();
+                        break;
+                    case "left":
+                        console.log("swiped left");
+                        closeNav();
+                        break;
+                }
+            },
+            //Default is 75px, set to 0 for demo so any distance triggers swipe
+            threshold: 75
         });
-    </script>
-    <-- End swipe sidebar script -->
+    });
+</script>
+<!-- End swipe sidebar script -->
 <!-- Start Toggle Reveal script -->
 <script type="text/javascript">
     $(document).ready(function () {
