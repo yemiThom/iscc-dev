@@ -84,7 +84,7 @@ function getUserList() {
 						Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
 					var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 					var d = R * c;
-					return Math.round(d);
+					return Math.floor(d*100)/100;
 				};
 				//console.log("elemLat: "+element.lat+"; elemLng:"+element.lng);
 
@@ -98,9 +98,15 @@ function getUserList() {
 					if(element.status != "invisible"){
 						if(element.username != username){
 							// then show element.username and element.status
-							document.getElementById("friends").innerHTML += '<div id="' + element.username + '" class="friend" onClick="checkConvoRequest()"><!--img src="img/profile/1_copy.jpg" /--><p class="usernameTo"><strong>' +
-								element.username + '</strong><span>IS '+distBetween+'km away</span></p><div class="status ' + element.status + '"></div></div>';
-							makeFriendsClickable();
+							if(distBetween >= 1){
+								document.getElementById("friends").innerHTML += '<div id="' + element.username + '" class="friend" onClick="checkConvoRequest()"><!--img src="img/profile/1_copy.jpg" /--><p class="usernameTo"><strong>' +
+									element.username + '</strong><span>IS '+distBetween+'km away</span></p><div class="status ' + element.status + '"></div></div>';
+								makeFriendsClickable();
+							}else{
+								document.getElementById("friends").innerHTML += '<div id="' + element.username + '" class="friend" onClick="checkConvoRequest()"><!--img src="img/profile/1_copy.jpg" /--><p class="usernameTo"><strong>' +
+									element.username + '</strong><span>IS '+distBetween+'m away</span></p><div class="status ' + element.status + '"></div></div>';
+								makeFriendsClickable();
+							}
 						}
 					}
 				}

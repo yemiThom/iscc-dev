@@ -133,6 +133,7 @@ nav {
 .sidenav-section h3,
 .sidenav-section h4{
     padding: 8px 8px 8px 22px;
+    font-weight: bold;
 }
 
 .sidenav a {
