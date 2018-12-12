@@ -92,7 +92,7 @@ function getUserList() {
 				var distBetween = calcDistance(userLat,userLng,element.lat,element.lng);
 
 				//if location is within 5km
-				//if(distBetween < 6){
+				if(distBetween < 6){
 					console.log("distance is less than 5km");
 					//if status is not invisible and username is not mine
 					if(element.status != "invisible"){
@@ -109,7 +109,7 @@ function getUserList() {
 							}
 						}
 					}
-				//}
+				}
 			});
 		},
 		error: function () {
