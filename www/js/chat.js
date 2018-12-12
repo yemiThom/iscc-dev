@@ -92,7 +92,7 @@ function getUserList() {
 				var distBetween = calcDistance(userLat,userLng,element.lat,element.lng);
 
 				//if location is within 5km
-				if(distBetween < 6){
+				//if(distBetween < 6){
 					console.log("distance is less than 5km");
 					//if status is not invisible and username is not mine
 					if(element.status != "invisible"){
@@ -109,7 +109,7 @@ function getUserList() {
 							}
 						}
 					}
-				}
+				//}
 			});
 		},
 		error: function () {
@@ -623,7 +623,7 @@ function checkConvoStatusChange(){
 }
 
 function scrollViewToBttm(){
-	//const view = document.getElementById("chat-messages");
+	const view = document.getElementById("chat-messages");
 
 	/*setInterval(function() {
 		const isScrolledToBottom = view.scrollHeight - view.clientHeight <= view.scrollTop + 1;
@@ -636,8 +636,9 @@ function scrollViewToBttm(){
 	//var view = document.querySelector("chat-messages");
 	//view.scrollTop = view.scrollHeight - view.clientHeight;
 
-	$("chat-messages").animate({scrollTop: $(document).height()}, "slow");
-	return false;
+	/*$("#chat-messages").animate({scrollTop: $("#chat-messages").height()}, "slow");
+	return false;*/
+	view.scrollIntoView(false); //go to bottom of div
 }
 
 /*//TEMPLATE
@@ -674,11 +675,14 @@ window.onload = function () {
 		getUserLocation();
 		console.log("calling getUserList");
 		getUserList();
+		//var intervalList = setInterval(function(){ getUserList(); }, 60000);
 		var intervalChecks = setInterval(function(){ checkForRequests(); }, 5000);
-
+		var intervalScroll = setInterval(function(){ scrollViewToBttm(); }, 500);
 
 	}else{
+		//clearInterval(intervalList);
 		clearInterval(intervalChecks);
+		clearInterval(intervalScroll);
 	}
 }
 //});
