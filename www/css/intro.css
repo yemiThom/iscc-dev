@@ -107,13 +107,13 @@
     transform: translate(-50%, -50%);
 }*/
 
-#healthcare{ background-image: url("http://iscc-imgs.s3.amazonaws.com/intro/tracker.jpg"); }
-#restrooms{ background-image: url("http://iscc-imgs.s3.amazonaws.com/intro/restrooms2.jpg"); }
-#mindfulness{ background-image: url("http://iscc-imgs.s3.amazonaws.com/intro/mindfulness.jpg"); }
-#nearby{ background-image: url("http://iscc-imgs.s3.amazonaws.com/intro/nearby.jpg"); }
-#nowaiting{ background-image: url("http://iscc-imgs.s3.amazonaws.com/intro/nowaiting.jpg"); }
-#events{ background-image: url("http://iscc-imgs.s3.amazonaws.com/intro/events.jpg"); }
-#cols-helper{ background-image: url("http://iscc-imgs.s3.amazonaws.com/intro/colonoscopy.jpg"); }
+#healthcare{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/tracker.jpg"); }
+#restrooms{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/restrooms2.jpg"); }
+#mindfulness{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/mindfulness.jpg"); }
+#nearby{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/nearby.jpg"); }
+#nowaiting{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/nowaiting.jpg"); }
+#events{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/events.jpg"); }
+#cols-helper{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/colonoscopy.jpg"); }
 
 #generic-layercolor{ background-color: rgba(0, 0, 0, 0.25); }
 #healthcare-layercolor{ background-color: rgba(127,132,223,0.7); }
