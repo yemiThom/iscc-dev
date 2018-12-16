@@ -239,7 +239,7 @@ img.toggle{
     margin-bottom: 10px;
 }
 .subtitle-span{
-    padding: 0 1rem;
+    padding: 5px 1rem;
     background-color: #ffffff;
 }
 .subtitle:before {
@@ -247,7 +247,7 @@ img.toggle{
     /*display: block;*/
     position: absolute;
     z-index:-1;
-    bottom: 25px;
+    bottom: 45%;
     left: 50%;
     width: 100%;   
     height: 1px; 
