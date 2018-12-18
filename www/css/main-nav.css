@@ -285,8 +285,8 @@ img.toggle{
     height: 100%;
 }
 .round-div{
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     -webkit-border-radius: 50%;
     -webkit-background-clip: padding-box;
     -moz-border-radius: 50%;

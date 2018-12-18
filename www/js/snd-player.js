@@ -780,7 +780,27 @@ $(document).ready(function() {
       'file': 'http://www.freemindfulness.org/FreeMindfulness3MinuteSounds.mp3'
     }, {
       'icon': iconImage,
-      'title': '',
+      'title': 'Relaxation Breathing',
+      'file': 'http://www.beaumont.ie/media/Relaxation_Breathing.mp3'
+    }, {
+      'icon': iconImage,
+      'title': 'Relaxation Breathing 2',
+      'file': 'http://www.beaumont.ie/media/02-PaddyODriscollRelaxationBreath20171.mp3'
+    }, {
+      'icon': iconImage,
+      'title': 'Active progressive muscle relaxation 1',
+      'file': 'http://www.beaumont.ie/media/Active_PMR_1.mp3'
+    }, {
+      'icon': iconImage,
+      'title': 'Active progressive muscle relaxation 2',
+      'file': 'http://www.beaumont.ie/media/Active_PMR_2.mp3'
+    }, {
+      'icon': iconImage,
+      'title': 'Active progressive muscle relaxation with music',
+      'file': ''
+    }, {
+      'icon': iconImage,
+      'title': 'Active progressive muscle relaxation with music 2',
       'file': ''
     }]
   });
