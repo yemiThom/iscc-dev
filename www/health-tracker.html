@@ -667,50 +667,216 @@
 
                                 </section>
                                 <section id="lunch" class="tab-panel">
-                                    <!--<h2>Lunch</h2>-->
+                                    <!--<h2>Breakfast</h2>-->
                                     <h3 class="diet-h3 color-blue-dark">What did you have?</h3>
                                     <!--a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a-->
-                                    <textarea id="healthtracker_describe-lu" class="text-areas" rows="5" cols="20"
-                                        placeholder="Describe your meal..."></textarea>
+                                    <br>
+                                    <div id="foodDatabase" style="display: none;">
+                                        <br>
+                                        <h3 class="color-blue-dark"> Add a Food Item to the myIBD Database</h3>
+                                        <h4 class="color-blue-dark">Barcode Scanner</h4>
+                                        <div class="goScan">
+                                            <input id="trackingCode" type="text" size="16" placeholder="Tracking Code"
+                                                class="qrcode-text txtBorder">
+                                            <label class="qrcode-text-btn">
+                                                <input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();"
+                                                    onchange="openQRCamera(this);" tabindex="-1">
+                                            </label>
 
-                                    <!-- Rounded switch -->
-                                    <div class="checkbox-div">
+                                            <input type="button" value="Go" disabled>
+                                        </div>
+                                        <br />
+                                        <div class="scannerBtn_div">
+                                            <a class="button" href="#popup1">Open scanner</a>
+                                        </div>
+
+                                        <!--Start pop-up form Div -->
+                                        <div id="popup1" class="overlay">
+                                            <div class="popup1">
+                                                <a class="close" href="#">&times;</a>
+
+                                                <iframe src="barcodescanner.html" style="width:100%; height:400px;">
+                                                    <p>Your device does not support iframes.</p>
+                                                </iframe>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        Name: <input type="text" id="foodname" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Brand: <input type="text" id="brand" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Serving: <input type="text" id="servingsize" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Servings per Container: <input type="text" id="servingsPerContainer" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        <div class="scannerBtn_div">
+                                            <button id="addFood" class="button"> ADD </button>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="dietLog">
+
+                                        <div class="goScan m-b-10">
+                                            <input type="button" id="showFoodAdd" class="button m-b-10" value="Add food to Database"
+                                                onclick="showFoodAdd()"> </input>
+                                        </div>
+
+                                        <br>
+                                        FOOD: <select id="selector" class="styledSelect m-b-10"></select>
+                                        <select id="selector2" style="display: none;"></select>
+                                        <button id="selectFood" onClick="addToLogInput()" style="display: none;">SELECT</button>
+                                        <br>
+                                        Food: <input type="text" id="foodnameInput" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Serving: <input type="text" id="servingInput" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
                                         <div class="checkbox-container">
                                             <p>Did you experience any pain during the meal?:</p>
                                         </div>
-                                        <div class="checkbox-container">
+                                        <div class="checkbox-container m-b-10">
                                             <span>NO</span>
                                             <label class="switch">
-                                                <input id="healthtracker_pain-lu" type="checkbox">
+                                                <input id="healthtracker_pain-bf" type="checkbox">
                                                 <span class="checkbox-slider round"></span>
                                             </label>
                                             <span>YES</span>
                                         </div>
+
+                                        <div class="scannerBtn_div">
+                                            <button id="logDiet" class="button"> ADD </button>
+                                        </div>
+
+                                        <br>
+                                        <div style="display: inline-block;width: 100%;"><h3 class="diet-h3 color-blue-dark">Your Data</h3></div>
+                                        <div class="goScan m-b-10">
+                                            <input type="button" class="button btn m-b-10" id="getAllDietlogData" value="Show Food Data" />
+                                            <input type="button" class="button btn m-b-10" id="close" value="Close Food Data" />
+                                        </div>
+
+                                        <table id="tabletest" style="display:none" cellpadding="0" cellspacing="0" border="0">
+                                            <thead class="tbl-header">
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Meal</th>
+                                                    <th>Food</th>
+                                                    <th>Pain</th>
+                                                    <th>Serving Size</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="tbl-content" id="dietLogTable">
+                                            </tbody>
+                                        </table>
                                     </div>
+
+
+
                                 </section>
                                 <section id="dinner" class="tab-panel">
-                                    <!--<h2>Dinner</h2>-->
+                                    <!--<h2>Breakfast</h2>-->
                                     <h3 class="diet-h3 color-blue-dark">What did you have?</h3>
                                     <!--a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a-->
-                                    <textarea id="healthtracker_describe-di" class="text-areas" rows="5" cols="20"
-                                        placeholder="Describe your meal..."></textarea>
+                                    <br>
+                                    <div id="foodDatabase" style="display: none;">
+                                        <br>
+                                        <h3 class="color-blue-dark"> Add a Food Item to the myIBD Database</h3>
+                                        <h4 class="color-blue-dark">Barcode Scanner</h4>
+                                        <div class="goScan">
+                                            <input id="trackingCode" type="text" size="16" placeholder="Tracking Code"
+                                                class="qrcode-text txtBorder">
+                                            <label class="qrcode-text-btn">
+                                                <input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();"
+                                                    onchange="openQRCamera(this);" tabindex="-1">
+                                            </label>
+
+                                            <input type="button" value="Go" disabled>
+                                        </div>
+                                        <br />
+                                        <div class="scannerBtn_div">
+                                            <a class="button" href="#popup1">Open scanner</a>
+                                        </div>
+
+                                        <!--Start pop-up form Div -->
+                                        <div id="popup1" class="overlay">
+                                            <div class="popup1">
+                                                <a class="close" href="#">&times;</a>
+
+                                                <iframe src="barcodescanner.html" style="width:100%; height:400px;">
+                                                    <p>Your device does not support iframes.</p>
+                                                </iframe>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        Name: <input type="text" id="foodname" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Brand: <input type="text" id="brand" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Serving: <input type="text" id="servingsize" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Servings per Container: <input type="text" id="servingsPerContainer" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        <div class="scannerBtn_div">
+                                            <button id="addFood" class="button"> ADD </button>
+                                        </div>
+                                    </div>
 
 
+                                    <div id="dietLog">
 
-                                    <!-- Rounded switch -->
-                                    <div class="checkbox-div">
+                                        <div class="goScan m-b-10">
+                                            <input type="button" id="showFoodAdd" class="button m-b-10" value="Add food to Database"
+                                                onclick="showFoodAdd()"> </input>
+                                        </div>
+
+                                        <br>
+                                        FOOD: <select id="selector" class="styledSelect m-b-10"></select>
+                                        <select id="selector2" style="display: none;"></select>
+                                        <button id="selectFood" onClick="addToLogInput()" style="display: none;">SELECT</button>
+                                        <br>
+                                        Food: <input type="text" id="foodnameInput" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Serving: <input type="text" id="servingInput" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
                                         <div class="checkbox-container">
                                             <p>Did you experience any pain during the meal?:</p>
                                         </div>
-                                        <div class="checkbox-container">
+                                        <div class="checkbox-container m-b-10">
                                             <span>NO</span>
                                             <label class="switch">
-                                                <input id="healthtracker_pain-di" type="checkbox">
+                                                <input id="healthtracker_pain-bf" type="checkbox">
                                                 <span class="checkbox-slider round"></span>
                                             </label>
                                             <span>YES</span>
                                         </div>
+
+                                        <div class="scannerBtn_div">
+                                            <button id="logDiet" class="button"> ADD </button>
+                                        </div>
+
+                                        <br>
+                                        <div style="display: inline-block;width: 100%;"><h3 class="diet-h3 color-blue-dark">Your Data</h3></div>
+                                        <div class="goScan m-b-10">
+                                            <input type="button" class="button btn m-b-10" id="getAllDietlogData" value="Show Food Data" />
+                                            <input type="button" class="button btn m-b-10" id="close" value="Close Food Data" />
+                                        </div>
+
+                                        <table id="tabletest" style="display:none" cellpadding="0" cellspacing="0" border="0">
+                                            <thead class="tbl-header">
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Meal</th>
+                                                    <th>Food</th>
+                                                    <th>Pain</th>
+                                                    <th>Serving Size</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="tbl-content" id="dietLogTable">
+                                            </tbody>
+                                        </table>
                                     </div>
+
+
+
                                 </section>
                             </div>
                         </div>

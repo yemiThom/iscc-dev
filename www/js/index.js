@@ -4,9 +4,27 @@ var data = {
 };
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
 var cognitoUser = userPool.getCurrentUser();
+var maintenancemsg = document.getElementById("maintenancemsg");
 
 //window.onload = function () {
 $(document).ready(function () {
+
+     $.ajax("https://fast-garden-93601.herokuapp.com/api/maintenancemessages", {
+        data: { get_param: 'value' },
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            $.each(data, function (index, element) {
+                $('#maintenancemsg').html(element.msg);
+            });
+    
+}
+    });
+
+
+
+
+
     if (cognitoUser != null) {
         cognitoUser.getSession(function (err, session) {
 
