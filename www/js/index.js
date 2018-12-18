@@ -15,7 +15,6 @@ $(document).ready(function () {
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index, element) {
-                alert(element.msg);
                 $('#maintenancemsg').html(element.msg);
             });
     
