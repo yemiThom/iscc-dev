@@ -2,7 +2,7 @@
 
 function initMap() {
     //element to dump it in (id Map) and options
-    var username = document.getElementById("email_value").innerHTML;
+    var username = localStorage.getItem("username");
     //map options
     var options = {
         zoom: 16,
