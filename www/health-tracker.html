@@ -1235,7 +1235,23 @@
     }
 </script>
 <!--End scanner script -->
-<!-- notification script -->
+<!--Start of forced focus scroll script -->
+<script>
+    var $htmlOrBody = $('html, body'),
+    scrollTopPadding = 8,
+    scrollTopLast = 0;
+    $('textarea, input').focus(function(){
+        //save the current scroll postion for blur event
+        scrollTopLast = $(window).scrollTop();
+        //scroll to the textarea/input
+        $htmlOrBody.scrollTop($(this).offset().top - scrollTopPadding);
+    }).blur(function(){
+        //scroll back to position before focus
+        $htmlOrBody.scrollTop(scrollTopLast);
+    });
+</script>
+<!--End of forced focus scroll script -->
+<!-- notification script ->
 <script>
     if ("Notification" in window) {
         Notification.requestPermission(function (permission) {
