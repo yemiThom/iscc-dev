@@ -393,15 +393,15 @@ iframe {
 
 .contact101-form-checkbox{
   position: absolute;
-  bottom: 37%;
-  right: 10%;
+  bottom: 25%;
+  right: 2%;
   z-index: 1;
 }
 
 .contact102-form-checkbox{
   position: absolute;
-  bottom: 41%;
-  right: 10%;
+  bottom: 25%;
+  right: 2%;
   z-index: 1;
 }
 .input-checkbox100:checked + .label-checkbox100::before {

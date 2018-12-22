@@ -132,7 +132,7 @@
                     </div>
                     <!--p>Your device does not support this Video element.</p-->
                 </div>
-                <div id="controls" class="bg-lylac">
+                <div id="controls" class="bg-lylac" style="display: none;">
                     <div class="playButton bg-lylac">
                         <div class="playPause"></div>
                     </div>
@@ -415,7 +415,12 @@
             if (totalMinutes.toString().length === 1) {
                 totalMinutes = "0" + totalMinutes;
             }
-            return totalMinutes + ':' + totalSeconeds;
+            //console.log(totalMinutes + totalSeconeds);
+            //if(isNan(totalMinutes) || isNan(totalSeconeds)){
+            //    return "00:00";
+            //}else{
+                return totalMinutes + ':' + totalSeconeds;
+            //}
         }
 
         function getFormatedTime() {
