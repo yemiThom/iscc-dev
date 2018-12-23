@@ -176,7 +176,7 @@ body{
 
 .star-rating:not(:hover) label input:checked ~ .icon,
 .star-rating:hover label:hover input ~ .icon {
-    color: #414b76;
+    color: #d123bf;
 }
 
 .star-rating label input:focus:not(:checked) ~ .icon:last-child {

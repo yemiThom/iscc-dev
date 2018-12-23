@@ -32,7 +32,7 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-15 p-b-15">
-                    <a href="register-email.html">
+                    <a href="register.html">
                         <span class="login100-form-title p-b-20">
                             ISCC Privacy Notice
                         </span>
@@ -140,7 +140,7 @@
                     
 
                     <div class="contact100-form-checkbox m-l-4">
-                        <input class="input-checkbox100" id="priv-ckb2" type="checkbox" name="privacy-agreement2">
+                        <input class="input-checkbox100" id="priv-ckb2" type="checkbox" name="privacy-agreement2" onchange="setPrivacy();">
                         <label class="label-checkbox100" for="priv-ckb2">
                             I agree to the Privacy Notice
                         </label>
@@ -171,6 +171,19 @@
             }
         </script>
         <!-- end fast click script -->  
+        <!-- start checkbox and localstorage script -->
+        <script>
+        function setPrivacy(){
+            //alert("called setPrivacy");
+            //save privacy check to localstorage
+            localStorage.setItem("privacyNotice", "isClicked");
+            //alert("set privacyNotice");
+            //change back to register page
+            //alert("Going to change location now");
+            window.location.href = "register.html";
+        }            
+        </script>
+        <!-- end checkbox and localstorage script -->
 
     </body>
 </html>

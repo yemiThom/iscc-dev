@@ -11,8 +11,10 @@
     <script src="js/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript" src='js/config.js'></script>
     <script type="text/javascript" src='js/verify.js'></script>
-    <script src="phonegap.js"></script>
+    <!--script src="phonegap.js"></script-->
     <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -22,11 +24,12 @@
     <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
     <link rel="stylesheet" type="text/css" href="css/login-util.css">
     <link rel="stylesheet" type="text/css" href="css/login-main.css">
+    <link rel="stylesheet" type="text/css" href="css/preloader.css">
     <script type="text/javascript" src="js/config.js"></script>
     <!-- js -->
     <script type='application/javascript' src='js/fastclick.js'></script>
     <script src="js/amazon-cognito-identity.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!--script src="https://code.jquery.com/jquery-1.11.3.min.js"></script-->
 
     <!--
         user-scalable=no doesn't allow users to zoom
@@ -43,6 +46,15 @@
 <body>
 
     <div class="limiter">
+        <!-- Preloader Animation Div -->
+        <div id="loader-wrapper">
+            <div id="loader"><img src="http://iscc-imgs.s3.amazonaws.com/myibd-logo-noname.jpg" style="width:50px;margin:25% 30%;"/></div>
+
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+        <!-- Preloader Animation Div -->
+
         <div class="container-login100">
             <div class="wrap-login100 p-l-50 p-r-50 p-t-15 p-b-15">
                 <form class="login100-form validate-form">
@@ -67,6 +79,13 @@
                             <!--span class="lnr lnr-lock"></span-->
                             <img src="http://iscc-imgs.s3.amazonaws.com/icons/lock.png">
                         </span>
+                        
+                        <div class="contact102-form-checkbox m-l-5">
+                            <input class="input-checkbox100" id="pass-ckb1" type="checkbox" name="password-reveal" onchange="revealPass();">
+                            <label class="label-checkbox101" id="pass-ckb2" for="pass-ckb1">
+                                <i class="fas fa-eye"></i>
+                            </label>
+                        </div>
                     </div>
 
                     <div class="container-login100-form-btn p-t-25">
@@ -174,6 +193,25 @@
     </script>
     <!-- end fast click script -->
 
+    <script>
+        function revealPass(){
+            console.log("clicked the third eye");
+            if(document.getElementById("pass-ckb1").checked == true){
+                document.getElementById("pass-ckb2").innerHTML = "<i class='fas fa-eye-slash'></i>";
+                document.getElementById("inputPassword").type = "text";
+            }else{
+                document.getElementById("pass-ckb2").innerHTML = "<i class='fas fa-eye'></i>";
+                document.getElementById("inputPassword").type = "password";
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('body').addClass('loaded');
+        });
+    </script>
+
     <!-- Start of Jquery script -->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!-- Start of bootstrap script -->
@@ -182,7 +220,7 @@
     <!-- Start of select script -->
     <script src="vendor/select2/select2.min.js"></script>
     <!-- Start of login main script -->
-    <script src="js/login-main.js"></script>
+    <!--script src="js/login-main.js"></script-->
 
 </body>
 

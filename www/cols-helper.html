@@ -98,13 +98,11 @@
             <a href="https://www.iscc.ie/support-line">Support Telephone Line</a>
         </div>
 
-        <a href="#" onclick="cordova.InAppBrowser.open('https://www.iscc.ie/faq', 'system', 'location=yes');"></a>
         <div class="sidenav-section">
             <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
             <h4 class="bg-magenta">FAQ</h4>
-            <a>FAQ</a>
+            <a href="https://www.iscc.ie/faq">FAQ</a>
         </div>
-        </a>
 
         <div class="sidenav-section">
             <a href="index.html" onclick="signOut()">Log out</a>
@@ -134,7 +132,7 @@
                     </div>
                     <!--p>Your device does not support this Video element.</p-->
                 </div>
-                <div id="controls" class="bg-lylac">
+                <div id="controls" class="bg-lylac" style="display: none;">
                     <div class="playButton bg-lylac">
                         <div class="playPause"></div>
                     </div>
@@ -417,7 +415,12 @@
             if (totalMinutes.toString().length === 1) {
                 totalMinutes = "0" + totalMinutes;
             }
-            return totalMinutes + ':' + totalSeconeds;
+            //console.log(totalMinutes + totalSeconeds);
+            //if(isNan(totalMinutes) || isNan(totalSeconeds)){
+            //    return "00:00";
+            //}else{
+                return totalMinutes + ':' + totalSeconeds;
+            //}
         }
 
         function getFormatedTime() {
