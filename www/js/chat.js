@@ -266,8 +266,6 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
-						//call scroll to bottom of chat view
-						scrollViewToBttm();
 						return false;
 					}
 				}else if(element.user1 == username2 && element.user2 == username){
@@ -299,8 +297,6 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
-						//call scroll to bottom of chat view
-						scrollViewToBttm();
 						return false;
 					}
 				}else{ //if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && alreadyChecked == "false"){
@@ -427,6 +423,8 @@ function getMessages(cid){
 						
 					}
 				}
+				//call scroll to bottom of chat view
+				scrollViewToBttm();
 
 			});
 		},
@@ -462,8 +460,6 @@ $("#sendButton").click(function () {
 			document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
-			//call scroll to bottom of chat view
-			scrollViewToBttm();
 		},
 		error: function () {
 			//console.log("Not added");
@@ -498,8 +494,6 @@ $("#sendHugButton").click(function () {
 			//document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
-			//call scroll to bottom of chat view
-			scrollViewToBttm();
 		},
 		error: function () {
 			//console.log("Not added");
@@ -677,12 +671,12 @@ window.onload = function () {
 		getUserList();
 		//var intervalList = setInterval(function(){ getUserList(); }, 60000);
 		var intervalChecks = setInterval(function(){ checkForRequests(); }, 5000);
-		var intervalScroll = setInterval(function(){ scrollViewToBttm(); }, 500);
+		//var intervalScroll = setTimeout(function(){ scrollViewToBttm(); }, 500);
 
 	}else{
 		//clearInterval(intervalList);
 		clearInterval(intervalChecks);
-		clearInterval(intervalScroll);
+		//clearInterval(intervalScroll);
 	}
 }
 //});
