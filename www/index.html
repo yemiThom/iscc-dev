@@ -79,7 +79,7 @@
                             <!--span class="lnr lnr-lock"></span-->
                             <img src="http://iscc-imgs.s3.amazonaws.com/icons/lock.png">
                         </span>
-                        
+
                         <div class="contact102-form-checkbox m-l-5">
                             <input class="input-checkbox100" id="pass-ckb1" type="checkbox" name="password-reveal" onchange="revealPass();">
                             <label class="label-checkbox101" id="pass-ckb2" for="pass-ckb1">
@@ -129,7 +129,7 @@
                 cognitoUser.getSession(function (err, session) {
 
                     if (err) {
-                        alert(err);
+                        console.log(err);
                         return;
                     }
                     console.log('session validity: ' + session.isValid());
@@ -177,7 +177,7 @@
                     window.location.replace("home.html");
                 },
                 onFailure: function (err) {
-                    alert(err.message || JSON.stringify(err));
+                    console.log(err.message || JSON.stringify(err));
                 },
             });
         }

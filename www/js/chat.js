@@ -300,7 +300,7 @@ function checkConvoRequest(){
 						return false;
 					}
 				}else{ //if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && alreadyChecked == "false"){
-					//console.log("now to send convo req")
+					console.log("now to send convo req")
 					console.log("element.id: "+element.id);
 					//no convo 4 you
 					if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && (numData == Object.keys(data).length)){
@@ -618,20 +618,6 @@ function checkConvoStatusChange(){
 
 function scrollViewToBttm(){
 	const view = document.getElementById("chat-messages");
-
-	/*setInterval(function() {
-		const isScrolledToBottom = view.scrollHeight - view.clientHeight <= view.scrollTop + 1;
-
-		if(isScrolledToBottom){
-			view.scrollTop = view.scrollHeight - view.clientHeight;
-		}
-	}, 500);*/
-
-	//var view = document.querySelector("chat-messages");
-	//view.scrollTop = view.scrollHeight - view.clientHeight;
-
-	/*$("#chat-messages").animate({scrollTop: $("#chat-messages").height()}, "slow");
-	return false;*/
 	view.scrollIntoView(false); //go to bottom of div
 }
 
