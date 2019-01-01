@@ -299,14 +299,20 @@ function checkConvoRequest(){
 						getMessages(convosID);
 						return false;
 					}
-				}else{ //if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && alreadyChecked == "false"){
-					console.log("now to send convo req")
-					console.log("element.id: "+element.id);
-					//no convo 4 you
-					if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && (numData == Object.keys(data).length)){
-						console.log("call userSendConvoRequest()");
-						userSendConvoRequest();
-						console.log("set alreadyChecked to true");
+				}else{
+					if(numData == Object.keys(data).length){
+						console.log("numData == data.length");
+						console.log("Usernames do not match conversations found");
+						
+						//console.log("element.user1: "+element.user1);
+						//console.log("element.user2: "+element.user2);
+						//if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username)){
+						
+							console.log("now to send convo req")
+							console.log("element.id: "+element.id);
+							console.log("call userSendConvoRequest()");
+							userSendConvoRequest();
+						//}
 					}
 				}
 			});
