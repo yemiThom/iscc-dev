@@ -182,21 +182,30 @@ function initMap() {
 
     // Add Marker Function
     function addMarker(props) {
+        var markerIcon;
+        //Check for custom icon
+        console.log("props.btype: "+props.btype);
+        if (props.btype == "public") {
+            //set Icon Image to public
+            //marker.setIcon(props.iconImage);
+            markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
+        }else if(props.btype == "private"){
+            //set Icon Image to private
+            markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom2.png";
+        }else{
+            //set Icon Image to business
+            markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom3.png";
+        }
+
         var myLatLng = new google.maps.LatLng(props.lat, props.lng);
         console.log(myLatLng);
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
-            icon: "img/map-icon-test.png"
+            icon: markerIcon
             //without icon image icon is undefined, not ideal
             //icon:props.iconImage
-
         });
-        //Check for custom icon
-        if (props.iconImage) {
-            //set Icon Image
-            marker.setIcon(props.iconImage);
-        }
 
         //Check for content
         if (props.content) {
