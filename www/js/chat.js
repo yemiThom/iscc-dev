@@ -266,8 +266,6 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
-						//call scroll to bottom of chat view
-						scrollViewToBttm();
 						return false;
 					}
 				}else if(element.user1 == username2 && element.user2 == username){
@@ -299,18 +297,22 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
-						//call scroll to bottom of chat view
-						scrollViewToBttm();
 						return false;
 					}
-				}else{ //if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && alreadyChecked == "false"){
-					//console.log("now to send convo req")
-					console.log("element.id: "+element.id);
-					//no convo 4 you
-					if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username) && (numData == Object.keys(data).length)){
-						console.log("call userSendConvoRequest()");
-						userSendConvoRequest();
-						console.log("set alreadyChecked to true");
+				}else{
+					if(numData == Object.keys(data).length){
+						console.log("numData == data.length");
+						console.log("Usernames do not match conversations found");
+						
+						//console.log("element.user1: "+element.user1);
+						//console.log("element.user2: "+element.user2);
+						//if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username)){
+						
+							console.log("now to send convo req")
+							console.log("element.id: "+element.id);
+							console.log("call userSendConvoRequest()");
+							userSendConvoRequest();
+						//}
 					}
 				}
 			});
@@ -427,6 +429,8 @@ function getMessages(cid){
 						
 					}
 				}
+				//call scroll to bottom of chat view
+				scrollViewToBttm();
 
 			});
 		},
@@ -462,8 +466,6 @@ $("#sendButton").click(function () {
 			document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
-			//call scroll to bottom of chat view
-			scrollViewToBttm();
 		},
 		error: function () {
 			//console.log("Not added");
@@ -498,8 +500,6 @@ $("#sendHugButton").click(function () {
 			//document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
-			//call scroll to bottom of chat view
-			scrollViewToBttm();
 		},
 		error: function () {
 			//console.log("Not added");
@@ -624,20 +624,6 @@ function checkConvoStatusChange(){
 
 function scrollViewToBttm(){
 	const view = document.getElementById("chat-messages");
-
-	/*setInterval(function() {
-		const isScrolledToBottom = view.scrollHeight - view.clientHeight <= view.scrollTop + 1;
-
-		if(isScrolledToBottom){
-			view.scrollTop = view.scrollHeight - view.clientHeight;
-		}
-	}, 500);*/
-
-	//var view = document.querySelector("chat-messages");
-	//view.scrollTop = view.scrollHeight - view.clientHeight;
-
-	/*$("#chat-messages").animate({scrollTop: $("#chat-messages").height()}, "slow");
-	return false;*/
 	view.scrollIntoView(false); //go to bottom of div
 }
 
@@ -677,12 +663,12 @@ window.onload = function () {
 		getUserList();
 		//var intervalList = setInterval(function(){ getUserList(); }, 60000);
 		var intervalChecks = setInterval(function(){ checkForRequests(); }, 5000);
-		var intervalScroll = setInterval(function(){ scrollViewToBttm(); }, 500);
+		//var intervalScroll = setTimeout(function(){ scrollViewToBttm(); }, 500);
 
 	}else{
 		//clearInterval(intervalList);
 		clearInterval(intervalChecks);
-		clearInterval(intervalScroll);
+		//clearInterval(intervalScroll);
 	}
 }
 //});

@@ -44,6 +44,7 @@
     <script type="text/javascript" src='js/index.js'></script>
     <script type='text/javascript' src='js/chat.js'></script>
     <script type='text/javascript' src='js/nearby.js'></script>
+    <script type='text/javascript' src="js/pulltorefresh.min.js"></script>
 
     <!-- socket.io ->
     <script type="text/javascript" src="http://cdn.socket.io/socket.io-1.0.3.js"></script>
@@ -148,7 +149,7 @@
         <div id="swipe-area" class="swipe-area"></div>
         <!-- Start Container Area -->
         <div class="content-container">
-            <div class="header">
+            <div id="main" class="header">
                 <h3 class="text-center p-b-10">Talk with someone nearby</h3>
 
                 <div id="switch-toggle" class="switch-toggle switch-3 switch-candy">
@@ -313,5 +314,14 @@
     });
 </script>
 <!-- End swipe sidebar script -->
+<!-- Start pull to refresh script -->
+<script>
+    /* global PullToRefresh */
+    PullToRefresh.init({
+        mainElement: '#main',
+        onRefresh: function() { console.log('pull to refresh called'); }
+    });
+</script>
+<!-- End pull to refresh script -->
 
 </html>
