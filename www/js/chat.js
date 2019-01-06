@@ -44,6 +44,9 @@ function getUserLocation(){
 function clearChatView(){
 	document.getElementById("chat-messages").innerHTML = '';
 }
+function clearDatachannel(){
+	document.getElementById("dataChannelSend").value = '';
+}
 function enableInputs(){
 	document.getElementById("dataChannelSend").disabled = false;
 	document.getElementById("sendHugButton").disabled = false;
@@ -398,10 +401,10 @@ function getMessages(cid){
 					//show sent div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubble"><span>'+elemDate+'</span></div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubbleRight"><span>'+elemDate+'</span></div></div>';
 						
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+element.message+'</div><div class="dateBubble"><span>'+elemDate+'</span></div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+element.message+'</div><div class="dateBubbleRight"><span>'+elemDate+'</span></div></div>';
 						
 					}
 				//else message being received
@@ -422,10 +425,10 @@ function getMessages(cid){
 					//show received div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';			
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubbleLeft"><span>'+elemDate+'</span></div>';			
 						
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received">'+element.message+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';			
+						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received">'+element.message+'</div><div class="dateBubbleLeft"><span>'+elemDate+'</span></div>';			
 						
 					}
 				}
@@ -441,8 +444,9 @@ function getMessages(cid){
 }
 
 //SEND MESSAGE
-$("#sendButton").click(function () {
-	//console.log("Send Button pressed, message should be sent...");
+//$("#sendButton").click(function () {
+function sendTxt(){
+	console.log("Send Button pressed, message should be sent...");
 	var todayDate = new Date();
 	var messageStr = document.getElementById("dataChannelSend").value;
 	var messageTo = document.getElementById("chatTo").innerHTML;
@@ -461,21 +465,24 @@ $("#sendButton").click(function () {
 		contentType: "application/json",
 		method: "POST",
 		success: function () {
-			//console.log("Added");
+			console.log("Added message: "+JSON.stringify(message));
 			clearChatView();
 			document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
 		},
 		error: function () {
-			//console.log("Not added");
+			console.log("Not added message: "+JSON.stringify(message));
 
 		}
 
 	});
-});
+//});
+}
+
 //SEND BearHug
-$("#sendHugButton").click(function () {
+//$("#sendHugButton").click(function () {
+function sendBear(){
 	//console.log("Send BearHug Button pressed, :bearhug: code should be sent...");
 	var todayDate = new Date();
 	//var messageStr = document.getElementById("dataChannelSend").value;
@@ -507,7 +514,8 @@ $("#sendHugButton").click(function () {
 		}
 
 	});
-});
+//});
+}
 
 
 $("#invisible").click(function () {

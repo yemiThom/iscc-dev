@@ -174,7 +174,7 @@
             <div id="chatview" class="p1">
                 <div id="profile">
 
-                    <div id="close" onclick="clearChatView();">
+                    <div id="close" onclick="clearChatView(); clearDatachannel();">
                         <div class="cy"></div>
                         <div class="cx"></div>
                         <!--<a href="nearby.html"><i class="fas fa-times"></i></a>-->
@@ -191,8 +191,8 @@
                 <div id="sendmessage">
                     <input type="hidden" id="user" placeholder="Your name" value=""/>
                     <input type="text" id="dataChannelSend" placeholder="Type a message..." disabled/>
-                    <button type="submit" id="sendHugButton" disabled></button>
-                    <button type="submit" id="sendButton" disabled></button>
+                    <button type="submit" id="sendHugButton" onclick="sendBear();" disabled></button>
+                    <button type="submit" id="sendButton" onclick="sendTxt();" disabled></button>
                 </div>
             </div>
 
@@ -319,7 +319,7 @@
     /* global PullToRefresh */
     PullToRefresh.init({
         mainElement: '#main',
-        onRefresh: function() { console.log('pull to refresh called'); }
+        onRefresh: function() { console.log('pull to refresh called'); location.reload(); }
     });
 </script>
 <!-- End pull to refresh script -->

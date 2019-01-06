@@ -243,11 +243,18 @@ z-index:200;
     position:relative;
     float:left;
 }
-.message .dateBubble{
+.message .dateBubbleRight{
     color: #aab8c2;
     font-size: 11px;
     position: absolute;
     right: 31px;
+    bottom: -2px;
+}
+.message .dateBubbleLeft{
+    color: #aab8c2;
+    font-size: 11px;
+    position: absolute;
+    left: 10px;
     bottom: -2px;
 }
 .received{ background:#775ba6; color:#ffffff; }

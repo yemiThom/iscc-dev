@@ -234,11 +234,11 @@ $("#getAllDocLogData").click(function () {
                     console.log(element);
                     var tr = (
                         '<tr>' +
-                        '<td>' + element.date.toString().substring(0, 10) + '<td>' +
-                        '<td>' + element.medication +
-                        '<td>' + element.dosage +
-                        '<td>' + element.comment +
-                        '<td>' + element.complete +
+                        '<td>' + element.date.toString().substring(0, 10) + '</td>' +
+                        '<td>' + element.medication + '</td>' +
+                        '<td>' + element.dosage + '</td>' +
+                        '<td>' + element.comment + '</td>' +
+                        '<td>' + element.complete + '</td>' +
                         + '</tr>'
                     );
                     $('#docLogTable').append(tr);

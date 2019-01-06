@@ -131,6 +131,7 @@ button:focus { outline: none; }
 table{
     width:100%;
     table-layout: fixed;
+    font-size: 0.5rem;
 }
 .tbl-header{
     /*background-color: rgba(255,255,255,0.3);*/
@@ -160,7 +161,12 @@ td{
     color: #fff;*/
     border-bottom: solid 1px rgba(0,0,0,0.1);
     padding: 1%;
-  }
+}
+
+::placeholder{
+    color: #72737b;
+    opacity: 0.5;
+}
 
 .color-grey-dark{color: #72737b}
 .color-magenta{color: #d123bf}
