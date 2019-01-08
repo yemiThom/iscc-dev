@@ -6,6 +6,8 @@ var userLng = localStorage.getItem("userLng");
 var bearhugSticker = '<div id="bearHug" class="bearHugSticker"></div>';
 var convosID = '';
 var currNumRequests = 0;
+var intervalMSGChecks;
+var latestMSGDate;
 //User goes online/busy
 //status = "online";
 //lng = 34.6;
@@ -28,21 +30,12 @@ function getUserLocation(){
 	}
 
 }
-	 
-/*var getDistance = function(p1, p2) {
-	var R = 6378137; // Earth’s mean radius in meter
-	var dLat = rad(p2.lat() - p1.lat());
-	var dLong = rad(p2.lng() - p1.lng());
-	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-	  Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
-	  Math.sin(dLong / 2) * Math.sin(dLong / 2);
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-	var d = R * c;
-	return d; // returns the distance in meter
-};*/
 
 function clearChatView(){
 	document.getElementById("chat-messages").innerHTML = '';
+}
+function clearDatachannel(){
+	document.getElementById("dataChannelSend").value = '';
 }
 function enableInputs(){
 	document.getElementById("dataChannelSend").disabled = false;
@@ -53,6 +46,40 @@ function disableInputs(){
 	document.getElementById("dataChannelSend").disabled = true;
 	document.getElementById("sendHugButton").disabled = true;
 	document.getElementById("sendButton").disabled = true;
+}
+function checkForNewMsgs(){
+	intervalMSGChecks = setInterval(function(){ checkNewMsgs(convosID); }, 1000);
+}
+function clearCheckNewMsgs(){
+	clearInterval(intervalMSGChecks);
+}
+function checkNewMsgs(cvoID){
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+cvoID+"/messages", {
+		data: { get_param: 'value' },
+		contentType: "application/json",
+		method: "GET",
+		success: function (data) {
+			//iterate through all the elements
+			$.each(data, function (index, element) {
+				//when you get conv by ID//
+				//check what the timestamps are//
+				var elemDate = element.date;
+
+				if(Date.parse(latestMSGDate)<Date.parse(elemDate)){
+					//console.log("LatestMSGDate is less than ElemDate");
+					//console.log("Call get messages");
+					clearChatView();
+					getMessages(convosID);
+				}else{
+					//console.log("ElemDate is less than LatestMSGDate");
+					//console.log("Do nothing");
+				}
+			});
+		},
+		error: function (){
+
+		}
+	});
 }
 
 //pull data out
@@ -66,7 +93,7 @@ function getUserList() {
 			//iterate through all the elements
 			$.each(data, function (index, element) {
 				
-			console.log("Stringified username: "+JSON.stringify(element.username));
+			//console.log("Stringified username: "+JSON.stringify(element.username));
 				
 				// Converts numeric degrees to radians
 				function toRad(Value) {
@@ -266,6 +293,8 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
+						//periodic check for new messages
+						checkForNewMsgs();
 						return false;
 					}
 				}else if(element.user1 == username2 && element.user2 == username){
@@ -297,6 +326,8 @@ function checkConvoRequest(){
 						convosID = element.id;
 						//get messages
 						getMessages(convosID);
+						//periodic check for new messages
+						checkForNewMsgs();
 						return false;
 					}
 				}else{
@@ -352,7 +383,7 @@ function acceptRequestCall(){
 //});
 
 //$("#declineRequest").click(function () {
-	function declineRequestCall(){
+function declineRequestCall(){
 	
 		//put the data in 
 		$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+convosID, {
@@ -380,6 +411,9 @@ function getMessages(cid){
 				//when you get conv by ID//
 				//list all the messages//
 
+				//console.log("element.date: "+element.date);
+				latestMSGDate = element.date;
+
 				//if message from = username
 				if(element.from == username){
 					//calculate which date format to go with
@@ -388,20 +422,20 @@ function getMessages(cid){
 					var dateCheck = new Date().toISOString().substring(0, 10);
 					var elemDate = element.date.toString().substring(0, 10);
 					if(dateCheck == elemDate){
-						console.log("dates are the same, show time instead: "+ element.date.toString().substring(11, 16));
+						//console.log("dates are the same, show time instead: "+ element.date.toString().substring(11, 16));
 						elemDate = element.date.toString().substring(11, 16);
 					}else{
-						console.log("show dates...");
+						//console.log("show dates...");
 						elemDate = element.date.toString().substring(0, 10) + ", " + element.date.toString().substring(11, 16);
 					}
 
 					//show sent div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubble"><span>'+elemDate+'</span></div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubbleRight"><span>'+elemDate+'</span></div></div>';
 						
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+element.message+'</div><div class="dateBubble"><span>'+elemDate+'</span></div></div>';
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+element.message+'</div><div class="dateBubbleRight"><span>'+elemDate+'</span></div></div>';
 						
 					}
 				//else message being received
@@ -412,26 +446,25 @@ function getMessages(cid){
 					var dateCheck = new Date().toISOString().substring(0, 10);
 					var elemDate = element.date.toString().substring(0, 10);
 					if(dateCheck == elemDate){
-						console.log("dates are the same, show time instead: "+ element.date.toString().substring(11, 16));
+						//console.log("dates are the same, show time instead: "+ element.date.toString().substring(11, 16));
 						elemDate = element.date.toString().substring(11, 16);
 					}else{
-						console.log("show dates...");
+						//console.log("show dates...");
 						elemDate = element.date.toString().substring(0, 10) + ", " + element.date.toString().substring(11, 16);
 					}
 
 					//show received div
 					//if message is bearhug tag
 					if(element.message == ":bearhug:"){
-						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';			
+						document.getElementById("chat-messages").innerHTML += '<div class="message right"><div class="bubble sent">'+bearhugSticker+'</div><div class="dateBubbleLeft"><span>'+elemDate+'</span></div>';			
 						
 					}else{
-						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received">'+element.message+'</div><div class="dateBubble"><span>'+elemDate+'</span></div>';			
+						document.getElementById("chat-messages").innerHTML += '<div class="message"><div class="bubble received">'+element.message+'</div><div class="dateBubbleLeft"><span>'+elemDate+'</span></div>';			
 						
 					}
 				}
 				//call scroll to bottom of chat view
 				scrollViewToBttm();
-
 			});
 		},
 		error: function () {
@@ -441,8 +474,9 @@ function getMessages(cid){
 }
 
 //SEND MESSAGE
-$("#sendButton").click(function () {
-	//console.log("Send Button pressed, message should be sent...");
+//$("#sendButton").click(function () {
+function sendTxt(){
+	console.log("Send Button pressed, message should be sent...");
 	var todayDate = new Date();
 	var messageStr = document.getElementById("dataChannelSend").value;
 	var messageTo = document.getElementById("chatTo").innerHTML;
@@ -461,21 +495,26 @@ $("#sendButton").click(function () {
 		contentType: "application/json",
 		method: "POST",
 		success: function () {
-			//console.log("Added");
+			console.log("Added message: "+JSON.stringify(message));
 			clearChatView();
 			document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
+			//periodic check for new messages
+			checkForNewMsgs();
 		},
 		error: function () {
-			//console.log("Not added");
+			console.log("Not added message: "+JSON.stringify(message));
 
 		}
 
 	});
-});
+//});
+}
+
 //SEND BearHug
-$("#sendHugButton").click(function () {
+//$("#sendHugButton").click(function () {
+function sendBear(){
 	//console.log("Send BearHug Button pressed, :bearhug: code should be sent...");
 	var todayDate = new Date();
 	//var messageStr = document.getElementById("dataChannelSend").value;
@@ -500,6 +539,8 @@ $("#sendHugButton").click(function () {
 			//document.getElementById("dataChannelSend").value = '';
 			//call for messages to show up in chatview
 			getMessages(convosID);
+			//periodic check for new messages
+			checkForNewMsgs();
 		},
 		error: function () {
 			//console.log("Not added");
@@ -507,7 +548,8 @@ $("#sendHugButton").click(function () {
 		}
 
 	});
-});
+//});
+}
 
 
 $("#invisible").click(function () {

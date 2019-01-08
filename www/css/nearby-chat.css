@@ -243,15 +243,22 @@ z-index:200;
     position:relative;
     float:left;
 }
-.message .dateBubble{
+.message .dateBubbleRight{
     color: #aab8c2;
     font-size: 11px;
     position: absolute;
     right: 31px;
     bottom: -2px;
 }
-.received{ background:#775ba6; color:#ffffff; }
-.sent{ background:#ecf0f1; color:#414b76; }
+.message .dateBubbleLeft{
+    color: #aab8c2;
+    font-size: 11px;
+    position: absolute;
+    left: 10px;
+    bottom: -2px;
+}
+.received{ background:#775ba6; color:#ffffff; text-transform: none; }
+.sent{ background:#ecf0f1; color:#414b76; text-transform: none; }
 #chat-messages div.message.right .bubble{
     float:right;
     border-radius:5px 5px 0px 5px ;
