@@ -102,8 +102,6 @@ function getFoodItem() {
 }
 
 
-var options = { day: 'numeric', month: 'numeric', year: 'numeric' };
-var date = new Date();
 
 //DIET LOG VARIABLES
 
@@ -200,22 +198,24 @@ $("#getAllDietlogData").click(function () {
 });
 
 
+var options = { day: 'numeric', month: 'numeric', year: 'numeric' };
+var date = new Date();
 
 //DATE PICKER
 $('#datepicker').attr('value', date);
 
 $(function () {
-    $('#datepicker').val(date.toLocaleDateString("en-en"));
+    $('#datepicker').val(date.toLocaleDateString("en-gb"));
     $('#cal-prev').click(function () {
         date.setDate(date.getDate() - 1);
-        $('#datepicker').val(date.toLocaleDateString("en-en", options));
+        $('#datepicker').val(date.toLocaleDateString("en-gb", options));
         getForDate();
         getDoclog();
     });
 
     $('#cal-next').click(function () {
         date.setDate(date.getDate() + 1);
-        $('#datepicker').val(date.toLocaleDateString("en-en", options));
+        $('#datepicker').val(date.toLocaleDateString("en-gb", options));
         getForDate();
         getDoclog();
     });
@@ -234,11 +234,11 @@ $("#getAllDocLogData").click(function () {
                     console.log(element);
                     var tr = (
                         '<tr>' +
-                        '<td>' + element.date.toString().substring(0, 10) + '</td>' +
-                        '<td>' + element.medication + '</td>' +
-                        '<td>' + element.dosage + '</td>' +
-                        '<td>' + element.comment + '</td>' +
-                        '<td>' + element.complete + '</td>' +
+                        '<td>' + element.date.toString().substring(0, 10) + '<td>' +
+                        '<td>' + element.medication +
+                        '<td>' + element.dosage +
+                        '<td>' + element.comment +
+                        '<td>' + element.complete +
                         + '</tr>'
                     );
                     $('#docLogTable').append(tr);
@@ -632,7 +632,7 @@ function getForDate() {
             $.each(data, function (index, element) {
                 if (element.username == "testuser") {
                     console.log(element.date.toString().substring(0, 10));
-                    var datadate = element.date.toString().substring(0, 10);
+                    var datadate = element.date.toString().substring(0, 10); 
                     var pickerDate = document.getElementById('datepicker').value;
                     console.log("DATE ARRAY: " + pickerDate);
                     var splitDate = pickerDate.split("/");
