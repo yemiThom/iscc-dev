@@ -29,7 +29,7 @@ $(document).ready(function() {
         durTime,
         trackTitle,
         audio,
-        index = 0,
+        index = sessionStorage.getItem('sndIndex'),
         playList,
         volumeBar,
         wheelVolumeValue = 0,
@@ -70,6 +70,8 @@ $(document).ready(function() {
         };
 
       function init(options) {
+
+        console.log("index: "+index);
 
         if (!('classList' in document.documentElement)) {
           return false;
