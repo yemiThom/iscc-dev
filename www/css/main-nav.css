@@ -242,6 +242,14 @@ img.toggle{
     padding: 5px 1rem;
     background-color: #ffffff;
 }
+.anchor:before{
+    display: block; 
+    content: " "; 
+    margin-top: -40px; 
+    height: 40px; 
+    visibility: hidden; 
+    pointer-events: none;
+}
 .subtitle:before {
     content:"";
     /*display: block;*/
