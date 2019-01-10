@@ -132,9 +132,9 @@ $(document).ready(function() {
         // volumeBar.style.height = audio.volume * 100 + '%';
         // volumeLength = volumeBar.css('height');
 
-        if (settings.confirmClose) {
+        /*if (settings.confirmClose) {
           window.addEventListener("beforeunload", beforeUnload, false);
-        }
+        }*/
 
         if (isEmptyList()) {
           return false;
@@ -168,13 +168,13 @@ $(document).ready(function() {
         }
       }
 
-      function beforeUnload(evt) {
+      /*function beforeUnload(evt) {
         if (!audio.paused) {
           var message = 'Music still playing';
           evt.returnValue = message;
           return message;
         }
-      }
+      }*/
 
       function errorHandler(evt) {
         if (isEmptyList()) {
@@ -583,9 +583,9 @@ $(document).ready(function() {
       function destroy() {
         if (!apActive) return;
 
-        if (settings.confirmClose) {
+        /*if (settings.confirmClose) {
           window.removeEventListener('beforeunload', beforeUnload, false);
-        }
+        }*/
 
         playBtn.removeEventListener('click', playToggle, false);
         volumeBtn.removeEventListener('click', volumeToggle, false);
