@@ -62,7 +62,7 @@
                         <img src="http://iscc-imgs.s3.amazonaws.com/icons/myibd-logo.png">
                     </span>
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email or username is required: ex@abc.xyz">
+                    <div id="inputUsernameDiv" class="wrap-input100 validate-input m-b-16" data-validate="Valid email or username is required: ex@abc.xyz">
                         <input type="text" class="input100" type="email" id="inputUsername" placeholder="Email/Username">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -71,7 +71,7 @@
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+                    <div id="inputPasswordDiv" class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
                         <input type="password" id="inputPassword" class="input100" type="password" name="pass"
                             placeholder="Password">
                         <span class="focus-input100"></span>
@@ -89,7 +89,7 @@
                     </div>
 
                     <div class="container-login100-form-btn p-t-25">
-                        <button type="button" onclick="signInButton()" class="login100-form-btn" href="home.html">
+                        <button id="mainbutton" type="button" onclick="signInButton();" class="login100-form-btn" href="home.html">
                             Login
                         </button>
                     </div>
@@ -178,6 +178,15 @@
                 },
                 onFailure: function (err) {
                     console.log(err.message || JSON.stringify(err));
+					
+					if(err.message == "User does not exist."){
+						console.log("Show that user doesn't exist");
+						document.getElementById("inputUsernameDiv").classList.add('alert-validate-short');
+					}
+					if(err.message == "Incorrect username or password."){
+						console.log("Show that password doesn't match");
+						document.getElementById("inputPasswordDiv").classList.add('alert-validate-short');					
+					}
                 },
             });
         }
@@ -220,7 +229,7 @@
     <!-- Start of select script -->
     <script src="vendor/select2/select2.min.js"></script>
     <!-- Start of login main script -->
-    <!--script src="js/login-main.js"></script-->
+    <script src="js/login-main.js"></script>
 
 </body>
 
