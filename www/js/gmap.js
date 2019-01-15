@@ -210,7 +210,7 @@ function initMap() {
         //Check for content
         if (props.content) {
             var infoWindow = new google.maps.InfoWindow({
-                content: "Title: "  + props.title + "<br> Review: " + props.review + "<br> Rating: " + props.rating + "<br> " + props.content
+                content: "Title: "  + props.title + "<br><br> Establishment: " + props.btype + "<br><br> Review: " + props.review + "<br><br> Rating: " + props.rating + "<br><br> " + props.content
             });
 
             marker.addListener('click', function () {
