@@ -804,15 +804,7 @@ $(document).ready(function() {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation with music 2',
       'file': 'http://www.beaumont.ie/media/01-MicheleMcGettiganActivePMR20171.mp3'
-    }, {
-      'icon': iconImage,
-      'title': 'Relaxation Breathing',
-      'file': 'http://www.beaumont.ie/media/Relaxation_Breathing.mp3'
-    }, {
-      'icon': iconImage,
-      'title': 'Relaxation Breathing 2',
-      'file': 'http://www.beaumont.ie/media/02-PaddyODriscollRelaxationBreath20171.mp3'
-    }]
+    },
   });
 
 
