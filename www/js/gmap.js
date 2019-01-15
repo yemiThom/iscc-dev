@@ -193,11 +193,11 @@ function initMap() {
             //set Icon Image to public
             //marker.setIcon(props.iconImage);
             markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
-        }else if(props.btype == "private"){
-            //set Icon Image to private
+        }else if(props.btype == "business"){
+            //set Icon Image to business
             markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom2.png";
         }else{
-            //set Icon Image to business
+            //set Icon Image to private
             markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom3.png";
         }
 
