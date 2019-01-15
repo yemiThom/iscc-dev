@@ -3,6 +3,10 @@
 function initMap() {
     //element to dump it in (id Map) and options
     var username = localStorage.getItem("username");
+	//start of content href
+	var contStart = "<a href = 'https://google.com/maps/place/";
+	//end of content href
+	var contEnd = "'>Get Directions</a>";
     //map options
     var options = {
         zoom: 16,
@@ -48,7 +52,7 @@ function initMap() {
             "lat": lat,
             "lng": lng,
             "title": title,
-            "content": '<a href = "https://google.com/maps/place/"' + lat + ',' + lng + '>Get Directions</a>',
+            "content": contStart + lat + ',' + lng + contEnd,
             "rating": rating,
             "votes": 0,
             "btype": btype,
@@ -161,7 +165,7 @@ function initMap() {
     //         lat: lat,
     //         lng: lng,
     //         title: title,
-    //         content: '<a href = "https://google.com/maps/place/"' + lat + ',' + lng + '>Get Directions</a>',
+    //         content: '<a href = "https://google.com/maps/place/' + lat + ',' + lng + '">Get Directions</a>',
     //         rating: '<div class="star-rating-display" data-rating="'+rating+'"></div>',
     //         votes: 1,
     //         btype: btype,
