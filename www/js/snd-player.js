@@ -804,7 +804,7 @@ $(document).ready(function() {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation with music 2',
       'file': 'http://www.beaumont.ie/media/01-MicheleMcGettiganActivePMR20171.mp3'
-    }
+    }]
   });
 
 
