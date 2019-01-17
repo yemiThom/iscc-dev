@@ -179,6 +179,9 @@
                 onFailure: function (err) {
                     console.log(err.message || JSON.stringify(err));
 					
+					document.getElementById("inputUsernameDiv").classList.remove('alert-validate-short');
+					document.getElementById("inputPasswordDiv").classList.remove('alert-validate-short');
+						
 					if(err.message == "User does not exist."){
 						console.log("Show that user doesn't exist");
 						document.getElementById("inputUsernameDiv").classList.add('alert-validate-short');
