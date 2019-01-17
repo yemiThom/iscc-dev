@@ -32,7 +32,7 @@ $("#addFood").click(function () {
         "created_date": created_date
     };
 
-    alert(JSON.stringify(food));
+    console.log(JSON.stringify(food));
 
     console.log(food);
    // alert(food);
@@ -44,12 +44,12 @@ $("#addFood").click(function () {
         method: "POST",
         success: function () {
             console.log(data);
-            alert("Added");
+            console.log("Added");
             $("#foodDatabase").hide();
             $("#showFoodAdd").show();
         },
         error: function () {
-            alert("Not added");
+            console.log("Not added");
             $("#foodDatabase").hide();
             $("#showFoodAdd").show();
         }
@@ -136,10 +136,10 @@ $("#logDiet").click(function () {
         "created_date": created_date
     };
 
-    alert("Stringified: " + JSON.stringify(dietlog));
+    console.log("Stringified: " + JSON.stringify(dietlog));
 
     console.log(dietlog);
-    alert(dietlog);
+    console.log(dietlog);
 
     $.ajax("https://fast-garden-93601.herokuapp.com/api/dietlogs", {
         data: JSON.stringify(dietlog),
@@ -148,10 +148,10 @@ $("#logDiet").click(function () {
         method: "POST",
         success: function () {
             console.log(dietlog);
-            alert("Added");
+            console.log("Added");
         },
         error: function () {
-            alert("Not added");
+            console.log("Not added");
         }
     });
 
@@ -191,7 +191,7 @@ $("#getAllDietlogData").click(function () {
             }
         },
         error: function () {
-            alert("Data missing");
+            console.log("Data missing");
             ;
         }
     });
@@ -232,13 +232,20 @@ $("#getAllDocLogData").click(function () {
             $.each(data, function (index, element) {
                 if (element.username = "testuser") {
                     console.log(element);
+					var elemComplete;
+					if(element.complete == "on"){
+						elemComplete = "YES";
+					}else{
+						elemComplete = "NO";
+					}
+					
                     var tr = (
                         '<tr>' +
                         '<td>' + element.date.toString().substring(0, 10) +
                         '<td>' + element.medication +
                         '<td>' + element.dosage +
                         '<td>' + element.comment +
-                        '<td>' + element.complete +
+                        '<td>' + elemComplete +
                         '</tr>'
                     );
                     $('#docLogTable').append(tr);
@@ -249,7 +256,7 @@ $("#getAllDocLogData").click(function () {
             }
         },
         error: function () {
-            alert("Data missing");
+            console.log("Data missing");
             ;
         }
     });
@@ -372,7 +379,7 @@ $(document).ready(function () {
             contentType: "application/json",
             method: "POST",
             success: function () {
-                alert("Day added");
+                console.log("Day added");
                 dateList.push(date);
                 console.log(symptomdata);
                 //if(isInArray(dateList, date))
@@ -382,7 +389,7 @@ $(document).ready(function () {
                 console.log(dateList);
             },
             error: function () {
-                alert("Not added");
+                console.log("Not added");
             }
         });
 
@@ -413,12 +420,12 @@ $(document).ready(function () {
             contentType: "application/json",
             method: "POST",
             success: function () {
-                alert("Day added");
-                alert(docdata);
+                console.log("Day added");
+                console.log(docdata);
                 console.log(docdata);
             },
             error: function () {
-                alert("Not added");
+                console.log("Not added");
             }
         });
     });
@@ -474,7 +481,7 @@ $(document).ready(function () {
                 }
             },
             error: function () {
-                alert("Data missing");
+                console.log("Data missing");
             }
         });
     });
@@ -599,7 +606,7 @@ $(document).ready(function () {
                 }
             },
             error: function () {
-                alert("Data missing");
+                console.log("Data missing");
             }
         });
     });

@@ -40,7 +40,7 @@
     font-weight: 600;
 }
 .events ul li i{
-	font-size:.5rem;
+	font-size:.65rem;
 	color:#72737b;
 	font-style:normal;
 }
@@ -194,10 +194,10 @@
          top: -18%;
      }
      .cal1 .clndr .clndr-table .header-days .header-day {
-         font-size: 1em;
+         font-size: 1rem;
      }
      .cal1 .clndr .clndr-table tr .day .day-contents {
-         font-size: 1.25em;
+         font-size: 1.25rem;
      }
  }
  @media all and (max-width:375px) {
