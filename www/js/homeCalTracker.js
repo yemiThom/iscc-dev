@@ -1,5 +1,5 @@
 //FOOD VARIABLES
-var username = "testusername";
+var username = localStorage.getItem("username");
 var meal;
 var foodInput = document.getElementById("foodnameInput").value;
 var created_date = new Date();
@@ -112,7 +112,7 @@ $("#logDiet").click(function () {
     var foodInput = document.getElementById("foodnameInput").value;
     var servingInput = document.getElementById("servingInput").value;
 
-    if (document.getElementById("healthtracker_pain-bf").value = "NO") {
+    if (document.getElementById("healthtracker_pain-bf").value = "off") {
         pain = "no";
     }
     else {
@@ -172,7 +172,7 @@ $("#getAllDietlogData").click(function () {
         success: function (data) {
             $('#dietLogTable').empty();
             $.each(data, function (index, element) {
-                if (element.username = "testuser") {
+                if (element.username = username) {
                     console.log(element);
                     var tr = (
                         '<tr>' +
@@ -230,13 +230,13 @@ $("#getAllDocLogData").click(function () {
         success: function (data) {
             $('#docLogTable').empty();
             $.each(data, function (index, element) {
-                if (element.username = "testuser") {
+                if (element.username = username) {
                     console.log(element);
 					var elemComplete;
-					if(element.complete == "on"){
-						elemComplete = "YES";
+					if(element.complete == "yes"){
+						elemComplete == "YES";
 					}else{
-						elemComplete = "NO";
+						elemComplete == "NO";
 					}
 					
                     var tr = (
@@ -357,7 +357,7 @@ $(document).ready(function () {
 
 
         var symptomdata = [{
-            "username": "testuser",
+            "username": username,
             "day": day,
             "date": date,
             "pain": pain,
@@ -405,7 +405,7 @@ $(document).ready(function () {
         var complete = document.getElementById("healthtracker_prescription").value;
 
         var docdata = [{
-            "username": "testuser",
+            "username": username,
             "date": date,
             "medication": medication,
             "dosage": dosage,
@@ -460,7 +460,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('#symptomTable').empty();
                 $.each(data, function (index, element) {
-                    if (element.username == "testuser") {
+                    if (element.username == username) {
                         console.log(element);
                         var tr = (
                             '<tr>' +
@@ -498,7 +498,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('#graphTable').empty();
                 $.each(data, function (index, element) {
-                    if (element.username == "testuser") {
+                    if (element.username == username) {
                         console.log(element);
 
                         if (element.day == "good") {
@@ -637,7 +637,7 @@ function getForDate() {
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index, element) {
-                if (element.username == "testuser") {
+                if (element.username == username) {
                     console.log(element.date.toString().substring(0, 10));
                     var datadate = element.date.toString().substring(0, 10); 
                     var pickerDate = document.getElementById('datepicker').value;
@@ -831,7 +831,7 @@ function getDoclog() {
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index, element) {
-                if (element.username = "testuser") {
+                if (element.username = username) {
                     console.log(element.date);
                     console.log(element.date.toString().substring(0, 10));
                     var datadate = element.date.toString().substring(0, 10);
