@@ -108,16 +108,18 @@ function getFoodItem() {
 
 //LOG DIET
 $("#logDiet").click(function () {
-    var pain;
+    var pain = document.getElementById("healthtracker_pain-bf").checked;
     var foodInput = document.getElementById("foodnameInput").value;
     var servingInput = document.getElementById("servingInput").value;
+	
+	console.log("pain value: " + pain);
 
-    if (document.getElementById("healthtracker_pain-bf").value = "NO") {
+    /*if (document.getElementById("healthtracker_pain-bf").checked = "false") {
         pain = "no";
     }
     else {
         pain = "yes";
-    }
+    }*/
 
     if (document.getElementById("good").checked) {
         day = document.getElementById("good").value;
@@ -173,13 +175,21 @@ $("#getAllDietlogData").click(function () {
             $('#dietLogTable').empty();
             $.each(data, function (index, element) {
                 if (element.username = "testuser") {
-                    console.log(element);
+                    console.log(element.pain);
+					var elemPain;
+					
+					if(element.pain == "true"){
+						elemPain = "YES";
+					}else{
+						elemPain = "NO";
+					}
+					
                     var tr = (
                         '<tr>' +
                         '<td>' + element.date.toString().substring(0, 10) +
                         '<td>' + element.meal +
                         '<td>' + element.food +
-                        '<td>' + element.pain +
+                        '<td>' + elemPain +
                         '<td>' + element.servingsize.toString()
                         + '</tr>'
                     );
@@ -233,7 +243,7 @@ $("#getAllDocLogData").click(function () {
                 if (element.username = "testuser") {
                     console.log(element);
 					var elemComplete;
-					if(element.complete == "on"){
+					if(element.complete == "true"){
 						elemComplete = "YES";
 					}else{
 						elemComplete = "NO";
@@ -402,7 +412,9 @@ $(document).ready(function () {
         var dosageMeasure = document.getElementById("medsDoseSel");
         var dosageMeasureValue = document.getElementById("medsDoseSel").value;
         var comment = document.getElementById("meds-comment").value;
-        var complete = document.getElementById("healthtracker_prescription").value;
+        var complete = document.getElementById("healthtracker_prescription").checked;
+		
+		console.log("complete value: " + complete);
 
         var docdata = [{
             "username": "testuser",
@@ -845,7 +857,7 @@ function getDoclog() {
                         document.getElementById("medicationName").value = element.medication;
                         document.getElementById("dosageNum").value = element.dosage;
                         document.getElementById("meds-comment").value = element.comment
-                        document.getElementById("healthtracker_prescription").value = element.complete;
+                        document.getElementById("healthtracker_prescription").checked = element.complete;
 
                     }
 
