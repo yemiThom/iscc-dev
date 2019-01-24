@@ -111,8 +111,8 @@ $("#logDiet").click(function () {
     var pain = document.getElementById("healthtracker_pain-bf").checked;
     var foodInput = document.getElementById("foodnameInput").value;
     var servingInput = document.getElementById("servingInput").value;
-    
-    console.log("pain value: " + pain);
+	
+	console.log("servingInput value: " + servingInput);
 
     /*if (document.getElementById("healthtracker_pain-bf").checked = "false") {
         pain = "no";
