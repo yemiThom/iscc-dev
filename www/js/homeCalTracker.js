@@ -112,7 +112,7 @@ $("#logDiet").click(function () {
     var foodInput = document.getElementById("foodnameInput").value;
     var servingInput = document.getElementById("servingInput").value;
 	
-	console.log("pain value: " + pain);
+	console.log("servingInput value: " + servingInput);
 
     /*if (document.getElementById("healthtracker_pain-bf").checked = "false") {
         pain = "no";
@@ -134,7 +134,7 @@ $("#logDiet").click(function () {
         "meal": meal,
         "food": foodInput,
         "pain": pain,
-        "servingsize": servingsize,
+        "servingsize": servingInput,
         "created_date": created_date
     };
 
