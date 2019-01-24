@@ -134,7 +134,7 @@ $("#logDiet").click(function () {
         "meal": meal,
         "food": foodInput,
         "pain": pain,
-        "servingsize": servingsize,
+        "servingsize": servingInput,
         "created_date": created_date
     };
 
