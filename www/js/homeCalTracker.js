@@ -1,5 +1,5 @@
 //FOOD VARIABLES
-var username = localStorage.getItem("username");
+var username = "testusername";
 var meal;
 var foodInput = document.getElementById("foodnameInput").value;
 var created_date = new Date();
@@ -108,16 +108,18 @@ function getFoodItem() {
 
 //LOG DIET
 $("#logDiet").click(function () {
-    var pain;
+    var pain = document.getElementById("healthtracker_pain-bf").checked;
     var foodInput = document.getElementById("foodnameInput").value;
     var servingInput = document.getElementById("servingInput").value;
+    
+    console.log("pain value: " + pain);
 
-    if (document.getElementById("healthtracker_pain-bf").value = "off") {
+    /*if (document.getElementById("healthtracker_pain-bf").checked = "false") {
         pain = "no";
     }
     else {
         pain = "yes";
-    }
+    }*/
 
     if (document.getElementById("good").checked) {
         day = document.getElementById("good").value;
@@ -172,14 +174,22 @@ $("#getAllDietlogData").click(function () {
         success: function (data) {
             $('#dietLogTable').empty();
             $.each(data, function (index, element) {
-                if (element.username = username) {
-                    console.log(element);
+                if (element.username = "testuser") {
+                    console.log(element.pain);
+                    var elemPain;
+                    
+                    if(element.pain == "true"){
+                        elemPain = "YES";
+                    }else{
+                        elemPain = "NO";
+                    }
+                    
                     var tr = (
                         '<tr>' +
                         '<td>' + element.date.toString().substring(0, 10) +
                         '<td>' + element.meal +
                         '<td>' + element.food +
-                        '<td>' + element.pain +
+                        '<td>' + elemPain +
                         '<td>' + element.servingsize.toString()
                         + '</tr>'
                     );
@@ -230,15 +240,15 @@ $("#getAllDocLogData").click(function () {
         success: function (data) {
             $('#docLogTable').empty();
             $.each(data, function (index, element) {
-                if (element.username = username) {
+                if (element.username = "testuser") {
                     console.log(element);
-					var elemComplete;
-					if(element.complete == "yes"){
-						elemComplete == "YES";
-					}else{
-						elemComplete == "NO";
-					}
-					
+                    var elemComplete;
+                    if(element.complete == "true"){
+                        elemComplete = "YES";
+                    }else{
+                        elemComplete = "NO";
+                    }
+                    
                     var tr = (
                         '<tr>' +
                         '<td>' + element.date.toString().substring(0, 10) +
@@ -357,7 +367,7 @@ $(document).ready(function () {
 
 
         var symptomdata = [{
-            "username": username,
+            "username": "testuser",
             "day": day,
             "date": date,
             "pain": pain,
@@ -402,10 +412,12 @@ $(document).ready(function () {
         var dosageMeasure = document.getElementById("medsDoseSel");
         var dosageMeasureValue = document.getElementById("medsDoseSel").value;
         var comment = document.getElementById("meds-comment").value;
-        var complete = document.getElementById("healthtracker_prescription").value;
+        var complete = document.getElementById("healthtracker_prescription").checked;
+        
+        console.log("complete value: " + complete);
 
         var docdata = [{
-            "username": username,
+            "username": "testuser",
             "date": date,
             "medication": medication,
             "dosage": dosage,
@@ -460,7 +472,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('#symptomTable').empty();
                 $.each(data, function (index, element) {
-                    if (element.username == username) {
+                    if (element.username == "testuser") {
                         console.log(element);
                         var tr = (
                             '<tr>' +
@@ -498,7 +510,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('#graphTable').empty();
                 $.each(data, function (index, element) {
-                    if (element.username == username) {
+                    if (element.username == "testuser") {
                         console.log(element);
 
                         if (element.day == "good") {
@@ -637,7 +649,7 @@ function getForDate() {
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index, element) {
-                if (element.username == username) {
+                if (element.username == "testuser") {
                     console.log(element.date.toString().substring(0, 10));
                     var datadate = element.date.toString().substring(0, 10); 
                     var pickerDate = document.getElementById('datepicker').value;
@@ -831,7 +843,7 @@ function getDoclog() {
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index, element) {
-                if (element.username = username) {
+                if (element.username = "testuser") {
                     console.log(element.date);
                     console.log(element.date.toString().substring(0, 10));
                     var datadate = element.date.toString().substring(0, 10);
@@ -845,7 +857,7 @@ function getDoclog() {
                         document.getElementById("medicationName").value = element.medication;
                         document.getElementById("dosageNum").value = element.dosage;
                         document.getElementById("meds-comment").value = element.comment
-                        document.getElementById("healthtracker_prescription").value = element.complete;
+                        document.getElementById("healthtracker_prescription").checked = element.complete;
 
                     }
 
