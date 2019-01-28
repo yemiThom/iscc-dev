@@ -1235,6 +1235,16 @@
     }
 </script>
 <!--End scanner script -->
+<!--Start stop touchstart script -->
+<script>
+	element.addEventListener("touchstart", function(e) {
+        console.log("cancelling double click");
+	    e.preventDefault();
+	    e.stopPropagation();
+	}, false);
+</script>
+<!--End stop touchstart script -->
+
 <!--Start of forced focus scroll script -->
 <!--<script>
     var $htmlOrBody = $('html, body'),
