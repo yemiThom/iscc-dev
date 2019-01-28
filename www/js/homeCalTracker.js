@@ -151,9 +151,17 @@ $("#logDiet").click(function () {
         success: function () {
             console.log(dietlog);
             console.log("Added");
+            
+            document.getElementById("popup2-title").innerHTML = "Success";
+            document.getElementById("popup2-content").innerHTML = "Your Diet Log for the day has been successfully added.";
+            location.href = "#popup2";
         },
         error: function () {
             console.log("Not added");
+
+            document.getElementById("popup2-title").innerHTML = "Error";
+            document.getElementById("popup2-content").innerHTML = "Unfortunately an error occured while trying to add your Diet Log for the day. Please Try again.";
+            location.href = "#popup2";
         }
     });
 
@@ -202,7 +210,6 @@ $("#getAllDietlogData").click(function () {
         },
         error: function () {
             console.log("Data missing");
-            ;
         }
     });
 });
@@ -393,13 +400,21 @@ $(document).ready(function () {
                 dateList.push(date);
                 console.log(symptomdata);
                 //if(isInArray(dateList, date))
-                {
+                //{
                     document.getElementById("submitData").disabled = true;
-                }
+                //}
                 console.log(dateList);
+
+                document.getElementById("popup2-title").innerHTML = "Success";
+                document.getElementById("popup2-content").innerHTML = "Your Symptoms for the day has been successfully added.";
+                location.href = "#popup2";
             },
             error: function () {
                 console.log("Not added");
+
+                document.getElementById("popup2-title").innerHTML = "Error";
+                document.getElementById("popup2-content").innerHTML = "Unfortunately an error occured while trying to add your Symptoms for the day. Please Try again.";
+                location.href = "#popup2";
             }
         });
 
@@ -435,9 +450,17 @@ $(document).ready(function () {
                 console.log("Day added");
                 console.log(docdata);
                 console.log(docdata);
+
+                document.getElementById("popup2-title").innerHTML = "Success";
+                document.getElementById("popup2-content").innerHTML = "Your Doctor's Log for the day has been successfully added.";
+                location.href = "#popup2";
             },
             error: function () {
                 console.log("Not added");
+
+                document.getElementById("popup2-title").innerHTML = "Error";
+                document.getElementById("popup2-content").innerHTML = "Unfortunately an error occured while trying to add your Doctor's Log for the day. Please Try again.";
+                location.href = "#popup2";
             }
         });
     });
