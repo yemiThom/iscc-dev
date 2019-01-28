@@ -176,14 +176,14 @@ $("#getAllDietlogData").click(function () {
             $.each(data, function (index, element) {
                 if (element.username == username) {
                     console.log(element.pain);
-					var elemPain;
-					
-					if(element.pain == "true"){
-						elemPain = "YES";
-					}else{
-						elemPain = "NO";
-					}
-					
+                    var elemPain;
+                    
+                    if(element.pain == "true"){
+                        elemPain = "YES";
+                    }else{
+                        elemPain = "NO";
+                    }
+                    
                     var tr = (
                         '<tr>' +
                         '<td>' + element.date.toString().substring(0, 10) +
@@ -242,13 +242,13 @@ $("#getAllDocLogData").click(function () {
             $.each(data, function (index, element) {
                 if (element.username == username) {
                     console.log(element);
-					var elemComplete;
-					if(element.complete == "true"){
-						elemComplete = "YES";
-					}else{
-						elemComplete = "NO";
-					}
-					
+                    var elemComplete;
+                    if(element.complete == "true"){
+                        elemComplete = "YES";
+                    }else{
+                        elemComplete = "NO";
+                    }
+                    
                     var tr = (
                         '<tr>' +
                         '<td>' + element.date.toString().substring(0, 10) +
@@ -413,8 +413,8 @@ $(document).ready(function () {
         var dosageMeasureValue = document.getElementById("medsDoseSel").value;
         var comment = document.getElementById("meds-comment").value;
         var complete = document.getElementById("healthtracker_prescription").checked;
-		
-		console.log("complete value: " + complete);
+        
+        console.log("complete value: " + complete);
 
         var docdata = [{
             "username": username,
