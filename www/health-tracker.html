@@ -17,8 +17,8 @@
     <link rel="stylesheet" type="text/css" href="css/barcodeScanner.css">
     <link rel="stylesheet" type="text/css" href="css/pop-up.css">
 
-    <!-- Cognito login 
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+    
+    <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="js/amazon-cognito-auth.min.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
     <script src="js/amazon-cognito-identity.min.js"></script>
@@ -545,8 +545,13 @@
                         <div class="tabset">
                             <!-- Tab 1 -->
                             <input type="radio" name="tabset" id="tab1-1" aria-controls="breakfast" checked>
-                            <label for="tab1-1"></label>
-                            
+                            <label for="tab1-1">Breakfast</label>
+                            <!-- Tab 2 -->
+                            <input type="radio" name="tabset" id="tab2-1" aria-controls="lunch">
+                            <label for="tab2-1">Lunch</label>
+                            <!-- Tab 3 -->
+                            <input type="radio" name="tabset" id="tab3-1" aria-controls="dinner">
+                            <label for="tab3-1">Dinner</label>
 
                             <div class="tab-panels">
                                 <section id="breakfast" class="tab-panel">
