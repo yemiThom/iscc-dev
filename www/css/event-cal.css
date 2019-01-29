@@ -159,6 +159,9 @@
    height: inherit;
    color:#414b76;
  }
+ .degree{
+     font-size: 1rem;
+ }
  @media all and (max-width:1024px) {
      .cal1 .clndr .clndr-table tr {
        height: 45px;
