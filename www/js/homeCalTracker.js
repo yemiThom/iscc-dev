@@ -397,13 +397,12 @@ $(document).ready(function () {
             method: "POST",
             success: function () {
                 console.log("Day added");
-                dateList.push(date);
+                //dateList.push(date);
                 console.log(symptomdata);
-                //if(isInArray(dateList, date))
-                //{
-                    document.getElementById("submitData").disabled = true;
+                //if(isInArray(dateList, date)){
+                //    document.getElementById("submitData").disabled = true;
                 //}
-                console.log(dateList);
+                //console.log(dateList);
 
                 document.getElementById("popup2-title").innerHTML = "Success";
                 document.getElementById("popup2-content").innerHTML = "Your Symptoms for the day has been successfully added.";
