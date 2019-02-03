@@ -55,6 +55,8 @@ $(document).ready(function () {
 
 function signOut() {
     if (cognitoUser != null) {
+        console.log("Sign Out called");
+        localStorage.removeItem("userID");
         cognitoUser.signOut();
         window.location.replace("index.html");
     }

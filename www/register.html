@@ -154,7 +154,7 @@
     <div id="popup2" class="overlay">
         <div class="popup">
             <h2>Registration Complete!</h2>
-            <a class="close" href="index.html">&times;</a>
+            <a class="close" href="index.html" onclick="cleanSession();">&times;</a>
 
             <div class="content" id="regPopUp">
                 <p>Check your email for a verification link.</p>
@@ -171,6 +171,11 @@
         var poolData;
 
         function registerButton() {
+			document.getElementById("nameRegister").classList.remove('alert-validate-short');
+			document.getElementById("emailInputRegister").classList.remove('alert-validate-short');
+			document.getElementById("personalnameRegister").classList.remove('alert-validate-short');
+			document.getElementById("passwordInputRegister").classList.remove('alert-validate-short');
+			document.getElementById("confirmationpassword").classList.remove('alert-validate-short');
 
             //actual name
             name = document.getElementById("nameRegister").value;
@@ -180,8 +185,13 @@
             username = document.getElementById("emailInputRegister").value;
 
             if (document.getElementById("passwordInputRegister").value != document.getElementById("confirmationpassword").value) {
-                alert("Passwords Do Not Match!")
-                throw "Passwords Do Not Match!"
+                //alert("Passwords Do Not Match!")
+				
+				document.getElementById("passwordInputRegister").classList.add('alert-validate-short');
+				document.getElementById("confirmationpassword").classList.add('alert-validate-short');
+				
+				
+                throw "Passwords Do Not Match!";
             } else {
                 password = document.getElementById("passwordInputRegister").value;
             }
@@ -253,6 +263,8 @@
 
     <script>
         window.onload = function(){
+			fillInputFromSess();
+			
             //Check privacy notice has been clicked
             if(sessionStorage.getItem("privacyNotice") == "isClicked"){
                 //change color of button
@@ -288,6 +300,37 @@
             }
         }
     </script>
+	
+	<script>
+		function cleanSession(){
+			sessionStorage.clear();
+		}
+		
+		function keepInputInSess(){
+			sessionStorage.setItem("regName", document.getElementById("nameRegister").value);
+			sessionStorage.setItem("regEmail", document.getElementById("emailInputRegister").value);
+			sessionStorage.setItem("regUname", document.getElementById("personalnameRegister").value);
+			sessionStorage.setItem("regPass", document.getElementById("passwordInputRegister").value);
+			sessionStorage.setItem("regCPass", document.getElementById("confirmationpassword").value);
+		}
+		
+		function fillInputFromSess(){
+			document.getElementById("nameRegister").value = sessionStorage.getItem("regName");
+			document.getElementById("emailInputRegister").value = sessionStorage.getItem("regEmail");
+			document.getElementById("personalnameRegister").value = sessionStorage.getItem("regUname");
+			document.getElementById("passwordInputRegister").value = sessionStorage.getItem("regPass");
+			document.getElementById("confirmationpassword").value = sessionStorage.getItem("regCPass");
+		}
+		
+		$(window).on('beforeunload', function(event){
+			keepInputInSess();
+			return;
+		});
+		
+		//$(document).on('ready', function(event){
+		//	fillInputFromSess();
+		//});
+	</script>
 
 </body>
 

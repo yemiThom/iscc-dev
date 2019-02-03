@@ -161,8 +161,8 @@ function addUser() {
 
 	console.log("username: "+localStorage.getItem("username"));
 	console.log("userid: "+userID);
-	if(userID == null){
-		console.log("userid is null: using POST to add user as new");
+	if(username == null){
+		console.log("username is null: using POST to add user as new");
 		userID ='';
 		console.log("userid 2: "+userID);
 		var user = {
