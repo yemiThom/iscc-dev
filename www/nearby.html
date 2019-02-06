@@ -323,5 +323,14 @@
     });
 </script>
 <!-- End pull to refresh script -->
+<!--Start stop touchstart script -->
+<script>
+	element.addEventListener("touchstart", function(e) {
+        console.log("cancelling double click");
+	    e.preventDefault();
+	    e.stopPropagation();
+	}, false);
+</script>
+<!--End stop touchstart script -->
 
 </html>
