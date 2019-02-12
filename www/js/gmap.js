@@ -53,7 +53,7 @@ function initMap() {
             "lng": lng,
             "title": title,
             "content": contStart + lat + ',' + lng + contEnd,
-            "rating": rating,
+            "rating": 2,
             "votes": 0,
             "btype": btype,
             "review": 1,
@@ -189,11 +189,11 @@ function initMap() {
         var markerIcon;
         //Check for custom icon
         console.log("props.btype: "+props.btype);
-        if (props.btype == "public") {
+        if (props.rating >= 3.5) {
             //set Icon Image to public
             //marker.setIcon(props.iconImage);
             markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
-        }else if(props.btype == "business"){
+        }else if(props.rating >= 2){
             //set Icon Image to business
             markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom2.png";
         }else{
