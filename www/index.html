@@ -13,8 +13,8 @@
     <script type="text/javascript" src='js/verify.js'></script>
     <!--script src="phonegap.js"></script-->
     <!-- Style Sheets -->
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
     <link rel="stylesheet" type="text/css" href="css/login-util.css">
     <link rel="stylesheet" type="text/css" href="css/login-main.css">
+    <link rel="stylesheet" type="text/css" href="css/preloader.css">
     <link rel="stylesheet" type="text/css" href="css/preloader.css">
     <script type="text/javascript" src="js/config.js"></script>
     <!-- js -->
@@ -48,7 +49,8 @@
     <div class="limiter">
         <!-- Preloader Animation Div -->
         <div id="loader-wrapper">
-            <div id="loader"><img src="http://iscc-imgs.s3.amazonaws.com/myibd-logo-noname.jpg" style="width:50px;margin:25% 30%;"/></div>
+            <div id="loader"><img src="http://iscc-imgs.s3.amazonaws.com/myibd-logo-noname.jpg"
+                    style="width:50px;margin:25% 30%;" /></div>
 
             <div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
@@ -62,8 +64,10 @@
                         <img src="http://iscc-imgs.s3.amazonaws.com/icons/myibd-logo.png">
                     </span>
 
-                    <div id="inputUsernameDiv" class="wrap-input100 validate-input m-b-16" data-validate="Valid email or username is required: ex@abc.xyz">
-                        <input type="text" class="input100" type="email" id="inputUsername" placeholder="Email/Username">
+                    <div id="inputUsernameDiv" class="wrap-input100 validate-input m-b-16"
+                        data-validate="Valid email or username is required: ex@abc.xyz">
+                        <input type="text" class="input100" type="email" id="inputUsername"
+                            placeholder="Email/Username">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <!--span class="lnr lnr-envelope"></span-->
@@ -71,7 +75,8 @@
                         </span>
                     </div>
 
-                    <div id="inputPasswordDiv" class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+                    <div id="inputPasswordDiv" class="wrap-input100 validate-input m-b-16"
+                        data-validate="Password is required">
                         <input type="password" id="inputPassword" class="input100" type="password" name="pass"
                             placeholder="Password">
                         <span class="focus-input100"></span>
@@ -81,7 +86,8 @@
                         </span>
 
                         <div class="contact102-form-checkbox m-l-5">
-                            <input class="input-checkbox100" id="pass-ckb1" type="checkbox" name="password-reveal" onchange="revealPass();">
+                            <input class="input-checkbox100" id="pass-ckb1" type="checkbox" name="password-reveal"
+                                onchange="revealPass();">
                             <label class="label-checkbox101" id="pass-ckb2" for="pass-ckb1">
                                 <i class="fas fa-eye"></i>
                             </label>
@@ -89,7 +95,8 @@
                     </div>
 
                     <div class="container-login100-form-btn p-t-25">
-                        <button id="mainbutton" type="button" onclick="signInButton();" class="login100-form-btn" href="home.html">
+                        <button id="mainbutton" type="button" onclick="signInButton();" class="login100-form-btn"
+                            href="home.html">
                             Login
                         </button>
                     </div>
@@ -100,6 +107,11 @@
                             <img src="img/icon-google.png" alt="GOOGLE">
                             Google
                         </a>-->
+                    <div class="text-center w-full p-t-15">
+                        <a class="txt1 hov1" href="#popup1">
+                            Forgot your password?
+                        </a>
+                    </div>
 
                     <div class="text-center w-full p-t-15">
                         <a class="txt1 hov1" href="register.html">
@@ -112,6 +124,42 @@
         </div>
     </div>
 
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Forgot your password?</h2>
+            <a class="close" href="#" onclick="resetForgotPassForm()">&times;</a>
+            <div class="content">
+                <div class="showPUDiv" id="requestPassEmail">
+                    <p id="limitException">No problem, request a reset here.</p>
+                    <input type="text" id="passRequestEmail" placeholder="Confirm email">
+                    <div class="container-login100-form-btn p-t-25">
+                        <button id="mainbutton" type="button" onclick="forgotpasswordbutton();"
+                            class="login100-form-btn">
+                            Okay
+                        </button>
+                    </div>
+                </div>
+                <div class="hidePUDiv" id="requestPassVcode">
+                    <p>Please confirm the verification code.</p>
+                    <input type="text" id="passVcodeVal" placeholder="Confirm verification code">
+                    <br/>
+                    <br/>
+                    <p>Set your new password here, please.</p>
+                    <input type="text" id="passNpassVal" placeholder="Confirm new password">
+                    <div class="container-login100-form-btn p-t-25">
+                        <button id="mainbutton" type="button" onclick="completeResetForm(true)"
+                            class="login100-form-btn">
+                            Okay
+                        </button>
+                    </div>
+                </div>
+                <div class="hidePUDiv" id="requestPassNPass">
+                    <p>Your password has now been reset.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
 
         var data = {
@@ -120,6 +168,7 @@
         };
         var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
         var cognitoUser = userPool.getCurrentUser();
+        var isComplete = false;
 
         window.onload = function () {
             if (cognitoUser != null) {
@@ -178,20 +227,114 @@
                 },
                 onFailure: function (err) {
                     console.log(err.message || JSON.stringify(err));
-					
-					document.getElementById("inputUsernameDiv").classList.remove('alert-validate-short');
-					document.getElementById("inputPasswordDiv").classList.remove('alert-validate-short');
-						
-					if(err.message == "User does not exist."){
-						console.log("Show that user doesn't exist");
-						document.getElementById("inputUsernameDiv").classList.add('alert-validate-short');
-					}
-					if(err.message == "Incorrect username or password."){
-						console.log("Show that password doesn't match");
-						document.getElementById("inputPasswordDiv").classList.add('alert-validate-short');					
-					}
+
+                    document.getElementById("inputUsernameDiv").classList.remove('alert-validate-short');
+                    document.getElementById("inputPasswordDiv").classList.remove('alert-validate-short');
+
+                    if (err.message == "User does not exist.") {
+                        console.log("Show that user doesn't exist");
+                        document.getElementById("inputUsernameDiv").classList.add('alert-validate-short');
+                    }
+                    if (err.message == "Incorrect username or password.") {
+                        console.log("Show that password doesn't match");
+                        document.getElementById("inputPasswordDiv").classList.add('alert-validate-short');
+                    }
                 },
             });
+        }
+        function forgotpasswordbutton() {
+            var poolData = {
+                UserPoolId: _config.cognito.userPoolId, // Your user pool id here
+                ClientId: _config.cognito.clientId, // Your client id here
+            };
+
+            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+            var userData = {
+                Username: document.getElementById("passRequestEmail").value,
+                Pool: userPool,
+            };
+
+            var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            console.log("cognitoUser" + cognitoUser);
+
+            cognitoUser.forgotPassword({
+                onSuccess: function (result) {
+                    document.getElementById("limitException").innerHTML = "No problem, request a reset here.";
+                    console.log('call result: ' + result);
+                },
+                onFailure: function (err) {
+                    console.log(err);
+                    console.log(err);
+                    document.getElementById("limitException").innerHTML = "No problem, request a reset here.";
+                    if(err.code == "LimitExceededException"){
+                        document.getElementById("limitException").innerHTML = err.message;
+                    }else if(err.code == "UserNotFoundException"){
+                        document.getElementById("limitException").innerHTML = "Sorry, but there are no records of this user found.";
+                    }
+                    document.getElementById("requestPassEmail").classList.add("alert-validate-short");
+                },
+                inputVerificationCode() {
+                    //var verificationCode = prompt('Please input verification code ', '');
+                    //var newPassword = prompt('Enter new password ', '');
+                    document.getElementById("limitException").innerHTML = "No problem, request a reset here.";
+                    displayVerificationPrompt();
+
+                    var checkInput = setInterval(function(){
+                        var verificationCode = document.getElementById("passVcodeVal").value;
+                        var newPassword = document.getElementById("passNpassVal").value;
+                        //console.log("checking input values");
+                        if(verificationCode != "" && newPassword != "" && isComplete){
+                            //console.log("input values set");
+                            cognitoUser.confirmPassword(verificationCode, newPassword, this);
+                            //console.log("new password set");
+                            displayNewPassPrompt();
+                            //console.log("called to change display");
+                            clearInterval(checkInput);
+                            //console.log("clear interval");
+                        }
+                    }, 1000);
+                }
+            });
+        }
+
+        function displayVerificationPrompt(){
+            /*if(document.getElementById("passRequestEmail").value == ""){
+                console.log("nothing here");
+                document.getElementById("requestPassEmail").classList.add("alert-validate-short");
+            }else{
+                console.log("input filled out");*/
+                document.getElementById("requestPassEmail").classList.remove("showPUDiv");
+                document.getElementById("requestPassEmail").classList.add("hidePUDiv");
+                document.getElementById("requestPassVcode").classList.remove("hidePUDiv");
+                document.getElementById("requestPassVcode").classList.add("showPUDiv");
+            //}
+        }
+        function displayNewPassPrompt(){
+            //if(document.getElementById("passVcodeVal").value != "" || document.getElementById("passNpassVal").value != ""){
+                document.getElementById("requestPassVcode").classList.remove("showPUDiv");
+                document.getElementById("requestPassVcode").classList.add("hidePUDiv");
+                document.getElementById("requestPassNPass").classList.remove("hidePUDiv");
+                document.getElementById("requestPassNPass").classList.add("showPUDiv");
+            /*}else{
+                document.getElementById("requestPassVcode").classList.add("alert-validate-short");
+            }*/
+        }
+
+        function completeResetForm(arg1){
+            isComplete = arg1;
+        }
+
+        function resetForgotPassForm(){
+            document.getElementById("requestPassEmail").classList.remove("alert-validate-short");
+            document.getElementById("requestPassVcode").classList.remove("alert-validate-short");
+
+            document.getElementById("requestPassEmail").classList.remove("hidePUDiv");
+            document.getElementById("requestPassEmail").classList.add("showPUDiv");
+            document.getElementById("requestPassVcode").classList.remove("showPUDiv");
+            document.getElementById("requestPassVcode").classList.add("hidePUDiv");
+            document.getElementById("requestPassNPass").classList.remove("showPUDiv");
+            document.getElementById("requestPassNPass").classList.add("hidePUDiv");
         }
     </script>
 
@@ -206,12 +349,12 @@
     <!-- end fast click script -->
 
     <script>
-        function revealPass(){
+        function revealPass() {
             console.log("clicked the third eye");
-            if(document.getElementById("pass-ckb1").checked == true){
+            if (document.getElementById("pass-ckb1").checked == true) {
                 document.getElementById("pass-ckb2").innerHTML = "<i class='fas fa-eye-slash'></i>";
                 document.getElementById("inputPassword").type = "text";
-            }else{
+            } else {
                 document.getElementById("pass-ckb2").innerHTML = "<i class='fas fa-eye'></i>";
                 document.getElementById("inputPassword").type = "password";
             }
@@ -219,7 +362,7 @@
     </script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('body').addClass('loaded');
         });
     </script>
