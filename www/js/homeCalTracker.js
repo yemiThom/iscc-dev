@@ -4,15 +4,6 @@ var meal;
 var foodInput = document.getElementById("foodnameInput").value;
 var created_date = new Date();
 
-if (document.getElementById("tab1-1").checked) {
-    meal = "breakfast";
-}
-if (document.getElementById("tab2-1").checked) {
-    meal = "lunch"
-}
-if (document.getElementById("tab3-1").checked) {
-    meal = "dinner"
-}
 
 
 $("#addFood").click(function () {
@@ -120,6 +111,16 @@ $("#logDiet").click(function () {
     else {
         pain = "yes";
     }*/
+    
+    if (document.getElementById("tab1-1").checked == true) {
+        meal = "breakfast";
+    }
+    if (document.getElementById("tab2-1").checked == true) {
+        meal = "lunch"
+    }
+    if (document.getElementById("tab3-1").checked == true) {
+        meal = "dinner"
+    }
 
     if (document.getElementById("good").checked) {
         day = document.getElementById("good").value;

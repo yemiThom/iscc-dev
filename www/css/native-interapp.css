@@ -214,10 +214,10 @@ select::-ms-expand{
     opacity: 0.5;
 }
 
-.color-grey-dark{color: #72737b}
-.color-magenta{color: #d123bf}
-.color-lylac{color: #775ba6}
-.color-blue-dark{color: #414b76}
+.color-grey-dark{color: #72737b !important}
+.color-magenta{color: #d123bf !important}
+.color-lylac{color: #775ba6 !important}
+.color-blue-dark{color: #414b76 !important}
 
 .bg-grey-dark{background-color: #72737b}
 .bg-magenta{background-color: #d123bf}
