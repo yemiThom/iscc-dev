@@ -39,8 +39,8 @@ function initMap() {
 
 
     //$("#bathroomData").click(function () {
-		
-		function addBathroom(){
+
+    function addBathroom() {
         var title = document.getElementById("placeName").value;
         var rating = document.getElementById("rating").value;
         var btype = document.getElementById("btype").value;
@@ -81,15 +81,15 @@ function initMap() {
                 alert("Not added");
             }
         });
-		}	
+    }
     //});
-	
+
     getMap();
- 
+
     var lat = document.getElementById("placeLat").value;
     var lng = document.getElementById("placeLng").value;
     console.log("LATLNG:" + lat + "" + lng);
-    
+
 
     // Add Marker Function
     function addMarker(props) {
@@ -100,7 +100,7 @@ function initMap() {
             //set Icon Image to public
             //marker.setIcon(props.iconImage);
             markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
-        } else if (props.rating > 2 && < 3.5) {
+        } else if (props.rating > 2 && props.rating < 3.5) {
             //set Icon Image to business
             markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom2.png";
         } else {
@@ -175,32 +175,37 @@ function initMap() {
 
     //GET ALL REVIEWS
     $("#bathroomData").click(function () {
-        $.ajax("https://fast-garden-93601.herokuapp.com/api/reviews", {
+        console.log("check the restroom input function");
+        
+        var lat = document.getElementById("placeLat").value;
+        var lng = document.getElementById("placeLng").value;
+        var bRmCount = 0;
+
+        console.log("lat: " + lat + "; lng: " + lng);
+
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
             data: { get_param: 'value' },
             type: 'GET',
             dataType: 'json',
             success: function (data) {
                 $.each(data, function (index, element) {
                     console.log(element);
-					if(element.lng = ""){
-						alert("lng same");
-							if(element.lng = ""){
-								alert("lng and lat same")
-									//updateBathroom();
-						}
-					}
-					else 
-						addBathroom();
-									
+                    console.log(data.length);
+                    if (element.lng == lng && element.lat == lat) {
+                        alert("lng and lat same")
+                        //updateBathroom();
+                        return;
+                    }else if (element.lng != lng && element.lat != lat){
+                        if(bRmCount == data.length){
+                            addBathroom();
+                        }
+                    }
 
-
+                    bRmCount ++;
                 });
             }
         });
     });
-
-
-
 
 
     //SUBMIT REVIEW
@@ -220,6 +225,3 @@ function initMap() {
         });
     });
 }
-
-
-
