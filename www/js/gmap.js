@@ -38,7 +38,9 @@ function initMap() {
     }
 
 
-    $("#bathroomData").click(function () {
+    //$("#bathroomData").click(function () {
+		
+		function addBathroom(){
         var title = document.getElementById("placeName").value;
         var rating = document.getElementById("rating").value;
         var btype = document.getElementById("btype").value;
@@ -79,110 +81,15 @@ function initMap() {
                 alert("Not added");
             }
         });
-    });
+		}	
+    //});
+	
     getMap();
-    //   if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(showPosition);
-    //   } else {
-    //     alert("Geolocation is not supported by this browser.");
-    //   }
-
-
-
-    // function showPosition(position) {
-    //   lat = position.coords.latitude;
-    //   lng = position.coords.longitude;
-    //   map.setCenter(new google.maps.LatLng(lat, lng));
-    //   //infoWindow.setPosition(new google.maps.LatLng(lat, lng));
-    // infoWindow.setContent('You are here');
-    //              infoWindow.open(map);
-    //              document.getElementById("placeLat").value = lat;
-    //              document.getElementById("placeLng").value = lng;
-    // }
-
-    //Corresponding to html for Add bathroom 
-
+ 
     var lat = document.getElementById("placeLat").value;
     var lng = document.getElementById("placeLng").value;
     console.log("LATLNG:" + lat + "" + lng);
-    /* Code for one marker at a time 
-    // Add marker
-    var marker = new google.maps.Marker({
-        position:{lat:42.4668,lng:-70.9495},
-        //map we want to add it to.
-        map:map,
-        icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-    });
     
-    var infoWindow = new google.maps.InfoWindow({content:'<h1>You are here</h1>'});
-    
-    marker.addListener('click', function(){
-        infoWindow.open(map, marker);
-    });
-    */
-
-    //Arry of Markers 
-
-    // var markers = [
-    //  {
-    //      coords:{lat:53.355282, lng:-6.170307},
-    //      content:'Clontarf East Public Toilet<br>\
-    //      <a href="https://goo.gl/maps/RArBW6eMYBA2">Get Directions</a>'
-    //  },
-    //  {   coords:{lat:52.8584, lng:-7.9300},
-    //      content:'Supervalu Sundrive Complex<br>\
-    //      <a href="https://goo.gl/maps/pK1THpDLfev">Get Directions</a>'
-    //  },
-    //  {   coords:{lat:53.325535, lng:-6.207056},
-    //      content:'Sandymount Public Toilet<br>\
-    //      <a href="https://goo.gl/maps/yTXHt7Mc4TL2">Get Directions</a>'
-    //  },
-    //  {   coords:{lat:53.579336, lng:-6.105054},
-    //      content:'South Beach Public Toilet<br>\
-    //      <a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>'
-    //  },
-    //  {   coords:{lat:53.340139, lng: -6.262659 },
-    //      content:'<h1>Location 5 </h1><br>\
-    //      <a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>'
-    //  },
-    //  {   coords:{lat:51.8584, lng:-8.9300},
-    //      content:'<h1>Location 6 </h1><br>\
-    //      <a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>'
-    //  },
-    //  {   coords:{lat:52.8584, lng:-6.9300},
-    //      content:'Location 7<br>\
-    //      <a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>'
-    //  },
-
-    // ];
-
-
-
-    //var review
-
-    // var bathroom = [
-    //     {
-    //         lat: lat,
-    //         lng: lng,
-    //         title: title,
-    //         content: '<a href = "https://google.com/maps/place/' + lat + ',' + lng + '">Get Directions</a>',
-    //         rating: '<div class="star-rating-display" data-rating="'+rating+'"></div>',
-    //         votes: 1,
-    //         btype: btype,
-    //         review: review,
-    //         created_date: created_date
-    //     }
-    // ];
-
-
-
-    // addMarker({coords:{lat:42.3601, lng:-71.0589},iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-    //  content:'<h1>You are here </h1>'
-    // });
-    // addMarker({coords:{lat:42.8584, lng:-70.9300},content:'<h1>Location 1 </h1>'});
-    // addMarker({coords:{lat:42.7762, lng:-71.0773},content:'<h1>Location 1 </h1>'});
-
-
 
     // Add Marker Function
     function addMarker(props) {
@@ -267,7 +174,7 @@ function initMap() {
 
 
     //GET ALL REVIEWS
-    $("#getAllReviews").click(function () {
+    $("#bathroomData").click(function () {
         $.ajax("https://fast-garden-93601.herokuapp.com/api/reviews", {
             data: { get_param: 'value' },
             type: 'GET',
@@ -275,6 +182,16 @@ function initMap() {
             success: function (data) {
                 $.each(data, function (index, element) {
                     console.log(element);
+					if(element.lng = ""){
+						alert("lng same");
+							if(element.lng = ""){
+								alert("lng and lat same")
+									//updateBathroom();
+						}
+					}
+					else 
+						addBathroom();
+									
 
 
                 });
