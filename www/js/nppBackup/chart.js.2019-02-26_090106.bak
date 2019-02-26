@@ -1,5 +1,4 @@
 function createChart(){ 
-var username = localStorage.getItem("username");
 var canvas = document.getElementById("barChart");
 var ctx = canvas.getContext('2d');
 
@@ -26,7 +25,7 @@ Chart.defaults.global.defaultFontSize = 14;
             success: function (data) {
                 $('#graphTable').empty();
                 $.each(data, function (index, element) {
-                    if (element.username == username) {             
+                    if (element.username == "testuser") {             
                         if (element.day == "good") {
                             var dayGraph = 3;
                         }

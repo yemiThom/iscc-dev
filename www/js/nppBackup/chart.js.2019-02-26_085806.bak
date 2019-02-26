@@ -1,5 +1,4 @@
 function createChart(){ 
-var username = localStorage.getItem("username");
 var canvas = document.getElementById("barChart");
 var ctx = canvas.getContext('2d');
 
@@ -26,7 +25,7 @@ Chart.defaults.global.defaultFontSize = 14;
             success: function (data) {
                 $('#graphTable').empty();
                 $.each(data, function (index, element) {
-                    if (element.username == username) {             
+                    if (element.username == "testuser") {             
                         if (element.day == "good") {
                             var dayGraph = 3;
                         }
@@ -145,6 +144,7 @@ var data = {
       lineTension: 0.1,
       borderColor: "#2980b9", // The main line color
       borderCapStyle: 'square',
+      borderDash: [], // try [5, 15] for instance
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
       pointBorderColor: "black",
@@ -164,6 +164,7 @@ var data = {
       lineTension: 0.1,
       borderColor: "#414b76",
       borderCapStyle: 'butt',
+      borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
       pointBorderColor: "white",
@@ -183,6 +184,7 @@ var data = {
       lineTension: 0.1,
       borderColor: "#775ba6",
       borderCapStyle: 'butt',
+      borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
       pointBorderColor: "white",
@@ -203,6 +205,7 @@ var data = {
       lineTension: 0.1,
       borderColor: "#72737b",
       borderCapStyle: 'butt',
+      borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
       pointBorderColor: "white",
@@ -223,6 +226,7 @@ var data = {
       lineTension: 0.1,
       borderColor: "#d123bf",
       borderCapStyle: 'butt',
+      borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
       pointBorderColor: "white",
@@ -243,6 +247,7 @@ var data = {
       lineTension: 0.1,
       borderColor: "rgb(186, 199, 230)",
       borderCapStyle: 'butt',
+      borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
       pointBorderColor: "white",
@@ -285,5 +290,3 @@ var myBarChart = new Chart(ctx, {
   options: options
 });
 }
-
-helpers.retinaScale(this.chart);

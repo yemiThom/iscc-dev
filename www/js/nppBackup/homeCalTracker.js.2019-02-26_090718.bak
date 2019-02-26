@@ -678,7 +678,7 @@ function getForDate() {
                     var pickerDate = document.getElementById('datepicker').value;
                     console.log("DATE ARRAY: " + pickerDate);
                     var splitDate = pickerDate.split("/");
-                    var newdate = splitDate[2] + '-' + splitDate[1] + '-' + splitDate[0];
+                    var newdate = splitDate[2] + '-' + splitDate[1 + '-' + splitDate[0];
                     console.log(newdate);
                     if (datadate == newdate) {
                         //    alert("Data exists");
