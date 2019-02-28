@@ -658,6 +658,9 @@ iframe {
     padding-left: 15px;
     padding-right: 15px;
   }
+  .login100-form-title img{
+    height: 50%;
+  }
 }
 
 /* Popup box BEGIN */
