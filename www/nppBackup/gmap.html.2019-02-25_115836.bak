@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type='application/javascript' src='js/fastclick.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="js/gmap2.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/native-interapp.css">
+    <link rel="stylesheet" href="css/main-nav.css">
+    <link rel="stylesheet" href="css/toiletFinder.css">
+    <link rel="stylesheet" href="css/pop-up.css">
+    <link rel="stylesheet" href="css/footer-nav.css">
+
+    <!-- Cognito login 
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+    
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+
+    <!-- 
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+</head>
+
+<body>
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png" onclick="openNav()" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/myibd-logo-white.png">
+                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidenav">
+        <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            <a id="email_value"></a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon3" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="uc-info.html">Ulcerative Colitis</a>
+            <a href="get-diagnosis.html">Getting a Diagnosis</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
+            <h4 class="bg-magenta">Contact</h4>
+            <a href="https://www.iscc.ie/contact" target="_blank" data-rel="external">Contact</a>
+        </div>
+
+        <div class="sidenav-section" onclick="window.open('https://www.iscc.ie/support-line', '_blank', 'location=yes')">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
+            <h4 class="bg-magenta">Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="https://www.survey.iscc.ie/living-with-ibd">Living With IBD</a>
+            <a href="https://www.iscc.ie/living-well-with-ibd">Living Well With IBD</a>
+            <a href="https://www.iscc.ie/support-line">Support Telephone Line</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">FAQ</h4>
+            <a href="https://www.iscc.ie/faq">FAQ</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+
+    </div>
+    <!-- Side Bar -->
+
+    <!-- Start Map Div -->
+    <div id="swipe-area" class="swipe-area"></div>
+    <div id="map"></div>
+    <!-- End Map Div -->
+
+    <div class="reviewBtn_div">
+        <a class="button" href="#popup1">Create a review here</a>
+    </div>
+
+    <!--Start pop-up form Div -->
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Create a review</h2>
+            <h3>At your location</h3>
+            <a class="close" href="gmap.html">&times;</a>
+            <br />
+            <br />
+
+            <div class="content">
+                <div class="displayBlock padding-btm">
+                    <label class="displayBlock">Place Name:</label>
+                    <input id="placeName" class="txtBorder" type="text">
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="nodisplay padding-btm">
+                    <label class="displayBlock">Place Lat:</label>
+                    <input id="placeLat" class="txtBorder" type="hidden">
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="nodisplay padding-btm">
+                    <label class="displayBlock">Place Lng:</label>
+                    <input id="placeLng" class="txtBorder" type="hidden">
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="displayBlock padding-btm">
+                    <label class="displayBlock">Type of Establishment:</label>
+                    <div class="custom-select dispInlineBlock">
+						<div class="select">
+							<select id="btype">
+								<option value="public">Public</option>
+								<option value="private">Private</option>
+								<option value="business">Business</option>
+							</select>
+						</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ********* Use This To Display Ratings In Markers ********* -->
+            <!--<div class="star-rating-display" data-rating="4"></div>-->
+
+            <label>Leave your review:</label>
+            <textarea id="rating" class="text-areas txtBorder" rows="6" cols="32" placeholder="What did you think?"></textarea>
+
+            <form class="star-rating">
+                <label>
+                    <input type="radio" name="stars" value="1" />
+                    <span class="icon">&#9733;</span>
+                </label>
+                <label>
+                    <input type="radio" name="stars" value="2" />
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                </label>
+                <label>
+                    <input type="radio" name="stars" value="3" />
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                </label>
+                <label>
+                    <input type="radio" name="stars" value="4" />
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                </label>
+                <label>
+                    <input type="radio" name="stars" value="5" />
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                    <span class="icon">&#9733;</span>
+                </label>
+            </form>
+            <br />
+            <br />
+            <!-- Submit Button -->
+            <div id="review_submit" class="reviewBtn">
+                <input id="bathroomData" type="button" onClick="insertNew();"value="Submit Review">
+            </div>
+        </div>
+    </div>
+    <!--End pop-up form Div -->
+
+    <!-- Start Footer Nav Area -->
+    <div class="default-footer">
+        <div class="mobile-bottom-bar">
+            <a href="home.html" class="footer-link">
+                <!--i class="fas fa-home"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/home.png" />
+                <span class='footer-text'>Home</span>
+            </a>
+            <a href="health-tracker.html" class="footer-link">
+                <!--i class="fas fa-file-contract"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" />
+                <span class='footer-text'>Health Tracker</span>
+            </a>
+            <a href="gmap.html" class="footer-link">
+                <!--i class="fas fa-map-marker-alt"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" style="width: 11px;" />
+                <span class='footer-text'>Restrooms</span>
+            </a>
+            <a href="mindfulness.html" class="footer-link">
+                <!--i class="fas fa-spa"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" />
+                <span class='footer-text'>Mindfulness</span>
+            </a>
+            <a href="nearby.html" class="footer-link">
+                <!--i class="fas fa-comments"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" style="width: 13px;" />
+                <span class='footer-text'>Nearby</span>
+            </a>
+            <!--a href="profile-card.html" class="footer-link">
+                    <i class="fas fa-user-circle"></i>
+                    <span class='footer-text'>Profile</span>
+                </a-->
+        </div>
+    </div>
+    <!-- End Footer Nav Area -->
+
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+</body>
+<!-- Start Sidebar script -->
+<script type="text/javascript">
+    /* Set the width of the sidbar to 250px */
+    function openNav() {
+        /*document.getElementById("sidebar").style.width = "250px";*/
+        document.getElementById("sidebar").style.left = "0px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "100%";
+    }
+
+    /* Set the width of the sidebar to 0 */
+    function closeNav() {
+        /*document.getElementById("sidebar").style.width = "0";*/
+        document.getElementById("sidebar").style.left = "-260px";
+            document.getElementById("swipe-area").style.left = "0px";
+            document.getElementById("swipe-area").style.width = "25px";
+    }
+</script>
+<!-- End Sidebar script -->
+<!-- Start swipe sidebar script -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#swipe-area").swipe({
+            //Generic swipe handler for all directions
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+
+                switch (direction) {
+                    case "right":
+                        console.log("swiped right!");
+                        openNav();
+                        break;
+                    case "left":
+                        console.log("swiped left");
+                        closeNav();
+                        break;
+                }
+            },
+            //Default is 75px, set to 0 for demo so any distance triggers swipe
+            threshold: 75
+        });
+    });
+</script>
+<!-- End swipe sidebar script -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqGpddivbH6TcqlWcbtRu9mFxFjiK3gA&callback=initMap">
+
+</script>
+<!-- End Sidebar script -->
+
+</html>
