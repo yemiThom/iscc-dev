@@ -681,8 +681,10 @@ function getForDate() {
                     var newdate = splitDate[2] + '-' + splitDate[1] + '-' + splitDate[0];
                     console.log(newdate);
                     if (datadate == newdate) {
+                        alert(datadate);
                         //    alert("Data exists");
-                        console.log(element);
+                        alert(newdate);
+                        alert(JSON.stringify(element));
                         document.getElementById("submitData").disabled = true;
                         if (element.day = "good") {
                             document.getElementById("good").checked = true;
