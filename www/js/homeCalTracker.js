@@ -734,7 +734,7 @@ function getForDate() {
                             document.getElementById("stool-Hard").checked = true;
                             $("#toggleReveal-stool").slideDown();
                         }
-                        if (element.bowelm == "light") {
+                        if (element.bowelm == "Light") {
                             document.getElementById("bowel-light").checked = true;
                             $("#toggleReveal-movement").slideDown();
                         }
@@ -742,7 +742,7 @@ function getForDate() {
                             document.getElementById("bowel-Medium").checked = true;
                             $("#toggleReveal-movement").slideDown();
                         }
-                        if (element.bowelm == "heavy") {
+                        if (element.bowelm == "Heavy") {
                             document.getElementById("bowel-heavy").checked = true;
                             $("#toggleReveal-movement").slideDown();
                         }
