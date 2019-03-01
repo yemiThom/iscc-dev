@@ -681,90 +681,90 @@ function getForDate() {
                     var newdate = splitDate[2] + '-' + splitDate[1] + '-' + splitDate[0];
                     console.log(newdate);
                     if (datadate == newdate) {
-                        alert(datadate);
+                        //alert(datadate);
                         //    alert("Data exists");
-                        alert(newdate);
-                        alert(JSON.stringify(element));
+                        //alert(newdate);
+                        //alert(JSON.stringify(element));
                         document.getElementById("submitData").disabled = true;
-                        if (element.day = "good") {
+                        if (element.day == "good") {
                             document.getElementById("good").checked = true;
                             $("#toggleReveal-day").slideDown();
                         }
-                        if (element.day = "okay") {
+                        if (element.day == "okay") {
                             document.getElementById("okay").checked = true;
                             $("#toggleReveal-day").slideDown();
                         }
-                        if (element.day = "bad") {
+                        if (element.day == "bad") {
                             document.getElementById("bad").checked = true;
                             $("#toggleReveal-day").slideDown();
                         }
-                        if (element.pain = "Low") {
+                        if (element.pain == "Low") {
                             document.getElementById("pain-Low").checked = true;
                             $("#toggleReveal-pain").slideDown();
                         }
-                        if (element.pain = "Medium") {
+                        if (element.pain == "Medium") {
                             document.getElementById("pain-Medium").checked = true;
                             $("#toggleReveal-pain").slideDown();
                         }
-                        if (element.pain = "High") {
+                        if (element.pain == "High") {
                             document.getElementById("pain-High").checked = true;
                             $("#toggleReveal-pain").slideDown();
                         }
-                        if (element.stress = "Low") {
+                        if (element.stress == "Low") {
                             document.getElementById("stress-Low").checked = true;
                             $("#toggleReveal-stress").slideDown();
                         }
-                        if (element.stress = "Medium") {
+                        if (element.stress == "Medium") {
                             document.getElementById("stress-Medium").checked = true;
                             $("#toggleReveal-stress").slideDown();
                         }
-                        if (element.stress = "Hard") {
+                        if (element.stress == "Hard") {
                             document.getElementById("stress-High").checked = true;
                             $("#toggleReveal-stress").slideDown();
                         }
-                        if (element.stool = "Soft") {
+                        if (element.stool == "Soft") {
                             document.getElementById("stool-Soft").checked = true;
                             $("#toggleReveal-stool").slideDown();
                         }
-                        if (element.stool = "Medium") {
+                        if (element.stool == "Medium") {
                             document.getElementById("stool-Medium").checked = true;
                             $("#toggleReveal-stool").slideDown();
                         }
-                        if (element.stool = "Hard") {
+                        if (element.stool == "Hard") {
                             document.getElementById("stool-Hard").checked = true;
                             $("#toggleReveal-stool").slideDown();
                         }
-                        if (element.bowelm = "light") {
+                        if (element.bowelm == "light") {
                             document.getElementById("bowel-light").checked = true;
                             $("#toggleReveal-movement").slideDown();
                         }
-                        if (element.bowelm = "Medium") {
+                        if (element.bowelm == "Medium") {
                             document.getElementById("bowel-Medium").checked = true;
                             $("#toggleReveal-movement").slideDown();
                         }
-                        if (element.bowelm = "heavy") {
+                        if (element.bowelm == "heavy") {
                             document.getElementById("bowel-heavy").checked = true;
                             $("#toggleReveal-movement").slideDown();
                         }
-                        if (element.bowelf = "1-4") {
+                        if (element.bowelf == "1-4") {
                             document.getElementById("1-4").checked = true;
                             $("#toggleReveal-frequency").slideDown();
                         }
-                        if (element.bowelf = "5-8") {
+                        if (element.bowelf == "5-8") {
                             document.getElementById("5-8").checked = true;
                             $("#toggleReveal-frequency").slideDown();
                         }
-                        if (element.bowelf = "9OrMore") {
+                        if (element.bowelf == "9OrMore") {
                             document.getElementById("9OrMore").checked = true;
                             $("#toggleReveal-frequency").slideDown();
                         }
-                        if (element.bvisit = "1-2") {
+                        if (element.bvisit == "1-2") {
                             document.getElementById("1-2").checked = true;
                         }
-                        if (element.bvisit = "3-4") {
+                        if (element.bvisit == "3-4") {
                             document.getElementById("3-4").checked = true;
                         }
-                        if (element.bvisit = "5OrMore") {
+                        if (element.bvisit == "5OrMore") {
                             document.getElementById("5OrMore").checked = true;
                         }
                     } else {
