@@ -718,7 +718,7 @@ function getForDate() {
                             document.getElementById("stress-Medium").checked = true;
                             $("#toggleReveal-stress").slideDown();
                         }
-                        if (element.stress == "Hard") {
+                        if (element.stress == "High") {
                             document.getElementById("stress-High").checked = true;
                             $("#toggleReveal-stress").slideDown();
                         }
