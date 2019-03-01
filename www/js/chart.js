@@ -275,7 +275,10 @@ var options = {
                      fontSize: 20 
                   }
             }]            
-        }  
+        }, 
+         tooltips: {
+         enabled: false
+    } 
 };
 
 // Chart declaration:
