@@ -5,6 +5,9 @@ function initMap() {
     var contStart = "<a href = 'https://google.com/maps/place/";
     //end of content href
     var contEnd = "'>Get Directions</a>";
+
+    var bRmCount = 0;
+    var bathroomID;
     //map options
     var options = {
         zoom: 16,
@@ -109,9 +112,56 @@ function initMap() {
 
     getMap();
 
+    function updateOrAdd(){
+        alert("In helper");
+        if( bRmCount == 1){
+         alert("Update");   
+        }
+        else {
+            alert("Add Bathroom");
+            addBathroom();
+        }
+    }
+
     var lat = document.getElementById("placeLat").value;
     var lng = document.getElementById("placeLng").value;
     console.log("LATLNG:" + lat + "" + lng);
+
+     //GET ALL REVIEWS
+    $("#bathroomData").click(function () {
+            console.log("check the restroom input function");
+
+            var lat = document.getElementById("placeLat").value;
+            var lng = document.getElementById("placeLng").value;
+            
+
+            console.log("lat: " + lat + "; lng: " + lng);
+
+            $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
+                data: { get_param: 'value' },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data, function (index, element) {
+                         if (element.lng == lng && element.lat == lat) {
+                             alert("lng and lat same");
+                             bRmCount ++
+                             bathroomID = element.id;
+                             alert(element.id);
+
+                        }  
+                    });      
+
+
+                         
+                }
+
+            });
+
+        updateOrAdd();
+
+
+        });
 
 
     // Add Marker Function
@@ -178,40 +228,6 @@ function initMap() {
         });
 
 
-
-        //GET ALL REVIEWS
-        $("#bathroomData").click(function () {
-            console.log("check the restroom input function");
-
-            var lat = document.getElementById("placeLat").value;
-            var lng = document.getElementById("placeLng").value;
-            var bRmCount = 0;
-
-            console.log("lat: " + lat + "; lng: " + lng);
-
-            $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
-                data: { get_param: 'value' },
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    $.each(data, function (index, element) {
-                        console.log(element);
-                        console.log(data.length);
-                        if (element.lng == lng && element.lat == lat) {
-                            alert("lng and lat same")
-                            //updateBathroom();
-                            return;
-                        } else if (element.lng != lng && element.lat != lat) {
-                            if (bRmCount == data.length) {
-                                addBathroom();
-                            }
-                        }
-
-                        bRmCount++;
-                    });
-                }
-            });
-        });
 
 
         //SUBMIT REVIEW
