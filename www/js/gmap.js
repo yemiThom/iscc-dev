@@ -114,10 +114,10 @@ function initMap() {
 
     function updateOrAdd(){
         alert("In helper");
-        if( bRmCount == 1){
+        if( bRmCount = 1){
          alert("Update");   
         }
-        else {
+        else if (bRmCount = 0){
             alert("Add Bathroom");
             addBathroom();
         }
@@ -126,6 +126,25 @@ function initMap() {
     var lat = document.getElementById("placeLat").value;
     var lng = document.getElementById("placeLng").value;
     console.log("LATLNG:" + lat + "" + lng);
+
+
+    function toRad(Value) {
+    return Value * Math.PI / 180;
+    }
+
+    function calcDistance(lat1,lng1,lat2,lng2) {
+        var R = 6371; // km
+        var dLat = toRad(lat2-lat1);
+        var dLon = toRad(lng2-lng1);
+        var lat1 = toRad(lat1);
+        var lat2 = toRad(lat2);
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c;
+        return Math.floor(d*100)/100;
+            };
+
 
      //GET ALL REVIEWS
     $("#bathroomData").click(function () {
@@ -143,13 +162,19 @@ function initMap() {
                 dataType: 'json',
                 success: function (data) {
                     $.each(data, function (index, element) {
-                         if (element.lng == lng && element.lat == lat) {
-                             alert("lng and lat same");
-                             bRmCount ++
-                             bathroomID = element.id;
-                             alert(element.id);
-
-                        }  
+                         //if (element.lng == lng && element.lat == lat) {
+                            alert(JSON.stringify(element));
+                            alert(lat);
+                            alert(lng);
+                            var distBetween = calcDistance(lat,lng,element.lat,element.lng);
+                            alert(distBetween);
+                            if(distBetween <= 200){
+                                alert("lng and lat same");
+                                alert("updateBathroom");                                
+                                bRmCount ++
+                            }
+                            //bathroomID = element.id;
+                            // alert(element.id);                    
                     });      
 
 
