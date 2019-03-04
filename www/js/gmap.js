@@ -5,7 +5,7 @@ function initMap() {
     var contStart = "<a href = 'https://google.com/maps/place/";
     //end of content href
     var contEnd = "'>Get Directions</a>";
-
+    var lngpos, latpos;
     var bRmCount = 0;
     var bathroomID;
     //map options
@@ -35,6 +35,8 @@ function initMap() {
 
             document.getElementById("placeLat").value = position.coords.latitude;
             document.getElementById("placeLng").value = position.coords.longitude;
+            latpos = position.coords.latitude;
+            lngpos = position.coords.longitude;
         });
     }
 
@@ -114,18 +116,18 @@ function initMap() {
 
     function updateOrAdd(){
         alert("In helper");
-        if( bRmCount = 1){
+        if( bRmCount == 1){
          alert("Update");   
         }
-        else if (bRmCount = 0){
-            alert("Add Bathroom");
+        else{
+           alert(bRmCount);
             addBathroom();
         }
     }
 
-    var lat = document.getElementById("placeLat").value;
-    var lng = document.getElementById("placeLng").value;
-    console.log("LATLNG:" + lat + "" + lng);
+    //var lat = document.getElementById("placeLat").value;
+    //var lng = document.getElementById("placeLng").value;
+    //console.log("LATLNG:" + lat + "" + lng);
 
 
     function toRad(Value) {
@@ -150,11 +152,11 @@ function initMap() {
     $("#bathroomData").click(function () {
             console.log("check the restroom input function");
 
-            var lat = document.getElementById("placeLat").value;
-            var lng = document.getElementById("placeLng").value;
+             var lat = document.getElementById("placeLat").value;
+             var lng = document.getElementById("placeLng").value;
             
 
-            console.log("lat: " + lat + "; lng: " + lng);
+            alert("lat: " + lat + "; lng: " + lng);
 
             $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
                 data: { get_param: 'value' },
@@ -164,26 +166,38 @@ function initMap() {
                     $.each(data, function (index, element) {
                          //if (element.lng == lng && element.lat == lat) {
                             alert(JSON.stringify(element));
-                            alert(lat);
-                            alert(lng);
-                            var distBetween = calcDistance(lat,lng,element.lat,element.lng);
+                            //alert(latpos);
+                            //alert(lngpos);
+                            var distBetween = calcDistance(latpos,lngpos,element.lat,element.lng);
                             alert(distBetween);
-                            if(distBetween <= 200){
+                            if(distBetween <= 5){
                                 alert("lng and lat same");
                                 alert("updateBathroom");                                
-                                bRmCount ++
+                                bRmCount = 1;
+                                alert(bRmCount);
+                                bathroomID = elemenyt.id;
+                                alert(bathroomID);
+
+                            }
+
+                            else {
+                                bRmCount = 0;
+                                
+                                //addBathroom();
                             }
                             //bathroomID = element.id;
                             // alert(element.id);                    
-                    });      
+                    });   
+                        updateOrAdd();   
 
 
                          
                 }
 
+         
             });
 
-        updateOrAdd();
+       
 
 
         });
