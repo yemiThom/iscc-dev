@@ -198,7 +198,6 @@
     height: 90vh;
     width: 165vw;
 
-    left: -35px;
     
     /*-webkit-transform: rotate(90deg);	
     -moz-transform: rotate(90deg);
@@ -206,7 +205,8 @@
     -o-transform: rotate(90deg);
     transform: rotate(90deg);
 
-    top: -52px;*/
+    top: -52px;
+    left: -35px;*/
 }
 .overflow-xscroll{
     overflow-x: scroll;
