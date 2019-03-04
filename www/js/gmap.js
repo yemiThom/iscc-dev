@@ -8,6 +8,9 @@ function initMap() {
     var lngpos, latpos;
     var bRmCount = 0;
     var bathroomID;
+    var bathroomVote;
+    var bathroomRating;
+    var bathroomReview;
     //map options
     var options = {
         zoom: 16,
@@ -74,6 +77,7 @@ function initMap() {
         var btype = document.getElementById("btype").value;
         var lat = document.getElementById("placeLat").value;
         var lng = document.getElementById("placeLng").value;
+        var review = document.getElementById("review").value; 
         var created_date = new Date();
 
 
@@ -83,20 +87,20 @@ function initMap() {
             "lng": lng,
             "title": title,
             "content": contStart + lat + ',' + lng + contEnd,
-            "rating": 2,
-            "votes": 0,
+            "rating": rating,
+            "votes": 1,
             "btype": btype,
-            "review": 1,
+            "review": review,
             "created_date": created_date
         };
 
-        alert(JSON.stringify(bathroom));
+        alert("Adding following bathroom: " + JSON.stringify(bathroom));
 
         console.log(JSON.stringify(bathroom));
 
 
         //SUBMIT BATHROOM
-        $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms/", {
             data: JSON.stringify(bathroom),
             accept: "application/json",
             contentType: "application/json",
@@ -117,7 +121,50 @@ function initMap() {
     function updateOrAdd(){
         alert("In helper");
         if( bRmCount == 1){
-         alert("Update");   
+         //alert("Update"); 
+         var title = document.getElementById("placeName").value;
+                                var rating = document.querySelector('input[name="stars"]:checked').value;
+                                var btype = document.getElementById("btype").value;
+                                var lat = document.getElementById("placeLat").value;
+                                var lng = document.getElementById("placeLng").value;
+                                var review = document.getElementById("review").value + ' ' + 'Rating: ' + rating + ' ' + bathroomReview; 
+                                var votes = parseInt(bathroomVote, 10) + 1;
+                                var starRating = parseInt( bathroomRating, 10 ) + parseInt(rating, 10);
+                                var created_date = new Date();
+
+
+                                var bathroomUpdate = {
+                                    "lat": lat,
+                                    "lng": lng,
+                                    "title": title,
+                                    "content": contStart + lat + ',' + lng + contEnd,
+                                    "rating": starRating,
+                                    "votes": votes,
+                                    "btype": btype,
+                                    "review":  review,
+                                    "created_date": created_date
+                                };
+
+                                alert(JSON.stringify(bathroomUpdate));
+
+                                console.log(JSON.stringify(bathroomUpdate));
+
+
+                                //UPDATE BATHROOM
+                                $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms/"+bathroomID, {
+                                    data: JSON.stringify(bathroomUpdate),
+                                    accept: "application/json",
+                                    contentType: "application/json",
+                                    method: "PUT",
+                                    success: function () {
+                                        alert("Updated");
+                                        //console.log(bathroom);
+                                    },
+                                    error: function () {
+                                        alert("Not added");
+                                    }
+                                });
+
         }
         else{
            alert(bRmCount);
@@ -125,8 +172,8 @@ function initMap() {
         }
     }
 
-    //var lat = document.getElementById("placeLat").value;
-    //var lng = document.getElementById("placeLng").value;
+    var lat = document.getElementById("placeLat").value;
+    var lng = document.getElementById("placeLng").value;
     //console.log("LATLNG:" + lat + "" + lng);
 
 
@@ -156,7 +203,7 @@ function initMap() {
              var lng = document.getElementById("placeLng").value;
             
 
-            alert("lat: " + lat + "; lng: " + lng);
+            //alert("lat: " + lat + "; lng: " + lng);
 
             $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
                 data: { get_param: 'value' },
@@ -165,18 +212,20 @@ function initMap() {
                 success: function (data) {
                     $.each(data, function (index, element) {
                          //if (element.lng == lng && element.lat == lat) {
-                            alert(JSON.stringify(element));
+                            //alert(JSON.stringify(element));
                             //alert(latpos);
                             //alert(lngpos);
                             var distBetween = calcDistance(latpos,lngpos,element.lat,element.lng);
-                            alert(distBetween);
-                            if(distBetween <= 5){
-                                alert("lng and lat same");
-                                alert("updateBathroom");                                
+                            //alert(distBetween);
+                            if(distBetween <= 200){
+                                alert("This bathroom is close to another");                                
                                 bRmCount = 1;
-                                alert(bRmCount);
-                                bathroomID = elemenyt.id;
-                                alert(bathroomID);
+                                //alert(bRmCount);
+                                bathroomID = element.id;
+                                alert("ID of other bathroom:" + bathroomID);
+                                bathroomVote = element.votes;
+                                bathroomRating = element.rating;
+                                bathroomReview = element.review;
 
                             }
 
@@ -236,10 +285,14 @@ function initMap() {
                 //icon:props.iconImage
             });
 
+
             //Check for content
             if (props.content) {
+                //var newRating = parseInt(props.rating, 10)/parseInt(props.votes, 10)
                 var infoWindow = new google.maps.InfoWindow({
-                    content: "Title: " + props.title + "<br><br> Establishment: " + props.btype + "<br><br> Review: " + props.review + "<br><br> Rating: " + props.rating + "<br><br> " + props.content
+
+
+                    content: "Title: " + props.title + "<br><br> Establishment: " + props.btype + "<br><br> Review: " + props.review + "<br><br> Rating: " + props.rating/props.votes + "<br><br> " + props.content + props.votes
                 });
 
                 marker.addListener('click', function () {
