@@ -771,85 +771,85 @@ function getForDate() {
                         console.log("No data for this date");
                         document.getElementById("good").checked = false;
                         document.getElementById("submitData").disabled = false;
-                        if (element.day = "good") {
+                        if (element.day == "good") {
                             document.getElementById("good").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.day = "okay") {
+                        if (element.day == "okay") {
                             document.getElementById("okay").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.day = "bad") {
+                        if (element.day == "bad") {
                             document.getElementById("bad").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.pain = "Low") {
+                        if (element.pain == "Low") {
                             document.getElementById("pain-Low").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.pain = "Medium") {
+                        if (element.pain == "Medium") {
                             document.getElementById("pain-Medium").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.pain = "High") {
+                        if (element.pain == "High") {
                             document.getElementById("pain-High").checked = false;
                             $("#toggleReveal-day").slideUp();
                         }
-                        if (element.stress = "Low") {
+                        if (element.stress == "Low") {
                             document.getElementById("stress-Low").checked = false;
                             $("#toggleReveal-stress").slideUp();
                         }
-                        if (element.stress = "Medium") {
+                        if (element.stress == "Medium") {
                             document.getElementById("stress-Medium").checked = false;
                             $("#toggleReveal-stress").slideUp();
                         }
-                        if (element.stress = "Hard") {
+                        if (element.stress == "Hard") {
                             document.getElementById("stress-High").checked = false;
                             $("#toggleReveal-stress").slideUp();
                         }
-                        if (element.stool = "Soft") {
+                        if (element.stool == "Soft") {
                             document.getElementById("stool-Soft").checked = false;
                             $("#toggleReveal-stool").slideUp();
                         }
-                        if (element.stool = "Medium") {
+                        if (element.stool == "Medium") {
                             document.getElementById("stool-Medium").checked = false;
                             $("#toggleReveal-stool").slideUp();
                         }
-                        if (element.stool = "Hard") {
+                        if (element.stool == "Hard") {
                             document.getElementById("stool-Hard").checked = false;
                             $("#toggleReveal-stool").slideUp();
                         }
-                        if (element.bowelm = "light") {
+                        if (element.bowelm == "light") {
                             document.getElementById("bowel-light").checked = false;
                             $("#toggleReveal-movement").slideUp();
                         }
-                        if (element.bowelm = "Medium") {
+                        if (element.bowelm == "Medium") {
                             document.getElementById("bowel-Medium").checked = false;
                             $("#toggleReveal-movement").slideUp();
                         }
-                        if (element.bowelm = "heavy") {
+                        if (element.bowelm == "heavy") {
                             document.getElementById("bowel-heavy").checked = false;
                             $("#toggleReveal-movement").slideUp();
                         }
-                        if (element.bowelf = "1-4") {
+                        if (element.bowelf == "1-4") {
                             document.getElementById("1-4").checked = false;
                             $("#toggleReveal-frequency").slideUp();
                         }
-                        if (element.bowelf = "5-8") {
+                        if (element.bowelf == "5-8") {
                             document.getElementById("5-8").checked = false;
                             $("#toggleReveal-frequency").slideUp();
                         }
-                        if (element.bowelf = "9OrMore") {
+                        if (element.bowelf == "9OrMore") {
                             document.getElementById("9OrMore").checked = false;
                             $("#toggleReveal-frequency").slideUp();
                         }
-                        if (element.bvisit = "1-2") {
+                        if (element.bvisit == "1-2") {
                             document.getElementById("1-2").checked = false;
                         }
-                        if (element.bvisit = "3-4") {
+                        if (element.bvisit == "3-4") {
                             document.getElementById("3-4").checked = false;
                         }
-                        if (element.bvisit = "5OrMore") {
+                        if (element.bvisit == "5OrMore") {
                             document.getElementById("5OrMore").checked = false;
                         }
                     }
@@ -868,7 +868,7 @@ function getDoclog() {
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index, element) {
-                if (element.username = username) {
+                if (element.username == username) {
                     console.log(element.date);
                     console.log(element.date.toString().substring(0, 10));
                     var datadate = element.date.toString().substring(0, 10);
