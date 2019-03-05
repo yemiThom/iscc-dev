@@ -218,7 +218,7 @@ function initMap() {
                             //alert(lngpos);
                             var distBetween = calcDistance(latpos,lngpos,element.lat,element.lng);
                             //alert(distBetween);
-                            if(distBetween <= 200){
+                            if(distBetween <= 0.200){
                                 alert("This bathroom is close to another");                                
                                 bRmCount = 1;
                                 //alert(bRmCount);
