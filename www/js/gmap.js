@@ -292,7 +292,7 @@ function initMap() {
                 var infoWindow = new google.maps.InfoWindow({
 
 
-                    content: "Title: " + props.title + "<br><br> Establishment: " + props.btype + "<br><br> Review: " + props.review + "<br><br> Rating: " + (props.rating/props.votes) + "<br><br> " + props.content + props.votes
+                    content: "Title: " + props.title + "<br><br> Establishment: " + props.btype + "<br><br> Review: " + props.review + "<br><br> Rating: " + (props.rating/props.votes) + "<br><br> " + props.content + "<br><br> Votes: " + props.votes
                 });
 
                 marker.addListener('click', function () {
