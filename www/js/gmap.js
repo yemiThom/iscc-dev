@@ -43,6 +43,7 @@ function initMap() {
         });
     }
 
+	getMap();
 
 
     //GET ALL MAP DATA
@@ -73,7 +74,7 @@ function initMap() {
 
     function addBathroom() {
         var title = document.getElementById("placeName").value;
-        var rating = document.getElementById("rating").value;
+        var rating = document.querySelector('input[name="stars"]:checked').value;
         var btype = document.getElementById("btype").value;
         var lat = document.getElementById("placeLat").value;
         var lng = document.getElementById("placeLng").value;
@@ -116,7 +117,7 @@ function initMap() {
     }
     //});
 
-    getMap();
+    
 
     function updateOrAdd(){
         alert("In helper");
@@ -127,7 +128,7 @@ function initMap() {
                                 var btype = document.getElementById("btype").value;
                                 var lat = document.getElementById("placeLat").value;
                                 var lng = document.getElementById("placeLng").value;
-                                var review = document.getElementById("review").value + ' ' + 'Rating: ' + rating + ' ' + bathroomReview; 
+                                var review = document.getElementById("review").value + '<br>' + 'Rating: ' + rating + ' ' + bathroomReview; 
                                 var votes = parseInt(bathroomVote, 10) + 1;
                                 var starRating = parseInt( bathroomRating, 10 ) + parseInt(rating, 10);
                                 var created_date = new Date();
@@ -256,22 +257,22 @@ function initMap() {
     function addMarker(props) {
         var markerIcon;
         //Check for custom icon
-        console.log("props.btype: " + props.btype);
-        if (props.rating >= 3.5) {
+        console.log("Rating: " + props.rating/props.votes);
+//        if (props.rating/props.votes >= 3.5) {
             //set Icon Image to public
             //marker.setIcon(props.iconImage);
-            markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
-        } else if (props.rating >= 2) {
-            console.log("props.btype: " + props.btype);
-            if (props.rating < 2) {
+  //          markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
+    //    } else if (props.rating/props.votes >= 2) {
+      //      console.log("props.rating: " + props.rating);
+            if (props.rating/props.votes >= 3.5) {
                 //set Icon Image to public
                 //marker.setIcon(props.iconImage);
                 markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
-            } else if (props.rating > 2 && props.rating < 3.5) {
-                //set Icon Image to business
+            } else if (props.rating/props.votes > 2 && props.ratingprops.votes < 3.5) {
+                //set Icon Image to yellow
                 markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom2.png";
             } else {
-                //set Icon Image to private
+                //set Icon Image to red
                 markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom3.png";
             }
 
@@ -288,11 +289,10 @@ function initMap() {
 
             //Check for content
             if (props.content) {
-                //var newRating = parseInt(props.rating, 10)/parseInt(props.votes, 10)
                 var infoWindow = new google.maps.InfoWindow({
 
 
-                    content: "Title: " + props.title + "<br><br> Establishment: " + props.btype + "<br><br> Review: " + props.review + "<br><br> Rating: " + props.rating/props.votes + "<br><br> " + props.content + props.votes
+                    content: "Title: " + props.title + "<br><br> Establishment: " + props.btype + "<br><br> Review: " + props.review + "<br><br> Rating: " + (props.rating/props.votes) + "<br><br> " + props.content + props.votes
                 });
 
                 marker.addListener('click', function () {
@@ -339,4 +339,4 @@ function initMap() {
             });
         });
     }
-}
+//}
