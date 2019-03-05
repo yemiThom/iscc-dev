@@ -176,7 +176,7 @@ z-index:200;
     font-size:11px;
 }
 #chat-messages-container{
-    position: absolute;
+    /*position: absolute;*/
     overflow-y: scroll;
     top: 60px;
     width: 100%;
