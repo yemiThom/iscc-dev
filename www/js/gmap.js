@@ -43,7 +43,7 @@ function initMap() {
         });
     }
 
-	getMap();
+    getMap();
 
 
     //GET ALL MAP DATA
@@ -78,7 +78,7 @@ function initMap() {
         var btype = document.getElementById("btype").value;
         var lat = document.getElementById("placeLat").value;
         var lng = document.getElementById("placeLng").value;
-        var review = document.getElementById("review").value; 
+        var review = document.getElementById("review").value;
         var created_date = new Date();
 
 
@@ -117,58 +117,58 @@ function initMap() {
     }
     //});
 
-    
 
-    function updateOrAdd(){
+
+    function updateOrAdd() {
         alert("In helper");
-        if( bRmCount == 1){
-         //alert("Update"); 
-         var title = document.getElementById("placeName").value;
-                                var rating = document.querySelector('input[name="stars"]:checked').value;
-                                var btype = document.getElementById("btype").value;
-                                var lat = document.getElementById("placeLat").value;
-                                var lng = document.getElementById("placeLng").value;
-                                var review = document.getElementById("review").value + '. Rating: ' + rating + ' <br> ' + 'Review: ' + bathroomReview; 
-                                var votes = parseInt(bathroomVote, 10) + 1;
-                                var starRating = parseInt( bathroomRating, 10 ) + parseInt(rating, 10);
-                                var created_date = new Date();
+        if (bRmCount == 1) {
+            //alert("Update"); 
+            var title = document.getElementById("placeName").value;
+            var rating = document.querySelector('input[name="stars"]:checked').value;
+            var btype = document.getElementById("btype").value;
+            var lat = document.getElementById("placeLat").value;
+            var lng = document.getElementById("placeLng").value;
+            var review = document.getElementById("review").value + '. Rating: ' + rating + ' <br/> ' + 'Review: ' + bathroomReview + ' <br/>';
+            var votes = parseInt(bathroomVote, 10) + 1;
+            var starRating = parseInt(bathroomRating, 10) + parseInt(rating, 10);
+            var created_date = new Date();
 
 
-                                var bathroomUpdate = {
-                                    "lat": lat,
-                                    "lng": lng,
-                                    "title": title,
-                                    "content": contStart + lat + ',' + lng + contEnd,
-                                    "rating": starRating,
-                                    "votes": votes,
-                                    "btype": btype,
-                                    "review":  review,
-                                    "created_date": created_date
-                                };
+            var bathroomUpdate = {
+                "lat": lat,
+                "lng": lng,
+                "title": title,
+                "content": contStart + lat + ',' + lng + contEnd,
+                "rating": starRating,
+                "votes": votes,
+                "btype": btype,
+                "review": review,
+                "created_date": created_date
+            };
 
-                                alert(JSON.stringify(bathroomUpdate));
+            alert(JSON.stringify(bathroomUpdate));
 
-                                console.log(JSON.stringify(bathroomUpdate));
+            console.log(JSON.stringify(bathroomUpdate));
 
 
-                                //UPDATE BATHROOM
-                                $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms/"+bathroomID, {
-                                    data: JSON.stringify(bathroomUpdate),
-                                    accept: "application/json",
-                                    contentType: "application/json",
-                                    method: "PUT",
-                                    success: function () {
-                                        alert("Updated");
-                                        //console.log(bathroom);
-                                    },
-                                    error: function () {
-                                        alert("Not added");
-                                    }
-                                });
+            //UPDATE BATHROOM
+            $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms/" + bathroomID, {
+                data: JSON.stringify(bathroomUpdate),
+                accept: "application/json",
+                contentType: "application/json",
+                method: "PUT",
+                success: function () {
+                    alert("Updated");
+                    //console.log(bathroom);
+                },
+                error: function () {
+                    alert("Not added");
+                }
+            });
 
         }
-        else{
-           alert(bRmCount);
+        else {
+            alert(bRmCount);
             addBathroom();
         }
     }
@@ -179,164 +179,153 @@ function initMap() {
 
 
     function toRad(Value) {
-    return Value * Math.PI / 180;
+        return Value * Math.PI / 180;
     }
 
-    function calcDistance(lat1,lng1,lat2,lng2) {
+    function calcDistance(lat1, lng1, lat2, lng2) {
         var R = 6371; // km
-        var dLat = toRad(lat2-lat1);
-        var dLon = toRad(lng2-lng1);
+        var dLat = toRad(lat2 - lat1);
+        var dLon = toRad(lng2 - lng1);
         var lat1 = toRad(lat1);
         var lat2 = toRad(lat2);
-        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = R * c;
-        return Math.floor(d*100)/100;
-            };
+        return Math.floor(d * 100) / 100;
+    };
 
 
-     //GET ALL REVIEWS
+    //GET ALL REVIEWS
     $("#bathroomData").click(function () {
-            console.log("check the restroom input function");
+        console.log("check the restroom input function");
 
-             var lat = document.getElementById("placeLat").value;
-             var lng = document.getElementById("placeLng").value;
-            
-
-            //alert("lat: " + lat + "; lng: " + lng);
-
-            $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
-                data: { get_param: 'value' },
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    $.each(data, function (index, element) {
-                         //if (element.lng == lng && element.lat == lat) {
-                            //alert(JSON.stringify(element));
-                            //alert(latpos);
-                            //alert(lngpos);
-                            var distBetween = calcDistance(latpos,lngpos,element.lat,element.lng);
-                            //alert(distBetween);
-                            if(distBetween <= 0.200){
-                                alert("This bathroom is close to another");                                
-                                bRmCount = 1;
-                                //alert(bRmCount);
-                                bathroomID = element.id;
-                                alert("ID of other bathroom:" + bathroomID);
-                                bathroomVote = element.votes;
-                                bathroomRating = element.rating;
-                                bathroomReview = element.review;
-
-                            }
-
-                            else {
-                                bRmCount = 0;
-                                
-                                //addBathroom();
-                            }
-                            //bathroomID = element.id;
-                            // alert(element.id);                    
-                    });   
-                        updateOrAdd();   
+        var lat = document.getElementById("placeLat").value;
+        var lng = document.getElementById("placeLng").value;
 
 
-                         
-                }
+        //alert("lat: " + lat + "; lng: " + lng);
 
-         
-            });
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/bathrooms", {
+            data: { get_param: 'value' },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function (index, element) {
+                    //if (element.lng == lng && element.lat == lat) {
+                    //alert(JSON.stringify(element));
+                    //alert(latpos);
+                    //alert(lngpos);
+                    var distBetween = calcDistance(latpos, lngpos, element.lat, element.lng);
+                    //alert(distBetween);
+                    if (distBetween <= 0.200) {
+                        alert("This bathroom is close to another");
+                        bRmCount = 1;
+                        //alert(bRmCount);
+                        bathroomID = element.id;
+                        alert("ID of other bathroom:" + bathroomID);
+                        bathroomVote = element.votes;
+                        bathroomRating = element.rating;
+                        bathroomReview = element.review;
 
-       
+                    }else {
+                        bRmCount = 0;
 
-
+                        //addBathroom();
+                    }
+                    //bathroomID = element.id;
+                    // alert(element.id);                    
+                });
+                updateOrAdd();
+            }
         });
+    });
 
 
     // Add Marker Function
     function addMarker(props) {
         var markerIcon;
         //Check for custom icon
-        console.log("Rating: " + props.rating/props.votes);
-//        if (props.rating/props.votes >= 3.5) {
+        console.log("Rating: " + props.rating / props.votes);
+        //        if (props.rating/props.votes >= 3.5) {
+        //set Icon Image to public
+        //marker.setIcon(props.iconImage);
+        //          markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
+        //    } else if (props.rating/props.votes >= 2) {
+        //      console.log("props.rating: " + props.rating);
+        if (props.rating / props.votes >= 3.5) {
             //set Icon Image to public
             //marker.setIcon(props.iconImage);
-  //          markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
-    //    } else if (props.rating/props.votes >= 2) {
-      //      console.log("props.rating: " + props.rating);
-            if (props.rating/props.votes >= 3.5) {
-                //set Icon Image to public
-                //marker.setIcon(props.iconImage);
-                markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
-            } else if (props.rating/props.votes > 2 && props.rating/props.votes < 3.5) {
-                //set Icon Image to yellow
-                markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom2.png";
-            } else {
-                //set Icon Image to red
-                markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom3.png";
-            }
-
-            var myLatLng = new google.maps.LatLng(props.lat, props.lng);
-            console.log(myLatLng);
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                icon: markerIcon
-                //without icon image icon is undefined, not ideal
-                //icon:props.iconImage
-            });
-
-
-            //Check for content
-            if (props.content) {
-                var infoWindow = new google.maps.InfoWindow({
-
-
-                    content: "Title: " + props.title + "<br><br> Establishment: " + props.btype + "<br><br> Review: " + props.review + "<br><br> Rating: " + (props.rating/props.votes) + "<br><br> " + props.content + "<br><br> Votes: " + props.votes
-                });
-
-                marker.addListener('click', function () {
-                    infoWindow.open(map, marker);
-
-                });
-            }
+            markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
+        } else if (props.rating / props.votes > 2 && props.rating / props.votes < 3.5) {
+            //set Icon Image to yellow
+            markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom2.png";
+        } else {
+            //set Icon Image to red
+            markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom3.png";
         }
 
-
-        //GET ALL REVIEWS FOR USER
-        $("#getAllReviews").click(function () {
-            $.ajax("https://fast-garden-93601.herokuapp.com/api/reviews", {
-                data: { get_param: 'value' },
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    $.each(data, function (index, element) {
-                        if (element.username == username) {
-                            console.log(element);
-                        }
-                    });
-                }
-            });
+        var myLatLng = new google.maps.LatLng(props.lat, props.lng);
+        console.log(myLatLng);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon: markerIcon
+            //without icon image icon is undefined, not ideal
+            //icon:props.iconImage
         });
 
 
+        //Check for content
+        if (props.content) {
+            var infoWindow = new google.maps.InfoWindow({
 
 
-        //SUBMIT REVIEW
-        $("#reviewData").click(function () {
-            $.ajax("https://fast-garden-93601.herokuapp.com/api/review", {
-                data: JSON.stringify(bathroom),
-                accept: "application/json",
-                contentType: "application/json",
-                method: "POST",
-                success: function () {
-                    alert("Day added");
-                    console.log(bathroom);
-                },
-                error: function () {
-                    alert("Not added");
-                }
+                content: "<div id='iw-container'><div class='iw-title'>" + props.title + "</div><div class='iw-content'>Establishment: " + props.btype + "<br/><br/> Review: " + props.review + " Rating: " + (props.rating / props.votes) + "<br/><br/> " + props.content + "<br/> Votes: " + props.votes + "</div></div>"
             });
-        });
+
+            marker.addListener('click', function () {
+                infoWindow.open(map, marker);
+
+            });
+        }
     }
+
+
+    //GET ALL REVIEWS FOR USER
+    $("#getAllReviews").click(function () {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/reviews", {
+            data: { get_param: 'value' },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function (index, element) {
+                    if (element.username == username) {
+                        console.log(element);
+                    }
+                });
+            }
+        });
+    });
+
+
+
+
+    //SUBMIT REVIEW
+    $("#reviewData").click(function () {
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/review", {
+            data: JSON.stringify(bathroom),
+            accept: "application/json",
+            contentType: "application/json",
+            method: "POST",
+            success: function () {
+                alert("Day added");
+                console.log(bathroom);
+            },
+            error: function () {
+                alert("Not added");
+            }
+        });
+    });
+}
 //}
