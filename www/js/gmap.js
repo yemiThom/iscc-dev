@@ -128,7 +128,7 @@ function initMap() {
                                 var btype = document.getElementById("btype").value;
                                 var lat = document.getElementById("placeLat").value;
                                 var lng = document.getElementById("placeLng").value;
-                                var review = document.getElementById("review").value + '<br>' + 'Rating: ' + rating + ' ' + bathroomReview; 
+                                var review = document.getElementById("review").value + 'Rating: ' + rating + ' <br> ' + bathroomReview; 
                                 var votes = parseInt(bathroomVote, 10) + 1;
                                 var starRating = parseInt( bathroomRating, 10 ) + parseInt(rating, 10);
                                 var created_date = new Date();
