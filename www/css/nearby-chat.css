@@ -240,7 +240,7 @@ z-index:200;
     font-weight:600;
     padding:12px 13px;
     border-radius:5px 5px 5px 0px;
-    position:relative;
+    /*position:relative;*/
     float:left;
 }
 .message .dateBubbleRight{
