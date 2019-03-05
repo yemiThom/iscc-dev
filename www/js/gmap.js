@@ -268,7 +268,7 @@ function initMap() {
                 //set Icon Image to public
                 //marker.setIcon(props.iconImage);
                 markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom1.png";
-            } else if (props.rating/props.votes > 2 && props.ratingprops.votes < 3.5) {
+            } else if (props.rating/props.votes > 2 && props.rating/props.votes < 3.5) {
                 //set Icon Image to yellow
                 markerIcon = "https://s3-eu-west-1.amazonaws.com/iscc-imgs/icons/restroom2.png";
             } else {
