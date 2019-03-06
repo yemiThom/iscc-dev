@@ -30,8 +30,12 @@ $(document).ready(function () {
     };
     /* if the device is not ios hide the download button */
     if(isMobile.iOS()){
-           alert('this is an ios device');  
+           //alert('this is an ios device');  
            var headerElem = document.getElementsByClassName('default-header');
+           for(var i=0; i < headerElem.length; i++){
+               headerElem[i].classList.add("ios-top-padding");
+           }
+           var headerElem = document.getElementsByClassName('header');
            for(var i=0; i < headerElem.length; i++){
                headerElem[i].classList.add("ios-top-padding");
            }
