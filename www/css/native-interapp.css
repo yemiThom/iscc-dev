@@ -218,6 +218,8 @@ select::-ms-expand{
     opacity: 0.5;
 }
 
+.ios-top-padding{ padding-top: 10%; }
+
 .color-grey-dark{color: #72737b !important}
 .color-magenta{color: #d123bf !important}
 .color-lylac{color: #775ba6 !important}
