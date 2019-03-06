@@ -39,6 +39,10 @@ $(document).ready(function () {
            for(var i=0; i < headerElem.length; i++){
                headerElem[i].classList.add("ios-top-padding");
            }
+           var headerElem = document.getElementsByClassName('welcome-title');
+           for(var i=0; i < headerElem.length; i++){
+               headerElem[i].classList.add("ios-top-padding");
+           }
 
            /*$(".default-header").each(function(){
                 $(this).addClass("ios-top-padding");

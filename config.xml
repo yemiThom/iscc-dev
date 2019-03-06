@@ -13,7 +13,7 @@
 	<preference name="orientation" value="portrait" />
 	<preference name="orientation" value="portrait" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarBackgroundColor" value="#414b76" />
     <preference name="StatusBarStyle" value="lightcontent" />
 	<!--<preference name="fullscreen" value="true" />-->
     <preference name="EnableViewportScale" value="true"/>
