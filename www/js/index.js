@@ -31,14 +31,14 @@ $(document).ready(function () {
     /* if the device is not ios hide the download button */
     if(isMobile.iOS()){
            alert('this is an ios device');  
-           /*var headerElem = document.getElementsByClassName('default-header');
+           var headerElem = document.getElementsByClassName('default-header');
            for(var i=0; i < headerElem.length; i++){
-               headerElem[i].classList.add("ios-top-padding");
-           }*/
+               headerElem[i].className += "ios-top-padding";
+           }
 
-           $(".default-header").each(function(){
+           /*$(".default-header").each(function(){
                 $(this).addClass("ios-top-padding");
-           });
+           });*/
     };
 
     $.ajax("https://fast-garden-93601.herokuapp.com/api/maintenancemessages", {
