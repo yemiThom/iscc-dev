@@ -33,7 +33,7 @@ $(document).ready(function () {
            alert('this is an ios device');  
            var headerElem = document.getElementsByClassName('default-header');
            for(var i=0; i < headerElem.length; i++){
-               headerElem[i].className += "ios-top-padding";
+               headerElem[i].classList.add("ios-top-padding");
            }
 
            /*$(".default-header").each(function(){
