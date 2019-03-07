@@ -214,7 +214,7 @@ z-index:200;
     padding:0 0 0 10px;
     clear:both;
     margin-bottom:10px;
-    overflow-y: -webkit-paged-y;
+    /*overflow-y: -webkit-paged-y;*/
     position: relative;
     min-width: 125px;
     min-height: 55px;
