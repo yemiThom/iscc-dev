@@ -78,6 +78,27 @@
 </head>
 
 <body>
+    <!-- Start Header Area -->
+    <header id="header" class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png" onclick="openNav()" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/myibd-logo-white.png">
+                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
     <!-- Sidebar -->
     <div id="sidebar" class="sidenav">
         <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
@@ -124,7 +145,7 @@
     <!-- Side Bar -->
 
     <!-- Start Precontainer Wrapper -->
-    <div class="pre-container-wrapper ios-pos-realtive">
+    <div class="pre-container-wrapper">
         <div id="swipe-area" class="swipe-area"></div>
         <!-- Start Container Area -->
         <div class="content-container">
@@ -180,29 +201,8 @@
     </div>
     <!-- End Precontainer Wrapper -->
 
-    <!-- Start Header Area -->
-    <header class="default-header">
-        <div class="container">
-            <div class="header-wrap">
-                <div class="header-top d-flex justify-content-between align-items-center">
-                    <div class="logo">
-                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png" onclick="openNav()" />
-                        <!--position: fixed; right: 10px; bottom: 10px" />-->
-                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
-                    </div>
-                    <div>
-                        <div class="main-menubar d-flex align-items-center">
-                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/myibd-logo-white.png">
-                        </div>
-                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- End Header Area -->
     <!-- Start Footer Nav Area -->
-    <div class="default-footer">
+    <div id="footer" class="default-footer">
         <div class="mobile-bottom-bar">
             <a href="home.html" class="footer-link">
                 <!--i class="fas fa-home"></i-->

@@ -114,6 +114,8 @@ function makeFriendsClickable(){
             $("#profile span").html(email);
 
             /*$(".message").not(".right").find("img").attr("src", $(clone).attr("src"));*/
+            $('#header').fadeOut();
+            $('#footer').fadeOut();
             $('#friends').fadeOut();
             $('#chatview').fadeIn();
 
@@ -129,6 +131,8 @@ function makeFriendsClickable(){
 
                 setTimeout(function () {
                     $('#chatview').fadeOut();
+                    $('#header').fadeIn();
+                    $('#footer').fadeIn();
                     $('#friends').fadeIn();
                 }, 50);
             });
