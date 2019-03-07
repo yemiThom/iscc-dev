@@ -13,6 +13,7 @@
     background-color: #72737b;
     padding: 5px 0;
     box-shadow: 2.213px -2.213px 2px 0px rgba(158, 158, 158, 0.3);
+	-webkit-transform: translate3d(0,0,0);
 }
   
 .mobile-bottom-bar {

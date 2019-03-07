@@ -59,6 +59,7 @@ body {
     background-color: #414b76;
     padding: 3% 0;
     z-index: 9;
+	-webkit-transform: translate3d(0,0,0);
     /*
     box-shadow: -2.213px 2.213px 2px 0px rgba(158, 158, 158, 0.3);*/
 }

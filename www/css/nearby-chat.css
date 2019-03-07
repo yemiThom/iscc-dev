@@ -130,7 +130,7 @@ z-index:200;
     position:absolute;
     top:0;
     left:0;
-    z-index: 39;
+    z-index: 1000;
     display:none;
 	-webkit-transform: translate3d(0,0,0);
 }
