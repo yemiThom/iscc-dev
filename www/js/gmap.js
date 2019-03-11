@@ -28,20 +28,26 @@ function initMap() {
 
 
     //Get current location
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            map.setCenter(initialLocation);
-            infoWindow.setPosition(initialLocation);
-            infoWindow.setContent('You are here');
-            infoWindow.open(map);
+	$(function(){
+	  document.addEventListener("deviceready", onDeviceReady, false);
+	})
+	
+	function onDeviceReady(){
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				map.setCenter(initialLocation);
+				infoWindow.setPosition(initialLocation);
+				infoWindow.setContent('You are here');
+				infoWindow.open(map);
 
-            document.getElementById("placeLat").value = position.coords.latitude;
-            document.getElementById("placeLng").value = position.coords.longitude;
-            latpos = position.coords.latitude;
-            lngpos = position.coords.longitude;
-        });
-    }
+				document.getElementById("placeLat").value = position.coords.latitude;
+				document.getElementById("placeLng").value = position.coords.longitude;
+				latpos = position.coords.latitude;
+				lngpos = position.coords.longitude;
+			});
+		}
+	}
 
     getMap();
 
