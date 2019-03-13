@@ -28,14 +28,8 @@ function initMap() {
    
 
     //Get current location
-    $(function(){
-        document.addEventListener("deviceready", onDeviceReady, false);
-    })
-
-    function onDeviceReady() {
-        //if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
-        //}
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
 
     function onSuccess(position){
