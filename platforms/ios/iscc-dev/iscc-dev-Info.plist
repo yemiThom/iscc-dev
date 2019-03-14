@@ -54,6 +54,6 @@
       <string>UIInterfaceOrientationPortrait</string>
     </array>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string/>
+    <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use.<string/>
   </dict>
 </plist>
