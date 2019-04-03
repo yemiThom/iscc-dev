@@ -109,10 +109,10 @@
     right: 155px;
 }
 
-.premium-footer-nearby:hover .tooltip,
-.premium-footer-nearby:active .tooltip,
-.premium-footer-gmap:hover .tooltip,
-.premium-footer-gmap:active .tooltip{
+.premium-footer-nearby:hover .app_tooltip,
+.premium-footer-nearby:active .app_tooltip,
+.premium-footer-gmap:hover .app_tooltip,
+.premium-footer-gmap:active .app_tooltip{
     display: block;
 }
 
@@ -131,6 +131,7 @@
     z-index: 7;
     font-size: 0.9rem;
     display: none;
+	color: #72737b;
 }
 .app_tooltip:after {
     content: '';
