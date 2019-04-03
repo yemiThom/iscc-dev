@@ -80,3 +80,94 @@
     -ms-flex-align: center;
     align-items: center;
 }
+
+.premium-footer-nearby::after{
+    font-family: "Font Awesome 5 Free"; 
+    content: "\f023";
+    font-weight: 900;
+    color: #414b76;
+    /*background: url("http://iscc-imgs.s3.amazonaws.com/icons/lock.png") no-repeat #ffffff;
+    background-size: 20px;*/
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 2px;
+}
+
+.premium-footer-gmap::after{
+    font-family: "Font Awesome 5 Free"; 
+    content: "\f023";
+    font-weight: 900;
+    color: #414b76;
+    /*background: url("http://iscc-imgs.s3.amazonaws.com/icons/lock.png") no-repeat #ffffff;
+    background-size: 20px;*/
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 155px;
+}
+
+.premium-footer-nearby:hover .tooltip,
+.premium-footer-nearby:active .tooltip,
+.premium-footer-gmap:hover .tooltip,
+.premium-footer-gmap:active .tooltip{
+    display: block;
+}
+
+.app_tooltip {
+    padding: 10px;
+    position: absolute;
+    width: auto;
+    max-width: 30%;
+    box-shadow: 1px 1px 20px #aaa;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%);
+    transform-style: preserve-3d;
+    z-index: 7;
+    font-size: 0.9rem;
+    display: none;
+}
+.app_tooltip:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    transform-origin: 50% 50%;
+    transform: rotate(45deg) translateX(-50%);
+    background-color: #fff;
+    left: 50%;
+    top: -1px;
+    z-index: 400;
+}
+.app_tooltip:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform-origin: 50% 50%;
+    transform: rotate(45deg) translateX(-50%) translateZ(-1px);
+    background-color: #fff;
+    left: 50%;
+    top: 0px;
+    z-index: -1;
+    box-shadow: -1px -1px 20px #aaa;
+}
+.tooltip__src {
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+    top: -105px;
+}
+.app_tooltip:after {
+    top: auto;
+    bottom: -8px;
+}
+.app_tooltip:before {
+    top: auto;
+    bottom: -8px;
+}

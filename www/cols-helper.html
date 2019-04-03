@@ -5,8 +5,8 @@
     <title>Gutsy - Colonoscopy Helper</title>
 
     <!-- Style Sheets -->
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
     <link rel="stylesheet" type="text/css" href="css/main-nav.css">
@@ -16,7 +16,7 @@
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+
     <!-- javascript -->
     <script type='application/javascript' src='js/fastclick.min.js'></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
@@ -57,7 +57,7 @@
                     </div>
                     <div>
                         <div class="main-menubar d-flex align-items-center">
-                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/myibd-logo-white.png">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/ibdwell-logo-white.png">
                         </div>
                         <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                     </div>
@@ -69,7 +69,8 @@
     <!-- Sidebar -->
     <div id="sidebar" class="sidenav">
         <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
-        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i
+                class="fas fa-times"></i></a>
         <div class="sidenav-section">
             <a id="email_value"></a>
         </div>
@@ -89,7 +90,8 @@
             <a href="https://www.iscc.ie/contact" target="_blank" data-rel="external">Contact</a>
         </div>
 
-        <div class="sidenav-section" onclick="window.open('https://www.iscc.ie/support-line', '_blank', 'location=yes')">
+        <div class="sidenav-section"
+            onclick="window.open('https://www.iscc.ie/support-line', '_blank', 'location=yes')">
             <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
             <h4 class="bg-magenta">Support</h4>
             <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
@@ -128,7 +130,8 @@
                     <!--video src="vid/1.mp4"></video>-->
                     <video src="https://youtu.be/5iw8PHYCQb0"></video>
                     <div class='embed-container'>
-                        <iframe src='https://www.youtube.com/embed//5iw8PHYCQb0' frameborder='0' allowfullscreen></iframe>
+                        <iframe src='https://www.youtube.com/embed//5iw8PHYCQb0' frameborder='0'
+                            allowfullscreen></iframe>
                     </div>
                     <!--p>Your device does not support this Video element.</p-->
                 </div>
@@ -160,20 +163,23 @@
                 <h2>Preparing for a colonoscopy</h2>
                 <p>
                     The diagnosis of Crohn's disease or Ulcerative Colitis is sometimes delayed as the same symptoms
-					can occur with other diseases. It is usually necessary to exclude diseases such as bowel infections or
-					irritable bowel syndrome.<br /><br />
+                    can occur with other diseases. It is usually necessary to exclude diseases such as bowel infections
+                    or
+                    irritable bowel syndrome.<br /><br />
                 </p>
                 <p>
                     Blood tests are useful to look for anaemia (low blood count) and to measure the severity of
-					inflammation. They can also detect vitamin or mineral deficiencies. A faeces (bowel motion)
-					specimen may be required to exclude infection.<br /><br />
+                    inflammation. They can also detect vitamin or mineral deficiencies. A faeces (bowel motion)
+                    specimen may be required to exclude infection.<br /><br />
                 </p>
                 <p>
                     Most people require an examination of part of the bowel. A colonoscopy is an examination in which
-					a long tube (a colonoscope) is passed the entire length of the colon and into the end of the small
-					intestine, the ileum. It is the most accurate way to check for or evaluate the severity of Crohn’s
-					disease or Ulcerative Colitis. People are sedated for this examination. It requires a prep of laxatives
-					and a special diet to clean out the intestines so the doctor can get a good look at the lining.<br /><br />
+                    a long tube (a colonoscope) is passed the entire length of the colon and into the end of the small
+                    intestine, the ileum. It is the most accurate way to check for or evaluate the severity of Crohn’s
+                    disease or Ulcerative Colitis. People are sedated for this examination. It requires a prep of
+                    laxatives
+                    and a special diet to clean out the intestines so the doctor can get a good look at the
+                    lining.<br /><br />
                 </p>
                 <p>
                     <i>Find out in the video what happens during a colonoscopy.</i>
@@ -186,7 +192,7 @@
     <!-- End Precontainer Wrapper -->
 
     <!-- Start Footer Nav Area -->
-    <div class="default-footer">
+    <div id="footer" class="default-footer">
         <div class="mobile-bottom-bar">
             <a href="home.html" class="footer-link">
                 <!--i class="fas fa-home"></i-->
@@ -198,7 +204,9 @@
                 <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" />
                 <span class='footer-text'>Health Tracker</span>
             </a>
-            <a href="gmap.html" class="footer-link">
+            <a id="premium-gmap" href="gmap.html" class="footer-link premium-footer-gmap">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
                 <!--i class="fas fa-map-marker-alt"></i-->
                 <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" style="width: 11px;" />
                 <span class='footer-text'>Restrooms</span>
@@ -208,15 +216,17 @@
                 <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" />
                 <span class='footer-text'>Mindfulness</span>
             </a>
-            <a href="nearby.html" class="footer-link">
+            <a id="premium-nearby" href="nearby.html" class="footer-link premium-footer-nearby">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
                 <!--i class="fas fa-comments"></i-->
                 <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" style="width: 13px;" />
                 <span class='footer-text'>Nearby</span>
             </a>
             <!--a href="profile-card.html" class="footer-link">
-                    <i class="fas fa-user-circle"></i>
-                    <span class='footer-text'>Profile</span>
-                </a-->
+                        <i class="fas fa-user-circle"></i>
+                        <span class='footer-text'>Profile</span>
+                    </a-->
         </div>
     </div>
     <!-- End Footer Nav Area -->
@@ -248,8 +258,8 @@
     function closeNav() {
         /*document.getElementById("sidebar").style.width = "0";*/
         document.getElementById("sidebar").style.left = "-260px";
-            document.getElementById("swipe-area").style.left = "0px";
-            document.getElementById("swipe-area").style.width = "25px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "25px";
     }
 </script>
 <!-- End Sidebar script -->
@@ -418,7 +428,7 @@
             //if(isNan(totalMinutes) || isNan(totalSeconeds)){
             //    return "00:00";
             //}else{
-                return totalMinutes + ':' + totalSeconeds;
+            return totalMinutes + ':' + totalSeconeds;
             //}
         }
 

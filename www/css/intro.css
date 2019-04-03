@@ -59,6 +59,23 @@
     margin: 0 auto;
     /*filter: blur(0.10px);*/
 }
+.panel-bg:hover .tooltip,
+.panel-bg:active .tooltip{
+    display: block
+}
+.panel-premium::after{
+    font-family: "Font Awesome 5 Free"; 
+    content: "\f023";
+    font-weight: 900;
+    color: white;
+    /*background: url("http://iscc-imgs.s3.amazonaws.com/icons/lock.png") no-repeat #ffffff;
+    background-size: 20px;*/
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+}
 .panel-bg-layer{
     position: absolute;
     top: 0;
@@ -66,6 +83,62 @@
     width: 100%;
     height: 140px;
 }
+.tooltip {
+    padding: 10px;
+    position: absolute;
+    width: auto;
+    max-width: 60%;
+    box-shadow: 1px 1px 20px #aaa;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%);
+    transform-style: preserve-3d;
+    z-index: 7;
+    font-size: 0.9em;
+    display: none;
+}
+.tooltip:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    transform-origin: 50% 50%;
+    transform: rotate(45deg) translateX(-50%);
+    background-color: #fff;
+    left: 50%;
+    top: -1px;
+    z-index: 400;
+}
+.tooltip:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform-origin: 50% 50%;
+    transform: rotate(45deg) translateX(-50%) translateZ(-1px);
+    background-color: #fff;
+    left: 50%;
+    top: 0px;
+    z-index: -1;
+    box-shadow: -1px -1px 20px #aaa;
+}
+.tooltip__src {
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+    top: -30px;
+}
+.tooltip:after {
+    top: auto;
+    bottom: -8px;
+}
+.tooltip:before {
+    top: auto;
+    bottom: -8px;
+}
+
 .txtBlock{
     position: absolute;
     top: 50%;
