@@ -48,7 +48,7 @@ function disableInputs(){
 	document.getElementById("sendButton").disabled = true;
 }
 function checkForNewMsgs(){
-	intervalMSGChecks = setInterval(function(){ checkNewMsgs(convosID); }, 1000);
+	intervalMSGChecks = setInterval(function(){ checkNewMsgs(convosID); }, 3000);
 }
 function clearCheckNewMsgs(){
 	clearInterval(intervalMSGChecks);
@@ -294,6 +294,7 @@ function checkConvoRequest(){
 						//get messages
 						getMessages(convosID);
 						//periodic check for new messages
+						clearCheckNewMsgs();
 						checkForNewMsgs();
 						return false;
 					}
@@ -327,6 +328,7 @@ function checkConvoRequest(){
 						//get messages
 						getMessages(convosID);
 						//periodic check for new messages
+						clearCheckNewMsgs();
 						checkForNewMsgs();
 						return false;
 					}
@@ -501,6 +503,7 @@ function sendTxt(){
 			//call for messages to show up in chatview
 			getMessages(convosID);
 			//periodic check for new messages
+			clearCheckNewMsgs();
 			checkForNewMsgs();
 		},
 		error: function () {
@@ -540,6 +543,7 @@ function sendBear(){
 			//call for messages to show up in chatview
 			getMessages(convosID);
 			//periodic check for new messages
+			clearCheckNewMsgs();
 			checkForNewMsgs();
 		},
 		error: function () {
