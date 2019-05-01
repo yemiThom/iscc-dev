@@ -553,32 +553,11 @@
                                     <div id="foodDatabase" style="display: none;">
                                         <br>
                                         <h3 class="color-blue-dark"> Add a Food Item to the IBD Well Database</h3>
-                                        <h4 class="color-blue-dark">Barcode Scanner</h4>
-                                        <div class="goScan">
-                                            <input id="trackingCode" type="text" size="16" placeholder="Tracking Code"
-                                                class="qrcode-text txtBorder">
-                                            <label class="qrcode-text-btn">
-                                                <input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();"
-                                                    onchange="openQRCamera(this);" tabindex="-1">
-                                            </label>
-
-                                            <input type="button" value="Go" disabled>
-                                        </div>
+                                        
                                         <br />
-                                        <div class="scannerBtn_div">
-                                            <a class="button" href="#popup1">Open scanner</a>
-                                        </div>
+                                        
 
-                                        <!--Start pop-up form Div -->
-                                        <div id="popup1" class="overlay">
-                                            <div class="popup1">
-                                                <a class="close" href="#">&times;</a>
-
-                                                <iframe src="barcodescanner.html" style="width:100%; height:400px;">
-                                                    <p>Your device does not support iframes.</p>
-                                                </iframe>
-                                            </div>
-                                        </div>
+                                  
                                         <br>
                                         Name: <input type="text" id="foodname" class="qrcode-text txtBorder m-b-10"></input>
                                         <br>

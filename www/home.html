@@ -84,7 +84,7 @@
             <a id="email_value"></a>
         </div>
         <div class="sidenav-section">
-            <a id="verifyiscc"></a>
+            <a href="verify.html" id="verifyiscc"></a>
         </div>
         <div class="sidenav-section">
             <a id="maintenancemsg"></a>
@@ -137,7 +137,7 @@
             <div class="content">
                 <h1 class="welcome-title color-blue-dark">Welcome to IBD<span class="color-magenta">WELL</span></h1>
 
-                <a href="health-tracker.html">
+                <a href="health-tracker.html" class="premiumFeatures">
                     <div class="panel-long">
                         <div class="panel-bg" id="healthcare">
                             <div class="panel-bg-layer"></div>
@@ -150,7 +150,7 @@
                     </div>
                 </a>
 
-                <a href="gmap.html">
+                <a href="gmap.html" class="premiumFeatures">
                     <div class="panel-long">
                         <div class="panel-bg panel-premium" id="restrooms">
                             <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
@@ -178,9 +178,9 @@
                     </div>
                 </a>
 
-                <a href="nearby.html">
+                <a href="nearby.html" class="premiumFeatures">
                     <div class="panel-long">
-                        <div class="panel-bg panel-premium" id="nearby">
+                        <div class="panel-bg panel-premium" id="nearby" >
                             <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
                                 to continue using this feature.</div>
                             <div class="panel-bg-layer"></div>
@@ -193,7 +193,7 @@
                     </div>
                 </a>
 
-                <a href="no-waiting.html">
+                <a href="no-waiting.html" class="premiumFeatures">
                     <div class="panel-long">
                         <div class="panel-bg panel-premium" id="nowaiting">
                             <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
@@ -284,7 +284,7 @@
                 <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" />
                 <span class='footer-text'>Health Tracker</span>
             </a>
-            <a id="premium-gmap" href="gmap.html" class="footer-link premium-footer-gmap">
+            <a id="premium-gmap" href="gmap.html" class="footer-link premium-footer-gmap premiumFeatures">
                 <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
                     continue using this feature.</div>
                 <!--i class="fas fa-map-marker-alt"></i-->
@@ -296,7 +296,7 @@
                 <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" />
                 <span class='footer-text'>Mindfulness</span>
             </a>
-            <a id="premium-nearby" href="nearby.html" class="footer-link premium-footer-nearby">
+            <a id="premium-nearby" href="nearby.html" class="footer-link premium-footer-nearby premiumFeatures" >
                 <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
                     continue using this feature.</div>
                 <!--i class="fas fa-comments"></i-->
@@ -372,11 +372,17 @@
                 let membershipType = localStorage.getItem("MemberType");
                 let invoice = localStorage.getItem("Invoices");
                 if (membershipType == undefined || membershipType == null || membershipType == "") {
-                    $('#verifyiscc').html("Verify Membership");
+				   $(".premiumFeatures").removeAttr('href');	
+				   $('#verifyiscc').html("Verify Membership");
+					
                 }
                 else {
                     $('#verifyiscc').html(membershipType);
-                    //$('#verifyiscc').html(membershipType);
+                    //$('#verifyiscc').html("<b>Hello world!</b>");
+					$('#verifyiscc').removeAttr('href');
+					$(".premiumFeatures").attr("href", location);
+					
+					
                 }
                 //FastClick.attach(document.body);
             }, false);
