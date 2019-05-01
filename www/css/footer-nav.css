@@ -92,7 +92,7 @@
     height: 20px;
     position: absolute;
     top: 5px;
-    right: 2px;
+    left: 5px;
 }
 
 .premium-footer-gmap::after{
@@ -106,7 +106,12 @@
     height: 20px;
     position: absolute;
     top: 5px;
-    right: 155px;
+    left: 15px;
+}
+
+#premium-nearby,
+#premium-gmap{
+    position: relative;
 }
 
 .premium-footer-nearby:hover .app_tooltip,
@@ -119,8 +124,8 @@
 .app_tooltip {
     padding: 10px;
     position: absolute;
-    width: auto;
-    max-width: 30%;
+    width: 125px;
+    /*max-width: 100%;*/
     box-shadow: 1px 1px 20px #aaa;
     border-radius: 5px;
     background-color: #fff;
@@ -162,7 +167,8 @@
 }
 .tooltip__src {
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-    top: -105px;
+    top: -99px;
+    left: -7px;
 }
 .app_tooltip:after {
     top: auto;
