@@ -372,14 +372,16 @@
                 let membershipType = localStorage.getItem("MemberType");
                 let invoice = localStorage.getItem("Invoices");
                 if (membershipType == undefined || membershipType == null || membershipType == "") {
-                    $('#verifyiscc').html("Verify Membership");
+				   $(".premiumFeatures").removeAttr('href');	
+				   $('#verifyiscc').html("Verify Membership");
 					
                 }
                 else {
                     $('#verifyiscc').html(membershipType);
                     //$('#verifyiscc').html("<b>Hello world!</b>");
 					$('#verifyiscc').removeAttr('href');
-					$(".premiumFeatures").removeAttr('href');
+					$(".premiumFeatures").attr("href", location);
+					
 					
                 }
                 //FastClick.attach(document.body);
