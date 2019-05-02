@@ -89,6 +89,28 @@ $(document).ready(function () {
     else window.location.replace("index.html");
 });
 
+ if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+
+                let membershipType = localStorage.getItem("MemberType");
+                let invoice = localStorage.getItem("Invoices");
+                if (membershipType == undefined || membershipType == null || membershipType == "") {
+                   $(".premiumFeatures").removeAttr('href');    
+                   $('#verifyiscc').html("Verify Membership");
+                    
+                }
+                else {
+                    $('#verifyiscc').html(membershipType);
+                    $('#verifyiscc').removeAttr('href');
+                    //$(".premiumFeatures").attr("href", location);
+                    
+                    
+                }
+                //FastClick.attach(document.body);
+            }, false);
+        }
+
+
 function signOut() {
     if (cognitoUser != null) {
         console.log("Sign Out called");

@@ -364,31 +364,6 @@
     </script>
     <!-- end fast click script -->
 
-
-    <script>
-        if ('addEventListener' in document) {
-            document.addEventListener('DOMContentLoaded', function () {
-
-                let membershipType = localStorage.getItem("MemberType");
-                let invoice = localStorage.getItem("Invoices");
-                if (membershipType == undefined || membershipType == null || membershipType == "") {
-				   $(".premiumFeatures").removeAttr('href');	
-				   $('#verifyiscc').html("Verify Membership");
-					
-                }
-                else {
-                    $('#verifyiscc').html(membershipType);
-                    //$('#verifyiscc').html("<b>Hello world!</b>");
-					$('#verifyiscc').removeAttr('href');
-					$(".premiumFeatures").attr("href", location);
-					
-					
-                }
-                //FastClick.attach(document.body);
-            }, false);
-        }
-
-    </script>
 </body>
 
 </html>
