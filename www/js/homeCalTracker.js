@@ -13,13 +13,13 @@ $("#addFood").click(function () {
     var servingsize = document.getElementById("servingsize").value;
     var servingsPerContainer = document.getElementById("servingsPerContainer").value;
     var created_date = new Date();
-    var barcode = document.getElementById("trackingCode").value;
+   // var barcode = document.getElementById("trackingCode").value;
 
     var food = {
         "brand": brand,
         "foodname": foodname,
         "servingsPerContainer": servingsPerContainer,
-        "barcode": barcode,
+        "barcode": "NULL",
         "created_date": created_date
     };
 
