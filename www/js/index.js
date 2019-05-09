@@ -95,7 +95,7 @@ $(document).ready(function () {
                 let membershipType = localStorage.getItem("MemberType");
                 let invoice = localStorage.getItem("Invoices");
                 if (membershipType == undefined || membershipType == null || membershipType == "") {
-                   $(".premiumFeatures").removeAttr('href');    
+                 //  $(".premiumFeatures").removeAttr('href');    
                    $('#verifyiscc').html("Verify Membership");
                     
                 }
