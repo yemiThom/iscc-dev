@@ -21,11 +21,11 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0.0</string>
+    <string>2.0.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleVersion</key>
-    <string>1.0.0</string>
+    <string>2.0.0</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSMainNibFile</key>
@@ -54,6 +54,8 @@
       <string>UIInterfaceOrientationPortrait</string>
     </array>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use.<string/>
+    <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use.</string>
+    <key>NSPhotoLibraryUsageDescription </key>
+    <string>Access to your photo library is used to access images of barcodes to add to the food log..</string>
   </dict>
 </plist>
