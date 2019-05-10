@@ -1,7 +1,5 @@
 <?xml version='1.7' encoding='utf-8'?>
-<widget id="com.ire-iscc.ibdwell" version="1.0.7" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-<widget CFBundleVersion="2.0">
-</widget>
+<widget id="com.ire-iscc.ibdwell" version="1.0.7" CFBundleVersion="2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
     <name>IBDWELL</name>
     <description>
