@@ -619,7 +619,7 @@ function checkForRequests(){
 					if(numRequestsChecked > currNumRequests){
 						//console.log("Checked: "+numRequestsChecked+" requests.");
 						//send chat request notification
-						requestToChat('<span class="announced-name">'+element.user1+'</span> sent you a request');						
+						requestToChat('<div id="alertify-notify" onclick="findFriendToClick(&#39;'+element.user1+'&#39;)"><span class="announced-name">'+element.user1+'</span> sent you a request</div>');						
 						//update currNumRequests
 						currNumRequests = numRequestsChecked;
 						//console.log("current number of requests announced: "+ currNumRequests);
@@ -631,6 +631,13 @@ function checkForRequests(){
 			//go away come back tomorrow 
 		}
 	});
+}
+
+function findFriendToClick(friendName){
+	var name = friendName;
+	console.log("name: "+ name);
+
+	document.getElementById(name).click();
 }
 
 function checkConvoStatusChange(){
@@ -701,10 +708,10 @@ window.onload = function () {
 		//find userid
 		console.log("calling getUserID")
 		getUserID();
-		//add username to users
-		//addUser();
 		console.log("calling getUserLocation");
 		getUserLocation();
+		//add username to users
+		addUser();
 		console.log("calling getUserList");
 		getUserList();
 		//var intervalList = setInterval(function(){ getUserList(); }, 60000);
