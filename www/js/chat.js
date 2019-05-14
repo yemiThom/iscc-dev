@@ -8,6 +8,7 @@ var convosID = '';
 var currNumRequests = 0;
 var intervalMSGChecks;
 var latestMSGDate;
+//var globalNameFound;
 //User goes online/busy
 //status = "online";
 //lng = 34.6;
@@ -146,7 +147,60 @@ function getUserList() {
 
 }
 
-function addUser() {
+function findUsername(){
+	var loopNum = 1;
+	//var usernameFound = false;
+	//console.log("getUserList called");
+	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatusers", {
+		data: { get_param: 'value' },
+		contentType: "application/json",
+		method: "GET",
+		success: function (data) {
+			//iterate through all the elements
+			$.each(data, function (index, element) {
+				//loopNum++;
+				//console.log("loopNum: "+loopNum);
+				/*if(element.username == localStorage.getItem("username")){
+					console.log("username found: "+ element.username);
+					//usernameFound = true;
+					globalNameFound = true;
+					return false;
+				}
+				if(element.username != localStorage.getItem("username") && loopNum == Object.keys(data).length){
+					console.log("username not found");
+					//usernameFound = false;
+					globalNameFound = false;
+					return false;
+				}*/
+
+				//while(loopNum < Object.keys(data).length){
+					//console.log("data length: "+ Object.keys(data).length);
+					console.log("loopNum: "+loopNum);
+					console.log("username element: " + element.username);
+
+					if(element.username == localStorage.getItem("username")){
+						console.log("username found: "+ element.username);
+						//usernameFound = true;
+						//globalNameFound = true;
+						addUser(true);
+						return false;
+					}else if(element.username != localStorage.getItem("username") && loopNum == Object.keys(data).length){
+						console.log("username not found");
+						addUser(false);
+					}
+
+					loopNum++;
+				//}
+			});
+			//return usernameFound;
+		},
+		error: function () {
+			//go away come back tomorrow 
+		}
+	});
+}
+
+function addUser(gotusername) {
 	//console.log("username to add:" + username);
 	//console.log("status to add: " + status);
 	//console.log("userid to add: " + userID);
@@ -159,10 +213,17 @@ function addUser() {
 		"status": status
 	}*/
 
+	//findUsername();
+	//var gotusername = findUsername();
+	//var gotusername = globalNameFound;
+	console.log("findusername: " + gotusername);
+
 	console.log("username: "+localStorage.getItem("username"));
 	console.log("userid: "+userID);
-	if(username == null){
-		console.log("username is null: using POST to add user as new");
+	var tmpUName = localStorage.getItem("username");
+	console.log("tmpUname: " + tmpUName);
+	if(tmpUName != null && gotusername == false){
+		console.log("username is null or gotusername is false: using POST to add user as new");
 		userID ='';
 		console.log("userid 2: "+userID);
 		var user = {
@@ -558,7 +619,7 @@ function sendBear(){
 
 $("#invisible").click(function () {
 	getUserID();
-	addUser();
+	findUsername();
 
 	/*put the data in 
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/chatUsers/" + userID, {
@@ -711,7 +772,7 @@ window.onload = function () {
 		console.log("calling getUserLocation");
 		getUserLocation();
 		//add username to users
-		addUser();
+		//findUsername();
 		console.log("calling getUserList");
 		getUserList();
 		//var intervalList = setInterval(function(){ getUserList(); }, 60000);

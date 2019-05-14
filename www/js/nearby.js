@@ -33,7 +33,7 @@ function onlineCheck() {
     localStorage.setItem("nearbyTogState", "online");
     
     getUserID();
-    addUser();
+    findUsername();
     //setOnlineStatus(localStorage.getItem("username"), "online");
 
 }
@@ -51,7 +51,7 @@ function busyCheck() {
     localStorage.setItem("nearbyTogState", "busy");
 
     getUserID();
-    addUser();
+    findUsername();
     //setOnlineStatus(localStorage.getItem("username"), "busy");
 
 }
@@ -69,7 +69,7 @@ function invisibleCheck() {
     localStorage.setItem("nearbyTogState", "invisible");
 
     getUserID();
-    addUser();
+    findUsername();
     //setOnlineStatus(localStorage.getItem("username"), "invisible");
 }
 
