@@ -113,7 +113,7 @@ ul { list-style-type: none; }
     color: #414b76;
 }
 .ul-style li::before{
-    content: "•"; 
+    content:'\2022'; 
     color: #d123bf;
     padding: 2%;
     margin-left: -0.5em
