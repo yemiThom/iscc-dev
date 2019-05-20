@@ -673,13 +673,13 @@ function getForDate() {
         success: function (data) {
             $.each(data, function (index, element) {
                 if (element.username == username) {
-                    console.log(element.date.toString().substring(0, 10));
+                    console.log("elemtn.date: "+element.date.toString().substring(0, 10));
                     var datadate = element.date.toString().substring(0, 10); 
                     var pickerDate = document.getElementById('datepicker').value;
                     console.log("DATE ARRAY: " + pickerDate);
                     var splitDate = pickerDate.split("/");
                     var newdate = splitDate[2] + '-' + splitDate[1] + '-' + splitDate[0];
-                    console.log(newdate);
+                    console.log("newdate: "+newdate);
                     if (datadate == newdate) {
                         //alert(datadate);
                         //    alert("Data exists");
@@ -760,28 +760,30 @@ function getForDate() {
                             document.getElementById("5OrMore").checked = true;
                         }
                         
-                            document.getElementById("good").disabled = true;
-                            document.getElementById("okay").disabled = true;
-                            document.getElementById("bad").disabled = true;
-                            document.getElementById("pain-Low").disabled = true;
-                            document.getElementById("pain-Medium").disabled = true;
-                            document.getElementById("pain-High").disabled = true;
-                            document.getElementById("stress-Low").disabled = true;
-                            document.getElementById("stress-Medium").disabled = true;
-                            document.getElementById("stress-High").disabled = true;
-                            document.getElementById("stool-Soft").disabled = true;
-                            document.getElementById("stool-Medium").disabled = true;
-                            document.getElementById("stool-Hard").disabled = true;
-                            document.getElementById("bowel-light").disabled = true;
-                            document.getElementById("bowel-Medium").disabled = true;
-                            document.getElementById("bowel-heavy").disabled = true;
-                            document.getElementById("1-4").disabled = true;
-                            document.getElementById("5-8").disabled = true;
-                            document.getElementById("9OrMore").disabled = true;
-                            document.getElementById("1-2").disabled = true;
-                            document.getElementById("3-4").disabled = true;
-                            document.getElementById("5OrMore").disabled = true;
-                            document.getElementById("submitDiv").style.display = "none";
+                        document.getElementById("good").disabled = true;
+                        document.getElementById("okay").disabled = true;
+                        document.getElementById("bad").disabled = true;
+                        document.getElementById("pain-Low").disabled = true;
+                        document.getElementById("pain-Medium").disabled = true;
+                        document.getElementById("pain-High").disabled = true;
+                        document.getElementById("stress-Low").disabled = true;
+                        document.getElementById("stress-Medium").disabled = true;
+                        document.getElementById("stress-High").disabled = true;
+                        document.getElementById("stool-Soft").disabled = true;
+                        document.getElementById("stool-Medium").disabled = true;
+                        document.getElementById("stool-Hard").disabled = true;
+                        document.getElementById("bowel-light").disabled = true;
+                        document.getElementById("bowel-Medium").disabled = true;
+                        document.getElementById("bowel-heavy").disabled = true;
+                        document.getElementById("1-4").disabled = true;
+                        document.getElementById("5-8").disabled = true;
+                        document.getElementById("9OrMore").disabled = true;
+                        document.getElementById("1-2").disabled = true;
+                        document.getElementById("3-4").disabled = true;
+                        document.getElementById("5OrMore").disabled = true;
+                        document.getElementById("submitDiv").style.display = "none";
+
+                        return false;
                     } else {
                         console.log("No data for this date");
                         document.getElementById("good").checked = false;
