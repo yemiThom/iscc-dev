@@ -689,169 +689,208 @@ function getForDate() {
                         if (element.day == "good") {
                             document.getElementById("good").checked = true;
                             $("#toggleReveal-day").slideDown();
-                        }
-                        if (element.day == "okay") {
+                        }else if (element.day == "okay") {
                             document.getElementById("okay").checked = true;
                             $("#toggleReveal-day").slideDown();
-                        }
-                        if (element.day == "bad") {
+                        }else if (element.day == "bad") {
                             document.getElementById("bad").checked = true;
                             $("#toggleReveal-day").slideDown();
                         }
+
                         if (element.pain == "Low") {
                             document.getElementById("pain-Low").checked = true;
                             $("#toggleReveal-pain").slideDown();
-                        }
-                        if (element.pain == "Medium") {
+                        }else if (element.pain == "Medium") {
                             document.getElementById("pain-Medium").checked = true;
                             $("#toggleReveal-pain").slideDown();
-                        }
-                        if (element.pain == "High") {
+                        }else if (element.pain == "High") {
                             document.getElementById("pain-High").checked = true;
                             $("#toggleReveal-pain").slideDown();
                         }
+
                         if (element.stress == "Low") {
                             document.getElementById("stress-Low").checked = true;
                             $("#toggleReveal-stress").slideDown();
-                        }
-                        if (element.stress == "Medium") {
+                        }else if (element.stress == "Medium") {
                             document.getElementById("stress-Medium").checked = true;
                             $("#toggleReveal-stress").slideDown();
-                        }
-                        if (element.stress == "High") {
+                        }else if (element.stress == "High") {
                             document.getElementById("stress-High").checked = true;
                             $("#toggleReveal-stress").slideDown();
                         }
+
                         if (element.stool == "Soft") {
                             document.getElementById("stool-Soft").checked = true;
                             $("#toggleReveal-stool").slideDown();
-                        }
-                        if (element.stool == "Medium") {
+                        }else if (element.stool == "Medium") {
                             document.getElementById("stool-Medium").checked = true;
                             $("#toggleReveal-stool").slideDown();
-                        }
-                        if (element.stool == "Hard") {
+                        }else if (element.stool == "Hard") {
                             document.getElementById("stool-Hard").checked = true;
                             $("#toggleReveal-stool").slideDown();
                         }
+
                         if (element.bowelm == "Light") {
                             document.getElementById("bowel-light").checked = true;
                             $("#toggleReveal-movement").slideDown();
-                        }
-                        if (element.bowelm == "Medium") {
+                        }else if (element.bowelm == "Medium") {
                             document.getElementById("bowel-Medium").checked = true;
                             $("#toggleReveal-movement").slideDown();
-                        }
-                        if (element.bowelm == "Heavy") {
+                        }else if (element.bowelm == "Heavy") {
                             document.getElementById("bowel-heavy").checked = true;
                             $("#toggleReveal-movement").slideDown();
                         }
+
                         if (element.bowelf == "1-4") {
                             document.getElementById("1-4").checked = true;
                             $("#toggleReveal-frequency").slideDown();
-                        }
-                        if (element.bowelf == "5-8") {
+                        }else if (element.bowelf == "5-8") {
                             document.getElementById("5-8").checked = true;
                             $("#toggleReveal-frequency").slideDown();
-                        }
-                        if (element.bowelf == "9OrMore") {
+                        }else if (element.bowelf == "9OrMore") {
                             document.getElementById("9OrMore").checked = true;
                             $("#toggleReveal-frequency").slideDown();
                         }
+
                         if (element.bvisit == "1-2") {
                             document.getElementById("1-2").checked = true;
-                        }
-                        if (element.bvisit == "3-4") {
+                        }else if (element.bvisit == "3-4") {
                             document.getElementById("3-4").checked = true;
-                        }
-                        if (element.bvisit == "5OrMore") {
+                        }else if (element.bvisit == "5OrMore") {
                             document.getElementById("5OrMore").checked = true;
                         }
+                        
+                            document.getElementById("good").disabled = true;
+                            document.getElementById("okay").disabled = true;
+                            document.getElementById("bad").disabled = true;
+                            document.getElementById("pain-Low").disabled = true;
+                            document.getElementById("pain-Medium").disabled = true;
+                            document.getElementById("pain-High").disabled = true;
+                            document.getElementById("stress-Low").disabled = true;
+                            document.getElementById("stress-Medium").disabled = true;
+                            document.getElementById("stress-High").disabled = true;
+                            document.getElementById("stool-Soft").disabled = true;
+                            document.getElementById("stool-Medium").disabled = true;
+                            document.getElementById("stool-Hard").disabled = true;
+                            document.getElementById("bowel-light").disabled = true;
+                            document.getElementById("bowel-Medium").disabled = true;
+                            document.getElementById("bowel-heavy").disabled = true;
+                            document.getElementById("1-4").disabled = true;
+                            document.getElementById("5-8").disabled = true;
+                            document.getElementById("9OrMore").disabled = true;
+                            document.getElementById("1-2").disabled = true;
+                            document.getElementById("3-4").disabled = true;
+                            document.getElementById("5OrMore").disabled = true;
+                            document.getElementById("submitDiv").style.display = "none";
                     } else {
                         console.log("No data for this date");
                         document.getElementById("good").checked = false;
+                        document.getElementById("submitDiv").style.display = "block";
                         document.getElementById("submitData").disabled = false;
-                        if (element.day == "good") {
-                            document.getElementById("good").checked = false;
-                            $("#toggleReveal-day").slideUp();
+
+                        document.getElementById("good").disabled = false;
+                        document.getElementById("okay").disabled = false;
+                        document.getElementById("bad").disabled = false;
+                        document.getElementById("pain-Low").disabled = false;
+                        document.getElementById("pain-Medium").disabled = false;
+                        document.getElementById("pain-High").disabled = false;
+                        document.getElementById("stress-Low").disabled = false;
+                        document.getElementById("stress-Medium").disabled = false;
+                        document.getElementById("stress-High").disabled = false;
+                        document.getElementById("stool-Soft").disabled = false;
+                        document.getElementById("stool-Medium").disabled = false;
+                        document.getElementById("stool-Hard").disabled = false;
+                        document.getElementById("bowel-light").disabled = false;
+                        document.getElementById("bowel-Medium").disabled = false;
+                        document.getElementById("bowel-heavy").disabled = false;
+                        document.getElementById("1-4").disabled = false;
+                        document.getElementById("5-8").disabled = false;
+                        document.getElementById("9OrMore").disabled = false;
+                        document.getElementById("1-2").disabled = false;
+                        document.getElementById("3-4").disabled = false;
+                        document.getElementById("5OrMore").disabled = false;
+
+                        if (element.bvisit == "1-2") {
+                            document.getElementById("1-2").checked = false;
+                        }else if (element.bvisit == "3-4") {
+                            document.getElementById("3-4").checked = false;
+                        }else if (element.bvisit == "5OrMore") {
+                            document.getElementById("5OrMore").checked = false;
                         }
-                        if (element.day == "okay") {
-                            document.getElementById("okay").checked = false;
-                            $("#toggleReveal-day").slideUp();
-                        }
-                        if (element.day == "bad") {
-                            document.getElementById("bad").checked = false;
-                            $("#toggleReveal-day").slideUp();
-                        }
-                        if (element.pain == "Low") {
-                            document.getElementById("pain-Low").checked = false;
-                            $("#toggleReveal-day").slideUp();
-                        }
-                        if (element.pain == "Medium") {
-                            document.getElementById("pain-Medium").checked = false;
-                            $("#toggleReveal-day").slideUp();
-                        }
-                        if (element.pain == "High") {
-                            document.getElementById("pain-High").checked = false;
-                            $("#toggleReveal-day").slideUp();
-                        }
-                        if (element.stress == "Low") {
-                            document.getElementById("stress-Low").checked = false;
-                            $("#toggleReveal-stress").slideUp();
-                        }
-                        if (element.stress == "Medium") {
-                            document.getElementById("stress-Medium").checked = false;
-                            $("#toggleReveal-stress").slideUp();
-                        }
-                        if (element.stress == "Hard") {
-                            document.getElementById("stress-High").checked = false;
-                            $("#toggleReveal-stress").slideUp();
-                        }
-                        if (element.stool == "Soft") {
-                            document.getElementById("stool-Soft").checked = false;
-                            $("#toggleReveal-stool").slideUp();
-                        }
-                        if (element.stool == "Medium") {
-                            document.getElementById("stool-Medium").checked = false;
-                            $("#toggleReveal-stool").slideUp();
-                        }
-                        if (element.stool == "Hard") {
-                            document.getElementById("stool-Hard").checked = false;
-                            $("#toggleReveal-stool").slideUp();
-                        }
-                        if (element.bowelm == "light") {
-                            document.getElementById("bowel-light").checked = false;
-                            $("#toggleReveal-movement").slideUp();
-                        }
-                        if (element.bowelm == "Medium") {
-                            document.getElementById("bowel-Medium").checked = false;
-                            $("#toggleReveal-movement").slideUp();
-                        }
-                        if (element.bowelm == "heavy") {
-                            document.getElementById("bowel-heavy").checked = false;
-                            $("#toggleReveal-movement").slideUp();
-                        }
+
                         if (element.bowelf == "1-4") {
                             document.getElementById("1-4").checked = false;
                             $("#toggleReveal-frequency").slideUp();
-                        }
-                        if (element.bowelf == "5-8") {
+                        }else if (element.bowelf == "5-8") {
                             document.getElementById("5-8").checked = false;
                             $("#toggleReveal-frequency").slideUp();
-                        }
-                        if (element.bowelf == "9OrMore") {
+                        }else if (element.bowelf == "9OrMore") {
                             document.getElementById("9OrMore").checked = false;
                             $("#toggleReveal-frequency").slideUp();
                         }
-                        if (element.bvisit == "1-2") {
-                            document.getElementById("1-2").checked = false;
+
+                        if (element.bowelm == "light") {
+                            document.getElementById("bowel-light").checked = false;
+                            $("#toggleReveal-movement").slideUp();
+                        }else if (element.bowelm == "Medium") {
+                            document.getElementById("bowel-Medium").checked = false;
+                            $("#toggleReveal-movement").slideUp();
+                        }else if (element.bowelm == "heavy") {
+                            document.getElementById("bowel-heavy").checked = false;
+                            $("#toggleReveal-movement").slideUp();
                         }
-                        if (element.bvisit == "3-4") {
-                            document.getElementById("3-4").checked = false;
+                       
+                        if (element.stool == "Soft") {
+                            document.getElementById("stool-Soft").checked = false;
+                            $("#toggleReveal-stool").slideUp();
+                        }else if (element.stool == "Medium") {
+                            document.getElementById("stool-Medium").checked = false;
+                            $("#toggleReveal-stool").slideUp();
+                        }else if (element.stool == "Hard") {
+                            document.getElementById("stool-Hard").checked = false;
+                            $("#toggleReveal-stool").slideUp();
                         }
-                        if (element.bvisit == "5OrMore") {
-                            document.getElementById("5OrMore").checked = false;
+
+                        if (element.stress == "Low") {
+                            document.getElementById("stress-Low").checked = false;
+                            $("#toggleReveal-stress").slideUp();
+                        }else if (element.stress == "Medium") {
+                            document.getElementById("stress-Medium").checked = false;
+                            $("#toggleReveal-stress").slideUp();
+                        }else if (element.stress == "Hard") {
+                            document.getElementById("stress-High").checked = false;
+                            $("#toggleReveal-stress").slideUp();
                         }
+
+                        if (element.pain == "Low") {
+                            document.getElementById("pain-Low").checked = false;
+                            $("#toggleReveal-day").slideUp();
+                        }else if (element.pain == "Medium") {
+                            document.getElementById("pain-Medium").checked = false;
+                            $("#toggleReveal-day").slideUp();
+                        }else if (element.pain == "High") {
+                            document.getElementById("pain-High").checked = false;
+                            $("#toggleReveal-day").slideUp();
+                        }
+
+                        if (element.day == "good") {
+                            document.getElementById("good").checked = false;
+                            $("#toggleReveal-day").slideUp();
+                        }else if (element.day == "okay") {
+                            document.getElementById("okay").checked = false;
+                            $("#toggleReveal-day").slideUp();
+                        }else if (element.day == "bad") {
+                            document.getElementById("bad").checked = false;
+                            $("#toggleReveal-day").slideUp();
+                        }
+
+                        
+                        $("#toggleReveal-frequency").slideUp();
+                        $("#toggleReveal-movement").slideUp();
+                        $("#toggleReveal-stool").slideUp();
+                        $("#toggleReveal-stress").slideUp();
+                        $("#toggleReveal-pain").slideUp();
+                        $("#toggleReveal-day").slideUp();
                     }
                 }
             });
