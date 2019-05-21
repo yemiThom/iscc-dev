@@ -3,6 +3,380 @@
 
 <head>
     <title>IBDWELL</title>
+    <script>
+    function openExternal(elem) {
+        window.open(elem.href, "_system");
+        return false; // Prevent execution of the default onClick handler 
+    }
+</script>
+    <!-- Style Sheets -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+    <script type="text/javascript" src='js/verify.js'></script>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+    <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
+    <link rel="stylesheet" type="text/css" href="css/intro.css">
+    <link rel="stylesheet" type="text/css" href="css/replace-radio-checkbox.css">
+    <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- javascript -->
+    <script type='application/javascript' src='js/fastclick.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <!--<script type='text/javascript' src='js/homeCalTracker.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
+
+    <!-- Cognito login 
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+
+    <!--
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+</head>
+
+<body>
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png"
+                            onclick="openNav()" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/ibdwell-logo-white.png">
+                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidenav">
+        <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i
+                class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            <a id="email_value"></a>
+        </div>
+        <div class="sidenav-section">
+            <a href="verify.html" id="verifyiscc"></a>
+        </div>
+        <div class="sidenav-section">
+            <a id="maintenancemsg"></a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon3" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="uc-info.html">Ulcerative Colitis</a>
+            <a href="get-diagnosis.html">Getting a Diagnosis</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
+            <h4 class="bg-magenta">Contact</h4>
+            <a href="https://iscc.ie/contactus/" onClick="javascript:return openExternal(this)">Contact</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
+            <h4 class="bg-magenta">Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="https://iscc.ie/support/living-with-ibd">Living Well With IBD</a>
+            <a href="https://iscc.ie/contactus/">Support Telephone Line</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">FAQ</h4>
+            <a href="http://www.iscc.ie/faq">FAQ</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+
+    </div>
+    <!-- Side Bar -->
+
+    <!-- Start Precontainer Wrapper -->
+    <div class="pre-container-wrapper">
+        <div id="swipe-area" class="swipe-area"></div>
+        <!-- Start Container Area -->
+
+        <div class="content-container">
+
+
+            <div class="content">
+                <h1 class="welcome-title color-blue-dark">Welcome to IBD<span class="color-magenta">WELL</span></h1>
+
+                <a href="health-tracker.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg" id="healthcare">
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" class="txtBlock-img" />
+                            <h2 class="color-white">Health Tracker</h2>
+                            <!--p class="color-navy">Lorem ipsum dolor sit amet, ne novum debet vocent nam. Vis an solum posse quaerendum, in nulla fierent philosophia his.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <a href="gmap.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg panel-premium" id="restrooms">
+                            <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
+                                to continue using this feature.</div>
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" class="txtBlock-img" />
+                            <h2 class="color-white">Restrooms</h2>
+                            <!--p class="color-navy">Et his cibo nulla delectus. Quaestio facilisis per ne, case fabellas singulis id ius.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <a href="mindfulness.html">
+                    <div class="panel-long">
+                        <div class="panel-bg" id="mindfulness">
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" class="txtBlock-img" />
+                            <h2 class="color-white">Mindfulness</h2>
+                            <!--p class="color-navy">Eu idque dictas mea, ex sed sint dicat. Ea novum harum referrentur his, eu utamur assentior vim, at prima inermis alienum cum.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <a href="nearby.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg panel-premium" id="nearby" >
+                            <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
+                                to continue using this feature.</div>
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" class="txtBlock-img" />
+                            <h2 class="color-white">Nearby</h2>
+                            <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <a href="no-waiting.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg panel-premium" id="nowaiting">
+                            <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
+                                to continue using this feature.</div>
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/nowaiting.png" class="txtBlock-img" />
+                            <h2 class="color-white">No Waiting</h2>
+                            <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <div class="panel-short-full">
+                    <a href="cols-helper.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="cols-helper">
+                                <div class="panel-bg-layer"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <img src="http://iscc-imgs.s3.amazonaws.com/icons/colonoscopy.png"
+                                    class="txtBlock-img" />
+                                <h3 class="color-white">Colonoscopy <br /> Helper</h3>
+                                <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                            </div>
+                        </div>
+                    </a>
+                    <a href="event-cal.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="events">
+                                <div class="panel-bg-layer"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <img src="http://iscc-imgs.s3.amazonaws.com/icons/event.png" class="txtBlock-img" />
+                                <h3 class="color-white">Events</h3>
+                                <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!--<div class="panel-short-full">
+                    <a href="cols-helper.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="cols-helper">
+                                <div class="panel-bg-layer" id="generic-layercolor"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <h3 class="color-white">Colonoscopy <br /> Helper</h3>
+                                <!-p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p->
+                            </div>
+                        </div>
+                    </a>
+                    <a href="event-cal.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="events">
+                                <div class="panel-bg-layer" id="generic-layercolor"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <h3 class="color-white">Events</h3>
+                                <!-p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p->
+                            </div>
+                        </div>
+                    </a>
+                </div>-->
+
+                <br /><br />
+                <!--<div class="box" id="healthcare">Healthcare</div>
+                <div class="box" id="restrooms">Restrooms</div>
+                <div class="box" id="mindfulness">Mindfulness</div>
+                <div class="box" id="nearby">Nearby</div>-->
+            </div>
+        </div>
+        <!-- End Container Area -->
+    </div>
+    <!-- End Precontainer Wrapper -->
+
+    <!-- Start Footer Nav Area -->
+    <div id="footer" class="default-footer">
+        <div class="mobile-bottom-bar">
+            <a href="home.html" class="footer-link">
+                <!--i class="fas fa-home"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/home.png" />
+                <span class='footer-text'>Home</span>
+            </a>
+            <a href="health-tracker.html" class="footer-link">
+                <!--i class="fas fa-file-contract"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" />
+                <span class='footer-text'>Health Tracker</span>
+            </a>
+            <a id="premium-gmap" href="gmap.html" class="footer-link premium-footer-gmap premiumFeatures">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-map-marker-alt"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" style="width: 11px;" />
+                <span class='footer-text'>Restrooms</span>
+            </a>
+            <a href="mindfulness.html" class="footer-link">
+                <!--i class="fas fa-spa"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" />
+                <span class='footer-text'>Mindfulness</span>
+            </a>
+            <a id="premium-nearby" href="nearby.html" class="footer-link premium-footer-nearby premiumFeatures" >
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-comments"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" style="width: 13px;" />
+                <span class='footer-text'>Nearby</span>
+            </a>
+            <!--a href="profile-card.html" class="footer-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span class='footer-text'>Profile</span>
+                    </a-->
+        </div>
+    </div>
+    <!-- End Footer Nav Area -->
+
+    <!-- Start Sidebar script -->
+    <script type="text/javascript">
+        /* Set the width of the sidbar to 250px */
+        function openNav() {
+            /*document.getElementById("sidebar").style.width = "250px";*/
+            document.getElementById("sidebar").style.left = "0px";
+            document.getElementById("swipe-area").style.left = "0px";
+            document.getElementById("swipe-area").style.width = "100%";
+        }
+
+        /* Set the width of the sidebar to 0 */
+        function closeNav() {
+            /*document.getElementById("sidebar").style.width = "0";*/
+            document.getElementById("sidebar").style.left = "-260px";
+            document.getElementById("swipe-area").style.left = "0px";
+            document.getElementById("swipe-area").style.width = "25px";
+        }
+    </script>
+    <!-- End Sidebar script -->
+    <!-- Start swipe sidebar script -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#swipe-area").swipe({
+                //Generic swipe handler for all directions
+                swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+
+                    switch (direction) {
+                        case "right":
+                            console.log("swiped right!");
+                            openNav();
+                            break;
+                        case "left":
+                            console.log("swiped left");
+                            closeNav();
+                            break;
+                    }
+                },
+                //Default is 75px, set to 0 for demo so any distance triggers swipe
+                threshold: 75
+            });
+        });
+    </script>
+    <!-- End swipe sidebar script -->
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IBDWELL</title>
 
     <!-- Style Sheets -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -102,21 +476,21 @@
         <div class="sidenav-section">
             <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
             <h4 class="bg-magenta">Contact</h4>
-            <a href="https://iscc.ie/contactus/" target="_blank">Contact</a>
+            <a href="https://iscc.ie/contactus/">Contact</a>
         </div>
 
         <div class="sidenav-section">
             <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
             <h4 class="bg-magenta">Support</h4>
             <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
-            <a href="https://iscc.ie/support/living-with-ibd" target="_blank">Living Well With IBD</a>
-            <a href="https://iscc.ie/contactus/" target="_blank">Support Telephone Line</a>
+            <a href="https://iscc.ie/support/living-with-ibd">Living Well With IBD</a>
+            <a href="https://iscc.ie/contactus/">Support Telephone Line</a>
         </div>
 
         <div class="sidenav-section">
             <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
             <h4 class="bg-magenta">FAQ</h4>
-            <a href="http://www.iscc.ie/faq" target="_blank">FAQ</a>
+            <a href="http://www.iscc.ie/faq">FAQ</a>
         </div>
 
         <div class="sidenav-section">
