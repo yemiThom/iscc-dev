@@ -1,0 +1,234 @@
+body{
+    position: relative;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup, .popup1 {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2, .popup1 h2 {
+    margin-top: 0;
+    color: #333;
+}
+.popup .close, .popup1 .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover, .popup1 .close:hover {
+    color: #d123bf;
+}
+.popup .content, .popup1 .content{
+    max-height: 30%;
+    overflow: auto;
+}
+
+.reviewBtn_div{
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+}
+
+.reviewBtn_div .button {
+  padding: 10px;
+  color: #fff;
+  background-color: #414b76;
+  border: 2px solid #414b76;
+  /*border-radius: 20px/50px;
+  cursor: pointer;*/
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+}
+.reviewBtn_div .button:hover {
+  background: #d123bf;
+  border: 2px solid #d123bf;
+}
+
+.scannerBtn_div .button {
+    color: #FFFFFF;
+    background-color: #414b76;
+    text-align: center;
+    vertical-align: middle;
+    padding: 7px 20px;
+    border-radius: 25px;
+    border: 1px solid #414b76;
+    margin: 0 auto;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+.scannerBtn_div .button:hover {
+    background: #d123bf;
+    border: 1px solid #d123bf;
+}
+.reviewBtn input[type="button"] {
+    /* display: block; */
+    color: #FFFFFF;
+    background-color: #775ba6;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #775ba6;
+    padding: 3px 11px;
+    font-size: 1.25 rem;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+.requestBtn_div .button {
+    color: #FFFFFF;
+    background-color: #775ba6;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 15px;
+    border-radius: 15px;
+    margin: 5px 7%;
+    font-size: 2rem;
+    background-color: #414b76;
+    border: 1px solid #414b76;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+.requestBtn_div .button:hover {
+    background: #d123bf;
+    border: 1px solid #d123bf;
+}
+.star-rating {
+    display: inline-block;
+    position: relative;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 2.5rem;
+}
+
+.star-rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+}
+
+.star-rating label:last-child {
+    position: static;
+}
+
+.star-rating label:nth-child(1) {
+    z-index: 5;
+}
+
+.star-rating label:nth-child(2) {
+    z-index: 4;
+}
+
+.star-rating label:nth-child(3) {
+    z-index: 3;
+}
+
+.star-rating label:nth-child(4) {
+    z-index: 2;
+}
+
+.star-rating label:nth-child(5) {
+    z-index: 1;
+}
+
+.star-rating label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.star-rating label .icon {
+    float: left;
+    color: transparent;
+}
+
+.star-rating label:last-child .icon {
+    color: #72737b;
+}
+
+.star-rating:not(:hover) label input:checked ~ .icon,
+.star-rating:hover label:hover input ~ .icon {
+    color: #d123bf;
+}
+
+.star-rating label input:focus:not(:checked) ~ .icon:last-child {
+    color: #72737b;
+    text-shadow: 0 0 5px #414b76;
+}
+
+.star-rating-display {
+    unicode-bidi: bidi-override;
+    color: #72737b;
+    display: block;
+    position: relative;
+}
+.star-rating-display:before, .star-rating-display:after{
+    content: "★★★★★";
+    display: block;
+    white-space: nowrap;
+}
+.star-rating-display:before{
+    color: #414b76;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    overflow: hidden;
+}
+.star-rating-display:after{
+    z-index: 0;
+}
+.star-rating-display[data-rating="1"]:before {
+    width: 20%;
+}
+.star-rating-display[data-rating="2"]:before {
+    width: 40%;
+}
+.star-rating-display[data-rating="3"]:before {
+    width: 60%;
+}
+.star-rating-display[data-rating="4"]:before {
+    width: 80%;
+}
+.star-rating-display[data-rating="5"]:before {
+    width: 100%;
+}
+
+@media screen and (max-width: 700px){
+    .box{
+        width: 70%;
+    }
+    .popup{
+        width: 70%;
+    }    
+    .popup1{
+        width: 95%;
+    }
+}

@@ -143,6 +143,9 @@
       return Promise.reject('Current user session not found');
     }
     return Promise.resolve(User.signOut());
+	
+	console.log("deleting user localstorage username");
+	localstorage.removeItem(username);
   }
 
   window.Cognito = Object.freeze({

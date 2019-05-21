@@ -2,24 +2,35 @@
 <html>
 
 <head>
-    <title>Gutsy</title>
+    <title>IBDWELL</title>
 
     <!-- Style Sheets -->
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
     <link rel="stylesheet" type="text/css" href="css/main-nav.css">
     <link rel="stylesheet" type="text/css" href="css/event-cal.css">
     <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
 
-    <!-- javascript -->
-    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
-    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- javascript -->
+    <script type='application/javascript' src='js/fastclick.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <!--script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script-->
+
+    <!-- Cognito login 
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+    <script type="text/javascript" src='js/verify.js'></script>
     <!--
         user-scalable=no doesn't allow users to zoom
         initial-scale=1 means the zoom level when the app is loaded. 1=100%
@@ -39,13 +50,14 @@
             <div class="header-wrap">
                 <div class="header-top d-flex justify-content-between align-items-center">
                     <div class="logo">
-                        <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" />
+                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png"
+                            onclick="openNav()" />
                         <!--position: fixed; right: 10px; bottom: 10px" />-->
                         <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
                     </div>
                     <div>
                         <div class="main-menubar d-flex align-items-center">
-                            <h2>Gutsy</h2>
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/ibdwell-logo-white.png">
                         </div>
                         <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                     </div>
@@ -57,26 +69,56 @@
     <!-- Sidebar -->
     <div id="sidebar" class="sidenav">
         <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
-        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
-        <a href="index.html">Login page</a>
-        <a href="register-email.html">Register</a>
-        <!--   <a href="register-index.html">Register page 2</a>
-        <a href="register-profile.html">Register page 3</a> -->
-        <a href="cols-helper.html">Colonoscopy Helper</a>
-        <a href="sound-player.html">Sound Player</a>
-        <a href="event-cal.html">Events Calendar</a>
-        <a href="index.html">Log out</a>
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i
+                class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            <a id="email_value"></a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon3" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="uc-info.html">Ulcerative Colitis</a>
+            <a href="get-diagnosis.html">Getting a Diagnosis</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
+            <h4 class="bg-magenta">Contact</h4>
+            <a href="https://iscc.ie/contactus/">Contact</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
+            <h4 class="bg-magenta">Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="https://iscc.ie/support/living-with-ibd">Living Well With IBD</a>
+            <a href="https://iscc.ie/contactus/">Support Telephone Line</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">FAQ</h4>
+            <a href="https://www.iscc.ie/faq">FAQ</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+
     </div>
     <!-- Side Bar -->
 
     <!-- Start Precontainer Wrapper -->
     <div class="pre-container-wrapper">
-        <!--<div id="swipe-area" class="swipe-area"><br/><br/><br/>Text Area</div>-->
+        <div id="swipe-area" class="swipe-area"></div>
         <!-- Start Container Area -->
         <div class="content-container">
             <div class="header">
                 <h1 class="text-center p-b-5">Events</h1>
-                <h3 class="text-center color-navy">Register to join now!</h3>
+                <h3 class="text-center color-grey">Register to join now!</h3>
             </div>
 
             <div class="column_right_grid calender">
@@ -249,97 +291,115 @@
                 </div>
             </div>
 
-            
-		    <div class="events">
+
+            <div class="events">
                 <a href="http://members.iscc.ie/event-3056095/Registration" target="_blank">
                     <ul>
-                            <li>Living well with IBD</li>
-                            <li><span>10<sup class="degree">°</sup><sup class="degree">°</sup></span><i>AM</i></li>
-                            <div class="clear"> </div>
+                        <li>Living well with IBD</li>
+                        <li><span>10<sup class="degree">0</sup><sup class="degree">0</sup></span><i>AM</i></li>
+                        <div class="clear"> </div>
                     </ul>
                 </a>
                 <ul>
                     <li>All Hands</li>
-                    <li><span>2<sup class="degree">°</sup><sup class="degree">°</sup></span><i>PM</i></li>
+                    <li><span>2<sup class="degree">0</sup><sup class="degree">0</sup></span><i>PM</i></li>
                     <div class="clear"> </div>
                 </ul>
                 <ul>
                     <li>Dinner Treat</li>
-                    <li><span>8<sup class="degree">°</sup><sup class="degree">°</sup></span><i>PM</i></li>
+                    <li><span>8<sup class="degree">0</sup><sup class="degree">0</sup></span><i>PM</i></li>
                     <div class="clear"> </div>
                 </ul>
             </div>
-            <br/><br/>
+            <br /><br />
         </div>
         <!-- End Container Area -->
     </div>
     <!-- End Precontainer Wrapper -->
 
     <!-- Start Footer Nav Area -->
-    <div class="default-footer">
+    <div id="footer" class="default-footer">
         <div class="mobile-bottom-bar">
             <a href="home.html" class="footer-link">
-                <i class="fas fa-list-alt"></i>
+                <!--i class="fas fa-home"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/home.png" />
                 <span class='footer-text'>Home</span>
             </a>
-            <a href="gmap.html" class="footer-link">
-                <i class="fas fa-map-marker-alt"></i>
+            <a href="health-tracker.html" class="footer-link">
+                <!--i class="fas fa-file-contract"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" />
+                <span class='footer-text'>Health Tracker</span>
+            </a>
+            <a id="premium-gmap" href="gmap.html" class="footer-link premium-footer-gmap premiumFeatures">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-map-marker-alt"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" style="width: 11px;" />
                 <span class='footer-text'>Restrooms</span>
             </a>
             <a href="mindfulness.html" class="footer-link">
-                <i class="fas fa-spa"></i>
+                <!--i class="fas fa-spa"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" />
                 <span class='footer-text'>Mindfulness</span>
             </a>
-            <a href="nearby.html" class="footer-link">
-                <i class="fas fa-comments"></i>
+            <a id="premium-nearby" href="nearby.html" class="footer-link premium-footer-nearby premiumFeatures">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-comments"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" style="width: 13px;" />
                 <span class='footer-text'>Nearby</span>
             </a>
-            <a href="profile-card.html" class="footer-link">
-                <i class="fas fa-user-circle"></i>
-                <span class='footer-text'>Profile</span>
-            </a>
+            <!--a href="profile-card.html" class="footer-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span class='footer-text'>Profile</span>
+                    </a-->
         </div>
     </div>
     <!-- End Footer Nav Area -->
-</body>
-<!-- fast click script -->
-<script type='text/javascript' src='js/fastclick.min.js'></script>
 
-<script>
-    if ('addEventListener' in document) {
-        document.addEventListener('DOMContentLoaded', function() {
-            FastClick.attach(document.body);
-        }, false);
-    }
-</script>
-<!-- end fast click script -->
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+</body>
 <!-- Start Sidebar script -->
 <script type="text/javascript">
     /* Set the width of the sidbar to 250px */
     function openNav() {
         /*document.getElementById("sidebar").style.width = "250px";*/
         document.getElementById("sidebar").style.left = "0px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "100%";
     }
 
     /* Set the width of the sidebar to 0 */
     function closeNav() {
         /*document.getElementById("sidebar").style.width = "0";*/
         document.getElementById("sidebar").style.left = "-260px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "20px";
     }
 </script>
 <!-- End Sidebar script -->
 <!-- Start swipe sidebar script -->
 <script type="text/javascript">
-    $(function () {
+    $(document).ready(function () {
         $("#swipe-area").swipe({
             //Generic swipe handler for all directions
             swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
 
                 switch (direction) {
                     case "right":
+                        console.log("swiped right!");
                         openNav();
                         break;
                     case "left":
+                        console.log("swiped left");
                         closeNav();
                         break;
                 }
@@ -347,31 +407,20 @@
             //Default is 75px, set to 0 for demo so any distance triggers swipe
             threshold: 75
         });
-
-        /* Set the width of the sidbar to 250px */
-        function openNav() {
-            /*document.getElementById("sidebar").style.width = "250px";*/
-            document.getElementById("sidebar").style.left = "0px";
-        }
-
-        /* Set the width of the sidebar to 0 */
-        function closeNav() {
-            /*document.getElementById("sidebar").style.width = "0";*/
-            document.getElementById("sidebar").style.left = "-260px";
-        }
     });
 </script>
 <!-- End swipe sidebar script -->
 <script type="text/javascript" src="js/clndr.js"></script>
-<script type="text/javascript" src="js/site.js"></script>    
+<script type="text/javascript" src="js/site.js"></script>
 <script type="text/javascript" src="js/moment-2.2.1.js"></script>
 <script type="text/javascript" src="js/underscore-min.js"></script>
-<script>$(document).ready(function(c) {
-    $('.alert-close').on('click', function(c){
-        $('.calender-right').fadeOut('slow', function(c){
-            $('.calender-right').remove();
+<script>$(document).ready(function (c) {
+        $('.alert-close').on('click', function (c) {
+            $('.calender-right').fadeOut('slow', function (c) {
+                $('.calender-right').remove();
+            });
         });
-    });	  
-});
+    });
 </script>
+
 </html>

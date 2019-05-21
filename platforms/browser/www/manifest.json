@@ -1,0 +1,19 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "IBDWELL",
+  "short_name": "IBDWELL",
+  "version": "com.ire-iscc.ibdwell",
+  "description": "Supporting IBD patients and their families in Ireland.",
+  "author": "Irish Society for Colitis and Crohn's Disease",
+  "icons": [
+    {
+      "src": "www/icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ],
+  "orientation": "portrait",
+  "start_url": "index.html",
+  "theme_color": "#414b76"
+}

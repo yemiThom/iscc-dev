@@ -4,10 +4,22 @@
 <head>
     <title>IBDWELL</title>
     <script>
-    function openExternal(elem) {
-        window.open(elem.href, "_system");
-        return false; // Prevent execution of the default onClick handler 
+
+    if(!window.device) {
+        window.device = { platform: 'browser' };
     }
+    if(!window.extLinksHandler) {   
+        on(document, 'a[href^="http"]:click', function(e) {
+            e.preventDefault();
+            var url = domAttr.get(e.target, 'href');
+            if(device.platform.toLowerCase() === 'android' || device.platform.toLowerCase() === 'ios') {
+                window.open(url, '_system');
+            } else
+                window.open(url, '_blank');
+        });
+        window.extLinksHandler = true;
+    }
+
 </script>
     <!-- Style Sheets -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -107,7 +119,7 @@
         <div class="sidenav-section">
             <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
             <h4 class="bg-magenta">Contact</h4>
-            <a href="https://iscc.ie/contactus/" onClick="javascript:return openExternal(this)">Contact</a>
+            <a href="https://iscc.ie/contactus/" target="_system">Contact</a>
         </div>
 
         <div class="sidenav-section">

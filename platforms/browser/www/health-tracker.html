@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IBDWELL</title>
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+    <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
+    <link rel="stylesheet" type="text/css" href="css/replace-radio-checkbox.css">
+    <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/homeCalTracker.css">
+    <link rel="stylesheet" type="text/css" href="css/barcodeScanner.css">
+    <link rel="stylesheet" type="text/css" href="css/pop-up.css">
+
+    
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+
+    <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- javascript -->
+    <!--<script type='application/javascript' src='js/fastclick.js'></script>-->
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+        <!--<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+        <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
+
+    <!--
+        user-scalable=no doesn't alLow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+</head>
+
+<body>
+    <script type="text/javascript" src='js/index.js'></script>
+    <script type="text/javascript" src='js/verify.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript" src='js/chart.js'></script>
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png"
+                            onclick="openNav()" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/ibdwell-logo-white.png">
+                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidenav">
+        <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            <a id="email_value"></a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon3" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="uc-info.html">Ulcerative Colitis</a>
+            <a href="get-diagnosis.html">Getting a Diagnosis</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
+            <h4 class="bg-magenta">Contact</h4>
+            <a href="https://iscc.ie/contactus/">Contact</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
+            <h4 class="bg-magenta">Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="https://iscc.ie/support/living-with-ibd">Living Well With IBD</a>
+            <a href="https://iscc.ie/contactus/">Support Telephone Line</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">FAQ</h4>
+            <a href="https://www.iscc.ie/faq">FAQ</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+
+    </div>
+    <!-- Side Bar -->
+
+    <!-- Start Precontainer Wrapper -->
+    <div class="pre-container-wrapper">
+        <div id="swipe-area" class="swipe-area"></div>
+        <!-- Start Container Area -->
+        <div class="content-container">
+            <div class="header">
+                <h1 class="text-center p-b-5">Health Tracker</h1>
+                <h3 class="text-center color-white">Complete today's log!</h3>
+
+
+                <div class="cal-header">
+                    <i id="cal-prev" class="fas fa-arrow-circle-left cal-prev"></i>
+                    <span class="cal-input"><input type="text" id="datepicker" value="" /></span>
+                    <!-- <span class="cal-input"><button id="getDoclog" onclick="getDoclog()" >GET </button></span> -->
+                    <i id="cal-next" class="fas fa-arrow-circle-right cal-next"></i>
+                </div>
+
+
+                <div id="htOutput"></div>
+            </div>
+
+            <div class="tabs">
+
+                <input type="radio" id="tab1" name="tab-control" checked>
+                <input type="radio" id="tab2" name="tab-control">
+                <input type="radio" id="tab3" name="tab-control">
+                <input type="radio" id="tab4" name="tab-control">
+                <ul>
+                    <li title="Symptoms">
+                        <label for="tab1" role="button">
+                            <i class="fas fa-heartbeat"></i>
+                            <br><span>Symptoms</span>
+                        </label>
+                    </li>
+                    <li title="Doctor's Log">
+                        <label for="tab2" role="button">
+                            <i class="fas fa-pills"></i>
+                            <br><span>Doctor's Log</span>
+                        </label>
+                    </li>
+                    <li title="Diet">
+                        <label for="tab3" role="button">
+                            <i class="fas fa-utensils"></i>
+                            <br><span>Diet</span>
+                        </label>
+                    </li>
+                    <li title="Data">
+                        <label for="tab4" role="button">
+                            <i class="fas fa-chart-bar"></i>
+                            <br><span>Data</span>
+                        </label>
+                    </li>
+                </ul>
+
+                <!--<div class="slider"><div class="indicator"></div></div>-->
+                <div class="content">
+                    <section>
+                        <h2 class="color-blue-dark">Symptoms</h2>
+                        <div>
+                            <h3 class="color-blue-dark">How was your day?</h3>
+                            <div class="card scrolling-wrapper">
+                                <div class="rating-container">
+                                    <!--<div class="rating-text">
+                                        <p>I'm feeling...</p>
+                                    </div>-->
+                                    <div class="rating">
+                                        <form id="healthtracker_day" class="rating-form">
+
+                                            <label for="good" class="tracker-label">
+
+                                                <!--onclick="toggleRevealFunc()"-->
+                                                <input type="radio" name="day" class="green" id="good" value="good" />
+                                                <img id="toggle-call" class="img-responsive" src="http://iscc-imgs.s3.amazonaws.com/icons/face-good.png" />
+
+                                                <span class="tracker-label-txt">Good</span>
+                                            </label>
+
+                                            <label for="okay" class="tracker-label">
+
+                                                <input type="radio" name="day" class="orange" id="okay" value="okay" />
+                                                <img id="toggle-call" class="img-responsive" src="http://iscc-imgs.s3.amazonaws.com/icons/face-okay.png" />
+
+                                                <span class="tracker-label-txt">Okay</span>
+                                            </label>
+
+                                            <label for="bad" class="tracker-label">
+                                                <input type="radio" name="day" class="red" id="bad" value="bad" />
+                                                <img id="toggle-call" class="img-responsive" src="http://iscc-imgs.s3.amazonaws.com/icons/face-bad.png" />
+
+                                                <span class="tracker-label-txt">Bad</span>
+                                            </label>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </diV>
+                        <div id="toggleReveal-day" class="nodisplay toggleReveal">
+                            <h3 class="color-blue-dark">Pain level?</h3>
+                            <div class="card scrolling-wrapper">
+                                <div class="rating-container">
+                                    <!--<div class="rating-text">
+                                        <p>I'm feeling...</p>
+                                    </div>-->
+                                    <div class="rating">
+                                        <form id="healthtracker_pain" class="rating-form">
+
+                                            <label for="pain-Low" class="tracker-label">
+                                                <input type="radio" name="pain" class="green" id="pain-Low" value="Low" />
+                                                <img id="toggle-call" class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level1-icon.png" />
+
+                                                <span class="tracker-label-txt">Low</span>
+                                            </label>
+
+                                            <label for="pain-Medium" class="tracker-label">
+                                                <input type="radio" name="pain" class="orange" id="pain-Medium" value="Medium" />
+                                                <img id="toggle-call" class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level2-icon.png" />
+
+                                                <span class="tracker-label-txt">Medium</span>
+                                            </label>
+
+                                            <label for="pain-High" class="tracker-label">
+                                                <input type="radio" name="pain" class="red" id="pain-High" value="High" />
+                                                <img id="toggle-call" class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level3-icon.png" />
+
+                                                <span class="tracker-label-txt">High</span>
+                                            </label>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </diV>
+                        <div id="toggleReveal-pain" class="nodisplay toggleReveal">
+                            <h3 class="color-blue-dark">Stress level?</h3>
+                            <div class="card scrolling-wrapper">
+                                <div class="rating-container">
+                                    <!--<div class="rating-text">
+                                        <p>I'm feeling...</p>
+                                    </div>-->
+                                    <div class="rating">
+                                        <form id="healthtracker_stress" class="rating-form">
+
+                                            <label for="stress-Low" class="tracker-label">
+                                                <input type="radio" name="stress" class="green" id="stress-Low" value="Low" />
+                                                <img id="toggle-call" class="img-responsive" src="http://iscc-imgs.s3.amazonaws.com/icons/face-good.png" />
+
+                                                <span class="tracker-label-txt">Low</span>
+                                            </label>
+
+                                            <label for="stress-Medium" class="tracker-label">
+                                                <input type="radio" name="stress" class="orange" id="stress-Medium"
+                                                    value="Medium" />
+                                                <img id="toggle-call" class="img-responsive" src="http://iscc-imgs.s3.amazonaws.com/icons/face-okay.png" />
+
+                                                <span class="tracker-label-txt">Medium</span>
+                                            </label>
+
+                                            <label for="stress-High" class="tracker-label">
+                                                <input type="radio" name="stress" class="red" id="stress-High" value="High" />
+                                                <img id="toggle-call" class="img-responsive" src="http://iscc-imgs.s3.amazonaws.com/icons/face-bad.png" />
+
+                                                <span class="tracker-label-txt">High</span>
+                                            </label>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </diV>
+                        <div id="toggleReveal-stress" class="nodisplay toggleReveal">
+                            <h3 class="color-blue-dark">Stool Quality?</h3>
+                            <div class="card scrolling-wrapper">
+                                <div class="rating-container">
+                                    <!--<div class="rating-text">
+                                        <p>I'm feeling...</p>
+                                    </div>-->
+                                    <div class="rating">
+                                        <form id="healthtracker_stool" class="rating-form">
+
+                                            <label for="stool-Hard" class="tracker-label">
+                                                <input type="radio" name="stool" class="green" id="stool-Hard" value="Hard" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level1-icon.png" />
+                                                <span class="tracker-label-txt">Hard</span>
+                                            </label>
+
+                                            <label for="stool-Medium" class="tracker-label">
+                                                <input type="radio" name="stool" class="orange" id="stool-Medium" value="Medium" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level2-icon.png" />
+                                                <span class="tracker-label-txt">Medium</span>
+                                            </label>
+
+                                            <label for="stool-Soft" class="tracker-label">
+                                                <input type="radio" name="stool" class="red" id="stool-Soft" value="Soft" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level3-icon.png" />
+                                                <span class="tracker-label-txt">Soft</span>
+                                            </label>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="toggleReveal-stool" class="nodisplay toggleReveal">
+                            <h3 class="color-blue-dark">Bowel Movement?</h3>
+                            <div class="card scrolling-wrapper">
+                                <div class="rating-container">
+                                    <!--<div class="rating-text">
+                                        <p>I'm feeling...</p>
+                                    </div>-->
+                                    <div class="rating">
+                                        <form id="healthtracker_bowel" class="rating-form">
+
+                                            <label for="bowel-light" class="tracker-label">
+                                                <input type="radio" name="movement" class="green" id="bowel-light"
+                                                    value="Light" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level1-icon.png" />
+                                                <span class="tracker-label-txt">Light</span>
+                                            </label>
+
+                                            <label for="bowel-Medium" class="tracker-label">
+                                                <input type="radio" name="movement" class="orange" id="bowel-Medium"
+                                                    value="Medium" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level2-icon.png" />
+                                                <span class="tracker-label-txt">Medium</span>
+                                            </label>
+
+                                            <label for="bowel-heavy" class="tracker-label">
+                                                <input type="radio" name="movement" class="red" id="bowel-heavy" value="Heavy" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level3-icon.png" />
+                                                <span class="tracker-label-txt">Heavy</span>
+                                            </label>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </diV>
+                        <div id="toggleReveal-movement" class="nodisplay toggleReveal">
+                            <h3 class="color-blue-dark">Bowel Frequency?</h3>
+                            <div class="card scrolling-wrapper">
+                                <div class="rating-container">
+                                    <!--<div class="rating-text">
+                                        <p>I'm feeling...</p>
+                                    </div>-->
+                                    <div class="rating">
+                                        <form id="healthtracker_movement" class="rating-form">
+
+                                            <label for="1-4" class="tracker-label">
+                                                <input type="radio" name="frequency" class="green" id="1-4" value="1-4" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level1-icon.png" />
+                                                <span class="tracker-label-txt">1 - 4</span>
+                                            </label>
+
+                                            <label for="5-8" class="tracker-label">
+                                                <input type="radio" name="frequency" class="orange" id="5-8" value="5-8" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level2-icon.png" />
+                                                <span class="tracker-label-txt">5 - 8</span>
+                                            </label>
+
+                                            <label for="9OrMore" class="tracker-label">
+                                                <input type="radio" name="frequency" class="red" id="9OrMore" value="9 or more" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level3-icon.png" />
+                                                <span class="tracker-label-txt">9 or more</span>
+                                            </label>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </diV>
+                        <div id="toggleReveal-frequency" class="nodisplay toggleReveal">
+                            <h3 class="color-blue-dark">Bathroom visit at night?</h3>
+                            <div class="card scrolling-wrapper">
+                                <div class="rating-container">
+                                    <!--<div class="rating-text">
+                                        <p>I'm feeling...</p>
+                                    </div>-->
+                                    <div class="rating">
+                                        <form id="healthtracker_movement" class="rating-form">
+
+                                            <label for="1-2" class="tracker-label">
+                                                <input type="radio" name="night" class="green" id="1-2" value="1-2" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level1-icon.png" />
+                                                <span class="tracker-label-txt">1 - 2</span>
+                                            </label>
+
+                                            <label for="3-4" class="tracker-label">
+                                                <input type="radio" name="night" class="orange" id="3-4" value="3-4" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level2-icon.png" />
+                                                <span class="tracker-label-txt">3 - 4</span>
+                                            </label>
+
+                                            <label for="5OrMore" class="tracker-label">
+                                                <input type="radio" name="night" class="red" id="5OrMore" value="5 or more" />
+                                                <img class="img-responsive2" src="http://iscc-imgs.s3.amazonaws.com/icons/level3-icon.png" />
+                                                <span class="tracker-label-txt">5 or more</span>
+                                            </label>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <div id="submitDiv" class="goScan">
+                                                <form id="healthtracker_submit" class="goScan">
+                                                    <input id="submitData" type="button" Name="UserLogSubmit" value="Save">
+                                                    <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
+                                                </form>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--        <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
+                        <input type="button" class="btn" id="close2" value="Close Symptom Data" />
+                         -->
+                            <table class="table table-bordered" id="tabletest2" style="display:none">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Day</th>
+                                        <th>Pain</th>
+                                        <th>Stress</th>
+                                        <th>Stool Quality</th>
+                                        <th>Bowel Movement</th>
+                                        <th>Bowel Frequency</th>
+                                        <th>Bathroom Visit</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="symptomTable">
+                                </tbody>
+                            </table>
+
+
+
+                        </diV>
+
+
+
+                        <!--br/>
+                        <p><a href="profile-card.html" style="text-decoration: none; display: block; text-align: center; background-color: cornfLowerblue;">Show Restroom ID Card</a></p-->
+
+                    </section>
+                    <section>
+                        <h2 class="color-blue-dark">Doctor's Log</h2>
+                        <!--div-->
+                        <h3 class="color-blue-dark">Daily Log</h3>
+                        <div class="displayBlock padding-btm">
+                            <label class="displayBlock">Medication Name:</label>
+                            <input id="medicationName" class="txtBorder" type="text">
+                        </div>
+                        <div class="displayBlock padding-btm">
+                            <div class="dispInlineBlock">
+                                <label class="displayBlock">Dosage:</label>
+                                <input id="dosageNum" class="txtBorder" type="number">
+                            </div>
+
+                            <div class="custom-select dispInlineBlock">
+                                <div class="select">
+                                    <select id="medsDoseSel">
+                                        <option value="0">mg</option>
+                                        <option value="2">g</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--div-->
+                        <label>Questions for the doctor:</label>
+                        <input id="meds-comment" class="text-areas" rows="3" cols="20" placeholder="Any questions?"/>
+                        <!--/div-->
+                        <div class="checkbox-div">
+                            <div class="checkbox-container">
+                                <p>Completed a prescription today?</p>
+                            </div>
+                            <div class="checkbox-container">
+                                <span>NO</span>
+                                <label class="switch">
+                                    <input id="healthtracker_prescription" type="checkbox">
+                                    <span class="checkbox-slider round"></span>
+                                </label>
+                                <span>YES</span>
+                            </div>
+                        </div>
+                        <form id="healthtracker_submit" class="goScan">
+
+                            <div class="scannerBtn_div">
+                                <button id="submitDocData" class="button" type="button" value="Save">Save</button>
+                                <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
+                            </div>
+                        </form>
+                        <!--/div-->
+                        <br>
+                        <div class="goScan m-b-10">
+                            <input type="button" class="btn" id="getAllDocLogData" value="Show Doc's Log Data" />
+                            <input type="button" class="btn" id="close3" value="Close Doc's Log Data" />
+                        </div>   
+                         
+                        <table id="tabletest3" style="display:none" cellpadding="0" cellspacing="0" border="0">
+                            <thead class="tbl-header">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Medication</th>
+                                    <th>Dosage</th>
+                                    <th>Comment</th>
+                                    <th>Complete</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbl-content" id="docLogTable">
+                            </tbody>
+                        </table>
+                        <br>
+                        <br>
+
+                    </section>
+                    <section>
+                        <h2 class="color-blue-dark">Diet</h2>
+
+
+                        <div class="tabset">
+                            <!-- Tab 1 -->
+                            <input type="radio" name="tabset" id="tab1-1" aria-controls="breakfast" checked>
+                            <label for="tab1-1">Breakfast</label>
+                            <!-- Tab 2 -->
+                            <input type="radio" name="tabset" id="tab2-1" aria-controls="lunch">
+                            <label for="tab2-1">Lunch</label>
+                            <!-- Tab 3 -->
+                            <input type="radio" name="tabset" id="tab3-1" aria-controls="dinner">
+                            <label for="tab3-1">Dinner</label>
+
+                            <div class="tab-panels">
+                                <!--<section id="breakfast" class="tab-panel">-->
+                                    <!--<h2>Breakfast</h2>-->
+                                    <h3 class="diet-h3 color-blue-dark">What did you have?</h3>
+                                    <!--a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a-->
+                                    <br>
+                                    <div id="foodDatabase" style="display: none;">
+                                        <br>
+                                        <h3 class="color-blue-dark"> Add a Food Item to the IBD Well Database</h3>
+                                        
+                                        <br />
+                                        
+
+                                  
+                                        <br>
+                                        Name: <input type="text" id="foodname" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Brand: <input type="text" id="brand" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Serving: <input type="text" id="servingsize" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Servings per Container: <input type="text" id="servingsPerContainer" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        <div class="scannerBtn_div">
+                                            <button id="addFood" class="button"> ADD </button>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="dietLog">
+
+                                        <div class="goScan m-b-10">
+                                            <input type="button" id="showFoodAdd" class="button m-b-10" value="Add food to Database"
+                                                onclick="showFoodAdd()"> </input>
+                                        </div>
+
+                                        <br>
+                                        FOOD: <div class="select"><select id="selector" class="m-b-10"></select></div>
+                                        <select id="selector2" style="display: none;"></select>
+                                        <button id="selectFood" onClick="addToLogInput()" style="display: none;">SELECT</button>
+                                        <br>
+                                        Food: <input type="text" id="foodnameInput" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        Serving: <input type="text" id="servingInput" class="qrcode-text txtBorder m-b-10"></input>
+                                        <br>
+                                        <div class="checkbox-container">
+                                            <p>Did you experience any pain during the meal?:</p>
+                                        </div>
+                                        <div class="checkbox-container m-b-10">
+                                            <span>NO</span>
+                                            <label class="switch">
+                                                <input id="healthtracker_pain-bf" type="checkbox">
+                                                <span class="checkbox-slider round"></span>
+                                            </label>
+                                            <span>YES</span>
+                                        </div>
+
+                                        <div class="scannerBtn_div">
+                                            <button id="logDiet" class="button"> ADD </button>
+                                        </div>
+
+                                        <br>
+                                        <div style="display: inline-block;width: 100%;"><h3 class="diet-h3 color-blue-dark">Your Data</h3></div>
+                                        <div class="goScan m-b-10">
+                                            <input type="button" class="button btn m-b-10" id="getAllDietlogData" value="Show Food Data" />
+                                            <input type="button" class="button btn m-b-10" id="close" value="Close Food Data" />
+                                        </div>
+
+                                        <table id="tabletest" style="display:none" cellpadding="0" cellspacing="0" border="0">
+                                            <thead class="tbl-header">
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Meal</th>
+                                                    <th>Food</th>
+                                                    <th>Pain</th>
+                                                    <th>Serving Size</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="tbl-content" id="dietLogTable">
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+
+
+                                    <!--  <textarea id="healthtracker_describe-bf" class="text-areas" rows="5" cols="20"
+                                        placeholder="Describe your meal..."></textarea> -->
+
+                                    <!-- Rounded switch 
+
+                                </section>-->
+                            </div>
+                        </div>
+
+
+
+
+
+                    </section>
+                    <section>
+                        <!--     <input type="button" class="btn" id="getAllDietlogData" value="Show Food Data" />
+                        <input type="button" class="btn" id="close" value="Close Food Data" /> -->
+                        <!-- <table class="table table-bordered" id="tabletest" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Meal</th>
+                                    <th>Food</th>
+                                    <th>Pain</th>
+                                    <th>Serving Size</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dietLogTable">
+                            </tbody>
+                        </table>
+
+                        <br>
+                        <br> -->
+                        <!--     <input type="button" class="btn" id="getAllSymptomData" value="Show Symptom Data" />
+                        <input type="button" class="btn" id="close2" value="Close Symptom Data" /> -->
+                        <!-- <table class="table table-bordered" id="tabletest2" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Day</th>
+                                    <th>Pain</th>
+                                    <th>Stress</th>
+                                    <th>Stool Quality</th>
+                                    <th>Bowel Movement</th>
+                                    <th>Bowel Frequency</th>
+                                    <th>Bathroom Visit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="symptomTable">
+                            </tbody>
+                        </table> -->
+                        <br>
+                        <br>
+                        <!--<input type="button" class="btn" id="getGraphData" value="Show Graph Data" />
+                        <input type="button" class="btn" id="close4" value="Close Graph Data" /> -->
+                        <table class="table table-bordered" id="tabletest4" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Day</th>
+                                    <th>Pain</th>
+                                    <th>Stress</th>
+                                    <th>Stool Quality</th>
+                                    <th>Bowel Movement</th>
+                                    <th>Bowel Frequency</th>
+                                    <th>Bathroom Visit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="graphTable">
+                            </tbody>
+                        </table>
+                        <br>
+                        <!-- <input type="button" class="btn" id="getGraphData" value="Refresh" onclick="createChart()" /> -->
+                        <div class="container overflow-xscroll">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <!--       Chart.js Canvas Tag -->
+                                    <div class="chart-container"><canvas id="barChart"></canvas></div>
+                                    
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <br />
+                </div>
+            </div>
+        </div>
+        <!-- End Container Area -->
+    </div>
+    <!-- End Precontainer Wrapper -->
+    
+    <!--Start pop-up form Div -->
+    <div id="popup2" class="overlay">
+        <div class="popup">
+            <h2 id="popup2-title"></h2>
+            <a class="close" href="health-tracker.html">&times;</a>
+            <br />
+            <br />
+
+            <div class="content">
+                <div class="displayBlock padding-btm">
+                    <p id="popup2-content"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End pop-up form Div -->
+
+    <!-- Start Footer Nav Area -->
+    <div id="footer" class="default-footer">
+        <div class="mobile-bottom-bar">
+            <a href="home.html" class="footer-link">
+                <!--i class="fas fa-home"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/home.png" />
+                <span class='footer-text'>Home</span>
+            </a>
+            <a href="health-tracker.html" class="footer-link">
+                <!--i class="fas fa-file-contract"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" />
+                <span class='footer-text'>Health Tracker</span>
+            </a>
+            <a id="premium-gmap" href="gmap.html" class="footer-link premium-footer-gmap premiumFeatures">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to continue using this feature.</div>
+                <!--i class="fas fa-map-marker-alt"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" style="width: 11px;" />
+                <span class='footer-text'>Restrooms</span>
+            </a>
+            <a href="mindfulness.html" class="footer-link">
+                <!--i class="fas fa-spa"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" />
+                <span class='footer-text'>Mindfulness</span>
+            </a>
+            <a id="premium-nearby" href="nearby.html" class="footer-link premium-footer-nearby premiumFeatures">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to continue using this feature.</div>
+                <!--i class="fas fa-comments"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" style="width: 13px;" />
+                <span class='footer-text'>Nearby</span>
+            </a>
+            <!--a href="profile-card.html" class="footer-link">
+                    <i class="fas fa-user-circle"></i>
+                    <span class='footer-text'>Profile</span>
+                </a-->
+        </div>
+    </div>
+    <!-- End Footer Nav Area -->
+
+    <!-- fast click script ->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <- end fast click script -->
+    <!-- start input change check script -->
+    <script>
+        /*$.fn.extend({
+            trackChanges: function () {
+                $(":input", this).change(function () {
+                    $(this.form).data("changed", true);
+                });
+            },
+            isChanged: function () {
+                return this.data("changed");
+            }
+        });
+
+        $("#healthtracker_day").trackChanges();
+
+        if($("#healthtracker_day").isChanged()){
+            console.log("Health Tracker Day: has changed.");
+        }*/
+
+        $("#healthtracker_day").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#medicationName").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#dosageNum").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#medsDoseSel").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#meds-comment").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#healthtracker_prescription").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#healthtracker_describe-bf").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#healthtracker_pain-bf").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#healthtracker_describe-lu").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#healthtracker_pain-lu").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#healthtracker_describe-di").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+        $("#healthtracker_pain-di").on("input", function () {
+            /*alert("Change to " + this.value);*/
+            document.getElementById("submitDiv").classList.add('formRoundedFilled');
+            document.getElementById("submitDiv").classList.remove('formRoundedEmpty');
+        });
+    </script>
+    <!-- end input change check script -->
+</body>
+<!-- home calendar tracker script -->
+<script type='text/javascript' src='js/homeCalTracker.js'></script>
+<!-- end home calendar tracker script -->
+<!-- paged tabs script -->
+<script src="js/page-tabs.js"></script>
+<!-- end paged tabs script-->
+<!-- replace radio checkbox script -->
+<script src="js/replace-radio-checkbox.js"></script>
+<!-- end replace radio checkbox script -->
+<!-- Start Sidebar script -->
+<script type="text/javascript">
+    /* Set the width of the sidbar to 250px */
+    function openNav() {
+        /*document.getElementById("sidebar").style.width = "250px";*/
+        document.getElementById("sidebar").style.left = "0px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "100%";
+    }
+
+    /* Set the width of the sidebar to 0 */
+    function closeNav() {
+        /*document.getElementById("sidebar").style.width = "0";*/
+        document.getElementById("sidebar").style.left = "-260px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "20px";
+    }
+</script>
+<!-- End Sidebar script -->
+<!-- Start swipe sidebar script -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#swipe-area").swipe({
+            //Generic swipe handler for all directions
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+
+                switch (direction) {
+                    case "right":
+                        console.log("swiped right!");
+                        openNav();
+                        break;
+                    case "left":
+                        console.log("swiped left");
+                        closeNav();
+                        break;
+                }
+            },
+            //Default is 75px, set to 0 for demo so any distance triggers swipe
+            threshold: 75
+        });
+    });
+</script>
+<!-- End swipe sidebar script -->
+<!-- Start Toggle Reveal script -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("input[name$='day']").click(function () {
+            var inputVal = "day"/*$(this).val()*/;
+
+            /*$("div.toggleReveal").hide();*/
+            $("#toggleReveal-" + inputVal).slideToggle();
+        });
+    });
+
+    $(document).ready(function () {
+        $("input[name$='pain']").click(function () {
+            var inputVal = "pain"/*$(this).val()*/;
+
+            /*$("div.toggleReveal").hide();*/
+            $("#toggleReveal-" + inputVal).slideToggle();
+        });
+    });
+
+    $(document).ready(function () {
+        $("input[name$='stress']").click(function () {
+            var inputVal = "stress"/*$(this).val()*/;
+
+            /*$("div.toggleReveal").hide();*/
+            $("#toggleReveal-" + inputVal).slideToggle();
+        });
+    });
+
+    $(document).ready(function () {
+        $("input[name$='stool']").click(function () {
+            var inputVal = "stool"/*$(this).val()*/;
+
+            /*$("div.toggleReveal").hide();*/
+            $("#toggleReveal-" + inputVal).slideToggle();
+        });
+    });
+
+    $(document).ready(function () {
+        $("input[name$='movement']").click(function () {
+            var inputVal = "movement"/*$(this).val()*/;
+
+            /*$("div.toggleReveal").hide();*/
+            $("#toggleReveal-" + inputVal).slideToggle();
+        });
+    });
+
+    $(document).ready(function () {
+        $("input[name$='frequency']").click(function () {
+            var inputVal = "frequency"/*$(this).val()*/;
+
+            /*$("div.toggleReveal").hide();*/
+            $("#toggleReveal-" + inputVal).slideToggle();
+        });
+    });
+</script>
+<!-- End Toggle Reveal script -->
+<!-- Start scanner script -->
+<script>
+    function openQRCamera(node) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            node.value = "";
+            qrcode.callback = function (res) {
+                if (res instanceof Error) {
+                    console.log("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+                } else {
+                    node.parentNode.previousElementSibling.value = res;
+                }
+            };
+            qrcode.decode(reader.result);
+        };
+        reader.readAsDataURL(node.files[0]);
+    }
+
+    function showQRIntro() {
+        return confirm("Use your camera to take a picture of a QR code.");
+    }
+</script>
+<!--End scanner script -->
+<!--Start stop touchstart script ->
+<script>
+	element.addEventListener("touchstart", function(e) {
+        console.log("cancelling double click");
+	    e.preventDefault();
+	    e.stopPropagation();
+	}, false);
+</script>
+<--End stop touchstart script -->
+
+<!--Start of forced focus scroll script -->
+<!--<script>
+    var $htmlOrBody = $('html, body'),
+    scrollTopPadding = 8,
+    scrollTopLast = 0;
+    $('textarea, input').focus(function(){
+        //save the current scroll postion for blur event
+        scrollTopLast = $(window).scrollTop();
+        //scroll to the textarea/input
+        $htmlOrBody.scrollTop($(this).offset().top - scrollTopPadding);
+    }).blur(function(){
+        //scroll back to position before focus
+        $htmlOrBody.scrollTop(scrollTopLast);
+    });
+</script>-->
+<!--End of forced focus scroll script -->
+<!-- notification script ->
+<script>
+    if ("Notification" in window) {
+        Notification.requestPermission(function (permission) {
+            // If the user accepts, let’s create a notification
+            if (permission === "granted") {
+                var notification = new Notification("My title", {
+                    tag: "message1",
+                    body: "My body"
+                });
+                notification.onshow = function () { console.log("show"); };
+                notification.onclose = function () { console.log("close"); };
+                notification.onclick = function () { console.log("click"); };
+            }
+        });
+    }
+</script>
+<-- end notification script -->
+    <!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqGpddivbH6TcqlWcbtRu9mFxFjiK3gA&callback=initMap">
+    </script>-->
+
+</html>

@@ -1,0 +1,48 @@
+{
+  "_from": "git+https://github.com/PaoloMessina/OpenUrlExt.git",
+  "_id": "cordova-plugin-openurlext@1.0.2",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-openurlext",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/PaoloMessina/OpenUrlExt",
+    "rawSpec": "https://github.com/PaoloMessina/OpenUrlExt",
+    "saveSpec": "git+https://github.com/PaoloMessina/OpenUrlExt.git",
+    "fetchSpec": "https://github.com/PaoloMessina/OpenUrlExt.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/PaoloMessina/OpenUrlExt.git#343c7e7a8f9ecee8e2019b32a5cb767a28e06bf2",
+  "_spec": "https://github.com/PaoloMessina/OpenUrlExt",
+  "_where": "/Users/saharmohamedali/Git_Repository/iscc-dev",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/PaoloMessina/OpenUrlExt/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Open a specific URL in the external browser of the hosting OS.",
+  "homepage": "https://github.com/PaoloMessina/OpenUrlExt#readme",
+  "keywords": [
+    "cordova",
+    "ios",
+    "external",
+    "link"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "cordova-plugin-openurlext",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaoloMessina/OpenUrlExt.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.2"
+}

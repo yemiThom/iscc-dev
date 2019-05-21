@@ -1,0 +1,10 @@
+{
+    "name": "myIBD",
+    "version": "1.0.0",
+    "description": "myIBD mobile app for the ISCC",
+    "dependencies": {
+        "express": "^4.15.2",
+        "node-static": "^0.7.10",
+        "socket.io": "^2.1.1"
+    }
+}

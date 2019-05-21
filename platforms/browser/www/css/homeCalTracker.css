@@ -186,3 +186,28 @@
 .clndr-table .empty {
     display: none;
 }
+
+#barChart{
+    background-color: white;
+    border-radius: 6px;
+}
+
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 90vh;
+    width: 165vw;
+
+    
+    /*-webkit-transform: rotate(90deg);	
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+
+    top: -52px;
+    left: -35px;*/
+}
+.overflow-xscroll{
+    overflow-x: scroll;
+}

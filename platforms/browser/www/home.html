@@ -1,453 +1,287 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Gutsy</title>
 
-        <!-- Style Sheets -->
-        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/home.css">
-        <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
-        <link rel="stylesheet" type="text/css" href="css/main-nav.css">
-        <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
-        <link rel="stylesheet" type="text/css" href="css/replace-radio-checkbox.css">
-        <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
-        <link rel="stylesheet" type="text/css" href="css/homeCalTracker.css">
-        
-        <!-- javascript -->
-        <!--<script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
-        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-        <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
+<head>
+    <title>IBDWELL</title>
+    <script>
 
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!--
+    if(!window.device) {
+        window.device = { platform: 'browser' };
+    }
+    if(!window.extLinksHandler) {   
+        on(document, 'a[href^="http"]:click', function(e) {
+            e.preventDefault();
+            var url = domAttr.get(e.target, 'href');
+            if(device.platform.toLowerCase() === 'android' || device.platform.toLowerCase() === 'ios') {
+                window.open(url, '_system');
+            } else
+                window.open(url, '_blank');
+        });
+        window.extLinksHandler = true;
+    }
+
+</script>
+    <!-- Style Sheets -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+    <script type="text/javascript" src='js/verify.js'></script>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+    <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
+    <link rel="stylesheet" type="text/css" href="css/intro.css">
+    <link rel="stylesheet" type="text/css" href="css/replace-radio-checkbox.css">
+    <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- javascript -->
+    <script type='application/javascript' src='js/fastclick.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <!--<script type='text/javascript' src='js/homeCalTracker.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
+
+    <!-- Cognito login 
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+
+    <!--
         user-scalable=no doesn't allow users to zoom
         initial-scale=1 means the zoom level when the app is loaded. 1=100%
         maximum-scale=1 means the max zoom level user can zoom
         minimum-scale-1 means the min zoom level user can zoom
         -->
-        <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
           width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
         width=device-width, height=device-height, viewport-fit=cover" />
-    </head>
-    <body>
+</head>
+
+<body>
     <!-- Start Header Area -->
-        <header class="default-header">
-            <div class="container">
-                <div class="header-wrap">
-                    <div class="header-top d-flex justify-content-between align-items-center">
-                        <div class="logo">
-                            <img id="openSBBtn" class="toggle" src="img/main-menu.png" onclick="openNav()" style=" max-width:100%;" /> <!--position: fixed; right: 10px; bottom: 10px" />-->
-                            <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+    <header class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png"
+                            onclick="openNav()" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/ibdwell-logo-white.png">
                         </div>
-                        <div>
-                            <div class="main-menubar d-flex align-items-center">
-                                <h2>Gutsy</h2>
-                            </div>
-                            <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
-                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
                     </div>
                 </div>
             </div>
-        </header>
-    <!-- End Header Area -->
-     <!-- Sidebar -->
-        <div id="sidebar" class="sidenav"><!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
-            <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times"></i></a>
-            <a href="index.html">Login page</a>
-            <a href="register-email.html">Register</a>
-         <!--   <a href="register-index.html">Register page 2</a>
-            <a href="register-profile.html">Register page 3</a> -->
-            <a href="cols-helper.html">Colonoscopy Helper</a>
-            <a href="sound-player.html">Sound Player</a>
-            <a href="event-cal.html">Events Calendar</a>
-            <a href="intro.html">Intro</a>
-            <a href="data-to-pdf.html">Data to PDF</a>
-			<a href="index.html">Log out</a>
         </div>
+    </header>
+    <!-- End Header Area -->
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidenav">
+        <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i
+                class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            <a id="email_value"></a>
+        </div>
+        <div class="sidenav-section">
+            <a href="verify.html" id="verifyiscc"></a>
+        </div>
+        <div class="sidenav-section">
+            <a id="maintenancemsg"></a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon3" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="uc-info.html">Ulcerative Colitis</a>
+            <a href="get-diagnosis.html">Getting a Diagnosis</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
+            <h4 class="bg-magenta">Contact</h4>
+            <a href="https://iscc.ie/contactus/" target="_system">Contact</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
+            <h4 class="bg-magenta">Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="https://iscc.ie/support/living-with-ibd">Living Well With IBD</a>
+            <a href="https://iscc.ie/contactus/">Support Telephone Line</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">FAQ</h4>
+            <a href="http://www.iscc.ie/faq">FAQ</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+
+    </div>
     <!-- Side Bar -->
 
     <!-- Start Precontainer Wrapper -->
     <div class="pre-container-wrapper">
-        <!--<div id="swipe-area" class="swipe-area"><br/><br/><br/>Text Area</div>-->
+        <div id="swipe-area" class="swipe-area"></div>
         <!-- Start Container Area -->
+
         <div class="content-container">
-            <div class="header">
-                <h1 class="text-center p-b-5">Healthcare</h1>
-                <h3 class="text-center color-navy">Complete today's log!</h3>
 
 
-                <div class="cal-header">
-                    <!--<i id="cal-prev" class="fas fa-arrow-circle-left cal-prev"></i>-->
-                    <span class="cal-input"><input type="text" id="datepicker" value="" disabled/></span>
-                    <!--<i id="cal-next" class="fas fa-arrow-circle-right cal-next"></i>-->
-                </div>
+            <div class="content">
+                <h1 class="welcome-title color-blue-dark">Welcome to IBD<span class="color-magenta">WELL</span></h1>
 
-                <div class="formRoundedEmpty">
-                    <form id="healthtracker_submit">
-                        <input id="submit" type="submit" Name="UserLogSubmit" value="Save" onclick="saveHTInputData()">
-                        <!--<button type="button" id="submit" Name="UserLogSubmit" onclick="saveHTInputData()">Save</button>-->
-                    </form>
-                </div>
+                <a href="health-tracker.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg" id="healthcare">
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" class="txtBlock-img" />
+                            <h2 class="color-white">Health Tracker</h2>
+                            <!--p class="color-navy">Lorem ipsum dolor sit amet, ne novum debet vocent nam. Vis an solum posse quaerendum, in nulla fierent philosophia his.</p-->
+                        </div>
+                    </div>
+                </a>
 
-                <div id="htOutput"></div>
-            </div>
-            
-            <div class="tabs">
+                <a href="gmap.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg panel-premium" id="restrooms">
+                            <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
+                                to continue using this feature.</div>
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" class="txtBlock-img" />
+                            <h2 class="color-white">Restrooms</h2>
+                            <!--p class="color-navy">Et his cibo nulla delectus. Quaestio facilisis per ne, case fabellas singulis id ius.</p-->
+                        </div>
+                    </div>
+                </a>
 
-                <input type="radio" id="tab1" name="tab-control" checked>
-                <input type="radio" id="tab2" name="tab-control">
-                <input type="radio" id="tab3" name="tab-control">  
-                <ul>
-                    <li title="Symptoms">
-                        <label for="tab1" role="button">
-                            <i class="fas fa-heartbeat"></i>
-                            <br><span>Symptoms</span>
-                        </label>
-                    </li>
-                    <li title="Diet">
-                        <label for="tab2" role="button">
-                            <i class="fas fa-utensils"></i>
-                            <br><span>Diet</span>
-                        </label>
-                    </li>
-                    <li title="Medication">
-                        <label for="tab3" role="button">
-                            <i class="fas fa-pills"></i>
-                            <br><span>Medication</span>
-                        </label>
-                    </li>
-                </ul>
+                <a href="mindfulness.html">
+                    <div class="panel-long">
+                        <div class="panel-bg" id="mindfulness">
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" class="txtBlock-img" />
+                            <h2 class="color-white">Mindfulness</h2>
+                            <!--p class="color-navy">Eu idque dictas mea, ex sed sint dicat. Ea novum harum referrentur his, eu utamur assentior vim, at prima inermis alienum cum.</p-->
+                        </div>
+                    </div>
+                </a>
 
-                <!--<div class="slider"><div class="indicator"></div></div>-->
-                <div class="content">
-                    <section>
-                        <h2 class="color-navy">Symptoms</h2>
-                        <div>
-                            <h3 class="color-navy">How was your day?</h3>
-                            <div class="card scrolling-wrapper">
-                                <div class="rating-container">
-                                    <!--<div class="rating-text">
-                                        <p>I'm feeling...</p>
-                                    </div>-->
-                                    <div class="rating">
-                                        <form  id="healthtracker_day" class="rating-form">
-                                
-                                            <label for="good" class="tracker-label">
-                                                
-                                                <!--onclick="toggleRevealFunc()"-->
-                                                <input type="radio"  name="day" class="good" id="good" value="good"/>
-                                                <img id="toggle-call" class="img-responsive" src="img/emotions/happy.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
-                                                <span class="tracker-label-txt">Good</span>
-                                            </label>
-                                    
-                                            <label for="okay" class="tracker-label">
-                                                
-                                                <input type="radio" name="day" class="okay" id="okay" value="okay" />
-                                                <img id="toggle-call" class="img-responsive" src="img/emotions/sad.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
-                                                <span class="tracker-label-txt">Okay</span>
-                                            </label>
-                                    
-                                            <label for="bad" class="tracker-label">
-                                                <input type="radio" name="day" class="bad" id="bad" value="bad" />
-                                                <img id="toggle-call" class="img-responsive" src="img/emotions/calm.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
-                                                <span class="tracker-label-txt">Bad</span>
-                                            </label>
-                                
-                                        </form>
-                                    </div>
-                                </div>
+                <a href="nearby.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg panel-premium" id="nearby" >
+                            <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
+                                to continue using this feature.</div>
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" class="txtBlock-img" />
+                            <h2 class="color-white">Nearby</h2>
+                            <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <a href="no-waiting.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg panel-premium" id="nowaiting">
+                            <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
+                                to continue using this feature.</div>
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/nowaiting.png" class="txtBlock-img" />
+                            <h2 class="color-white">No Waiting</h2>
+                            <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <div class="panel-short-full">
+                    <a href="cols-helper.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="cols-helper">
+                                <div class="panel-bg-layer"></div>
                             </div>
-                        </diV>
-                        <div id="toggleReveal-day" class="nodisplay toggleReveal">
-                            <h3 class="color-navy">Pain level?</h3>
-                            <div class="card scrolling-wrapper">
-                                <div class="rating-container">
-                                    <!--<div class="rating-text">
-                                        <p>I'm feeling...</p>
-                                    </div>-->
-                                    <div class="rating">
-                                        <form  id="healthtracker_pain" class="rating-form">
-                                
-                                            <label for="pain-low" class="tracker-label">
-                                                <input type="radio" name="pain" class="pain-low" id="pain-low" value="Low"/>
-                                                <img id="toggle-call" class="img-responsive" src="img/emotions/happy.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
-                                                <span class="tracker-label-txt">Low</span>
-                                            </label>
-                                    
-                                            <label for="pain-medium" class="tracker-label">
-                                                <input type="radio" name="pain" class="pain-medium" id="pain-medium" value="Medium" />
-                                                <img id="toggle-call" class="img-responsive" src="img/emotions/sad.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
-                                                <span class="tracker-label-txt">Medium</span>
-                                            </label>
-                                    
-                                            <label for="pain-high" class="tracker-label">
-                                                <input type="radio" name="pain" class="pain-high" id="pain-high" value="High" />
-                                                <img id="toggle-call" class="img-responsive" src="img/emotions/calm.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
-                                                <span class="tracker-label-txt">High</span>
-                                            </label>
-                                    
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </diV>
-                        <div id="toggleReveal-pain" class="nodisplay toggleReveal">
-                            <h3 class="color-navy">Stress level?</h3>
-                            <div class="card scrolling-wrapper">
-                                <div class="rating-container">
-                                    <!--<div class="rating-text">
-                                        <p>I'm feeling...</p>
-                                    </div>-->
-                                    <div class="rating">
-                                        <form  id="healthtracker_stress" class="rating-form">
-                                
-                                            <label for="stress-low" class="tracker-label">
-                                                <input type="radio" name="stress" class="stress-low" id="stress-low" value="Low"/>
-                                                <img id="toggle-call" class="img-responsive" src="img/emotions/happy.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
-                                                <span class="tracker-label-txt">Low</span>
-                                            </label>
-                                    
-                                            <label for="stress-medium" class="tracker-label">
-                                                <input type="radio" name="stress" class="stress-medium" id="stress-medium" value="Medium" />
-                                                <img id="toggle-call" class="img-responsive" src="img/emotions/sad.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
-                                                <span class="tracker-label-txt">Medium</span>
-                                            </label>
-                                    
-                                            <label for="stress-high" class="tracker-label">
-                                                <input type="radio" name="stress" class="stress-high" id="stress-high" value="High" />
-                                                <img id="toggle-call" class="img-responsive" src="img/emotions/calm.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
-                                                <span class="tracker-label-txt">High</span>
-                                            </label>
-                                    
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </diV>
-                        <div id="toggleReveal-stress" class="nodisplay toggleReveal">
-                            <h3 class="color-navy">Stool Quality?</h3>
-                            <div class="card scrolling-wrapper">
-                                <div class="rating-container">
-                                    <!--<div class="rating-text">
-                                        <p>I'm feeling...</p>
-                                    </div>-->
-                                    <div class="rating">
-                                        <form  id="healthtracker_stool" class="rating-form">
-                                
-                                            <label for="hard-lumps" class="tracker-label">
-                                                <input type="radio" name="stool" class="hard-lumps" id="hard-lumps" value="Hard Lumps"/>
-                                                <img class="img-responsive" src="img/emotions/brown.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
-                                                <span class="tracker-label-txt">Hard Lumps</span>
-                                            </label>
-                                    
-                                            <label for="lumpy-sausage" class="tracker-label">
-                                                <input type="radio" name="stool" class="lumpy-sausage" id="lumpy-sausage" value="Lumpy Sausage" />
-                                                <img class="img-responsive" src="img/emotions/green.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
-                                                <span class="tracker-label-txt">Lumpy Sausage</span>
-                                            </label>
-                                    
-                                            <label for="cracked-sausage" class="tracker-label">
-                                                <input type="radio" name="stool" class="cracked-sausage" id="cracked-sausage" value="Cracked Sausage" />
-                                                <img class="img-responsive" src="img/emotions/black.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
-                                                <span class="tracker-label-txt">Cracked Sausage</span>
-                                            </label>
-                                    
-                                            <label for="snake" class="tracker-label">
-                                                <input type="radio" name="stool" class="snake" id="snake" value="Snake" />
-                                                <img class="img-responsive" src="img/emotions/yellow.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z" /></svg>-->
-                                                <span class="tracker-label-txt">Snake</span>
-                                            </label>
-                                    
-                                            <label for="soft-blobs" class="tracker-label">
-                                                <input type="radio" name="stool" class="soft-blobs" id="soft-blobs" value="Soft Blobs" />
-                                                <img class="img-responsive" src="img/emotions/red.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
-                                                <span class="tracker-label-txt">Soft Blobs</span>
-                                            </label>
-                                    
-                                            <label for="mushy" class="tracker-label">
-                                                <input type="radio" name="stool" class="mushy" id="mushy" value="Mushy" />
-                                                <img class="img-responsive" src="img/emotions/white.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
-                                                <span class="tracker-label-txt">Mushy</span>
-                                            </label>
-                                    
-                                            <label for="liquid" class="tracker-label">
-                                                <input type="radio" name="stool" class="liquid" id="liquid" value="Liquid" />
-                                                <img class="img-responsive" src="img/emotions/white.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>-->
-                                                <span class="tracker-label-txt">Liquid</span>
-                                            </label>
-                                
-                                        </form>
-                                    </div>
-                                </div>
+                            <div class="txtBlock">
+                                <img src="http://iscc-imgs.s3.amazonaws.com/icons/colonoscopy.png"
+                                    class="txtBlock-img" />
+                                <h3 class="color-white">Colonoscopy <br /> Helper</h3>
+                                <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
                             </div>
                         </div>
-                        <div id="toggleReveal-stool" class="nodisplay toggleReveal">
-                            <h3 class="color-navy">Bowel Movement?</h3>
-                            <div class="card scrolling-wrapper">
-                                <div class="rating-container">
-                                    <!--<div class="rating-text">
-                                        <p>I'm feeling...</p>
-                                    </div>-->
-                                    <div class="rating">
-                                        <form  id="healthtracker_bowel" class="rating-form">
-                                
-                                            <label for="bowel-light" class="tracker-label">
-                                                <input type="radio" name="bowel" class="bowel-light" id="bowel-light" value="Light"/>
-                                                <img class="img-responsive" src="img/emotions/brown.png" />
-                                                <!--<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>-->
-                                                <span class="tracker-label-txt">Light</span>
-                                            </label>
-                                    
-                                            <label for="bowel-medium" class="tracker-label">
-                                                <input type="radio" name="bowel" class="bowel-medium" id="bowel-medium" value="Medium" />
-                                                <img class="img-responsive" src="img/emotions/green.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>-->
-                                                <span class="tracker-label-txt">Medium</span>
-                                            </label>
-                                    
-                                            <label for="bowel-heavy" class="tracker-label">
-                                                <input type="radio" name="bowel" class="bowel-heavy" id="bowel-heavy" value="Heavy" />
-                                                <img class="img-responsive" src="img/emotions/black.png" />
-                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>-->
-                                                <span class="tracker-label-txt">Heavy</span>
-                                            </label>
-                                
-                                        </form>
-                                    </div>
-                                </div>
+                    </a>
+                    <a href="event-cal.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="events">
+                                <div class="panel-bg-layer"></div>
                             </div>
-                        </diV>
-
-                        <!--br/>
-                        <p><a href="profile-card.html" style="text-decoration: none; display: block; text-align: center; background-color: cornflowerblue;">Show Restroom ID Card</a></p-->
-
-                    </section>
-                    <section>
-                        <h2 class="color-navy">Diet</h2>
-                        
-                        <div class="tabset">
-                            <!-- Tab 1 -->
-                            <input type="radio" name="tabset" id="tab1-1" aria-controls="breakfast" checked>
-                            <label for="tab1-1">Breakfast</label>
-                            <!-- Tab 2 -->
-                            <input type="radio" name="tabset" id="tab2-1" aria-controls="lunch">
-                            <label for="tab2-1">Lunch</label>
-                            <!-- Tab 3 -->
-                            <input type="radio" name="tabset" id="tab3-1" aria-controls="dinner">
-                            <label for="tab3-1">Dinner</label>
-                          
-                            <div class="tab-panels">
-                                <section id="breakfast" class="tab-panel">
-                                    <!--<h2>Breakfast</h2>-->
-                                    <h3 class="diet-h3 color-navy">What did you have?</h3>
-                                    <a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a>
-                                    <textarea id="healthtracker_describe-bf" class="text-areas" rows="5" cols="20" placeholder="Describe your meal..."></textarea>
-
-                                    <!-- Rounded switch -->
-                                    <div class="checkbox-div">
-                                        <div class="checkbox-container"><p>Did you experience any pain during the meal?</p></div>
-                                        <div class="checkbox-container">
-                                            <label class="switch">
-                                                <input id="healthtracker_pain-bf" type="checkbox">
-                                                <span class="checkbox-slider round"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section id="lunch" class="tab-panel">
-                                    <!--<h2>Lunch</h2>-->
-                                    <h3 class="diet-h3 color-navy">What did you have?</h3>
-                                    <a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a>
-                                    <textarea id="healthtracker_describe-lu" class="text-areas" rows="5" cols="20" placeholder="Describe your meal..."></textarea>
-
-                                    <!-- Rounded switch -->
-                                    <div class="checkbox-div">
-                                        <div class="checkbox-container"><p>Did you experience any pain during the meal?</p></div>
-                                        <div class="checkbox-container">
-                                            <label class="switch">
-                                                <input id="healthtracker_pain-lu" type="checkbox">
-                                                <span class="checkbox-slider round"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section id="dinner" class="tab-panel">
-                                    <!--<h2>Dinner</h2>-->
-                                    <h3 class="diet-h3 color-navy">What did you have?</h3>
-                                    <a href="food-scanner.html"><img class="barcodeImg" src="img/barcodeScan.png" /></a>
-                                    <textarea id="healthtracker_describe-di" class="text-areas" rows="5" cols="20" placeholder="Describe your meal..."></textarea>
-
-                                    <!-- Rounded switch -->
-                                    <div class="checkbox-div">
-                                        <div class="checkbox-container"><p>Did you experience any pain during the meal?</p></div>
-                                        <div class="checkbox-container">
-                                            <label class="switch">
-                                                <input id="healthtracker_pain-di" type="checkbox">
-                                                <span class="checkbox-slider round"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                            <div class="txtBlock">
+                                <img src="http://iscc-imgs.s3.amazonaws.com/icons/event.png" class="txtBlock-img" />
+                                <h3 class="color-white">Events</h3>
+                                <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
                             </div>
                         </div>
-                    </section>
-                    <section>
-                        <h2 class="color-navy">Medication</h2>
-                        <div>
-                            <div class="displayBlock padding-btm">
-                                <label class="displayBlock">Medication Name:</label>
-                                <input id="medicationName" class="txtBorder" type="text">
-                            </div>
-                            <div class="displayBlock padding-btm">
-                                <div class="dispInlineBlock">
-                                    <label class="displayBlock">Dosage:</label>
-                                    <input id="dosageNum" class="txtBorder" type="number">
-                                </div>
-
-                                <div class="custom-select dispInlineBlock">
-                                    <select id="medsDoseSel" class="styledSelect">
-                                        <option value="0">mg</option>
-                                        <option value="1">capsule(s)</option>
-                                        <option value="2">g</option>
-                                        <option value="3">injection</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <label>Comments:</label>
-                                <textarea id="meds-comment" class="text-areas" rows="3" cols="20" placeholder="Any final thoughts?..."></textarea>
-                            </div>
-                            <div class="checkbox-div">
-                                <div class="checkbox-container"><p>Completed a prescription today?</p></div>
-                                <div class="checkbox-container">
-                                    <label class="switch">
-                                        <input id="completePrescription" type="checkbox">
-                                        <span class="checkbox-slider round"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <br/>
+                    </a>
                 </div>
+                <!--<div class="panel-short-full">
+                    <a href="cols-helper.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="cols-helper">
+                                <div class="panel-bg-layer" id="generic-layercolor"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <h3 class="color-white">Colonoscopy <br /> Helper</h3>
+                                <!-p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p->
+                            </div>
+                        </div>
+                    </a>
+                    <a href="event-cal.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="events">
+                                <div class="panel-bg-layer" id="generic-layercolor"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <h3 class="color-white">Events</h3>
+                                <!-p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p->
+                            </div>
+                        </div>
+                    </a>
+                </div>-->
+
+                <br /><br />
+                <!--<div class="box" id="healthcare">Healthcare</div>
+                <div class="box" id="restrooms">Restrooms</div>
+                <div class="box" id="mindfulness">Mindfulness</div>
+                <div class="box" id="nearby">Nearby</div>-->
             </div>
         </div>
         <!-- End Container Area -->
@@ -455,168 +289,467 @@
     <!-- End Precontainer Wrapper -->
 
     <!-- Start Footer Nav Area -->
-        <div class="default-footer">
-            <div class="mobile-bottom-bar">
-                <a href="home.html" class="footer-link">
-                    <i class="fas fa-list-alt"></i>
-                    <span class='footer-text'>Home</span>
-                </a>
-                <a href="gmap.html" class="footer-link">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span class='footer-text'>Restrooms</span>
-                </a>
-                <a href="mindfulness.html" class="footer-link">
-                    <i class="fas fa-spa"></i>
-                    <span class='footer-text'>Mindfulness</span>
-                </a>
-                <a href="nearby.html" class="footer-link">
-                    <i class="fas fa-comments"></i>
-                    <span class='footer-text'>Nearby</span>
-                </a>
-                <a href="profile-card.html" class="footer-link">
-                    <i class="fas fa-user-circle"></i>
-                    <span class='footer-text'>Profile</span>
-                </a>
-            </div>
-        </div>      
+    <div id="footer" class="default-footer">
+        <div class="mobile-bottom-bar">
+            <a href="home.html" class="footer-link">
+                <!--i class="fas fa-home"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/home.png" />
+                <span class='footer-text'>Home</span>
+            </a>
+            <a href="health-tracker.html" class="footer-link">
+                <!--i class="fas fa-file-contract"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" />
+                <span class='footer-text'>Health Tracker</span>
+            </a>
+            <a id="premium-gmap" href="gmap.html" class="footer-link premium-footer-gmap premiumFeatures">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-map-marker-alt"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" style="width: 11px;" />
+                <span class='footer-text'>Restrooms</span>
+            </a>
+            <a href="mindfulness.html" class="footer-link">
+                <!--i class="fas fa-spa"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" />
+                <span class='footer-text'>Mindfulness</span>
+            </a>
+            <a id="premium-nearby" href="nearby.html" class="footer-link premium-footer-nearby premiumFeatures" >
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-comments"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" style="width: 13px;" />
+                <span class='footer-text'>Nearby</span>
+            </a>
+            <!--a href="profile-card.html" class="footer-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span class='footer-text'>Profile</span>
+                    </a-->
+        </div>
+    </div>
     <!-- End Footer Nav Area -->
-    </body>
-    <!-- fast click script -->
-    <script type='text/javascript' src='js/fastclick.min.js'></script>
 
-    <script>
-        if ('addEventListener' in document) {
-            document.addEventListener('DOMContentLoaded', function() {
-                FastClick.attach(document.body);
-            }, false);
-        }
-    </script>
-    <!-- end fast click script -->
-    <!-- home calendar tracker script -->
-    <script type='text/javascript' src='js/homeCalTracker.js'></script>
-    <!-- end home calendar tracker script -->
-    <!-- paged tabs script -->
-    <script src="js/page-tabs.js"></script>
-    <!-- end paged tabs script-->
-    <!-- replace radio checkbox script -->
-    <script src="js/replace-radio-checkbox.js"></script>
-    <!-- end replace radio checkbox script -->
     <!-- Start Sidebar script -->
     <script type="text/javascript">
         /* Set the width of the sidbar to 250px */
         function openNav() {
             /*document.getElementById("sidebar").style.width = "250px";*/
             document.getElementById("sidebar").style.left = "0px";
+            document.getElementById("swipe-area").style.left = "0px";
+            document.getElementById("swipe-area").style.width = "100%";
         }
 
         /* Set the width of the sidebar to 0 */
         function closeNav() {
             /*document.getElementById("sidebar").style.width = "0";*/
             document.getElementById("sidebar").style.left = "-260px";
+            document.getElementById("swipe-area").style.left = "0px";
+            document.getElementById("swipe-area").style.width = "25px";
         }
     </script>
     <!-- End Sidebar script -->
-    <!-- Start swipe sidebar script ->
+    <!-- Start swipe sidebar script -->
     <script type="text/javascript">
-        $(function() {
-            $("#swipe-area").swipe( {
+        $(document).ready(function () {
+            $("#swipe-area").swipe({
                 //Generic swipe handler for all directions
-                swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
 
-                    switch(direction){
+                    switch (direction) {
                         case "right":
+                            console.log("swiped right!");
                             openNav();
                             break;
                         case "left":
+                            console.log("swiped left");
                             closeNav();
                             break;
                     }
                 },
                 //Default is 75px, set to 0 for demo so any distance triggers swipe
-                threshold:75
-            }); 
-            
-            /* Set the width of the sidbar to 250px */
-            function openNav() {
-                /*document.getElementById("sidebar").style.width = "250px";*/
-                document.getElementById("sidebar").style.left = "0px";
-            }
-
-            /* Set the width of the sidebar to 0 */
-            function closeNav() {
-                /*document.getElementById("sidebar").style.width = "0";*/
-                document.getElementById("sidebar").style.left = "-260px";
-            }
-        });
-    </script>
-    <-- End swipe sidebar script -->
-    <!-- Start Toggle Reveal script -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("input[name$='day']").click(function() {
-                var inputVal = "day"/*$(this).val()*/;
-
-                /*$("div.toggleReveal").hide();*/
-                $("#toggleReveal-" + inputVal).slideToggle();
-            });
-        });
-        
-        $(document).ready(function() {
-            $("input[name$='pain']").click(function() {
-                var inputVal = "pain"/*$(this).val()*/;
-
-                /*$("div.toggleReveal").hide();*/
-                $("#toggleReveal-" + inputVal).slideToggle();
-            });
-        });
-        
-        $(document).ready(function() {
-            $("input[name$='stress']").click(function() {
-                var inputVal = "stress"/*$(this).val()*/;
-
-                /*$("div.toggleReveal").hide();*/
-                $("#toggleReveal-" + inputVal).slideToggle();
-            });
-        });
-        
-        $(document).ready(function() {
-            $("input[name$='stool']").click(function() {
-                var inputVal = "stool"/*$(this).val()*/;
-
-                /*$("div.toggleReveal").hide();*/
-                $("#toggleReveal-" + inputVal).slideToggle();
-            });
-        });
-        
-        $(document).ready(function() {
-            $("input[name$='bowel']").click(function() {
-                var inputVal = "bowel"/*$(this).val()*/;
-
-                /*$("div.toggleReveal").hide();*/
-                $("#toggleReveal-" + inputVal).slideToggle();
+                threshold: 75
             });
         });
     </script>
-    <!-- End Toggle Reveal script -->
-    <!-- notification script -->
+    <!-- End swipe sidebar script -->
+    <!-- fast click script -->
     <script>
-    if ("Notification" in window) {
-            Notification.requestPermission(function (permission) {
-                // If the user accepts, let’s create a notification
-                if (permission === "granted") {
-                var notification = new Notification("My title", {
-                    tag: "message1",
-                    body: "My body"
-                });
-                notification.onshow = function () { console.log("show"); };
-                notification.onclose = function () { console.log("close"); };
-                notification.onclick = function () { console.log("click"); };
-            }
-        });
-    }
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
     </script>
-    <!-- end notification script -->
-    <!-- <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqGpddivbH6TcqlWcbtRu9mFxFjiK3gA&callback=initMap">
-    </script>-->
-</html> 
+    <!-- end fast click script -->
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IBDWELL</title>
+
+    <!-- Style Sheets -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+    <script type="text/javascript" src='js/verify.js'></script>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+    <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
+    <link rel="stylesheet" type="text/css" href="css/intro.css">
+    <link rel="stylesheet" type="text/css" href="css/replace-radio-checkbox.css">
+    <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- javascript -->
+    <script type='application/javascript' src='js/fastclick.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <!--<script type='text/javascript' src='js/homeCalTracker.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>-->
+
+    <!-- Cognito login 
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+
+    <!--
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+</head>
+
+<body>
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png"
+                            onclick="openNav()" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/ibdwell-logo-white.png">
+                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidenav">
+        <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i
+                class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            <a id="email_value"></a>
+        </div>
+        <div class="sidenav-section">
+            <a href="verify.html" id="verifyiscc"></a>
+        </div>
+        <div class="sidenav-section">
+            <a id="maintenancemsg"></a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon3" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="uc-info.html">Ulcerative Colitis</a>
+            <a href="get-diagnosis.html">Getting a Diagnosis</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
+            <h4 class="bg-magenta">Contact</h4>
+            <a href="https://iscc.ie/contactus/">Contact</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
+            <h4 class="bg-magenta">Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="https://iscc.ie/support/living-with-ibd">Living Well With IBD</a>
+            <a href="https://iscc.ie/contactus/">Support Telephone Line</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">FAQ</h4>
+            <a href="http://www.iscc.ie/faq">FAQ</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+
+    </div>
+    <!-- Side Bar -->
+
+    <!-- Start Precontainer Wrapper -->
+    <div class="pre-container-wrapper">
+        <div id="swipe-area" class="swipe-area"></div>
+        <!-- Start Container Area -->
+
+        <div class="content-container">
+
+
+            <div class="content">
+                <h1 class="welcome-title color-blue-dark">Welcome to IBD<span class="color-magenta">WELL</span></h1>
+
+                <a href="health-tracker.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg" id="healthcare">
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" class="txtBlock-img" />
+                            <h2 class="color-white">Health Tracker</h2>
+                            <!--p class="color-navy">Lorem ipsum dolor sit amet, ne novum debet vocent nam. Vis an solum posse quaerendum, in nulla fierent philosophia his.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <a href="gmap.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg panel-premium" id="restrooms">
+                            <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
+                                to continue using this feature.</div>
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" class="txtBlock-img" />
+                            <h2 class="color-white">Restrooms</h2>
+                            <!--p class="color-navy">Et his cibo nulla delectus. Quaestio facilisis per ne, case fabellas singulis id ius.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <a href="mindfulness.html">
+                    <div class="panel-long">
+                        <div class="panel-bg" id="mindfulness">
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" class="txtBlock-img" />
+                            <h2 class="color-white">Mindfulness</h2>
+                            <!--p class="color-navy">Eu idque dictas mea, ex sed sint dicat. Ea novum harum referrentur his, eu utamur assentior vim, at prima inermis alienum cum.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <a href="nearby.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg panel-premium" id="nearby" >
+                            <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
+                                to continue using this feature.</div>
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" class="txtBlock-img" />
+                            <h2 class="color-white">Nearby</h2>
+                            <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <a href="no-waiting.html" class="premiumFeatures">
+                    <div class="panel-long">
+                        <div class="panel-bg panel-premium" id="nowaiting">
+                            <div class="tooltip tooltip__src_intro">This is a premium service, please verify your membership
+                                to continue using this feature.</div>
+                            <div class="panel-bg-layer"></div>
+                        </div>
+                        <div class="txtBlock">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/nowaiting.png" class="txtBlock-img" />
+                            <h2 class="color-white">No Waiting</h2>
+                            <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                        </div>
+                    </div>
+                </a>
+
+                <div class="panel-short-full">
+                    <a href="cols-helper.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="cols-helper">
+                                <div class="panel-bg-layer"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <img src="http://iscc-imgs.s3.amazonaws.com/icons/colonoscopy.png"
+                                    class="txtBlock-img" />
+                                <h3 class="color-white">Colonoscopy <br /> Helper</h3>
+                                <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                            </div>
+                        </div>
+                    </a>
+                    <a href="event-cal.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="events">
+                                <div class="panel-bg-layer"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <img src="http://iscc-imgs.s3.amazonaws.com/icons/event.png" class="txtBlock-img" />
+                                <h3 class="color-white">Events</h3>
+                                <!--p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p-->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!--<div class="panel-short-full">
+                    <a href="cols-helper.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="cols-helper">
+                                <div class="panel-bg-layer" id="generic-layercolor"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <h3 class="color-white">Colonoscopy <br /> Helper</h3>
+                                <!-p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p->
+                            </div>
+                        </div>
+                    </a>
+                    <a href="event-cal.html">
+                        <div class="panel-short">
+                            <div class="panel-bg" id="events">
+                                <div class="panel-bg-layer" id="generic-layercolor"></div>
+                            </div>
+                            <div class="txtBlock">
+                                <h3 class="color-white">Events</h3>
+                                <!-p class="color-navy">Iuvaret eripuit aliquando eos an, nisl stet mea in, ei viris aperiam eos.</p->
+                            </div>
+                        </div>
+                    </a>
+                </div>-->
+
+                <br /><br />
+                <!--<div class="box" id="healthcare">Healthcare</div>
+                <div class="box" id="restrooms">Restrooms</div>
+                <div class="box" id="mindfulness">Mindfulness</div>
+                <div class="box" id="nearby">Nearby</div>-->
+            </div>
+        </div>
+        <!-- End Container Area -->
+    </div>
+    <!-- End Precontainer Wrapper -->
+
+    <!-- Start Footer Nav Area -->
+    <div id="footer" class="default-footer">
+        <div class="mobile-bottom-bar">
+            <a href="home.html" class="footer-link">
+                <!--i class="fas fa-home"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/home.png" />
+                <span class='footer-text'>Home</span>
+            </a>
+            <a href="health-tracker.html" class="footer-link">
+                <!--i class="fas fa-file-contract"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" />
+                <span class='footer-text'>Health Tracker</span>
+            </a>
+            <a id="premium-gmap" href="gmap.html" class="footer-link premium-footer-gmap premiumFeatures">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-map-marker-alt"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" style="width: 11px;" />
+                <span class='footer-text'>Restrooms</span>
+            </a>
+            <a href="mindfulness.html" class="footer-link">
+                <!--i class="fas fa-spa"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" />
+                <span class='footer-text'>Mindfulness</span>
+            </a>
+            <a id="premium-nearby" href="nearby.html" class="footer-link premium-footer-nearby premiumFeatures" >
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-comments"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" style="width: 13px;" />
+                <span class='footer-text'>Nearby</span>
+            </a>
+            <!--a href="profile-card.html" class="footer-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span class='footer-text'>Profile</span>
+                    </a-->
+        </div>
+    </div>
+    <!-- End Footer Nav Area -->
+
+    <!-- Start Sidebar script -->
+    <script type="text/javascript">
+        /* Set the width of the sidbar to 250px */
+        function openNav() {
+            /*document.getElementById("sidebar").style.width = "250px";*/
+            document.getElementById("sidebar").style.left = "0px";
+            document.getElementById("swipe-area").style.left = "0px";
+            document.getElementById("swipe-area").style.width = "100%";
+        }
+
+        /* Set the width of the sidebar to 0 */
+        function closeNav() {
+            /*document.getElementById("sidebar").style.width = "0";*/
+            document.getElementById("sidebar").style.left = "-260px";
+            document.getElementById("swipe-area").style.left = "0px";
+            document.getElementById("swipe-area").style.width = "25px";
+        }
+    </script>
+    <!-- End Sidebar script -->
+    <!-- Start swipe sidebar script -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#swipe-area").swipe({
+                //Generic swipe handler for all directions
+                swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+
+                    switch (direction) {
+                        case "right":
+                            console.log("swiped right!");
+                            openNav();
+                            break;
+                        case "left":
+                            console.log("swiped left");
+                            closeNav();
+                            break;
+                    }
+                },
+                //Default is 75px, set to 0 for demo so any distance triggers swipe
+                threshold: 75
+            });
+        });
+    </script>
+    <!-- End swipe sidebar script -->
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+
+</body>
+
+</html>

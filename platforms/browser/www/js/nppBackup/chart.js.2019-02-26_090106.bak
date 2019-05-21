@@ -1,0 +1,288 @@
+function createChart(){ 
+var canvas = document.getElementById("barChart");
+var ctx = canvas.getContext('2d');
+
+// Global Options:
+Chart.defaults.global.defaultFontColor = 'black';
+Chart.defaults.global.defaultFontSize = 14;
+ 
+ var dayArray = [];
+ var painArray = [];
+ var stressArray = [];
+ var stoolArray = [];
+ var bowelmArray = [];
+ var bowelfArray = [];
+ var bvisitArray = [];
+ var dateArray = [];
+
+
+//    $("#getGraphData").click(function () {
+        $("#showGraph").show();
+        $.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
+            data: { get_param: 'value' },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                $('#graphTable').empty();
+                $.each(data, function (index, element) {
+                    if (element.username == "testuser") {             
+                        if (element.day == "good") {
+                            var dayGraph = 3;
+                        }
+                        if (element.day == "okay") {
+                            dayGraph = 2;
+                        }
+                        if (element.day == "bad") {
+                            dayGraph = 1;
+                        }
+                        if (element.day == undefined) {
+                            dayGraph = "";
+                        }
+                        if (element.pain == "Low") {
+                            var painGraph = 1;
+                        }
+                        if (element.pain == "Medium") {
+                            painGraph = 2;
+                        }
+                        if (element.pain == "High") {
+                            painGraph = 3;
+                        }
+                        if (element.pain == undefined) {
+                            painGraph = "";
+                        }
+                        if (element.stress == "Low") {
+                            var stressGraph = 1;
+                        }
+                        if (element.stress == "Medium") {
+                            stressGraph = 2;
+                        }
+                        if (element.stress == "High") {
+                            stressGraph = 3;
+                        }
+                        if (element.stress == undefined) {
+                            stressGraph = "";
+                        }
+                        if (element.stool == "Soft") {
+                            var stoolGraph = 1;
+                        }
+                        if (element.stool == "Medium") {
+                            stoolGraph = 2;
+                        }
+                        if (element.stool == "Hard") {
+                            stoolGraph = 3;
+                        }
+                        if (element.stool == undefined) {
+                            stoolGraph = "";
+                        }
+                        if (element.bowelm == "Light") {
+                            var bowelmGraph = 1;
+                        }
+                        if (element.bowelm == "Medium") {
+                            bowelmGraph = 2;
+                        }
+                        if (element.bowelm == "Heavy") {
+                            bowelmGraph = 3;
+                        }
+                        if (element.bowelm == undefined) {
+                            bowelmGraph = "";
+                        }
+                        if (element.bowelf == "1-4") {
+                            var bowelfGraph = 1;
+                        }
+                        if (element.bowelf == "5-8") {
+                            bowelfGraph = 2;
+                        }
+                        if (element.bowelf == "9OrMore") {
+                            bowelfGraph = 3;
+                        }
+                        if (element.bowelf == undefined) {
+                            bowelfGraph = "";
+                        }
+                        if (element.bvisit == "1-2") {
+                            var bvisitGraph = 1;
+                        }
+                        if (element.bvisit == "3-4") {
+                            bvisitGraph = 2;
+                        }
+                        if (element.bvisit == "5 or more") {
+                            bvisitGraph = 3;
+                        }
+                        if (element.bvisit == undefined) {
+                            bvisitGraph = "";
+                        }
+
+                        
+
+                   dayArray.push(dayGraph);
+                   painArray.push(painGraph);
+                   stressArray.push(stressGraph);
+                   stoolArray.push(stoolGraph);
+                   bowelmArray.push(bowelmGraph);
+                   bowelfArray.push(bowelfGraph);
+                   bvisitArray.push(bvisitGraph);
+                   dateArray.push(element.date.toString().substring(0, 10));
+                   //alert(dayArray);
+                   //alert(element.date);
+
+                    }
+                });
+            },
+            error: function () {
+                alert("Data missing");
+            }
+        });
+//    });
+
+console.log("bvisitArray: " + bvisitArray);
+
+var data = {
+ // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  labels: dateArray,
+  datasets: [{
+      label: "Day",
+      fill: false,
+      lineTension: 0.1,
+      borderColor: "#2980b9", // The main line color
+      borderCapStyle: 'square',
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "black",
+      pointBackgroundColor: "white",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "yelLow",
+      pointHoverBorderColor: "brown",
+      pointHoverBorderWidth: 2,
+      pointRadius: 4,
+      pointHitRadius: 10,
+      data: dayArray,
+      spanGaps: false,
+    }, {
+      label: "Pain",
+      fill: false,
+      lineTension: 0.1,
+      borderColor: "#414b76",
+      borderCapStyle: 'butt',
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yelLow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 4,
+      pointHitRadius: 10,
+      data: painArray,
+      spanGaps: false,
+    }, {
+      label: "Stress",
+      fill: false,
+      lineTension: 0.1,
+      borderColor: "#775ba6",
+      borderCapStyle: 'butt',
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yelLow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 4,
+      pointHitRadius: 10,
+      // notice the gap in the data and the spanGaps: false
+      data: stressArray,
+      spanGaps: false,
+    }, {
+      label: "Stool Quality",
+      fill: false,
+      lineTension: 0.1,
+      borderColor: "#72737b",
+      borderCapStyle: 'butt',
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yelLow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 4,
+      pointHitRadius: 10,
+      // notice the gap in the data and the spanGaps: false
+      data: stoolArray,
+      spanGaps: false,
+    }, {
+      label: "Bowel Movement",
+      fill: false,
+      lineTension: 0.1,
+      borderColor: "#d123bf",
+      borderCapStyle: 'butt',
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yelLow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 4,
+      pointHitRadius: 10,
+      // notice the gap in the data and the spanGaps: false
+      data: bowelmArray,
+      spanGaps: false,
+    }, {
+      label: "Stool Frequency",
+      fill: false,
+      lineTension: 0.1,
+      borderColor: "rgb(186, 199, 230)",
+      borderCapStyle: 'butt',
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yelLow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 4,
+      pointHitRadius: 10,
+      // notice the gap in the data and the spanGaps: false
+      data: stoolArray,
+      spanGaps: false,
+    }
+
+  ]
+};
+
+// Notice the scaleLabel at the same level as Ticks
+var options = {
+  scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                },
+                scaleLabel: {
+                     display: true,
+                     labelString: '',
+                     fontSize: 20 
+                  }
+            }]            
+        }  
+};
+
+// Chart declaration:
+var myBarChart = new Chart(ctx, {
+  type: 'line',
+  data: data,
+  options: options
+});
+}
+
+helpers.retinaScale(this.chart);

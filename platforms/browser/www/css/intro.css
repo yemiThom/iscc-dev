@@ -12,62 +12,190 @@
 .welcome-title{
     font-family: Raleway-Black;
     text-align: center;
-    color: #ffffff;
+    /*color: #ffffff;*/
 }
 .welcome-subtitle{
     font-family: Raleway-Black;
     text-align: center;
-    color: #ffffff;
+    /*color: #ffffff;*/
     margin-bottom: 10%;
 }
-.left-circle{
-    height: 100px;
-    width: 100px;
-    /*margin: 8px;*/
-    border-radius: 50%;
+.panel-short{
+    position: relative;
+    width: 45%;
     display: inline-block;
-    background-clip: padding-box;
-    background-size: cover;
-    background-position: center center;
-    background-position: center center;
-    box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -moz-box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -webkit-box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -o-box-shadow: 3px 4px rgba(0,0,0,0.2);
+    padding: 1% 0;
+    margin-left: 3%;
 }
-.right-circle{
-    height: 100px;
-    width: 100px;
-    margin-left: 8%;
-    border-radius: 50%;
-    display: inline-block;
-    background-clip: padding-box;
-    background-size: cover;
-    background-position: center center;
-    background-position: center center;
-    box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -moz-box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -webkit-box-shadow: 3px 4px rgba(0,0,0,0.2);
-    -o-box-shadow: 3px 4px rgba(0,0,0,0.2);
+.panel-short::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 80%;
+    width: 75%;  /* or 100px */
+    border: 3px solid #ffffff;
+    transform: translate(-50%, -50%);
 }
-.right-txtBlock{
-    float: right;
-    display: inline-block;
-    width: 50%;
-    text-align: right;
-    color: #ffffff;
-}
-.left-txtBlock{
-    display: inline-block;
-    width: 50%;
-    color: #ffffff;
-}
-.panel{
+.panel-short-full{
     width: 100%;
-    padding: 2% 5%;
+    height: 140px;
+    padding: 2% 2%;
+    margin: 3% 0;
+}
+.panel-long{
+    position: relative;
+    width: 100%;
+    height: 140px;
+    padding: 2% 2%;
+    margin: 3% 0;
+}
+.panel-bg{
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center center;
+    height: 140px;
+    width: 90%;
+    margin: 0 auto;
+    /*filter: blur(0.10px);*/
+}
+.panel-bg:hover .tooltip,
+.panel-bg:active .tooltip{
+    display: block
+}
+.panel-premium::after{
+    font-family: "Font Awesome 5 Free"; 
+    content: "\f023";
+    font-weight: 900;
+    color: white;
+    /*background: url("http://iscc-imgs.s3.amazonaws.com/icons/lock.png") no-repeat #ffffff;
+    background-size: 20px;*/
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+}
+.panel-bg-layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+}
+.tooltip {
+    padding: 10px;
+    position: absolute;
+    width: auto;
+    max-width: 60%;
+    box-shadow: 1px 1px 20px #aaa;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%);
+    transform-style: preserve-3d;
+    z-index: 7;
+    font-size: 0.9em;
+    display: none;
+}
+.tooltip:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    transform-origin: 50% 50%;
+    transform: rotate(45deg) translateX(-50%);
+    background-color: #fff;
+    left: 50%;
+    top: -1px;
+    z-index: 400;
+}
+.tooltip:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform-origin: 50% 50%;
+    transform: rotate(45deg) translateX(-50%) translateZ(-1px);
+    background-color: #fff;
+    left: 50%;
+    top: 0px;
+    z-index: -1;
+    box-shadow: -1px -1px 20px #aaa;
+}
+.tooltip__src_intro {
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+    top: -30px;
+}
+.tooltip:after {
+    top: auto;
+    bottom: -8px;
+}
+.tooltip:before {
+    top: auto;
+    bottom: -8px;
 }
 
-#healthcare{ background-image: url("../img/intro/healthcare.jpeg"); }
-#restrooms{ background-image: url("../img/intro/restrooms.jpg"); }
-#mindfulness{ background-image: url("../img/intro/mindfulness.jpeg"); }
-#nearby{ background-image: url("../img/intro/nearby.jpeg"); }
+.txtBlock{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.txtBlock2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*transform: translate(-50%, -50%);*/
+}
+.txtBlock-img{
+    width: 25%;
+    display: block;
+    margin: 6px auto;
+}
+
+.txtBlock h2, .txtBlock h3,
+.txtBlock2 h2, .txtBlock2 h3{
+    font-weight: inherit;
+    text-align: center;
+    text-transform: capitalize;
+    /*
+    font-family: Raleway-Black;
+    border-bottom: 3px solid #33cccc;
+    text-decoration: underline;
+    text-decoration-color: #33cccc;*/
+}
+/*.txtBlock h3{ font-size: 1.75rem; }
+.txtBlock::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    height: 1px;
+    width: 50%;  /* or 100px *
+    border-bottom: 3px solid #d123bf;
+    transform: translate(-50%, -50%);
+}*/
+
+#healthcare{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/tracker.jpg"); }
+#restrooms{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/restrooms2.jpg"); }
+#mindfulness{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/mindfulness.jpg"); }
+#nearby{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/nearby.jpg"); }
+#nowaiting{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/nowaiting.jpg"); }
+#events{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/events.jpg"); }
+#cols-helper{ background-image: url("https://iscc-imgs.s3.amazonaws.com/intro/colonoscopy.jpg"); }
+
+#generic-layercolor{ background-color: rgba(0, 0, 0, 0.25); }
+#healthcare-layercolor{ background-color: rgba(127,132,223,0.7); }
+#restrooms-layercolor{ background-color: rgba(255,204,102,0.7); }
+#mindfulness-layercolor{ background-color: rgba(255,151,64,0.7); }
+#nearby-layercolor{ background-color: rgba(104,141,225,0.7); }
+#nowaiting-layercolor{ background-color: rgba(41,128,185,0.7); }
+#events-layercolor{ background-color: rgba(18,189,189,0.7); }
+#cols-helper-layercolor{ background-color: rgba(255,204,102,0.7); }
+#extra1-layercolor{ background-color: rgba(255,102,102,0.7); }
+#extra2-layercolor{ background-color: rgba(143,244,143,0.7); }
+#extra3-layercolor{ background-color: rgba(149,176,237,0.7); }
