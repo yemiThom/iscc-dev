@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ire-iscc.ibdwell" version="1.1.1" CFBundleVersion="2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.ire-iscc.ibdwell" version="1.1.2" CFBundleVersion="2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
     <name>IBDWELL</name>
     <description>
@@ -8,7 +8,9 @@
     <author email="info@iscc.ie" href="https://www.iscc.ie/">
         Irish Society for Colitis and Crohn's Disease
     </author>
+	 <access origin="http://iscc.ie"></access>
     <content src="index.html" />
+	 <preference name="OpenAllWhitelistURLsInWebView" value="No"></preference> 
     <preference name="DisallowOverscroll" value="true" />		
 	<preference name="android-targetSdkVersion" value="26" />
     <preference name="android-minSdkVersion" value="14" />
