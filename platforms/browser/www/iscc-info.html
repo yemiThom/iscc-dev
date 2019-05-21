@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IBDWELL - ISCC Info</title>
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+    <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
+    <link rel="stylesheet" type="text/css" href="css/vid-player.css">
+    <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- javascript -->
+    <script type='application/javascript' src='js/fastclick.js'></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+    <!--script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script-->
+
+    <!-- Cognito login 
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+    <script src="js/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <script type="text/javascript" src='js/config.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+    <script type="text/javascript" src='js/verify.js'></script>
+    <!--
+        user-scalable=no doesn't allow users to zoom
+        initial-scale=1 means the zoom level when the app is loaded. 1=100%
+        maximum-scale=1 means the max zoom level user can zoom
+        minimum-scale-1 means the min zoom level user can zoom
+        -->
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+          width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+        width=device-width, height=device-height, viewport-fit=cover" />
+</head>
+
+<body>
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-top d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <img id="openSBBtn" class="toggle" src="http://iscc-imgs.s3.amazonaws.com/main-menu.png"
+                            onclick="openNav()" />
+                        <!--position: fixed; right: 10px; bottom: 10px" />-->
+                        <!--<a href="#home"><img src="img/logo.png" alt="" style=" max-width:20%;"></a>-->
+                    </div>
+                    <div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <img src="http://iscc-imgs.s3.amazonaws.com/icons/ibdwell-logo-white.png">
+                        </div>
+                        <!--<a href="#home"><img src="" alt="Gutsy" style=" max-width:25%;"></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidenav">
+        <!--style="color: black; position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: #ccc; transition: all 0.5s ease-in-out;"-->
+        <a id="closeSBBtn" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i
+                class="fas fa-times"></i></a>
+        <div class="sidenav-section">
+            <a id="email_value"></a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon3" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">Info</h4>
+            <a href="crohns-info.html">Crohn's Disease</a>
+            <a href="uc-info.html">Ulcerative Colitis</a>
+            <a href="get-diagnosis.html">Getting a Diagnosis</a>
+            <a href="cols-helper.html">Colonoscopy Helper</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
+            <h4 class="bg-magenta">Contact</h4>
+            <a href="https://iscc.ie/contactus/">Contact</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
+            <h4 class="bg-magenta">Support</h4>
+            <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
+            <a href="https://iscc.ie/support/living-with-ibd">Living Well With IBD</a>
+            <a href="https://iscc.ie/contactus/">Support Telephone Line</a>
+        </div>
+
+        <div class="sidenav-section">
+            <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
+            <h4 class="bg-magenta">FAQ</h4>
+            <a href="https://www.iscc.ie/faq">FAQ</a>
+        </div>
+
+        <div class="sidenav-section">
+            <a href="index.html" onclick="signOut()">Log out</a>
+        </div>
+
+    </div>
+    <!-- Side Bar -->
+
+    <!-- Start Precontainer Wrapper -->
+    <div class="pre-container-wrapper">
+        <div id="swipe-area" class="swipe-area"></div>
+        <!-- Start Container Area -->
+        <div class="content-container">
+            <div class="header">
+                <h1 class="text-center">ABOUT US</h1>
+            </div>
+            <div style="margin: 10px;">
+                <p>
+                    The Irish Society for Colitis and Crohn’s Disease (ISCC) is a patient support group for people who
+                    are living with Crohn's disease and ulcerative colitis (collectively known as Inflammatory Bowel
+                    Disease or IBD).
+                    We offer telephone support, information leaflets, and organise meetings and events around the
+                    country.
+                    We also lobby on behalf of people with IBD for improved services and greater awareness of the
+                    impact of living with IBD.
+                    The ISCC successfully won the Social Innovation Fund Ireland Animate Award.
+                    This award will fund the introduction of the 'Living Well with IBD' self-management programme
+                    throughout Irish communities.
+                </p>
+                <p><br /></p>
+
+                <h4>MORE INFO</h4>
+                <p>
+                    The doctor will ask you some questions about your symptoms, what medications you take and your
+                    family medical history.
+                    You may have a brief physical exam based on what symptoms you have (ie pain in your abdomen)
+                </p>
+                <p><br /></p>
+
+                <h2>BECOMING A MEMBER/SPONSORSHIP</h2>
+                <p></p>
+                <p><br /></p>
+
+            </div>
+        </div>
+        <!-- End Container Area -->
+    </div>
+    <!-- End Precontainer Wrapper -->
+
+    <!-- Start Footer Nav Area -->
+    <div id="footer" class="default-footer">
+        <div class="mobile-bottom-bar">
+            <a href="home.html" class="footer-link">
+                <!--i class="fas fa-home"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/home.png" />
+                <span class='footer-text'>Home</span>
+            </a>
+            <a href="health-tracker.html" class="footer-link">
+                <!--i class="fas fa-file-contract"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/healthtracker.png" />
+                <span class='footer-text'>Health Tracker</span>
+            </a>
+            <a id="premium-gmap" href="gmap.html" class="footer-link premium-footer-gmap premiumFeatures">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-map-marker-alt"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/restrooms.png" style="width: 11px;" />
+                <span class='footer-text'>Restrooms</span>
+            </a>
+            <a href="mindfulness.html" class="footer-link">
+                <!--i class="fas fa-spa"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/mindfulness.png" />
+                <span class='footer-text'>Mindfulness</span>
+            </a>
+            <a id="premium-nearby" href="nearby.html" class="footer-link premium-footer-nearby premiumFeatures">
+                <div class="app_tooltip tooltip__src">This is a premium service, please verify your membership to
+                    continue using this feature.</div>
+                <!--i class="fas fa-comments"></i-->
+                <img src="http://iscc-imgs.s3.amazonaws.com/icons/nearby.png" style="width: 13px;" />
+                <span class='footer-text'>Nearby</span>
+            </a>
+            <!--a href="profile-card.html" class="footer-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span class='footer-text'>Profile</span>
+                    </a-->
+        </div>
+    </div>
+    <!-- End Footer Nav Area -->
+
+    <!-- fast click script -->
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <!-- end fast click script -->
+</body>
+<!-- paged tabs script -->
+<script src="js/page-tabs.js"></script>
+<!-- end paged tabs script-->
+<!-- Start Sidebar script -->
+<script type="text/javascript">
+    /* Set the width of the sidbar to 250px */
+    function openNav() {
+        /*document.getElementById("sidebar").style.width = "250px";*/
+        document.getElementById("sidebar").style.left = "0px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "100%";
+    }
+
+    /* Set the width of the sidebar to 0 */
+    function closeNav() {
+        /*document.getElementById("sidebar").style.width = "0";*/
+        document.getElementById("sidebar").style.left = "-260px";
+        document.getElementById("swipe-area").style.left = "0px";
+        document.getElementById("swipe-area").style.width = "25px";
+    }
+</script>
+<!-- End Sidebar script -->
+<!-- Start swipe sidebar script -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#swipe-area").swipe({
+            //Generic swipe handler for all directions
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+
+                switch (direction) {
+                    case "right":
+                        console.log("swiped right!");
+                        openNav();
+                        break;
+                    case "left":
+                        console.log("swiped left");
+                        closeNav();
+                        break;
+                }
+            },
+            //Default is 75px, set to 0 for demo so any distance triggers swipe
+            threshold: 75
+        });
+    });
+</script>
+<!-- End swipe sidebar script -->
+
+</html>

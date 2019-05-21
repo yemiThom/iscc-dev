@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/home.css">
+  <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
+  <link rel="stylesheet" type="text/css" href="css/main-nav.css">
+  <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
+  <link rel="stylesheet" type="text/css" href="css/replace-radio-checkbox.css">
+  <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
+  <link rel="stylesheet" type="text/css" href="css/homeCalTracker.css">
+  <link rel="stylesheet" type="text/css" href="css/barcodeScanner.css">
+</head>
+
+<body>
+  <h1 class="color-lylac">Barcode Reader</h1>
+  <div>Barcode result: <span id="dbr"></span></div>
+  <br/>
+  <div class="selectDiv">
+    <label for="videoSource">Video source: </label>
+    <select id="videoSource" class="styledSelect"></select>
+  </div>
+  <div class="goScan">
+    <button id="go">Read Barcode</button>
+  </div>
+  <div>
+    <video muted autoplay class="vidFeed" id="video" playsinline="true"></video>
+    <canvas id="pcCanvas" width="640" height="480" style="display: none; float: bottom;"></canvas>
+    <canvas id="mobileCanvas" width="240" height="320" style="display: none; float: bottom;"></canvas>
+  </div>
+</body>
+
+<script async src="js/zxing.js"></script>
+<script src="js/video.js"></script>
+
+</html>

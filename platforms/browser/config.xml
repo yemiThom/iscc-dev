@@ -1,19 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
-    <feature name="Camera">
-        <param name="browser-package" value="Camera" />
-    </feature>
-    <feature name="Device">
-        <param name="browser-package" value="Device" />
-    </feature>
-    <name>iscc-dev</name>
+<widget CFBundleVersion="2.0" id="com.ire-iscc.ibdwell" version="1.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>IBDWELL</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Supporting IBD patients and their families in Ireland.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="info@iscc.ie" href="https://www.iscc.ie/">
+        Irish Society for Colitis and Crohn's Disease
     </author>
+    <access origin="http://iscc.ie" />
     <content src="index.html" />
+    <icon height="180" platform="ios" src="www/icon.png" width="180" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -21,8 +17,26 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="*" />
+    <gap:config-file parent="NSPhotoLibraryUsageDescription" platform="ios">
+        <string>For uploading barcodes</string>
+    </gap:config-file>
+    <gap:config-file parent="NSLocationWhenInUSageDescription" platform="ios">
+        <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use</string>
+    </gap:config-file>
+    <preference name="OpenAllWhitelistURLsInWebView" value="No" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-targetSdkVersion" value="26" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="orientation" value="portrait" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#414b76" />
+    <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="EnableViewportScale" value="true" />
+    <feature name="Camera">
+        <param name="browser-package" value="Camera" />
+    </feature>
+    <feature name="Device">
+        <param name="browser-package" value="Device" />
+    </feature>
 </widget>

@@ -12,14 +12,14 @@
     -ms-touch-callout: none;
 }
 
-input
-{
-    -webkit-user-select: auto !important;
-    -khtml-user-select: auto !important;
-    -moz-user-select: auto !important;
-    -ms-user-select: auto !important;
-    user-select: auto !important;
-}/*//////////////////////////////////////////////////////////////////
+input, input:before, input:after, textarea, textarea:before, textarea:after {
+    -webkit-user-select: initial !important;
+    -khtml-user-select: initial !important;
+    -moz-user-select: initial !important;
+    -ms-user-select: initial !important;
+    user-select: initial !important;
+}
+/*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
 @font-face {
@@ -57,6 +57,11 @@ input
     src: url('../fonts/raleway/Raleway-Bold.ttf'); 
 }
 
+@font-face{
+    font-family: Lato;
+    src: url('https://fonts.googleapis.com/css?family=Lato');
+}
+
 
 @media (min-width: 858px) {
     /*html { font-size: 12px; }*/
@@ -83,7 +88,12 @@ input
     html { font-size: 10px; }
 }
 
-body, input, textarea { font-family: Verdana, 'Gill Sans', 'Gill Sans MT', 'Calibri', Tahoma, sans-serif }
+body{
+    padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+    padding-top: env(safe-area-inset-top); /* iOS 11.2 */
+}
+body, input, textarea { font-family: 'Lato', Verdana, 'Gill Sans', 'Gill Sans MT', 'Calibri', Tahoma, sans-serif }
+input, textarea { font-size: 1rem; }
 
 h1 { font-size: 2em; }
 h2 { font-size: 1.5em; }
@@ -91,9 +101,30 @@ h3 { font-size: 1.17em; }
 h5 { font-size: .83em; }
 h6 { font-size: .75em; }
 
-p { font-size:1em; line-height:1.2; }
+p { font-size:1em; line-height:1.2; margin: 5px auto; }
 
-a, a:visited, a:hover, a:active { color: inherit; }
+a, a:visited, a:hover, a:active { color: inherit; cursor: none !important; }
+
+ul { list-style-type: none; }
+
+.ul-style{
+    line-height: 1.5rem;
+    padding-bottom: 5%;
+    color: #414b76;
+}
+.ul-style li::before{
+    content:'\2022'; 
+    color: #d123bf;
+    padding: 2%;
+    margin-left: -0.5em
+}
+
+.ul-style li .ul-style li::before{
+    content: "-"; 
+    color: #775ba6;
+    padding: 2%;
+    margin-left: 1.5em
+}
 
 input,
 input:focus,
@@ -101,11 +132,111 @@ select:focus,
 textarea:focus,
 button:focus { outline: none; }
 
+table{
+    width:100%;
+    table-layout: fixed;
+    font-size: 0.7rem;
+}
+.tbl-header{
+    /*background-color: rgba(255,255,255,0.3);*/
+    background-color: rgba(119,91,166,0.5);
+}
+.tbl-content{
+    overflow-x:auto;
+    margin-top: 0px;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+th{
+    
+    text-align: center;
+    /*font-weight: 500;
+    padding: 20px 15px;
+    font-size: 12px;
+    color: #fff;*/
+    text-transform: uppercase;
+    padding: 1rem;
+}
+td{
+    text-align: center;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 0.8rem;
+    /*padding: 15px;
+    color: #fff;*/
+    border-bottom: solid 1px rgba(0,0,0,0.1);
+    padding: 1%;
+}
+
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background-image: none; 
+    background: #775ba6;
+
+    width: 74%;
+    height: 100%;
+    margin: 0;
+    padding: 0 0 0 0.5rem;
+    color: #ffffff;
+}
+select::-ms-expand{
+    display: none;
+}
+.select{
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 25px;
+    background: #775ba6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 0.5rem;
+}
+.select::after{
+    content: '\25BC';
+    font-size: 1rem;
+    position: absolute;
+    top: 25%;
+    right: 7px;
+    /*bottom: 0;
+    padding: 15px;*/
+    color: #d123bf;
+    transition: 0.25s all ease;
+}
+/*.select:hover::after{
+    color: #72737b;
+}*/
+
+::placeholder{
+    color: #72737b;
+    opacity: 0.5;
+}
+
+.ios-top-padding{ padding-top: 10% !important; }
+
+.color-grey-dark{color: #72737b !important}
+.color-magenta{color: #d123bf !important}
+.color-lylac{color: #775ba6 !important}
+.color-blue-dark{color: #414b76 !important}
+
+.bg-grey-dark{background-color: #72737b}
+.bg-magenta{background-color: #d123bf}
+.bg-lylac{background-color: #775ba6}
+.bg-blue-dark{background-color: #414b76}
+
+.color-white{color: #ffffff}
 .color-grey{color: #ecf0f1}
 .color-torq{color: #33cccc}
 .color-blue{color: #2980b9}
 .color-navy{color: #2c3e50}
 
+.bg-white{background-color: #ffffff !important}
 .bg-grey{background-color: #ecf0f1 !important}
 .bg-torq{background-color: #33cccc !important}
 .bg-blue{background-color: #2980b9 !important}

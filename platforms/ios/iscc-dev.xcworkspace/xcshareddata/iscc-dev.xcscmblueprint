@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4EA1B8C4F11811043C0E5D41FE2EDB7310BE7C07",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4EA1B8C4F11811043C0E5D41FE2EDB7310BE7C07" : 0,
+    "BBC01AF6444310BFB5389A16293145BB42B340BB" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4350457E-E4DD-487F-A064-DB276CE58674",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4EA1B8C4F11811043C0E5D41FE2EDB7310BE7C07" : "iscc-dev\/",
+    "BBC01AF6444310BFB5389A16293145BB42B340BB" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "iscc-dev",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "platforms\/ios\/iscc-dev.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/saharma\/iscc-dev",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4EA1B8C4F11811043C0E5D41FE2EDB7310BE7C07"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/saharma\/iscc-dev.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BBC01AF6444310BFB5389A16293145BB42B340BB"
+    }
+  ]
+}
