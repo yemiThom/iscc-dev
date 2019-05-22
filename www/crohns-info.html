@@ -18,6 +18,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- javascript -->
+    <script type="text/javascript" src='cordova.js'></script>
+    <script type="text/javascript" src='phonegap.js'></script>
+    <script type="text/javascript" src='js/openEB.js'></script>
     <script type='application/javascript' src='js/fastclick.js'></script>
     <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
     <!--<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
@@ -88,22 +91,22 @@
         <div class="sidenav-section">
             <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/contact.png" /-->
             <h4 class="bg-magenta">Contact</h4>
-            <a href="https://iscc.ie/contactus/">Contact</a>
+            <a onclick="openURL('https://www.iscc.ie/contactus/')">Contact</a>
         </div>
 
         <div class="sidenav-section">
             <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
             <h4 class="bg-magenta">Support</h4>
             <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
-            <a href="https://iscc.ie/support/living-with-ibd">Living Well With IBD</a>
-            <a href="https://iscc.ie/contactus/">Support Telephone Line</a>
+            <!--<a onclick="openURL('https://www.iscc.ie/support/living-with-ibd')">Living Well With IBD</a>-->
+            <a onclick="openURL('https://www.iscc.ie/contactus/')">Support Telephone Line</a>
         </div>
 
         <a href="#" onclick="cordova.InAppBrowser.open('https://www.iscc.ie/faq', 'system', 'location=yes');"></a>
         <div class="sidenav-section">
             <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
             <h4 class="bg-magenta">FAQ</h4>
-            <a>FAQ</a>
+            <a onclick="openURL('https://www.iscc.ie/faq')">FAQ</a>
         </div>
         </a>
 
