@@ -1,4 +1,5 @@
 /*
+ *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -15,6 +16,14 @@
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
+ *
 */
-var d = document.getElementById("header")
-d.innerHTML = "Script file successfully injected";
+
+oxide.addMessageHandler("EXECUTE", function(msg) {
+    var code = msg.args.code;
+    try {
+        msg.reply({result: eval(code)});
+    } catch(e) {
+        msg.error("Code threw exception: \"" + e + "\"");
+    }
+});
