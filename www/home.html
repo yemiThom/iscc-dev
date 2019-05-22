@@ -128,14 +128,14 @@
             <!--img class="icon1" src="http://iscc-imgs.s3.amazonaws.com/icons/support.png" /-->
             <h4 class="bg-magenta">Support</h4>
             <!--a href="https://www.iscc.ie/support-line">Support Telephone Line</a-->
-            <a onclick="openURL('www.iscc.ie/support/living-with-ibd')">Living Well With IBD</a>
-            <a onclick="openURL('www.iscc.ie/contactus/')">Support Telephone Line</a>
+            <a onclick="openURL('https://www.iscc.ie/support/living-with-ibd')">Living Well With IBD</a>
+            <a onclick="openURL('https://www.iscc.ie/contactus/')">Support Telephone Line</a>
         </div>
 
         <div class="sidenav-section">
             <!--img class="icon2" src="http://iscc-imgs.s3.amazonaws.com/icons/faq.png" /-->
             <h4 class="bg-magenta">FAQ</h4>
-            <a onclick="openURL('www.iscc.ie/faq')">FAQ</a>
+            <a onclick="openURL('https://www.iscc.ie/faq')">FAQ</a>
         </div>
 
         <div class="sidenav-section">
@@ -337,6 +337,7 @@
     <script>
         var inAppBrowserRef;
         function openURL(url) {
+            alert("successfully called openURL()");
 
             var target = "_system";
 
@@ -352,11 +353,13 @@
 
         }
         function loadStartCallBack() {
+            alert("loadStartCallBack()");
 
             $('#status-message').text("loading please wait ...");
 
         }
         function loadStopCallBack() {
+            alert("loadStopCallBack()");
 
             if (inAppBrowserRef != undefined) {
 
@@ -369,6 +372,7 @@
 
         }
         function loadErrorCallBack(params) {
+            aler("loadErrorCallBack()");
 
             $('#status-message').text("");
 
