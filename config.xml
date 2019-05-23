@@ -133,13 +133,19 @@
             <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use.</string>
         </edit-config>
     </platform>
-	<gap:config-file platform="ios" parent="NSPhotoLibraryUsageDescription">
+<gap:config-file platform="ios" parent="NSPhotoLibraryUsageDescription">
     <string>For uploading barcodes</string>
 </gap:config-file>
-	<gap:config-file platform="ios" parent="NSLocationWhenInUSageDescription">
+	
+<gap:config-file platform="ios" parent="NSLocationWhenInUSageDescription">
+    <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use.</string>
+</gap:config-file>
+	
+<gap:config-file platform="ios" parent="NSLocationAlwaysUsageDescription">
     <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use</string>
 </gap:config-file>
-	<gap:config-file platform="ios" parent="NSLocationAlwaysUsageDescriptionn">
-    <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message.</string>
+	
+<gap:config-file platform="ios" parent="NSLocationAlwaysAndWhenInUseUsageDescription">
+    <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use</string>
 </gap:config-file>
 </widget>
