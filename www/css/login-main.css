@@ -731,6 +731,10 @@ iframe {
   .popup{
     width: 90%;
   }
+  .login100-form-title img{
+    height: 100%;
+    width: 50%;
+  }
 }
 /* Popup box END */
 

@@ -35,6 +35,7 @@ body {
   height: 30px;
   widows: 30px;
 }
+.backbtn{height: 20px; padding-top: 10px; padding-left: 10px;}
 .wrapper .top-icons i:nth-of-type(1) {
   float: left;
 }
