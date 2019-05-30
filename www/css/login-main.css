@@ -212,7 +212,8 @@ iframe {
 }
 
 .login100-form-title img{
-  height: 50%;
+  height: 100%;
+  width: 50%
 }
 
 /*---------------------------------------------*/
@@ -659,7 +660,8 @@ iframe {
     padding-right: 15px;
   }
   .login100-form-title img{
-    height: 25%;
+    height: 100%;
+    width: 50%;
   }
 }
 

@@ -32,6 +32,8 @@ body {
 }
 .wrapper .top-icons i {
   color: #080911;
+  height: 30px;
+  widows: 30px;
 }
 .wrapper .top-icons i:nth-of-type(1) {
   float: left;
