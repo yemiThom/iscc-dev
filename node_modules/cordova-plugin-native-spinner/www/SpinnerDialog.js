@@ -15,7 +15,7 @@ module.exports = {
     }
     cordova.exec(cancelCallback, null, 'SpinnerDialog', 'show', params);
   },
-  hide: function (success, fail) {
-    cordova.exec(success, fail, 'SpinnerDialog', 'hide', ["", ""]);
+  hide: function (wpStatusbar, success, fail) {
+    cordova.exec(success, fail, 'SpinnerDialog', 'hide', [wpStatusbar]);
   }
 };
