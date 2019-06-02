@@ -200,6 +200,7 @@
             }
         }
         function signInButton() {
+            document.querySelector('body').classList.remove('loaded');
 
             var authenticationData = {
                 Username: document.getElementById("inputUsername").value,
@@ -224,14 +225,11 @@
 
             cognitoUser.authenticateUser(authenticationDetails, {
                 onSuccess: function (result) {
-                    //SpinnerDialog.show();
-                    document.querySelector('body').classList.remove('loaded');
                     var accessToken = result.getAccessToken().getJwtToken();
                     console.log(accessToken);
                     window.location.replace("home.html");
                 },
                 onFailure: function (err) {
-                    document.querySelector('body').classList.remove('loaded');
                     console.log(err.message || JSON.stringify(err));
 
                     document.getElementById("inputUsernameDiv").classList.remove('alert-validate-short');
