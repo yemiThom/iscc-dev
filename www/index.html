@@ -224,16 +224,20 @@
 
             cognitoUser.authenticateUser(authenticationDetails, {
                 onSuccess: function (result) {
+                    //SpinnerDialog.show();
+                    document.querySelector('body').classList.remove('loaded');
                     var accessToken = result.getAccessToken().getJwtToken();
                     console.log(accessToken);
                     window.location.replace("home.html");
-                    SpinnerDialog.show();
                 },
                 onFailure: function (err) {
+                    document.querySelector('body').classList.remove('loaded');
                     console.log(err.message || JSON.stringify(err));
 
                     document.getElementById("inputUsernameDiv").classList.remove('alert-validate-short');
                     document.getElementById("inputPasswordDiv").classList.remove('alert-validate-short');
+                    
+                    document.querySelector('body').classList.add('loaded');
 
                     if (err.message == "User does not exist.") {
                         console.log("Show that user doesn't exist");
