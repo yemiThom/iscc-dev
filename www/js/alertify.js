@@ -628,7 +628,7 @@
 
 
 function requestToChat(msg) {
-    alertify.set({ delay: 1700 });
+    alertify.set({ delay: 3700 });
     //alertify.success("Success notification");  
     alertify.success(msg);
 }
