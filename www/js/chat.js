@@ -335,6 +335,8 @@ function checkConvoRequest(){
 					console.log("Convo exists: check if pending or not");
 					if(element.accepted == "pending"){
 						console.log("request pending, show request announcement");
+						//remove blockBtn element
+						removeBlockBtn();
 						//clear chat view
 						clearChatView();
 						disableInputs();
@@ -347,6 +349,8 @@ function checkConvoRequest(){
 						return false;
 					}else{
 						console.log("request not pending, show messages");
+						//show blockBtn element
+						showBlockBtn();
 						//clear chat view
 						clearChatView();
 						enableInputs();
@@ -365,6 +369,8 @@ function checkConvoRequest(){
 					console.log("Convo exists: check if pending or not");
 					if(element.accepted == "pending"){
 						//console.log("convo request pending...");
+						//remove blockBtn element
+						removeBlockBtn();
 						//clear chat view
 						clearChatView();
 						disableInputs();
@@ -381,6 +387,8 @@ function checkConvoRequest(){
 						return false;
 					}else{
 						console.log("Go get messages cause it exists");
+						//show blockBtn element
+						showBlockBtn();
 						//clear chat view
 						clearChatView();
 						enableInputs();
@@ -415,6 +423,25 @@ function checkConvoRequest(){
 			console.log("Request not sent");
 		}
 	});
+}
+
+function showBlockBtn(){
+	var profileElem = document.getElementById("profile");
+	var closeElem = document.getElementById("close");
+	var newDivElem = document.createElement("div");
+	newDivElem.id = "blockBtn";
+	newDivElem.classList = "blockBtn";
+	newDivElem.innerHTML = "<input id='bathroomData' type='button' value='Block'>";
+
+	//var insertElem = create("<div id='blockBtn' class='blockBtn'><input id='bathroomData' type='button' value='Block'></div>");
+
+	profileElem.insertBefore(newDivElem, closeElem);
+}
+
+function removeBlockBtn(){
+	var blockBtnElem = document.getElementById("blockBtn");
+	if(blockBtnElem)
+		blockBtnElem.parentNode.removeChild(blockBtnElem);
 }
 
 //$("#acceptRequest").click(function () {
