@@ -279,6 +279,7 @@ function userSendConvoRequest(){
 		"user1": username,
 		"user2": document.getElementById("chatTo").innerHTML,
 		"accepted": "pending",
+		"blocked": "no",
 	}];
 
 	//put the data in 
