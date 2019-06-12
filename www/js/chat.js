@@ -451,6 +451,7 @@ function acceptRequestCall(){
 			"user1": document.getElementById("chatTo").innerHTML,
 			"user2": username,
 			"accepted": "accepted"
+			"blocked": "no"
 		};
 
 		console.log("converstation object data: "+JSON.stringify(conversation));
@@ -490,6 +491,33 @@ function declineRequestCall(){
 		});
 }
 //});
+
+function blockUser(){
+		var conversation = {
+			"user1": document.getElementById("chatTo").innerHTML,
+			"user2": username,
+			"accepted": "no"
+			"blocked": "yes"
+		};
+
+		console.log("converstation object data: "+JSON.stringify(conversation));
+	
+		//put the data in 
+		$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+convosID, {
+			data: JSON.stringify(conversation),
+			contentType: "application/json",
+			method: "PUT",
+			success: function () {
+				console.log("Accepted Convo Request");
+				clearChatView();
+				enableInputs();
+			},
+			error: function () {
+				alert("Request not been accepted");
+			}
+	
+		});
+}
 
 function getMessages(cid){
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+cid+"/messages", {

@@ -94,7 +94,7 @@ $.ajax(settings).done(function (response) {
   
   }
   else{
-      alert(response.error_description);
+      console.log(response.error_description);
   }
 
 });
