@@ -71,6 +71,26 @@ body{
   border: 2px solid #d123bf;
 }
 
+.reportBtn_div{
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+}
+.reportBtn_div .button {
+  padding: 10px;
+  color: #fff;
+  background-color: #414b76;
+  border: 2px solid #414b76;
+  /*border-radius: 20px/50px;
+  cursor: pointer;*/
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+}
+.reportBtn_div .button:hover {
+  background: #d123bf;
+  border: 2px solid #d123bf;
+}
 .scannerBtn_div .button {
     color: #FFFFFF;
     background-color: #414b76;
