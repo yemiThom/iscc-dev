@@ -368,7 +368,7 @@ function checkConvoRequest(){
 					//convo does exist
 					//check if pending
 					console.log("Convo exists: check if pending or not");
-					if(element.accepted == "pending" || "no"){
+					if(element.accepted == "pending"){
 						//console.log("convo request pending...");
 						//remove blockBtn element
 						removeBlockBtn();
@@ -509,6 +509,7 @@ function blockUser(){
 			contentType: "application/json",
 			method: "PUT",
 			success: function () {
+				checkConvoRequest();
 				console.log("User blocked");
 				alert("User blocked");
 				location.reload();
