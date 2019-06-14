@@ -390,7 +390,7 @@ function checkConvoRequest(){
 					}else{
 						console.log("Go get messages cause it exists");
 						//show blockBtn element
-						showBlockBtn()
+						showBlockBtn();
 						//clear chat view
 						clearChatView();
 						enableInputs();
