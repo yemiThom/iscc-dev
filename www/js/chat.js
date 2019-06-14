@@ -334,7 +334,7 @@ function checkConvoRequest(){
 					//convo does exist
 					//check if pending 
 					console.log("Convo exists: check if pending or not");
-					if(element.accepted == "pending"){
+					if(element.accepted == "pending" || "no"){
 						console.log("request pending, show request announcement");
 						//remove blockBtn element
 						removeBlockBtn();
@@ -368,7 +368,7 @@ function checkConvoRequest(){
 					//convo does exist
 					//check if pending
 					console.log("Convo exists: check if pending or not");
-					if(element.accepted == "pending"){
+					if(element.accepted == "pending" || "no"){
 						//console.log("convo request pending...");
 						//remove blockBtn element
 						removeBlockBtn();
