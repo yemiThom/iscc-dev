@@ -334,7 +334,7 @@ function checkConvoRequest(){
 					//convo does exist
 					//check if pending 
 					console.log("Convo exists: check if pending or not");
-					if(element.accepted == "pending"){
+					if(element.accepted == "pending" || (element.accepted=="accepted" && element.blocked =="yes")){
 						console.log("request pending, show request announcement");
 						//remove blockBtn element
 						removeBlockBtn();
@@ -804,10 +804,6 @@ function checkConvoStatusChange(){
 						//restart convo status check
 						checkConvoStatusChange();
 
-					}else if(element.accepted == "accepted" && element.blocked == "yes"){
-						console.log("convo status changed from pending");
-						//clear the chat view
-						clearChatView();					
 					}else {console.log("convo status changed from pending");
 						//clear the chat view
 						
