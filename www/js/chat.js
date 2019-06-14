@@ -407,7 +407,7 @@ function checkConvoRequest(){
 						console.log("numData == data.length");
 						console.log("Usernames do not match conversations found");
 						
-						//console.log("element.user1: "+element.user1);
+						//console.log("element.user1: "+element.user2ser1);
 						//console.log("element.user2: "+element.user2);
 						//if((element.user1 != username && element.user2 != username2) && (element.user1 != username2 && element.user2 != username)){
 						
@@ -432,7 +432,7 @@ function showBlockBtn(){
 	var newDivElem = document.createElement("div");
 	newDivElem.id = "blockBtn";
 	newDivElem.classList = "blockBtn";
-	newDivElem.innerHTML = "<input id='bathroomData' type='button' value='Block'>";
+	newDivElem.innerHTML = "<input id='blockUser' type='button' value='Block'>";
 
 	//var insertElem = create("<div id='blockBtn' class='blockBtn'><input id='bathroomData' type='button' value='Block'></div>");
 
@@ -450,7 +450,7 @@ function acceptRequestCall(){
 		var conversation = {
 			"user1": document.getElementById("chatTo").innerHTML,
 			"user2": username,
-			"accepted": "accepted"
+			"accepted": "accepted",
 			"blocked": "no"
 		};
 
@@ -492,11 +492,12 @@ function declineRequestCall(){
 }
 //});
 
-function blockUser(){
+$("#blockUser").click(function () {
+	alert("BUTTON PRESSED");
 		var conversation = {
 			"user1": document.getElementById("chatTo").innerHTML,
 			"user2": username,
-			"accepted": "no"
+			"accepted": "no",
 			"blocked": "yes"
 		};
 
@@ -508,16 +509,19 @@ function blockUser(){
 			contentType: "application/json",
 			method: "PUT",
 			success: function () {
-				console.log("Accepted Convo Request");
+				console.log("User blocked");
+				alert("User blocked");
 				clearChatView();
+				clearDatachannel(); 
+				clearCheckNewMsgs();
 				enableInputs();
 			},
 			error: function () {
-				alert("Request not been accepted");
+				alert("Block failed");
 			}
 	
 		});
-}
+});
 
 function getMessages(cid){
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+cid+"/messages", {
@@ -776,10 +780,16 @@ function checkConvoStatusChange(){
 						console.log("no change, continue check");
 						//restart convo status check
 						checkConvoStatusChange();
-					}else if(element.accepted != "pending"){
+
+					}else if(element.accepted = "no"){
 						console.log("convo status changed from pending");
 						//clear the chat view
 						clearChatView();
+						clearCheckNewMsgs();
+						clearCheckNewMsgs();						
+					}else {console.log("convo status changed from pending");
+						//clear the chat view
+						
 						//enable the input elements
 						enableInputs();
 					}
