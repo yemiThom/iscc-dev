@@ -366,7 +366,6 @@ function checkConvoRequest(){
 						return false;
 					}
 					else{
-						 alert("User blocked");
 						 location.reload();
 					}
 				}else if(element.user1 == username2 && element.user2 == username){
@@ -408,7 +407,6 @@ function checkConvoRequest(){
 						return false;
 					}
 					else{
-						 alert("User blocked");
 						 location.reload();
 					}
 				}else{
