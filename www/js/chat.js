@@ -348,8 +348,7 @@ function checkConvoRequest(){
 						convosID = element.id;
 						checkConvoStatusChange();
 						return false;
-					}
-					if(element.accepted=="accepted"){
+					}else if(element.accepted=="accepted" && element.blocked =="no"){
 						console.log("request not pending, show messages");
 						//show blockBtn element
 						showBlockBtn();
@@ -364,10 +363,9 @@ function checkConvoRequest(){
 						clearCheckNewMsgs();
 						checkForNewMsgs();
 						return false;
-					}
-					else{
+					}/*else{
 						 location.reload();
-					}
+					}*/
 				}else if(element.user1 == username2 && element.user2 == username){
 					//convo does exist
 					//check if pending
@@ -390,7 +388,24 @@ function checkConvoRequest(){
 						'</div>';
 						convosID = element.id;
 						return false;
-					}else if(element.accepted=="accepted"){	
+					}else if(element.accepted == "accepted" && element.blocked == "yes"){
+						//console.log("convo request pending...");
+						//remove blockBtn element
+						removeBlockBtn();
+						//clear chat view
+						clearChatView();
+						disableInputs();
+						//request still pending 
+						//deal
+						document.getElementById("chat-messages").innerHTML = '<div class="announcement">'+
+						'<h2 class="color-blue-dark">Blocked</h2>'+
+						'<div class="requestBtn_div">'+
+						'<p>You have blocked '+username2+' from sending you messages.<p>'+
+						'</div>'+
+						'</div>';
+						convosID = element.id;
+						return false;
+					}else if(element.accepted == "accepted" && element.blocked == "no"){	
 						console.log("Go get messages cause it exists");
 						//show blockBtn element
 						showBlockBtn();
@@ -405,10 +420,9 @@ function checkConvoRequest(){
 						clearCheckNewMsgs();
 						checkForNewMsgs();
 						return false;
-					}
-					else{
+					}/*else{
 						 location.reload();
-					}
+					}*/
 				}else{
 					if(numData == Object.keys(data).length){
 						console.log("numData == data.length");
@@ -503,7 +517,7 @@ function blockUser(){
 		var conversation = {
 			"user1": document.getElementById("chatTo").innerHTML,
 			"user2": username,
-			"accepted": "no",
+			"accepted": "accepted",
 			"blocked": "yes"
 		};
 
@@ -790,7 +804,7 @@ function checkConvoStatusChange(){
 						//restart convo status check
 						checkConvoStatusChange();
 
-					}else if(element.accepted == "no"){
+					}else if(element.accepted == "accepted" && element.blocked == "yes"){
 						console.log("convo status changed from pending");
 						//clear the chat view
 						clearChatView();					
