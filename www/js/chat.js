@@ -334,7 +334,7 @@ function checkConvoRequest(){
 					//convo does exist
 					//check if pending 
 					console.log("Convo exists: check if pending or not");
-					if(element.accepted == "pending" || "no"){
+					if(element.accepted == "pending"){
 						console.log("request pending, show request announcement");
 						//remove blockBtn element
 						removeBlockBtn();
@@ -432,7 +432,7 @@ function showBlockBtn(){
 	var newDivElem = document.createElement("div");
 	newDivElem.id = "blockBtn";
 	newDivElem.classList = "blockBtn";
-	newDivElem.innerHTML = "<input id='blockUser' onClick='alert('hi')'  type='button' value='Block'>";
+	newDivElem.innerHTML = "<input id='blockUser' onClick='blockUser()';  type='button' value='Block'>";
 
 	//var insertElem = create("<div id='blockBtn' class='blockBtn'><input id='bathroomData' type='button' value='Block'></div>");
 
@@ -511,10 +511,11 @@ function blockUser(){
 			success: function () {
 				console.log("User blocked");
 				alert("User blocked");
+				location.reload();
 				clearChatView();
 				clearDatachannel(); 
 				clearCheckNewMsgs();
-				enableInputs();
+				disableInputs();
 			},
 			error: function () {
 				alert("Block failed");
