@@ -334,7 +334,7 @@ function checkConvoRequest(){
 					//convo does exist
 					//check if pending 
 					console.log("Convo exists: check if pending or not");
-					if(element.accepted == "pending" || "no"){
+					if(element.accepted == "pending"){
 						console.log("request pending, show request announcement");
 						//remove blockBtn element
 						removeBlockBtn();
@@ -348,7 +348,6 @@ function checkConvoRequest(){
 						convosID = element.id;
 						checkConvoStatusChange();
 						return false;
-
 					}else{
 						console.log("request not pending, show messages");
 						//show blockBtn element
@@ -369,7 +368,7 @@ function checkConvoRequest(){
 					//convo does exist
 					//check if pending
 					console.log("Convo exists: check if pending or not");
-					if(element.accepted == "pending" || "no"){
+					if(element.accepted == "pending"){
 						//console.log("convo request pending...");
 						//remove blockBtn element
 						removeBlockBtn();
@@ -433,7 +432,7 @@ function showBlockBtn(){
 	var newDivElem = document.createElement("div");
 	newDivElem.id = "blockBtn";
 	newDivElem.classList = "blockBtn";
-	newDivElem.innerHTML = "<input id='blockUser' onClick='blockUser()' type='button' value='Block'>";
+	newDivElem.innerHTML = "<input id='blockUser' type='button' value='Block'>";
 
 	//var insertElem = create("<div id='blockBtn' class='blockBtn'><input id='bathroomData' type='button' value='Block'></div>");
 
@@ -493,7 +492,7 @@ function declineRequestCall(){
 }
 //});
 
-function blockUser() {
+$("#blockUser").click(function () {
 	alert("BUTTON PRESSED");
 		var conversation = {
 			"user1": document.getElementById("chatTo").innerHTML,
@@ -510,24 +509,19 @@ function blockUser() {
 			contentType: "application/json",
 			method: "PUT",
 			success: function () {
-				declineRequestCall()
 				console.log("User blocked");
 				alert("User blocked");
 				clearChatView();
 				clearDatachannel(); 
 				clearCheckNewMsgs();
 				enableInputs();
-				location.reload();
-
-
 			},
 			error: function () {
 				alert("Block failed");
 			}
 	
 		});
-}
-
+});
 
 function getMessages(cid){
 	$.ajax("https://fast-garden-93601.herokuapp.com/api/conversations/"+cid+"/messages", {
