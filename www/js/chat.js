@@ -694,6 +694,7 @@ $("#invisible").click(function () {
 	});*/
 });
 
+
 //pull data out
 function getUserID() {
 	//console.log("getUserID called");
@@ -786,7 +787,7 @@ function checkConvoStatusChange(){
 						//clear the chat view
 						clearChatView();
 						clearCheckNewMsgs();
-						clearCheckNewMsgs();						
+						clearCheckNewMsgs();n						
 					}else {console.log("convo status changed from pending");
 						//clear the chat view
 						
@@ -806,6 +807,7 @@ function scrollViewToBttm(){
 	const view = document.getElementById("chat-messages");
 	view.scrollIntoView(false); //go to bottom of div
 }
+
 
 /*//TEMPLATE
 $('#buttonID').click(function () {
