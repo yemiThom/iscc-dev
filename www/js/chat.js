@@ -334,7 +334,7 @@ function checkConvoRequest(){
 					//convo does exist
 					//check if pending 
 					console.log("Convo exists: check if pending or not");
-					if(element.accepted == "pending" || "no"){
+					if(element.accepted == "pending"){
 						console.log("request pending, show request announcement");
 						//remove blockBtn element
 						removeBlockBtn();
@@ -348,7 +348,8 @@ function checkConvoRequest(){
 						convosID = element.id;
 						checkConvoStatusChange();
 						return false;
-					}else{
+					}
+					if(element.accepted=="accepted"){
 						console.log("request not pending, show messages");
 						//show blockBtn element
 						showBlockBtn();
@@ -364,11 +365,15 @@ function checkConvoRequest(){
 						checkForNewMsgs();
 						return false;
 					}
+					else{
+						 alert("User blocked");
+						 location.reload();
+					}
 				}else if(element.user1 == username2 && element.user2 == username){
 					//convo does exist
 					//check if pending
 					console.log("Convo exists: check if pending or not");
-					if(element.accepted == "pending" || "no"){
+					if(element.accepted == "pending"){
 						//console.log("convo request pending...");
 						//remove blockBtn element
 						removeBlockBtn();
@@ -386,7 +391,7 @@ function checkConvoRequest(){
 						'</div>';
 						convosID = element.id;
 						return false;
-					}else{
+					}else if(element.accepted=="accepted"){	
 						console.log("Go get messages cause it exists");
 						//show blockBtn element
 						showBlockBtn();
@@ -401,6 +406,10 @@ function checkConvoRequest(){
 						clearCheckNewMsgs();
 						checkForNewMsgs();
 						return false;
+					}
+					else{
+						 alert("User blocked");
+						 location.reload();
 					}
 				}else{
 					if(numData == Object.keys(data).length){
