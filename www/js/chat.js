@@ -354,7 +354,7 @@ function checkConvoRequest(){
 						//show blockBtn element
 						showBlockBtn();
 						//clear chat view
-						clearChatView();
+						//clearChatView();
 						enableInputs();
 						//set convosID
 						convosID = element.id;
@@ -395,7 +395,7 @@ function checkConvoRequest(){
 						//show blockBtn element
 						showBlockBtn();
 						//clear chat view
-						clearChatView();
+						//clearChatView();
 						enableInputs();
 						//set convosID
 						convosID = element.id;
@@ -500,7 +500,6 @@ function declineRequestCall(){
 //});
 
 function blockUser(){
-	alert("BUTTON PRESSED");
 		var conversation = {
 			"user1": document.getElementById("chatTo").innerHTML,
 			"user2": username,
