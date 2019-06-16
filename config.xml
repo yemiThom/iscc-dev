@@ -154,4 +154,9 @@
 <gap:config-file platform="ios" parent="NSLocationAlwaysAndWhenInUseUsageDescription">
     <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use</string>
 </gap:config-file>
+
+<plugin name="cordova-custom-config" version="*"/>
+<config-file overwrite="true" parent="NSLocationAlwaysUsageDescription" platform="ios" target="*-Info.plist"> <string>Your location is used to find how far you are from bathroom facilities.</string> </config-file>
+<config-file overwrite="true" parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist"> <string>Your location is used to find how far you are from bathroom facilities.</string> </config-file>
+
 </widget>
