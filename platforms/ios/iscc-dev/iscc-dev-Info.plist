@@ -54,11 +54,27 @@
       <string>UIInterfaceOrientationPortrait</string>
     </array>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your current location will be used to make it easy for you to find the nearest facilities and users to message. Your location is only needed for the application to work when it is in use.</string>
+    <string>This app, IBDWELL, was conceived and developed by the Irish charity, the Irish Society for Colitis and Crohn’s disease (the ISCC) to support people living with Inflammatory Bowel Disease (IBD) in Ireland. 
+      The app is for IBD suffers only, and is targeted at this community only. 
+      The Nearby chat function of the app allows IBD sufferers to check out and talk to other sufferers that they know are close by, if they want to. It is all part of the support the app gives to IBD sufferers. 
+      We need location services for this function to work. 
+      The app does not identify the exact location of one user to another, just the distance in km. The function can be turned off easily if privacy is required. Users can be permanently blocked at the touch of a button if required. 
+      The Restroom function uses the users location so they can mark, rate and review bathroom facilities. This function does not identify a specific user to anybody. 
+      Finding a good bathroom is another essential support function of this app to sufferers of IBD. 
+      The more users that log bathrooms, the more useful this function will become, and will be of great support to the IBD community. 
+      No individuals, or their location, are personally identified by this app, anywhere, and the app does not use the location service for anything else, except for the functions and reasons mentioned above.</string>
     <key>NSPhotoLibraryUsageDescription </key>
     <string>Access to your photo library is used to access images of barcodes to add to the food log..</string>
     <key>NSLocationAlwaysUsageDescription </key>
-    <string>Access to your photo library is used to access images of barcodes to add to the food log..</string>
+    <string>This app, IBDWELL, was conceived and developed by the Irish charity, the Irish Society for Colitis and Crohn’s disease (the ISCC) to support people living with Inflammatory Bowel Disease (IBD) in Ireland. 
+      The app is for IBD suffers only, and is targeted at this community only. 
+      The Nearby chat function of the app allows IBD sufferers to check out and talk to other sufferers that they know are close by, if they want to. It is all part of the support the app gives to IBD sufferers. 
+      We need location services for this function to work. 
+      The app does not identify the exact location of one user to another, just the distance in km. The function can be turned off easily if privacy is required. Users can be permanently blocked at the touch of a button if required. 
+      The Restroom function uses the users location so they can mark, rate and review bathroom facilities. This function does not identify a specific user to anybody. 
+      Finding a good bathroom is another essential support function of this app to sufferers of IBD. 
+      The more users that log bathrooms, the more useful this function will become, and will be of great support to the IBD community. 
+      No individuals, or their location, are personally identified by this app, anywhere, and the app does not use the location service for anything else, except for the functions and reasons mentioned above.</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription </key>
     <string>Access to your photo library is used to access images of barcodes to add to the food log..</string>
   </dict>
