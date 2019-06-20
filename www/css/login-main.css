@@ -403,7 +403,10 @@ iframe {
   position: absolute;
   bottom: 25%;
   right: 2%;
-  z-index: 1;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
 }
 .input-checkbox100:checked + .label-checkbox100::before {
   /*color: #d33f8d;*/
