@@ -5,6 +5,7 @@
     <title>IBDWELL</title>
 
     <!-- Style Sheets -->
+
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/home.css">
@@ -17,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="css/barcodeScanner.css">
     <link rel="stylesheet" type="text/css" href="css/pop-up.css">
 
-    
+
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="js/amazon-cognito-auth.min.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
@@ -26,7 +27,7 @@
 
     <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -45,19 +46,15 @@
         maximum-scale=1 means the max zoom level user can zoom
         minimum-scale-1 means the min zoom level user can zoom
         -->
-    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1
           width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
-        width=device-width, height=device-height, viewport-fit=cover" />
-    <meta http-equiv="Content-Security-Policy" 
-        content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 </head>
 
 <body>
     <script type="text/javascript" src='js/index.js'></script>
     <script type="text/javascript" src='js/verify.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script type="text/javascript" src='js/chart.js'></script>
+    <script type="text/javascript" src='js/Chart.min.js'></script>
+    <script type="text/javascript" src='js/HealthChart.js'></script>
     <!-- Start Header Area -->
     <header class="default-header">
         <div class="container">
@@ -516,8 +513,8 @@
                         <div class="goScan m-b-10">
                             <input type="button" class="btn" id="getAllDocLogData" value="Show Doc's Log Data" />
                             <input type="button" class="btn" id="close3" value="Close Doc's Log Data" />
-                        </div>   
-                         
+                        </div>
+
                         <table id="tabletest3" style="display:none" cellpadding="0" cellspacing="0" border="0">
                             <thead class="tbl-header">
                                 <tr>
@@ -559,11 +556,11 @@
                                     <div id="foodDatabase" style="display: none;">
                                         <br>
                                         <h3 class="color-blue-dark"> Add a Food Item to the IBD Well Database</h3>
-                                        
-                                        <br />
-                                        
 
-                                  
+                                        <br />
+
+
+
                                         <br>
                                         Name: <input type="text" id="foodname" class="qrcode-text txtBorder m-b-10"></input>
                                         <br>
@@ -639,7 +636,7 @@
                                     <!--  <textarea id="healthtracker_describe-bf" class="text-areas" rows="5" cols="20"
                                         placeholder="Describe your meal..."></textarea> -->
 
-                                    <!-- Rounded switch 
+                                    <!-- Rounded switch
 
                                 </section>-->
                             </div>
@@ -716,7 +713,7 @@
                                 <div class="col-md-10">
                                     <!--       Chart.js Canvas Tag -->
                                     <div class="chart-container"><canvas id="barChart"></canvas></div>
-                                    
+
                                 </div>
                                 <div class="col-md-1"></div>
                             </div>
@@ -729,7 +726,7 @@
         <!-- End Container Area -->
     </div>
     <!-- End Precontainer Wrapper -->
-    
+
     <!--Start pop-up form Div -->
     <div id="popup2" class="overlay">
         <div class="popup">
