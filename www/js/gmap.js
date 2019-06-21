@@ -25,7 +25,7 @@ function initMap() {
     //new map
     var map = new google.maps.Map(document.getElementById('map'), options);
 
-   
+
 
     //Get current location
     if (navigator.geolocation) {
@@ -101,7 +101,7 @@ function initMap() {
             "created_date": created_date
         };
 
-        alert("Adding following bathroom: " + JSON.stringify(bathroom));
+//        alert("Adding following bathroom: " + JSON.stringify(bathroom));
 
         console.log(JSON.stringify(bathroom));
 
@@ -126,9 +126,8 @@ function initMap() {
 
 
     function updateOrAdd() {
-        alert("In helper");
         if (bRmCount == 1) {
-            //alert("Update"); 
+            //alert("Update");
             var title = document.getElementById("placeName").value;
             var rating = document.querySelector('input[name="stars"]:checked').value;
             var btype = document.getElementById("btype").value;
@@ -152,7 +151,7 @@ function initMap() {
                 "created_date": created_date
             };
 
-            alert(JSON.stringify(bathroomUpdate));
+            //alert(JSON.stringify(bathroomUpdate));
 
             console.log(JSON.stringify(bathroomUpdate));
 
@@ -174,7 +173,7 @@ function initMap() {
 
         }
         else {
-            alert(bRmCount);
+            //alert(bRmCount);
             addBathroom();
         }
     }
@@ -225,11 +224,11 @@ function initMap() {
                     var distBetween = calcDistance(latpos, lngpos, element.lat, element.lng);
                     //alert(distBetween);
                     if (distBetween <= 0.020) {
-                        alert("This bathroom is close to another");
+                      //  alert("This bathroom is close to another");
                         bRmCount = 1;
                         //alert(bRmCount);
                         bathroomID = element.id;
-                        alert("ID of other bathroom:" + bathroomID);
+                        //alert("ID of other bathroom:" + bathroomID);
                         bathroomVote = element.votes;
                         bathroomRating = element.rating;
                         bathroomReview = element.review;
@@ -240,7 +239,7 @@ function initMap() {
                         //addBathroom();
                     }
                     //bathroomID = element.id;
-                    // alert(element.id);                    
+                    // alert(element.id);
                 });
                 updateOrAdd();
             }
