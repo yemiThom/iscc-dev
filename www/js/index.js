@@ -30,7 +30,7 @@ $(document).ready(function () {
     };
     /* if the device is not ios hide the download button */
     if(isMobile.iOS()){
-           //alert('this is an ios device');  
+           //alert('this is an ios device');
            var headerElem = document.getElementsByClassName('default-header');
            for(var i=0; i < headerElem.length; i++){
                headerElem[i].classList.add("ios-top-padding");
@@ -95,16 +95,17 @@ $(document).ready(function () {
                 let membershipType = localStorage.getItem("MemberType");
                 let invoice = localStorage.getItem("Invoices");
                 if (membershipType == undefined || membershipType == null || membershipType == "") {
-                 //  $(".premiumFeatures").removeAttr('href');    
+                 //  $(".premiumFeatures").removeAttr('href');
                    $('#verifyiscc').html("Verify Membership");
-                    
+
                 }
                 else {
+                    $(verifyiscc).css('color', 'red');
                     $('#verifyiscc').html(membershipType);
                     $('#verifyiscc').removeAttr('href');
                     //$(".premiumFeatures").attr("href", location);
-                    
-                    
+
+
                 }
                 //FastClick.attach(document.body);
             }, false);
