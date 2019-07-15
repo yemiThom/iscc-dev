@@ -97,10 +97,10 @@ $(document).ready(function () {
                 if (membershipType == undefined || membershipType == null || membershipType == "") {
                  //  $(".premiumFeatures").removeAttr('href');
                    $('#verifyiscc').html("Verify Membership");
+                   $(verifyiscc).css('color', 'red');
 
                 }
                 else {
-                    $(verifyiscc).css('color', 'red');
                     $('#verifyiscc').html(membershipType);
                     $('#verifyiscc').removeAttr('href');
                     //$(".premiumFeatures").attr("href", location);
