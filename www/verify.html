@@ -10,12 +10,15 @@
         <script src="js/amazon-cognito-identity.min.js"></script>  
          <script type="text/javascript" src='js/config.js'></script>
         <!-- Style Sheets -->
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
         <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
         <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
         <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="css/native-interapp.css">
         <link rel="stylesheet" type="text/css" href="css/login-util.css">
         <link rel="stylesheet" type="text/css" href="css/login-main.css">
         
@@ -40,7 +43,7 @@
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-15 p-b-15">
                     <form class="login100-form validate-form">
                             <span class="login100-form-title p-b-20">
-                                Verify
+                                Verify Membership
                             </span>
                         </a>
                         <input type="hidden" name="ReturnUrl" value="">
@@ -60,6 +63,14 @@
                             <span class="symbol-input100">
                                 <span class="lnr lnr-lock"></span>
                             </span>
+
+                            <div class="contact102-form-checkbox m-l-5">
+                                <input class="input-checkbox100" id="pass-ckb1" type="checkbox" name="password-reveal"
+                                    onchange="revealPass();">
+                                <label class="label-checkbox101" id="pass-ckb2" for="pass-ckb1">
+                                    <i class="fas fa-eye"></i>
+                                </label>
+                            </div>
                         </div>
 
                         <div class="container-login100-form-btn p-t-25">
@@ -107,6 +118,18 @@
         <script src="vendor/select2/select2.min.js"></script>
         <!-- Start of login main script -->
         <script src="js/verify.js"></script>
+        <script>
+            function revealPass() {
+                console.log("clicked the third eye");
+                if (document.getElementById("pass-ckb1").checked == true) {
+                    document.getElementById("pass-ckb2").innerHTML = "<i class='fas fa-eye-slash'></i>";
+                    document.getElementById("inputPassword").type = "text";
+                } else {
+                    document.getElementById("pass-ckb2").innerHTML = "<i class='fas fa-eye'></i>";
+                    document.getElementById("inputPassword").type = "password";
+                }
+            }
+        </script>
 
     </body>
 </html>
