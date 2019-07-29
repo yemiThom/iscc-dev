@@ -103,10 +103,10 @@ $(document).ready(function () {
                 else {
                     console.log("membershipType: " + membershipType);
 
-                    if(membershipType.includes('1')){
+                    if(membershipType.includes('Regular Membership')){
                         membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
-                    }else if(membershipType.includes('2')){
+                    }/*else if(membershipType.includes('2')){
                         membershipType = "Standard Membership, "+"\u20AC"+"22 (+ "+"\u20AC"+"3 donation)";
                         console.log("membershipType: " + membershipType);
                     }else if(membershipType.includes('3')){
@@ -124,7 +124,7 @@ $(document).ready(function () {
                     }else if(membershipType.includes('7')){
                         membershipType = "Standard Membership, "+"\u20AC"+"22 (+ "+"\u20AC"+"78 donation)";
                         console.log("membershipType: " + membershipType);
-                    } 
+                    } */
                     console.log("membershipType: " + membershipType);
 
                     $('#verifyiscc').html(membershipType);
