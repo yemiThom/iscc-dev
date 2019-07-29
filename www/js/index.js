@@ -103,28 +103,28 @@ $(document).ready(function () {
                 else {
                     console.log("membershipType: " + membershipType);
 
-                    if(membershipType.includes('Regular Membership')){
+                    if(membershipType.includes('1')){
                         membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
-                    }/*else if(membershipType.includes('2')){
-                        membershipType = "Standard Membership, "+"\u20AC"+"22 (+ "+"\u20AC"+"3 donation)";
+                    }else if(membershipType.includes('2')){
+                        membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
                     }else if(membershipType.includes('3')){
-                        membershipType = "Standard Membership, "+"\u20AC"+"22 (+ "+"\u20AC"+"8 donation)";
+                        membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
                     }else if(membershipType.includes('4')){
-                        membershipType = "Standard Membership, "+"\u20AC"+"22 (+ "+"\u20AC"+"18 donation)";
+                        membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
                     }else if(membershipType.includes('5')){
-                        membershipType = "Standard Membership, "+"\u20AC"+"22 (+ "+"\u20AC"+"28 donation)";
+                        membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
                     }else if(membershipType.includes('6')){
-                        membershipType = "Standard Membership, "+"\u20AC"+"22 (+ "+"\u20AC"+"53 donation)";
+                        membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
                     }else if(membershipType.includes('7')){
-                        membershipType = "Standard Membership, "+"\u20AC"+"22 (+ "+"\u20AC"+"78 donation)";
+                        membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
-                    } */
+                    } 
                     console.log("membershipType: " + membershipType);
 
                     $('#verifyiscc').html(membershipType);
