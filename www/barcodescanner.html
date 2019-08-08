@@ -16,13 +16,13 @@
 <body>
   <h1 class="color-lylac">Barcode Reader</h1>
   <div>Barcode result: <span id="dbr"></span></div>
-  <br/>
+  <br />
   <div class="selectDiv">
     <label for="videoSource">Video source: </label>
     <select id="videoSource" class="styledSelect"></select>
   </div>
   <div class="goScan">
-    <button id="go">Read Barcode</button>
+    <button id="go" onclick="scanBarcode()">Read Barcode</button>
   </div>
   <div>
     <video muted autoplay class="vidFeed" id="video" playsinline="true"></video>
@@ -31,7 +31,36 @@
   </div>
 </body>
 
-<script async src="js/zxing.js"></script>
-<script src="js/video.js"></script>
+<!--<script async src="js/zxing.js"></script>
+<script src="js/video.js"></script>-->
+<script src="cordova.js"></script>
+<script>
+  function scanBarcode() {
+    cordova.plugins.barcodeScanner.scan(
+      function (result) {
+        alert("We got a barcode\n" +
+          "Result: " + result.text + "\n" +
+          "Format: " + result.format + "\n" +
+          "Cancelled: " + result.cancelled);
+      },
+      function (error) {
+        alert("Scanning failed: " + error);
+      },
+      {
+        preferFrontCamera: true, // iOS and Android
+        showFlipCameraButton: true, // iOS and Android
+        showTorchButton: true, // iOS and Android
+        torchOn: true, // Android, launch with the torch switched on (if available)
+        saveHistory: true, // Android, save scan history (default false)
+        prompt: "Place a barcode inside the scan area", // Android
+        resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+        formats: "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+        orientation: "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+        disableAnimations: true, // iOS
+        disableSuccessBeep: false // iOS and Android
+      }
+    );
+  }
+</script>
 
 </html>
