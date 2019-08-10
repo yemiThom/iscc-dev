@@ -8,18 +8,18 @@ var created_date = new Date();
 
 $("#addFood").click(function () {
 
+    var barcode = document.getElementById("results").innerHTML;
     var brand = document.getElementById("brand").value;
     var foodname = document.getElementById("foodname").value;
-    var servingsize = document.getElementById("servingsize").value;
+    //var servingsize = document.getElementById("servingsize").value;
     var servingsPerContainer = document.getElementById("servingsPerContainer").value;
     var created_date = new Date();
-   // var barcode = document.getElementById("trackingCode").value;
 
     var food = {
         "brand": brand,
         "foodname": foodname,
         "servingsPerContainer": servingsPerContainer,
-        "barcode": "NULL",
+        "barcode": barcode,
         "created_date": created_date
     };
 
