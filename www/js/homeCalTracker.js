@@ -83,7 +83,7 @@ function getFoodItem() {
                 console.log(element);
                 document.getElementById("brandInput").value = element.brand;
                 document.getElementById("foodnameInput").value = element.foodname;
-                document.getElementById("servingsizeInput").value = element.servingsize;
+                //document.getElementById("servingsizeInput").value = element.servingsize;
                 document.getElementById("servingsPerContainerInput").value = element.servingsPerContainer;
                 document.getElementById("trackingCodeInput").value = element.barcode;
             });
