@@ -8,7 +8,7 @@ var created_date = new Date();
 
 $("#addFood").click(function () {
 
-    var preBarcode = document.getElementById("results").innerHTML.substring(str.lastIndexOf(":") + 2, str.lastIndexOf("<"));
+    var preBarcode = getBarcodeNum();
     var barcode = preBarcode;
     var brand = document.getElementById("brand").value;
     var foodname = document.getElementById("foodname").value;
@@ -938,6 +938,13 @@ function addToLogInput() {
     console.log("foodnameInput: "+foodnameInput);
     var selectorInput = document.getElementById("selector").value;
     foodnameInput.value = selectorInput;
+}
+
+function getBarcodeNum(){
+    var str = document.getElementById("results").innerHTML;
+    //console.log(str.substring(8, str.lastIndexOf("<br>F")));
+    var barcodeResult = str.substring(8, str.lastIndexOf("<br>F"));
+    return barcodeResult;
 }
 
 function showFoodAdd() {
