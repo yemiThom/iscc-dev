@@ -112,9 +112,9 @@ function getFoodItem() {
 $("#logDiet").click(function () {
     var pain = document.getElementById("healthtracker_pain-bf").checked;
     var foodInput = document.getElementById("foodnameInput").value;
-    var servingInput = document.getElementById("servingInput").value;
+    var servingInput = document.getElementById("servingsPerContainerInput").value;
     
-    console.log("servingInput value: " + servingInput);
+    console.log("servingsPerContainerInput value: " + servingsPerContainerInput);
 
     /*if (document.getElementById("healthtracker_pain-bf").checked = "false") {
         pain = "no";
@@ -194,6 +194,7 @@ $("#getAllDietlogData").click(function () {
         success: function (data) {
             $('#dietLogTable').empty();
             $.each(data, function (index, element) {
+                console.log(element);
                 if (element.username == username) {
                     console.log(element.pain);
                     var elemPain;
