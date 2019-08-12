@@ -626,10 +626,14 @@
                                     </div>
 
                                     <br>
-                                    FOOD: <div class="select"><select id="selector" class="m-b-10"></select></div>
+                                    FOOD: <div class="select"><select id="selector" onchange="getFoodItem()" class="m-b-10"></select></div>
                                     <select id="selector2" style="display: none;"></select>
                                     <button id="selectFood" onClick="addToLogInput()"
                                         style="display: none;">SELECT</button>
+                                    <br>
+                                    <br>
+                                    Brand: <input type="text" id="brandInput"
+                                        class="qrcode-text txtBorder m-b-10"></input>
                                     <br>
                                     Food: <input type="text" id="foodnameInput"
                                         class="qrcode-text txtBorder m-b-10"></input>

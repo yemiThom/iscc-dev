@@ -8,7 +8,8 @@ var created_date = new Date();
 
 $("#addFood").click(function () {
 
-    var barcode = document.getElementById("results").innerHTML;
+    var preBarcode = document.getElementById("results").innerHTML.substring(str.lastIndexOf(":") + 2, str.lastIndexOf("<"));
+    var barcode = preBarcode;
     var brand = document.getElementById("brand").value;
     var foodname = document.getElementById("foodname").value;
     //var servingsize = document.getElementById("servingsize").value;
@@ -73,19 +74,29 @@ function getFood() {
 
 //GET SPECIFIC FOOD DATA BASED ON SELECTOR
 function getFoodItem() {
-    var id = $("#selector2").val();
-    $.ajax("https://fast-garden-93601.herokuapp.com/api/food/" + id, {
+    var fName = $("#selector").val();
+    console.log("selector foodname: "+fName)
+    $.ajax("https://fast-garden-93601.herokuapp.com/api/food/", {
         data: { get_param: 'value' },
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index, element) {
                 console.log(element);
-                document.getElementById("brandInput").value = element.brand;
-                document.getElementById("foodnameInput").value = element.foodname;
-                //document.getElementById("servingsizeInput").value = element.servingsize;
-                document.getElementById("servingsPerContainerInput").value = element.servingsPerContainer;
-                document.getElementById("trackingCodeInput").value = element.barcode;
+                if(element.foodname == fName){
+                    document.getElementById("brandInput").value = element.brand;
+                    document.getElementById("foodnameInput").value = element.foodname;
+                    //document.getElementById("servingsizeInput").value = element.servingsize;
+                    document.getElementById("servingsPerContainerInput").value = element.servingsPerContainer;
+                    document.getElementById("trackingCodeInput").value = element.barcode;
+                    return false;
+                }else{
+                    document.getElementById("brandInput").value = "";
+                    document.getElementById("foodnameInput").value = "";
+                    //document.getElementById("servingsizeInput").value = element.servingsize;
+                    document.getElementById("servingsPerContainerInput").value = "";
+                    document.getElementById("trackingCodeInput").value = "";
+                }
             });
         }
     });
@@ -387,9 +398,6 @@ $(document).ready(function () {
             "created_date": created_date
         }];
 
-
-
-
         //POST STATEMENT FOR SYMPTOMS
         $.ajax("https://fast-garden-93601.herokuapp.com/api/symptoms", {
             data: JSON.stringify(symptomdata),
@@ -464,13 +472,6 @@ $(document).ready(function () {
             }
         });
     });
-
-
-
-
-
-
-
 
     //GET ALL SYMPTOM DATA
     $("#getData").click(function () {
@@ -900,7 +901,6 @@ function getForDate() {
     });
 }
 
-
 //GET DIET LOG FOR SPECIFIC DAY
 function getDoclog() {
     $.ajax("https://fast-garden-93601.herokuapp.com/api/doclogs", {
@@ -934,12 +934,10 @@ function getDoclog() {
 }
 
 function addToLogInput() {
-
     var foodnameInput = document.getElementById("foodnameInput");
+    console.log("foodnameInput: "+foodnameInput);
     var selectorInput = document.getElementById("selector").value;
     foodnameInput.value = selectorInput;
-
-
 }
 
 function showFoodAdd() {
@@ -975,8 +973,6 @@ $("#close4").click(function () {
 $("#showGraph").click(function () {
     makeChart9();
 });
-
-
 
 function isInArray(array, search) {
     return array.indexOf(search) >= 0;
