@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="css/page-tabs.css">
     <link rel="stylesheet" type="text/css" href="css/intro.css">
     <link rel="stylesheet" type="text/css" href="css/replace-radio-checkbox.css">
+    <link rel="stylesheet" href="css/pop-up.css">
     <link rel="stylesheet" type="text/css" href="css/footer-nav.css">
 
     <!-- jQuery library -->
@@ -52,7 +53,7 @@
           width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" /-->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 
         width=device-width, height=device-height, viewport-fit=cover" />
-    <meta http-equiv="Content-Security-Policy" 
+    <meta http-equiv="Content-Security-Policy"
         content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 </head>
 
@@ -277,6 +278,37 @@
         <!-- End Container Area -->
     </div>
     <!-- End Precontainer Wrapper -->
+
+    <!--Start pop-up form Div 
+    
+    <div class="reviewBtn_div">
+        <a class="button" href="#popup1">Create a review here</a>
+    </div>
+    -->
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Register</h2>
+            <h3>for your full membership!</h3>
+            <a class="close" href="home.html">&times;</a>
+            <br />
+            <br />
+
+            <div class="content">
+                <div class="displayBlock padding-btm">
+                    <!--<label class="displayBlock">Place Name:</label>
+                    <input id="placeName" class="txtBorder" type="text">-->
+                    <p>Register your account with the I.S.C.C to use the full features of this app.</p>
+                </div>
+            </div>
+            <br />
+            <br />
+            <!-- Register Button -->
+            <div id="review_submit" class="reviewBtn">
+                <input id="register" type="button" value="Register now!">
+            </div>
+        </div>
+    </div>
+    <!--End pop-up form Div -->
 
     <!-- Start Footer Nav Area -->
     <div id="footer" class="default-footer">

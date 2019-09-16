@@ -11,6 +11,7 @@ body{
     transition: opacity 500ms;
     visibility: hidden;
     opacity: 0;
+    z-index: 10;
 }
 .overlay:target {
     visibility: visible;
@@ -19,6 +20,7 @@ body{
 
 .popup, .popup1 {
     margin: 70px auto;
+    margin-top: 50%;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
