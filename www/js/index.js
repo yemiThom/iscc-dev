@@ -93,7 +93,8 @@ $(document).ready(function () {
             document.addEventListener('DOMContentLoaded', function () {
 
                 let membershipType = localStorage.getItem("MemberType");
-                let invoice = localStorage.getItem("Invoices");
+                alert(JSON.stringify(MembershipType));
+              //  let invoice = localStorage.getItem("Invoices");
                 if (membershipType == undefined || membershipType == null || membershipType == "") {
                  //  $(".premiumFeatures").removeAttr('href');
                    $('#verifyiscc').html("Verify Membership");
@@ -124,7 +125,7 @@ $(document).ready(function () {
                     }else if(membershipType.includes('7')){
                         membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
-                    } 
+                    }
                     console.log("membershipType: " + membershipType);
 
                     $('#verifyiscc').html(membershipType);
