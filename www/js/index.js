@@ -91,7 +91,9 @@ $(document).ready(function () {
 
  if ('addEventListener' in document) {
             document.addEventListener('DOMContentLoaded', function () {
-
+                
+                localStorage.setItem("memberType", "");
+                checkPremium();
                 let membershipType = localStorage.getItem("MemberType");
                 alert(JSON.stringify(MembershipType));
               //  let invoice = localStorage.getItem("Invoices");
@@ -147,3 +149,108 @@ function signOut() {
         window.location.replace("index.html");
     }
 }
+
+function checkPremium(){
+
+
+  alert(localStorage.getItem("email"));
+
+  if (localStorage.getItem("email") === null || localStorage.getItem("email") === ''){
+    alert("email is null tho");
+    localStorage.setItem("email", $('#inputUsername').val());
+    emailInput = localStorage.getItem("email");
+    alert("email set " + localStorage.getItem("email") );
+  };
+
+  if (localStorage.getItem("password") === null || localStorage.getItem("password") === ''){
+     alert("password is null tho");
+    localStorage.setItem("password", $('#inputPassword').val());
+    passwordInput = localStorage.getItem("password");
+    alert("password set " + localStorage.getItem("password") );
+  }
+
+  var data = {
+    email: localStorage.getItem("email"),
+    password: localStorage.getItem("password")
+  }
+
+  var memberData = {
+    accessToken : '',
+    accountId : ''
+
+  }
+
+  var invoiceData = {
+    accessToken : '',
+    accountId : ''
+
+  }
+
+  var loginData = 'username='+data.email+'&password='+data.password;
+  alert("loginData: " + loginData);
+
+//login data
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://infinite-thicket-67578.herokuapp.com/login",
+  //  "url": "http://localhost:3000/login",
+
+  "method": "POST",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded"
+
+  },
+  "processData": false,
+  "data": loginData
+}
+
+//member settings
+var memberSettings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://infinite-thicket-67578.herokuapp.com/login/MemberData",
+  //"url": "http://localhost:3000/login/MemberData",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded"
+
+  },
+  "processData": false,
+  "data": memberData
+}
+
+//invoices settings
+var invoiceSettings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://infinite-thicket-67578.herokuapp.com/login/InvoiceData",
+  //"url": "http://localhost:3000/login/MemberData",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded"
+
+  },
+  "processData": false,
+  "data": invoiceData
+}
+
+
+
+
+$.ajax(settings).done(function (response) {
+  if(response.access_token)
+  {
+
+    localStorage.setItem("access_token", response.access_token);
+    memberData.accessToken = response.access_token;
+    memberData.accountId = response.Permissions[0].AccountId;
+    getInvoiceData();
+    getMemberData();
+
+  }
+  else{
+      console.log(response.error_description);
+  }
+
+});
