@@ -91,21 +91,21 @@ $(document).ready(function () {
 
  if ('addEventListener' in document) {
             document.addEventListener('DOMContentLoaded', function () {
-                
+                alert("checking");
                 localStorage.setItem("memberType", "");
                 checkPremium();
                 let membershipType = localStorage.getItem("MemberType");
-                alert(JSON.stringify(MembershipType));
+                alert(JSON.stringify(membershipType));
               //  let invoice = localStorage.getItem("Invoices");
                 if (membershipType == undefined || membershipType == null || membershipType == "") {
-                 //  $(".premiumFeatures").removeAttr('href');
+                   $(".premiumFeatures").removeAttr('href');
                    $('#verifyiscc').html("Verify Membership");
                    $(verifyiscc).css('color', '#d123bf');
 
                 }
                 else {
                     console.log("membershipType: " + membershipType);
-                    $(".premiumFeatures").removeAttr('href');
+                   // $(".premiumFeatures").removeAttr('href');
                     if(membershipType.includes('1')){
                         membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
@@ -131,8 +131,8 @@ $(document).ready(function () {
                     console.log("membershipType: " + membershipType);
 
                     $('#verifyiscc').html(membershipType);
-                    $('#verifyiscc').removeAttr('href');
-                    //$(".premiumFeatures").attr("href", location);
+                    //$('#verifyiscc').removeAttr('href');
+                    $(".premiumFeatures").attr("href", location);
 
 
                 }
@@ -167,20 +167,14 @@ function checkPremium(){
     localStorage.setItem("password", $('#inputPassword').val());
     passwordInput = localStorage.getItem("password");
     alert("password set " + localStorage.getItem("password") );
-  }
+  };
 
   var data = {
     email: localStorage.getItem("email"),
     password: localStorage.getItem("password")
   }
 
-  var memberData = {
-    accessToken : '',
-    accountId : ''
-
-  }
-
-  var invoiceData = {
+   var memberData = {
     accessToken : '',
     accountId : ''
 
@@ -205,38 +199,6 @@ var settings = {
   "data": loginData
 }
 
-//member settings
-var memberSettings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://infinite-thicket-67578.herokuapp.com/login/MemberData",
-  //"url": "http://localhost:3000/login/MemberData",
-  "method": "POST",
-  "headers": {
-    "content-type": "application/x-www-form-urlencoded"
-
-  },
-  "processData": false,
-  "data": memberData
-}
-
-//invoices settings
-var invoiceSettings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://infinite-thicket-67578.herokuapp.com/login/InvoiceData",
-  //"url": "http://localhost:3000/login/MemberData",
-  "method": "POST",
-  "headers": {
-    "content-type": "application/x-www-form-urlencoded"
-
-  },
-  "processData": false,
-  "data": invoiceData
-}
-
-
-
 
 $.ajax(settings).done(function (response) {
   if(response.access_token)
@@ -245,8 +207,7 @@ $.ajax(settings).done(function (response) {
     localStorage.setItem("access_token", response.access_token);
     memberData.accessToken = response.access_token;
     memberData.accountId = response.Permissions[0].AccountId;
-    getInvoiceData();
-    getMemberData();
+
 
   }
   else{
@@ -254,3 +215,4 @@ $.ajax(settings).done(function (response) {
   }
 
 });
+}
