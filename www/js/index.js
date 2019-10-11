@@ -105,7 +105,7 @@ $(document).ready(function () {
                 }
                 else {
                     console.log("membershipType: " + membershipType);
-
+                    $(".premiumFeatures").removeAttr('href');
                     if(membershipType.includes('1')){
                         membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
