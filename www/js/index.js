@@ -30,7 +30,7 @@ $(document).ready(function () {
     };
     /* if the device is not ios hide the download button */
     if(isMobile.iOS()){
-           //alert('this is an ios device');
+           //console.log('this is an ios device');
            var headerElem = document.getElementsByClassName('default-header');
            for(var i=0; i < headerElem.length; i++){
                headerElem[i].classList.add("ios-top-padding");
@@ -65,7 +65,7 @@ $(document).ready(function () {
         cognitoUser.getSession(function (err, session) {
 
             if (err) {
-                alert(err);
+                console.log(err);
                 return;
             }
             console.log('session validity: ' + session.isValid());
@@ -91,11 +91,11 @@ $(document).ready(function () {
 
  if ('addEventListener' in document) {
             document.addEventListener('DOMContentLoaded', function () {
-                alert("checking");
+                console.log("checking");
                 localStorage.setItem("memberType", "");
                 checkPremium();
                 let membershipType = localStorage.getItem("MemberType");
-                alert(JSON.stringify(membershipType));
+                console.log(JSON.stringify(membershipType));
               //  let invoice = localStorage.getItem("Invoices");
                 if (membershipType == undefined || membershipType == null || membershipType == "") {
                    $(".premiumFeatures").removeAttr('href');
@@ -153,20 +153,20 @@ function signOut() {
 function checkPremium(){
 
 
-  alert(localStorage.getItem("email"));
+  console.log(localStorage.getItem("email"));
 
   if (localStorage.getItem("email") === null || localStorage.getItem("email") === ''){
-    alert("email is null tho");
+    console.log("email is null tho");
     localStorage.setItem("email", $('#inputUsername').val());
     emailInput = localStorage.getItem("email");
-    alert("email set " + localStorage.getItem("email") );
+    console.log("email set " + localStorage.getItem("email") );
   };
 
   if (localStorage.getItem("password") === null || localStorage.getItem("password") === ''){
-     alert("password is null tho");
+     console.log("password is null tho");
     localStorage.setItem("password", $('#inputPassword').val());
     passwordInput = localStorage.getItem("password");
-    alert("password set " + localStorage.getItem("password") );
+    console.log("password set " + localStorage.getItem("password") );
   };
 
   var data = {
@@ -181,7 +181,7 @@ function checkPremium(){
   }
 
   var loginData = 'username='+data.email+'&password='+data.password;
-  alert("loginData: " + loginData);
+  console.log("loginData: " + loginData);
 
 //login data
 var settings = {
