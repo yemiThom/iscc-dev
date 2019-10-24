@@ -265,7 +265,7 @@ img.toggle{
     border-bottom: 3px solid #2c3e50;
 }
 .second-sub{
-    margin-top: -360px;
+    margin-top: 360px !important;
 }
 
 .tab-grid{
