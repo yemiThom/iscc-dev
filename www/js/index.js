@@ -91,21 +91,18 @@ $(document).ready(function () {
 
  if ('addEventListener' in document) {
             document.addEventListener('DOMContentLoaded', function () {
-                console.log("checking");
-                localStorage.setItem("memberType", "");
-                checkPremium();
+
                 let membershipType = localStorage.getItem("MemberType");
-                console.log(JSON.stringify(membershipType));
-              //  let invoice = localStorage.getItem("Invoices");
+                let invoice = localStorage.getItem("Invoices");
                 if (membershipType == undefined || membershipType == null || membershipType == "") {
-                   $(".premiumFeatures").removeAttr('href');
+                 //  $(".premiumFeatures").removeAttr('href');
                    $('#verifyiscc').html("Verify Membership");
                    $(verifyiscc).css('color', '#d123bf');
 
                 }
                 else {
                     console.log("membershipType: " + membershipType);
-                   // $(".premiumFeatures").removeAttr('href');
+
                     if(membershipType.includes('1')){
                         membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
@@ -127,12 +124,12 @@ $(document).ready(function () {
                     }else if(membershipType.includes('7')){
                         membershipType = "Standard Membership, "+"\u20AC"+"22";
                         console.log("membershipType: " + membershipType);
-                    }
+                    } 
                     console.log("membershipType: " + membershipType);
 
                     $('#verifyiscc').html(membershipType);
-                    //$('#verifyiscc').removeAttr('href');
-                    $(".premiumFeatures").attr("href", location);
+                    $('#verifyiscc').removeAttr('href');
+                    //$(".premiumFeatures").attr("href", location);
 
 
                 }
@@ -148,71 +145,4 @@ function signOut() {
         cognitoUser.signOut();
         window.location.replace("index.html");
     }
-}
-
-function checkPremium(){
-
-
-  console.log(localStorage.getItem("email"));
-
-  if (localStorage.getItem("email") === null || localStorage.getItem("email") === ''){
-    console.log("email is null tho");
-    localStorage.setItem("email", $('#inputUsername').val());
-    emailInput = localStorage.getItem("email");
-    console.log("email set " + localStorage.getItem("email") );
-  };
-
-  if (localStorage.getItem("password") === null || localStorage.getItem("password") === ''){
-     console.log("password is null tho");
-    localStorage.setItem("password", $('#inputPassword').val());
-    passwordInput = localStorage.getItem("password");
-    console.log("password set " + localStorage.getItem("password") );
-  };
-
-  var data = {
-    email: localStorage.getItem("email"),
-    password: localStorage.getItem("password")
-  }
-
-   var memberData = {
-    accessToken : '',
-    accountId : ''
-
-  }
-
-  var loginData = 'username='+data.email+'&password='+data.password;
-  console.log("loginData: " + loginData);
-
-//login data
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://infinite-thicket-67578.herokuapp.com/login",
-  //  "url": "http://localhost:3000/login",
-
-  "method": "POST",
-  "headers": {
-    "content-type": "application/x-www-form-urlencoded"
-
-  },
-  "processData": false,
-  "data": loginData
-}
-
-
-$.ajax(settings).done(function (response) {
-  if(response.access_token)
-  {
-
-    localStorage.setItem("access_token", response.access_token);
-    memberData.accessToken = response.access_token;
-    memberData.accountId = response.Permissions[0].AccountId;
-
-
-  }
-  else{
-      console.log(response.error_description);
-  }
-
-});
 }
