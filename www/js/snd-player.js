@@ -739,7 +739,7 @@ $(document).ready(function() {
     playList: [{
       'icon': iconImage,
       'title': 'Three Minute Breathing',
-      'file': 'https://www.freemindfulness.org/FreeMindfulness3MinuteBreathing.mp3'
+      'file': 'https://drive.google.com/open?id=1WpXIPxr1nBVHpDvLfyJNir7XronV-wax'
     }, {
       'icon': iconImage,
       'title': 'Five Minute Breathing - Mindful Awareness',
