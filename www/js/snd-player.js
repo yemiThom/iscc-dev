@@ -733,13 +733,13 @@ $(document).ready(function() {
   })(window);
 
   // TEST: image for web notifications
-  var iconImage = 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/iscc-imgs/fitness/breathe.jpeg';
+  var iconImage = 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/fitness/breathe.jpeg';
 
   AP.init({
     playList: [{
       'icon': iconImage,
       'title': 'Three Minute Breathing',
-      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/iscc-imgs/snd_mindfulness/FreeMindfulness3MinuteBreathing.mp3'
+      'file': 'http://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/FreeMindfulness3MinuteSounds.mp3'
     }, {
       'icon': iconImage,
       'title': 'Five Minute Breathing - Mindful Awareness',
@@ -787,23 +787,23 @@ $(document).ready(function() {
     }, {
       'icon': iconImage,
       'title': 'Relaxation Breathing 2',
-      'file': 'https://www.beaumont.ie/media/02-PaddyODriscollRelaxationBreath20171.mp3'
+      'file': 'http://www.beaumont.ie/media/02-PaddyODriscollRelaxationBreath20171.mp3'
     }, {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation 1',
-      'file': 'https://www.beaumont.ie/media/Active_PMR_1.mp3'
+      'file': 'http://www.beaumont.ie/media/Active_PMR_1.mp3'
     }, {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation 2',
-      'file': 'https://www.beaumont.ie/media/Active_PMR_2.mp3'
+      'file': 'http://www.beaumont.ie/media/Active_PMR_2.mp3'
     }, {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation with music',
-      'file': 'https://www.beaumont.ie/media/Active_PMR_with_Music.mp3'
+      'file': 'http://www.beaumont.ie/media/Active_PMR_with_Music.mp3'
     }, {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation with music 2',
-      'file': 'https://www.beaumont.ie/media/01-MicheleMcGettiganActivePMR20171.mp3'
+      'file': 'http://www.beaumont.ie/media/01-MicheleMcGettiganActivePMR20171.mp3'
     }]
   });
 
