@@ -739,47 +739,47 @@ $(document).ready(function() {
     playList: [{
       'icon': iconImage,
       'title': 'Three Minute Breathing',
-      'file': 'http://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/FreeMindfulness3MinuteSounds.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/FreeMindfulness3MinuteSounds.mp3'
     }, {
       'icon': iconImage,
       'title': 'Five Minute Breathing - Mindful Awareness',
-      'file': 'http://www.freemindfulness.org/MARC5MinuteBreathing.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/MARC5MinuteBreathing.mp3'
     }, {
       'icon': iconImage,
       'title': 'Five Minute Breathing - Life Happens',
-      'file': 'http://www.freemindfulness.org/LifeHappens5MinuteBreathing.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/LifeHappens5MinuteBreathing.mp3'
     }, {
       'icon': iconImage,
       'title': 'Six minute breath awareness',
-      'file': 'http://www.freemindfulness.org/StillMind6MinuteBreathAwareness.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/StillMind6MinuteBreathAwareness.mp3'
     }, {
       'icon': iconImage,
       'title': 'Ten minute breathing',
-      'file': 'http://www.freemindfulness.org/FreeMindfulness10MinuteBreathing.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/FreeMindfulness10MinuteBreathing.mp3'
     }, {
       'icon': iconImage,
       'title': 'Ten minute mindfulness of breathing',
-      'file': 'http://www.freemindfulness.org/PadraigTenMinuteMindfulnessOfBreathing.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/PadraigTenMinuteMindfulnessOfBreathing.mp3'
     }, {
       'icon': iconImage,
       'title': 'Brief mindfulness practice',
-      'file': 'http://www.freemindfulness.org/PadraigBriefMindfulnessPractice.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/PadraigBriefMindfulnessPractice.mp3'
     }, {
       'icon': iconImage,
       'title': 'The breathing space',
-      'file': 'http://www.freemindfulness.org/VidyamalaBreathingSpace.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/VidyamalaBreathingSpace.mp3'
     }, {
       'icon': iconImage,
       'title': 'The tension release meditation',
-      'file': 'http://www.freemindfulness.org/VidyamalaTensionRelease.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/VidyamalaTensionRelease.mp3'
     }, {
       'icon': iconImage,
       'title': 'Three minute breathing space',
-      'file': 'http://www.freemindfulness.org/FreeMindfulness3MinuteBreathingSpace.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/FreeMindfulness3MinuteBreathingSpace.mp3'
     }, {
       'icon': iconImage,
       'title': 'Three minute mindfulness of sounds',
-      'file': 'http://www.freemindfulness.org/FreeMindfulness3MinuteSounds.mp3'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/snd_mindfulness/FreeMindfulness3MinuteSounds.mp3'
     }, {
       'icon': iconImage,
       'title': 'Relaxation Breathing',
@@ -787,23 +787,23 @@ $(document).ready(function() {
     }, {
       'icon': iconImage,
       'title': 'Relaxation Breathing 2',
-      'file': 'http://www.beaumont.ie/media/02-PaddyODriscollRelaxationBreath20171.mp3'
+      'file': 'https://www.beaumont.ie/media/02-PaddyODriscollRelaxationBreath20171.mp3'
     }, {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation 1',
-      'file': 'http://www.beaumont.ie/media/Active_PMR_1.mp3'
+      'file': 'https://www.beaumont.ie/media/Active_PMR_1.mp3'
     }, {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation 2',
-      'file': 'http://www.beaumont.ie/media/Active_PMR_2.mp3'
+      'file': 'https://www.beaumont.ie/media/Active_PMR_2.mp3'
     }, {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation with music',
-      'file': 'http://www.beaumont.ie/media/Active_PMR_with_Music.mp3'
+      'file': 'https://www.beaumont.ie/media/Active_PMR_with_Music.mp3'
     }, {
       'icon': iconImage,
       'title': 'Active progressive muscle relaxation with music 2',
-      'file': 'http://www.beaumont.ie/media/01-MicheleMcGettiganActivePMR20171.mp3'
+      'file': 'https://www.beaumont.ie/media/01-MicheleMcGettiganActivePMR20171.mp3'
     }]
   });
 
