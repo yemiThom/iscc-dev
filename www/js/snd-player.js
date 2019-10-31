@@ -733,53 +733,53 @@ $(document).ready(function() {
   })(window);
 
   // TEST: image for web notifications
-  var iconImage = 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/fitness/breathe.jpeg';
+  var iconImage = 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/iscc-imgs/fitness/breathe.jpeg';
 
   AP.init({
     playList: [{
       'icon': iconImage,
       'title': 'Three Minute Breathing',
-      'file': 'https://drive.google.com/open?id=1WpXIPxr1nBVHpDvLfyJNir7XronV-wax'
+      'file': 'https://iscc-imgs.s3-eu-west-1.amazonaws.com/iscc-imgs/snd_mindfulness/FreeMindfulness3MinuteBreathing.mp3'
     }, {
       'icon': iconImage,
       'title': 'Five Minute Breathing - Mindful Awareness',
-      'file': 'https://www.freemindfulness.org/MARC5MinuteBreathing.mp3'
+      'file': 'http://www.freemindfulness.org/MARC5MinuteBreathing.mp3'
     }, {
       'icon': iconImage,
       'title': 'Five Minute Breathing - Life Happens',
-      'file': 'https://www.freemindfulness.org/LifeHappens5MinuteBreathing.mp3'
+      'file': 'http://www.freemindfulness.org/LifeHappens5MinuteBreathing.mp3'
     }, {
       'icon': iconImage,
       'title': 'Six minute breath awareness',
-      'file': 'https://www.freemindfulness.org/StillMind6MinuteBreathAwareness.mp3'
+      'file': 'http://www.freemindfulness.org/StillMind6MinuteBreathAwareness.mp3'
     }, {
       'icon': iconImage,
       'title': 'Ten minute breathing',
-      'file': 'https://www.freemindfulness.org/FreeMindfulness10MinuteBreathing.mp3'
+      'file': 'http://www.freemindfulness.org/FreeMindfulness10MinuteBreathing.mp3'
     }, {
       'icon': iconImage,
       'title': 'Ten minute mindfulness of breathing',
-      'file': 'https://www.freemindfulness.org/PadraigTenMinuteMindfulnessOfBreathing.mp3'
+      'file': 'http://www.freemindfulness.org/PadraigTenMinuteMindfulnessOfBreathing.mp3'
     }, {
       'icon': iconImage,
       'title': 'Brief mindfulness practice',
-      'file': 'https://www.freemindfulness.org/PadraigBriefMindfulnessPractice.mp3'
+      'file': 'http://www.freemindfulness.org/PadraigBriefMindfulnessPractice.mp3'
     }, {
       'icon': iconImage,
       'title': 'The breathing space',
-      'file': 'https://www.freemindfulness.org/VidyamalaBreathingSpace.mp3'
+      'file': 'http://www.freemindfulness.org/VidyamalaBreathingSpace.mp3'
     }, {
       'icon': iconImage,
       'title': 'The tension release meditation',
-      'file': 'https://www.freemindfulness.org/VidyamalaTensionRelease.mp3'
+      'file': 'http://www.freemindfulness.org/VidyamalaTensionRelease.mp3'
     }, {
       'icon': iconImage,
       'title': 'Three minute breathing space',
-      'file': 'https://www.freemindfulness.org/FreeMindfulness3MinuteBreathingSpace.mp3'
+      'file': 'http://www.freemindfulness.org/FreeMindfulness3MinuteBreathingSpace.mp3'
     }, {
       'icon': iconImage,
       'title': 'Three minute mindfulness of sounds',
-      'file': 'https://www.freemindfulness.org/FreeMindfulness3MinuteSounds.mp3'
+      'file': 'http://www.freemindfulness.org/FreeMindfulness3MinuteSounds.mp3'
     }, {
       'icon': iconImage,
       'title': 'Relaxation Breathing',
