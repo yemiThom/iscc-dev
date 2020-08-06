@@ -79,9 +79,9 @@
 
 		<div class="sidenav-section">
             <!--img class="icon3" src="https://iscc-imgs.s3-eu-west-1.amazonaws.com/icons/faq.png" /-->
-            <h4 class="bg-magenta">Gutcast on Web</h4>
+            <h4 class="bg-magenta">Gutcast</h4>
             <!-- a onclick="openURL('https://iscc.ie/support/gutcast-overview')">GutCAST Overview</a>-->
-            <a onclick="openURL('https://iscc.ie/gutcast')">Gutcast</a>
+            <a onclick="openURL('https://iscc.ie/gutcast')">Gutcast on Web</a>
         </div>
 
         <div class="sidenav-section">
@@ -125,10 +125,10 @@
         <!-- Start Container Area -->
         <div class="content-container">
             <div class="header">
-                <h1 class="text-center">Gutcast</h1>
+                <h1 class="text-center"></h1>
             </div>
             <div style="margin: 10px;">
-                <div><img src="https://iscc-imgs.s3-eu-west-1.amazonaws.com/intro/gutcast.jpg" style="width: 100%;"/></div>
+                <div><img src="https://iscc-imgs.s3-eu-west-1.amazonaws.com/intro/gutcast2.jpg" style="width: 100%;"/></div>
                 <p>
                     Gutcast is the first ever podcast series for people living with Crohn’s Disease or Colitis in Ireland. 
 					The podcast is hosted by Amy Kelly, ISCC Director, who lives with Crohn’s disease and features a range 
@@ -136,6 +136,44 @@
 					range of topics.
                 </p>
                 <br/>
+
+                <div id="videoContainer">
+                    <div class="overlay bg-blue-dark">
+                        <div class="button agileinfo"></div>
+                    </div>
+                    <div id="video">
+                        <!--video src="vid/1.mp4"></video>-->
+                        <video src="https://youtu.be/bepRYRqqpgI"></video>
+                        <div class='embed-container'>
+                            <iframe src='https://www.youtube.com/embed//bepRYRqqpgI' frameborder='0'
+                                allowfullscreen></iframe>
+                        </div>
+                        <!--p>Your device does not support this Video element.</p-->
+                    </div>
+                    <div id="controls" class="bg-lylac" style="display: none;">
+                        <div class="playButton bg-lylac">
+                            <div class="playPause"></div>
+                        </div>
+                        <div class="ProgressContainer">
+                            <div class="timer intialTime"> 00:00 </div>
+                            <div class="progressBar bg-blue-dark">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="time"> 00:00 </div>
+                            <div class="timer fullTime"> 00:00 </div>
+                        </div>
+                        <div class="volume">
+                            <div class="icon"></div>
+                            <div class="intensityBar bg-blue-dark">
+                                <div class="intensity"></div>
+                            </div>
+                        </div>
+                        <div class="scale bg-lylac">
+                            <div class="icon"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <br/>
 				<div>
 					<iframe width="100%" height="350" src="https://embeds.audioboom.com/publishing/playlist/v4?boo_content_type=channel&amp;data_for_content_type=5028286&amp;image_option=small" style="background-color:transparent; display:block; padding: 0; max-width:700px;" frameborder="0" allowtransparency="allowtransparency" scrolling="no" title="Audioboom player" allow="autoplay"></iframe>
@@ -153,14 +191,11 @@
                     We hope the Gutcast will help you feel empowered to take control of your IBD. 
 					Remember you can contact us on the ISCC helpline 01-531 2983 or via email info@icss.ie if you have any
 					questions.
-                </p>
-                <p>
-                    You can listen here or download wherever you get your podcasts.
                 </p><br />
 
                 <h2></h2>
                 <p>
-                    You can listen here or download wherever you get your podcasts.Support the podcast by listening, 
+                    You can listen here or download wherever you get your podcasts. Support the podcast by listening, 
 					sharing the episodes and using the hashtag #Gutcast
                 </p>
                 <p>
@@ -270,5 +305,254 @@
     });
 </script>
 <!-- End swipe sidebar script -->
+<!-- Start video player script -->
+<script>
+    $(document).ready(function () {
+
+        'use strict';
+
+        var play_pause = $('.playButton'),
+            container = $('#videoContainer'),
+            playIcon = $('.playButton .playPause'),
+            video = $('video'),
+            play = $('.play'),
+            volume = $('.volume .icon'),
+            volumeIntesity = $('.volume .intensityBar'),
+            intensity = $('.intensity'),
+            progressBar = $('.progressBar'),
+            progress = $('.progressBar .progress'),
+            timer = $('.intialTime'),
+            vidDuration = $('.fullTime'),
+            expandButton = $('.scale .icon'),
+            overlayScreen = $('.overlay'),
+            timeState = $('.time'),
+            overlayButton = $('.overlay .button'),
+            update;
+
+
+        $(window).resize(function () { resizeVid(); });
+
+        resizeVid();
+
+        updateplayer();
+
+        play_pause.add(video).click(function () { playVid(); });
+
+        progressBar.click(function () { skip(); });
+
+        progressBar.mousemove(function () { timeState.text(getTimeState()); });
+
+        volume.click(function () { toggleMute(); });
+
+        volumeIntesity.click(function () { changeVolume(); });
+
+        expandButton.click(function () { fullScreen(); });
+
+        overlayButton.click(function () { playVid(); });
+
+        vidDuration.text(getFormatedFullTime());
+
+
+        function playVid() {
+            if (video.get(0).paused) {
+                video.get(0).play();
+                playIcon.css({
+                    'background': 'url(https://iscc-imgs.s3-eu-west-1.amazonaws.com/media-player/video-icons/pause.png)',
+                    'background-size': '100% 100%'
+                });
+                overlayScreen.hide();
+                update = setInterval(updateplayer, 1);
+
+            } else {
+                video.get(0).pause();
+                playIcon.css({
+                    'background': 'url(https://iscc-imgs.s3-eu-west-1.amazonaws.com/media-player/video-icons/play.png)',
+                    'background-size': '100% 100%'
+                });
+                overlayScreen.show();
+                clearInterval(update);
+            }
+        }
+
+        function updateplayer() {
+            var percentage = (video[0].currentTime / video[0].duration) * 100;
+            progress.css({ 'width': percentage + '%' });
+            timer.text(getFormatedTime());
+            vidDuration.text(getFormatedFullTime());
+
+            if (video[0].ended) {
+                playIcon.css({
+                    'background': 'url(https://iscc-imgs.s3-eu-west-1.amazonaws.com/media-player/video-icons/play.png)',
+                    'background-size': '100% 100%'
+                });
+                overlayScreen.show();
+                overlayButton.css({
+                    'background': 'url(https://iscc-imgs.s3-eu-west-1.amazonaws.com/media-player/video-icons/replay.png)',
+                    'background-size': '100% 100%'
+                });
+            } else if (video[0].paused) {
+                overlayButton.css({
+                    'background': 'url(https://iscc-imgs.s3-eu-west-1.amazonaws.com/media-player/video-icons/play-button.png)',
+                    'background-size': '100% 100%'
+                });
+            }
+        }
+
+        function getTimeState() {
+
+            var mouseX = event.pageX - progressBar.offset().left,
+                width = progressBar.outerWidth();
+
+            var currentSeconeds = Math.round((mouseX / width) * video[0].duration);
+            var currentMinutes = Math.floor(currentSeconeds / 60);
+
+            if (currentMinutes > 0) {
+                currentSeconeds -= currentMinutes * 60;
+            }
+            if (currentSeconeds.toString().length === 1) {
+                currentSeconeds = "0" + currentSeconeds;
+            }
+            if (currentMinutes.toString().length === 1) {
+                currentMinutes = "0" + currentMinutes;
+            }
+
+            timeState.css('left', (mouseX / width) * progressBar.width() + 18 + 'px');
+
+            return currentMinutes + ':' + currentSeconeds;
+
+        }
+
+        function skip() {
+            var mouseX = event.pageX - progressBar.offset().left,
+                width = progressBar.outerWidth();
+            video[0].currentTime = (mouseX / width) * video[0].duration;
+            updateplayer();
+        }
+
+        function getFormatedFullTime() {
+
+            var totalSeconeds = Math.round(video[0].duration);
+            var totalMinutes = Math.floor(totalSeconeds / 60);
+            if (totalMinutes > 0) {
+                totalSeconeds -= totalMinutes * 60;
+            }
+            if (totalSeconeds.toString().length === 1) {
+                totalSeconeds = "0" + totalSeconeds;
+            }
+            if (totalMinutes.toString().length === 1) {
+                totalMinutes = "0" + totalMinutes;
+            }
+            //console.log(totalMinutes + totalSeconeds);
+            //if(isNan(totalMinutes) || isNan(totalSeconeds)){
+            //    return "00:00";
+            //}else{
+            return totalMinutes + ':' + totalSeconeds;
+            //}
+        }
+
+        function getFormatedTime() {
+            var seconeds = Math.round(video[0].currentTime);
+            var minutes = Math.floor(seconeds / 60);
+
+            if (minutes > 0) {
+                seconeds -= minutes * 60;
+            }
+            if (seconeds.toString().length === 1) {
+                seconeds = "0" + seconeds;
+            }
+            if (minutes.toString().length === 1) {
+                minutes = "0" + minutes;
+            }
+            return minutes + ':' + seconeds;
+        }
+
+        function toggleMute() {
+            if (!video[0].muted) {
+                video[0].muted = true;
+                volume.css({
+                    'background': 'url(https://iscc-imgs.s3-eu-west-1.amazonaws.com/media-player/video-icons/mute.png)',
+                    'background-size': '100% 100%'
+                });
+                intensity.hide();
+            } else {
+                video[0].muted = false;
+                volume.css({
+                    'background': 'url(https://iscc-imgs.s3-eu-west-1.amazonaws.com/media-player/video-icons/volume.png)',
+                    'background-size': '100% 100%'
+                });
+                intensity.show();
+            }
+        }
+
+        function changeVolume() {
+            var mouseX = event.pageX - volumeIntesity.offset().left,
+                width = volumeIntesity.outerWidth();
+
+            video[0].volume = (mouseX / width);
+            intensity.css('width', (mouseX / width) * width + 'px');
+            video[0].muted = false;
+            volume.css({
+                'background': 'url(https://iscc-imgs.s3-eu-west-1.amazonaws.com/media-player/video-icons/volume.png)',
+                'background-size': '100% 100%'
+            });
+            intensity.show();
+        }
+
+        function fullScreen() {
+            if (video[0].requestFullscreen) {
+                video[0].requestFullscreen();
+            } else if (video[0].webkitRequestFullscreen) {
+                video[0].webkitRequestFullscreen();
+            } else if (video[0].mozRequestFullscreen) {
+                video[0].mozRequestFullscreen();
+            } else if (video[0].msRequestFullscreen) {
+                video[0].msRequestFullscreen();
+            } else {
+                video.dblclick(function () { fullScreen(); });
+            }
+
+        }
+
+        function resizeVid() {
+            if (container.width() < 600) {
+                container.addClass('small');
+            } else {
+                container.removeClass('small');
+            }
+        }
+
+        $(window).keypress(function (e) {
+            if (e.keyCode === 0 || e.keyCode === 32) {
+                e.preventDefault()
+                playVid();
+            }
+        });
+
+        for (var i = 0, l = videos.length; i < l; i++) {
+            var video = videos[i];
+            var src = video.src || (function () {
+                var sources = video.querySelectorAll("source");
+                for (var j = 0, sl = sources.length; j < sl; j++) {
+                    var source = sources[j];
+                    var type = source.type;
+                    var isMp4 = type.indexOf("mp4") != -1;
+                    if (isMp4) return source.src;
+                }
+                return null;
+            })();
+            if (src) {
+                var isYoutube = src && src.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
+                if (isYoutube) {
+                    var id = isYoutube[1].match(/watch\?v=|[\w\W]+/gi);
+                    id = (id.length > 1) ? id.splice(1) : id;
+                    id = id.toString();
+                    var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
+                    video.src = mp4url + id;
+                }
+            }
+        }
+    });
+</script>
+<!-- End of video player script -->
 
 </html>
